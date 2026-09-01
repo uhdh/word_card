@@ -1,0 +1,1447 @@
+{
+  "검": {
+    "word": "검",
+    "name_en": "sword",
+    "category_group": "01_무기_공격",
+    "desc": "장검, 직검, 검기 베기 공격",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "406dc246-881a-4b37-af0d-2bc18f65a2eb",
+        "file_name": "sword_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/sword_검/sword_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/c502bdb3-f293-4148-94d9-d346d3f5ba8a.png"
+      },
+      {
+        "id": "96ad647e-891f-416d-b798-c48f2a3d7b7a",
+        "file_name": "sword_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/sword_검/sword_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/b5b0e321-ee36-4270-b063-a2cc3c61d24f.png"
+      },
+      {
+        "id": "351891e5-8ec2-427d-97e3-075c73a4f86a",
+        "file_name": "sword_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/sword_검/sword_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/9a522a73-d6c5-4df5-871f-bd6a44b7ffa8.png"
+      },
+      {
+        "id": "43583041-c15a-4dc2-a9e9-5f7171c341a1",
+        "file_name": "sword_4_32px_pastel.png",
+        "relative_path": "01_무기_공격/sword_검/sword_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/2636bab1-1c0a-448e-ac4b-ee55c3f1a04c.png"
+      }
+    ]
+  },
+  "칼": {
+    "word": "칼",
+    "name_en": "dagger",
+    "category_group": "01_무기_공격",
+    "desc": "단검, 치명타, 빠른 연타",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "b7712b89-eb5d-4428-887f-b7ae658908a0",
+        "file_name": "dagger_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/dagger_칼/dagger_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/bb051ed1-741f-4360-8e96-66f6376e7fc1.png"
+      },
+      {
+        "id": "b0258eab-4c38-4864-b57c-a0f46f2b60fa",
+        "file_name": "dagger_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/dagger_칼/dagger_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/5fd3b18d-8542-41ef-aef4-0d0639f0df8f.png"
+      },
+      {
+        "id": "776705d0-59c8-48b0-8ab3-a6ef33920110",
+        "file_name": "dagger_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/dagger_칼/dagger_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/29890741-3536-450f-b531-f4960c568595.png"
+      },
+      {
+        "id": "61595f67-55fb-4512-9203-22c9abf61c2d",
+        "file_name": "dagger_4_32px_pastel.png",
+        "relative_path": "01_무기_공격/dagger_칼/dagger_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/da48cb54-29bf-4ec7-820a-5adc356aa186.png"
+      }
+    ]
+  },
+  "창": {
+    "word": "창",
+    "name_en": "spear",
+    "category_group": "01_무기_공격",
+    "desc": "장창, 투창, 열 관통 공격",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "3a604ba1-2c44-4dfa-81c1-79a6975723f3",
+        "file_name": "spear_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/spear_창/spear_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/e21dd913-7df2-436c-ac23-fa9133f45ddf.png"
+      },
+      {
+        "id": "64c1fb5d-e30d-4664-b6d3-01ea938b91c3",
+        "file_name": "spear_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/spear_창/spear_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/1de712bb-eb81-4460-a644-c422be8597c9.png"
+      },
+      {
+        "id": "9fe29c39-8596-4c2b-8204-e550b69c5760",
+        "file_name": "spear_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/spear_창/spear_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/4c0c7a5d-8345-4087-b5d9-93163b6d6c7d.png"
+      },
+      {
+        "id": "e34d3951-166f-4d40-8790-6efa43bbb57d",
+        "file_name": "spear_4_32px_pastel.png",
+        "relative_path": "01_무기_공격/spear_창/spear_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/11d3e46a-b59b-4782-bf6d-37fa3fb7d87f.png"
+      }
+    ]
+  },
+  "활": {
+    "word": "활",
+    "name_en": "bow",
+    "category_group": "01_무기_공격",
+    "desc": "장궁, 화살, 후열 저격",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "4b18ebe0-20cf-4fa9-8697-36e1eeb7ed9d",
+        "file_name": "bow_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/bow_활/bow_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/f5da9803-6602-448e-be79-0b4c0a601825.png"
+      },
+      {
+        "id": "702e3cab-d7d9-43e6-a59a-1a2cb6950099",
+        "file_name": "bow_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/bow_활/bow_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/dd337cee-af02-455e-a47c-96b88fa0b2b6.png"
+      },
+      {
+        "id": "2dda0cb4-4b27-4a8c-a7df-8c32997706d0",
+        "file_name": "bow_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/bow_활/bow_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/805cf3d9-c6b1-4662-86a2-ad1f4c10cb6e.png"
+      },
+      {
+        "id": "99023131-56a7-401d-a70d-0416aaf6e88a",
+        "file_name": "bow_4_32px_pastel.png",
+        "relative_path": "01_무기_공격/bow_활/bow_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/1d9acb72-8539-4c23-8994-aacfe46c6620.png"
+      }
+    ]
+  },
+  "총": {
+    "word": "총",
+    "name_en": "gun",
+    "category_group": "01_무기_공격",
+    "desc": "화승총, 권총, 강력한 단발 사격",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "dac38cd0-cc80-42d5-880f-f6aeaefabf98",
+        "file_name": "gun_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/gun_총/gun_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/dcfb8267-da37-4090-b0be-d9a2deaef0bf.png"
+      },
+      {
+        "id": "6fc4b7ce-bb7d-4ec3-a4a4-c6b2ae0ddf9b",
+        "file_name": "gun_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/gun_총/gun_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/440c9a22-5173-4395-8c7d-dd34c53b282b.png"
+      },
+      {
+        "id": "8e8b92f8-4b4f-42b7-941f-0cfbd5bde189",
+        "file_name": "gun_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/gun_총/gun_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/df768e6c-e90f-45ce-a6ed-4eea1c316ead.png"
+      }
+    ]
+  },
+  "도": {
+    "word": "도",
+    "name_en": "axe_mace",
+    "category_group": "01_무기_공격",
+    "desc": "도끼, 둔기, 방어구 파괴 타격",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "a221b594-a8e2-4bee-b992-f3cbf187dba3",
+        "file_name": "axe_mace_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_mace_도/axe_mace_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/567577df-9cc6-4028-a4b1-62e5f4fbaef1.png"
+      },
+      {
+        "id": "d4e772e9-a591-4ec3-a3dd-13bfa156eb18",
+        "file_name": "axe_mace_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_mace_도/axe_mace_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/9ad820a2-ecdb-42f3-b61a-dce514d443f1.png"
+      },
+      {
+        "id": "45a34db8-0004-483f-aed3-7f999be5646c",
+        "file_name": "axe_mace_3_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_mace_도/axe_mace_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/f2f389ff-034b-4273-a33e-0fd585ece7cf.png"
+      },
+      {
+        "id": "118ef4e5-b0e2-46d1-80e8-ca601d6be714",
+        "file_name": "axe_mace_4_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_mace_도/axe_mace_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/0bb60132-3a34-4ec8-b8bf-88ce172c88ff.png"
+      }
+    ]
+  },
+  "봉": {
+    "word": "봉",
+    "name_en": "staff",
+    "category_group": "01_무기_공격",
+    "desc": "지팡이, 마법봉, 주문 영창",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "2ecdc638-b258-40f2-9e23-ef8a79353471",
+        "file_name": "staff_1_32px.png",
+        "relative_path": "01_무기_공격/staff_봉/staff_1_32px.png",
+        "style": "32px",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/a63da88b-8f20-415d-ab18-fa0aa0b0dd00.png"
+      },
+      {
+        "id": "23c79566-ab1c-4482-b9cd-32dd165a8e3f",
+        "file_name": "staff_2_32px.png",
+        "relative_path": "01_무기_공격/staff_봉/staff_2_32px.png",
+        "style": "32px",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/b49327d2-4653-4cc1-8ad1-8cbe487ef548.png"
+      },
+      {
+        "id": "835f56a9-6be6-4997-9748-f72580caf3cd",
+        "file_name": "staff_3_32px.png",
+        "relative_path": "01_무기_공격/staff_봉/staff_3_32px.png",
+        "style": "32px",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/82a09a1f-3df8-497b-8056-9c6aab9a38a2.png"
+      },
+      {
+        "id": "809a1516-e976-49d8-8013-3ae88d325177",
+        "file_name": "staff_4_32px.png",
+        "relative_path": "01_무기_공격/staff_봉/staff_4_32px.png",
+        "style": "32px",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/d547e0ef-c4ff-4cdf-aacd-be73608d19e5.png"
+      }
+    ]
+  },
+  "방": {
+    "word": "방",
+    "name_en": "shield",
+    "category_group": "02_방어_장비",
+    "desc": "방패, 피해 흡수, 가드",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "f02791ea-7b1b-48be-ad85-a37b25f66974",
+        "file_name": "shield_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/shield_방/shield_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/062c7efe-dcc8-4e33-acd6-b23a47f643c6.png"
+      },
+      {
+        "id": "9944c434-13c9-4ec2-85d6-fae0617f2888",
+        "file_name": "shield_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/shield_방/shield_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/1b223b04-6e3e-4064-a0f9-0af63d3f4ffc.png"
+      },
+      {
+        "id": "7a5a2d65-6130-4ad1-a4bd-2cc7316e1df5",
+        "file_name": "shield_3_32px.png",
+        "relative_path": "02_방어_장비/shield_방/shield_3_32px.png",
+        "style": "32px",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/bef18c2b-0027-4363-8ae8-1843059f50f8.png"
+      },
+      {
+        "id": "8d8fd44f-ca50-458f-a48c-879b8389ac76",
+        "file_name": "shield_4_32px.png",
+        "relative_path": "02_방어_장비/shield_방/shield_4_32px.png",
+        "style": "32px",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/3fd1cad7-dc70-47a5-9137-5a28165299e5.png"
+      }
+    ]
+  },
+  "갑": {
+    "word": "갑",
+    "name_en": "armor",
+    "category_group": "02_방어_장비",
+    "desc": "철갑옷, 흉갑, 방어력 대폭 상승",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "65f3c336-e33c-456f-9c66-8e8928ba8e8e",
+        "file_name": "armor_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/armor_갑/armor_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Plate Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/f5fbf2bb-4def-4172-b6e1-bdbece0604f3.png"
+      },
+      {
+        "id": "3982211e-6163-4eb7-9474-99aa85f2df07",
+        "file_name": "armor_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/armor_갑/armor_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Plate Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/d9cba638-43bc-4244-9cb7-8344a30b97e5.png"
+      },
+      {
+        "id": "417dadd9-8bcd-4cfe-97ff-9cb3054b9f33",
+        "file_name": "armor_3_32px_pastel.png",
+        "relative_path": "02_방어_장비/armor_갑/armor_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Plate Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/245f3643-5469-4a30-9df2-f56c6d46f48a.png"
+      },
+      {
+        "id": "2cb7dcb4-9bba-4d9b-b77c-e48266d49370",
+        "file_name": "armor_4_32px_pastel.png",
+        "relative_path": "02_방어_장비/armor_갑/armor_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Plate Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/dded77cd-93fe-4056-8480-aec262094e8e.png"
+      }
+    ]
+  },
+  "옷": {
+    "word": "옷",
+    "name_en": "cloth",
+    "category_group": "02_방어_장비",
+    "desc": "천 의복, 마법 저항력 증가",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "dfb68c75-c501-4a27-97b0-68f7d5ef56d0",
+        "file_name": "cloth_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/cloth_옷/cloth_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Cloth Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/f0124162-fe36-4a6d-81e9-b95988350c9c.png"
+      },
+      {
+        "id": "bb6cd686-4c45-4eee-9bc4-a4eb5536c854",
+        "file_name": "cloth_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/cloth_옷/cloth_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Cloth Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/a6a23e48-455c-471f-b76f-b7b135ab2f9c.png"
+      },
+      {
+        "id": "b82a6b84-04e0-4ffa-82b2-9b60f54c012a",
+        "file_name": "cloth_3_32px_pastel.png",
+        "relative_path": "02_방어_장비/cloth_옷/cloth_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Cloth Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/6488def4-3bbe-45c6-8649-dd2fc1575fce.png"
+      },
+      {
+        "id": "32fc6977-9642-40c8-b40d-20fd24d24857",
+        "file_name": "cloth_4_32px_pastel.png",
+        "relative_path": "02_방어_장비/cloth_옷/cloth_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Cloth Armor",
+        "url": "https://cdn.aetherforgeai.com/assets/b5a26c9b-76e8-4534-98f1-a4d2fdb98ba8.png"
+      }
+    ]
+  },
+  "투": {
+    "word": "투",
+    "name_en": "helmet",
+    "category_group": "02_방어_장비",
+    "desc": "투구, 머리 보호구, 기절 저항",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "28b0029f-a221-4e21-bf04-e8f599fc503a",
+        "file_name": "helmet_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/helmet_투/helmet_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/2fa47e98-9a58-4870-a7f2-348af7976dcb.png"
+      },
+      {
+        "id": "1d750b2e-da88-417f-b48f-7c15f6961e49",
+        "file_name": "helmet_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/helmet_투/helmet_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/a6d89ba2-7c81-4424-9448-f2cf2055d8fa.png"
+      },
+      {
+        "id": "49f48b0c-e57d-4396-8859-777f6ec85f23",
+        "file_name": "helmet_3_32px_pastel.png",
+        "relative_path": "02_방어_장비/helmet_투/helmet_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/4bd8b713-9371-429a-94aa-7c2820d81089.png"
+      },
+      {
+        "id": "7ae32534-401b-4299-abaf-61459c31a7dc",
+        "file_name": "helmet_4_32px.png",
+        "relative_path": "02_방어_장비/helmet_투/helmet_4_32px.png",
+        "style": "32px",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/a0f23dae-0452-4284-bd1a-14c7cfdc6c84.png"
+      }
+    ]
+  },
+  "끈": {
+    "word": "끈",
+    "name_en": "rope",
+    "category_group": "02_방어_장비",
+    "desc": "밧줄, 묶기, 행동 속박",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "94fb4465-0d3f-4ce9-8b2b-26d8d2aaaa89",
+        "file_name": "rope_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/rope_끈/rope_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/8065d354-fbd1-4032-8051-721a8e0949df.png"
+      },
+      {
+        "id": "2333fe4a-73dd-4f85-ae61-c2f94d7c34ad",
+        "file_name": "rope_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/rope_끈/rope_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/6de38bdb-4140-47a8-acba-1b0dd132fb17.png"
+      },
+      {
+        "id": "f4506762-9731-41dc-adbf-1ed7abc3c56f",
+        "file_name": "rope_3_32px.png",
+        "relative_path": "02_방어_장비/rope_끈/rope_3_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/ad2a5559-b1b0-4054-8842-86a9fc8e49cd.png"
+      }
+    ]
+  },
+  "망": {
+    "word": "망",
+    "name_en": "net",
+    "category_group": "02_방어_장비",
+    "desc": "포획 그물, 비행 저지",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "c7df5d22-504f-413c-b1ee-9819ad7b56ed",
+        "file_name": "net_1_32px.png",
+        "relative_path": "02_방어_장비/net_망/net_1_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/93c234e9-c310-4993-a179-bf577227f7f4.png"
+      },
+      {
+        "id": "8b8a2131-4fda-4765-a73d-3278807c1865",
+        "file_name": "net_2_32px.png",
+        "relative_path": "02_방어_장비/net_망/net_2_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/9cf221ab-59ad-47de-87de-cc67c04434b3.png"
+      },
+      {
+        "id": "29e37b01-1cbc-4d22-a599-d1bbb15b05eb",
+        "file_name": "net_3_32px.png",
+        "relative_path": "02_방어_장비/net_망/net_3_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/57041010-febb-48cc-8e90-fa5b3ba3d7c2.png"
+      }
+    ]
+  },
+  "북": {
+    "word": "북",
+    "name_en": "drum",
+    "category_group": "02_방어_장비",
+    "desc": "군악 북, 아군 전체 공격력 버프",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "be1d8eef-171f-412c-9e65-4cd919a66f49",
+        "file_name": "drum_1_32px.png",
+        "relative_path": "02_방어_장비/drum_북/drum_1_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/0ea2c130-f3df-4311-993a-e41baa2d1824.png"
+      },
+      {
+        "id": "3e1062c2-75ce-42f7-b535-48d39516ba0c",
+        "file_name": "drum_2_32px.png",
+        "relative_path": "02_방어_장비/drum_북/drum_2_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/be7715d9-3b2c-4f01-b73e-10774a839f50.png"
+      },
+      {
+        "id": "da1de262-5f2d-47bd-b620-5139e912493e",
+        "file_name": "drum_3_32px.png",
+        "relative_path": "02_방어_장비/drum_북/drum_3_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/d39f0959-02f5-4e54-88f4-58a754862137.png"
+      }
+    ]
+  },
+  "종": {
+    "word": "종",
+    "name_en": "bell",
+    "category_group": "02_방어_장비",
+    "desc": "차임벨, 적 행동 지연, 정신 집중 차단",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "08169ef8-acca-42b5-886d-95957495425a",
+        "file_name": "bell_1_32px.png",
+        "relative_path": "02_방어_장비/bell_종/bell_1_32px.png",
+        "style": "32px",
+        "category": "Prop",
+        "url": "https://cdn.aetherforgeai.com/assets/9af9f2f6-542b-420d-b628-4c8fa0e29c1f.png"
+      },
+      {
+        "id": "2c260264-7242-42b1-9ecc-b470b8209fe6",
+        "file_name": "bell_2_32px.png",
+        "relative_path": "02_방어_장비/bell_종/bell_2_32px.png",
+        "style": "32px",
+        "category": "Prop",
+        "url": "https://cdn.aetherforgeai.com/assets/48304786-025c-4257-9b00-637f1bdc28a2.png"
+      },
+      {
+        "id": "e831f404-cb97-44da-a8d7-cdc954c53c20",
+        "file_name": "bell_3_32px.png",
+        "relative_path": "02_방어_장비/bell_종/bell_3_32px.png",
+        "style": "32px",
+        "category": "Prop",
+        "url": "https://cdn.aetherforgeai.com/assets/ea7e05c1-fd19-4a5a-b1f2-b5fa41f23e25.png"
+      }
+    ]
+  },
+  "불": {
+    "word": "불",
+    "name_en": "fire",
+    "category_group": "03_원소_마법",
+    "desc": "화염 공격, 지속 화상 피해",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "fire_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/fire_불/fire_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "fire_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/fire_불/fire_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      },
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "fire_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/fire_불/fire_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "fire_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/fire_불/fire_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "물": {
+    "word": "물",
+    "name_en": "water",
+    "category_group": "03_원소_마법",
+    "desc": "수류 공격, 정화, 냉각",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "b5b523f6-12d7-482c-b665-7e53ba950fb0",
+        "file_name": "water_1_32px.png",
+        "relative_path": "03_원소_마법/water_물/water_1_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/ec774d88-4224-4f9b-b3f6-0150a177fd05.png"
+      },
+      {
+        "id": "d987a051-d6c9-4793-92b7-469a39d0d32c",
+        "file_name": "water_2_32px.png",
+        "relative_path": "03_원소_마법/water_물/water_2_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/feb587d8-0d19-4e8a-aa99-dfd8c37bfa49.png"
+      },
+      {
+        "id": "7eb78277-4d74-4477-8bfb-7385ea172174",
+        "file_name": "water_3_32px.png",
+        "relative_path": "03_원소_마법/water_물/water_3_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/250b5b87-fb62-45d0-8390-411594e8fbd2.png"
+      },
+      {
+        "id": "5edc123f-8120-4456-91dc-6ca1f3fe25b7",
+        "file_name": "water_4_32px.png",
+        "relative_path": "03_원소_마법/water_물/water_4_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/7cd8948d-0515-4d4f-97c5-4e95d1dd6fb2.png"
+      }
+    ]
+  },
+  "빛": {
+    "word": "빛",
+    "name_en": "light",
+    "category_group": "03_원소_마법",
+    "desc": "성스러운 빛, 실명, 언데드 정화",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "b4ccc1bf-6ce1-4e07-aa7d-45ed9e0500df",
+        "file_name": "light_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_빛/light_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/5954db97-6435-4f7e-8773-be8fd16176a2.png"
+      },
+      {
+        "id": "2a94e9d6-b25f-40d9-a100-9b19e5997ab1",
+        "file_name": "light_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_빛/light_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/ef245943-751b-4a79-b5e4-b713c54270b2.png"
+      },
+      {
+        "id": "66066064-119b-4999-816c-5245056a67e9",
+        "file_name": "light_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_빛/light_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/c25613a5-99a5-4a4b-b505-72069e9d680f.png"
+      },
+      {
+        "id": "bbc60e2e-fddb-4786-8c4b-e345665a56eb",
+        "file_name": "light_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_빛/light_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/9f46a3c6-4957-4373-8662-380ae271736e.png"
+      }
+    ]
+  },
+  "독": {
+    "word": "독",
+    "name_en": "poison",
+    "category_group": "03_원소_마법",
+    "desc": "맹독 플라스크, 방어도 무시 지속 데미지",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "2d15c659-bc14-4bed-b2b5-9fe3f3016ead",
+        "file_name": "poison_1_32px.png",
+        "relative_path": "03_원소_마법/poison_독/poison_1_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/f238345d-ca3b-4e08-90ec-4800ab4328e2.png"
+      },
+      {
+        "id": "199a910b-9e16-4505-bbd8-b2543e1b7adb",
+        "file_name": "poison_2_32px.png",
+        "relative_path": "03_원소_마법/poison_독/poison_2_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/c02ddf63-0d8a-4a40-9361-067d76ec3a19.png"
+      },
+      {
+        "id": "f265ea8a-ed79-48ef-9978-8cd90504a2ef",
+        "file_name": "poison_3_32px.png",
+        "relative_path": "03_원소_마법/poison_독/poison_3_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/8c64e15c-f292-4ab4-bbe5-4da2f94942c5.png"
+      },
+      {
+        "id": "dc745cc8-5a05-4875-a8bf-afe0c2856849",
+        "file_name": "poison_4_32px.png",
+        "relative_path": "03_원소_마법/poison_독/poison_4_32px.png",
+        "style": "32px",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/2be75c4c-5fe8-493e-bad0-f879830641ac.png"
+      }
+    ]
+  },
+  "약": {
+    "word": "약",
+    "name_en": "potion",
+    "category_group": "03_원소_마법",
+    "desc": "회복 물약, 체력 회복, 상태이상 정화",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "6359dce4-efa8-4022-ae72-856d87cf1fd3",
+        "file_name": "potion_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/potion_약/potion_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/f20f7cb6-57fc-44b4-839b-615656dcc0c5.png"
+      },
+      {
+        "id": "e32ccd98-6c9a-4de2-a640-1c310799a08c",
+        "file_name": "potion_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/potion_약/potion_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/fc2bb0aa-0874-4389-9059-8e338224bd9d.png"
+      },
+      {
+        "id": "cc4514e5-1d83-4f73-a8d2-0efbd326f74d",
+        "file_name": "potion_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/potion_약/potion_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/7d153e2a-b116-439d-9bd1-2c0f47e49fa7.png"
+      },
+      {
+        "id": "55a8c44d-102c-421f-9a96-2e59a9a435b0",
+        "file_name": "potion_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/potion_약/potion_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/c1e0a256-4c8c-4bc8-bafa-019bb2b891e2.png"
+      }
+    ]
+  },
+  "피": {
+    "word": "피",
+    "name_en": "blood",
+    "category_group": "03_원소_마법",
+    "desc": "흡혈, 자해 후 공격력 폭증, 출혈",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "0b59f16d-cd0e-42be-9196-fa5419e2491b",
+        "file_name": "blood_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/blood_피/blood_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/d975f9c3-c659-475b-8eeb-58a1c4cea483.png"
+      },
+      {
+        "id": "c47927ee-4c35-41e9-ab43-2f4f97d2ea01",
+        "file_name": "blood_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/blood_피/blood_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/124fd3f1-1f9f-45e5-a6ee-85a7e194ae48.png"
+      },
+      {
+        "id": "f713a21f-8203-4498-9000-828cea9d9c09",
+        "file_name": "blood_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/blood_피/blood_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/875c83cc-d1be-4ed2-9e8c-f1ad26493a26.png"
+      },
+      {
+        "id": "f07e355d-2c50-4390-b7c2-1b8c639baf48",
+        "file_name": "blood_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/blood_피/blood_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/713798dc-0b1b-41c1-ab40-d0e524018a14.png"
+      }
+    ]
+  },
+  "뼈": {
+    "word": "뼈",
+    "name_en": "bone",
+    "category_group": "03_원소_마법",
+    "desc": "해골 뼈, 관통 찌르기, 언데드 부속",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "e855c238-e289-4218-a264-8288c3930c0a",
+        "file_name": "bone_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/bone_뼈/bone_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/2b262d02-c1a5-44ea-b7fe-6be77e394bdd.png"
+      },
+      {
+        "id": "37200fd0-4a37-4b54-b07d-1f33c857a39a",
+        "file_name": "bone_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/bone_뼈/bone_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/a04eb3a9-b9da-4789-aec3-06ce3eda3aa4.png"
+      },
+      {
+        "id": "7870a677-450c-4ae9-85e0-fc75b2353f6c",
+        "file_name": "bone_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/bone_뼈/bone_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/b15e9c1f-a6f1-4353-b3c5-7b692bb9eb56.png"
+      },
+      {
+        "id": "0b2f5a50-aa19-407c-97e3-77a64afffced",
+        "file_name": "bone_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/bone_뼈/bone_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/d630e760-7af1-4837-ad8c-f6c7d86bf076.png"
+      }
+    ]
+  },
+  "돌": {
+    "word": "돌",
+    "name_en": "stone",
+    "category_group": "03_원소_마법",
+    "desc": "단단한 바위 투척, 기절 유발",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "b9d3b0a5-742d-481d-b6b2-1c03e79db900",
+        "file_name": "stone_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/stone_돌/stone_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/e2cde03e-2c2c-4ea1-a189-26d54ad52362.png"
+      },
+      {
+        "id": "8e1d1e2f-29a3-42b5-a083-9601843d68dd",
+        "file_name": "stone_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/stone_돌/stone_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/8f74db9e-d336-4af4-ae08-3a1d20879f73.png"
+      },
+      {
+        "id": "1efd775e-0456-4392-a7c9-32359b34559f",
+        "file_name": "stone_3_32px_pastel.png",
+        "relative_path": "03_원소_마법/stone_돌/stone_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/31ca54a0-46b4-4562-b589-ca9e3ca8ae60.png"
+      },
+      {
+        "id": "8fea525f-6760-4a59-9341-7b37ee44033b",
+        "file_name": "stone_4_32px_pastel.png",
+        "relative_path": "03_원소_마법/stone_돌/stone_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/ad84b584-fd38-4c1f-a3ae-6231aefb58a1.png"
+      }
+    ]
+  },
+  "눈": {
+    "word": "눈",
+    "name_en": "snow_ice",
+    "category_group": "03_원소_마법",
+    "desc": "빙결, 적 둔화 및 턴 스킵",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "b750c285-6ed1-432f-bb18-61bfd58ee721",
+        "file_name": "snow_ice_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/snow_ice_눈/snow_ice_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/b17b5a43-90c7-4f93-aa30-df206dd7c468.png"
+      },
+      {
+        "id": "5292e5e0-99dd-4ac8-9f55-11066041b346",
+        "file_name": "snow_ice_2_32px.png",
+        "relative_path": "03_원소_마법/snow_ice_눈/snow_ice_2_32px.png",
+        "style": "32px",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3d6b8847-1976-406e-8543-48b9b0ee2842.png"
+      },
+      {
+        "id": "4f1f6aa4-f327-4cf4-95b5-4f469d25cea5",
+        "file_name": "snow_ice_3_32px.png",
+        "relative_path": "03_원소_마법/snow_ice_눈/snow_ice_3_32px.png",
+        "style": "32px",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/96b9e9fa-3f56-4e09-b49b-4b8735aebf66.png"
+      },
+      {
+        "id": "4acf3af9-0c30-4150-9e5b-b982218d2f92",
+        "file_name": "snow_ice_4_32px.png",
+        "relative_path": "03_원소_마법/snow_ice_눈/snow_ice_4_32px.png",
+        "style": "32px",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/b7ef6598-baee-4553-a772-872e93652f81.png"
+      }
+    ]
+  },
+  "곰": {
+    "word": "곰",
+    "name_en": "bear",
+    "category_group": "04_생물_소환",
+    "desc": "야수 소환, 든든한 전열 탱킹, 강타",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "60d57153-69d8-4357-bbfb-525d73fe5c96",
+        "file_name": "bear_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/bear_곰/bear_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/89e7dabe-cb9a-4ff7-b9eb-ffafe11ded22.png"
+      },
+      {
+        "id": "e925972a-09c9-4a5b-bf3a-d1a5b6389a99",
+        "file_name": "bear_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/bear_곰/bear_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/089c20bc-c4dc-4586-9cf6-b1ceac2c31fe.png"
+      },
+      {
+        "id": "eb24c8c3-a34e-49c2-af34-8e9f4cf346ed",
+        "file_name": "bear_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/bear_곰/bear_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/d8ec82a7-d246-4aad-9342-f0324fa04151.png"
+      },
+      {
+        "id": "a57ca29f-986b-4bb5-929b-413c7b43c57a",
+        "file_name": "bear_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/bear_곰/bear_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/03a5f2ad-1fb5-4a49-81d4-99fa35922d86.png"
+      }
+    ]
+  },
+  "뱀": {
+    "word": "뱀",
+    "name_en": "snake",
+    "category_group": "04_생물_소환",
+    "desc": "독사 소환, 맹독 부여, 휘감기",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "07c6dc43-0a46-4438-a105-b8b64d291957",
+        "file_name": "snake_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/771f6200-0135-432a-9dd6-f2c6213622cb.png"
+      },
+      {
+        "id": "29eb1359-b764-4a9b-885c-390a1a06e66e",
+        "file_name": "snake_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/snake_뱀/snake_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/858f5bad-3dc4-4d34-b640-bc42c2e13769.png"
+      },
+      {
+        "id": "f7849448-922e-4307-b77d-c5ce5dc84539",
+        "file_name": "snake_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/snake_뱀/snake_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/712d5626-35d9-4aef-a7c7-a2f34ca9ebd0.png"
+      },
+      {
+        "id": "87f03e22-bdf2-4a7a-8848-798f9c58fdeb",
+        "file_name": "snake_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/snake_뱀/snake_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/0ac12dc7-ff6c-491d-b8e8-a0b404e33915.png"
+      }
+    ]
+  },
+  "새": {
+    "word": "새",
+    "name_en": "bird",
+    "category_group": "04_생물_소환",
+    "desc": "비행 생물, 회피 기동, 공중 정찰",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "42e77187-cae5-4659-930b-57fa40b906dd",
+        "file_name": "bird_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/bird_새/bird_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/3a9d329b-d814-45fa-b8f4-64e8892f1d47.png"
+      },
+      {
+        "id": "65e9a6d3-9570-4c31-b5db-d62438dde640",
+        "file_name": "bird_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/bird_새/bird_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/c90329f1-5603-4694-b781-9ef9cd1237da.png"
+      },
+      {
+        "id": "b9eac8b0-cc04-49e6-bf48-88eb8f5c4298",
+        "file_name": "bird_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/bird_새/bird_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/14a91078-c28b-455a-bb49-65289f4b9e1c.png"
+      },
+      {
+        "id": "37d3aecf-add3-4320-92c5-09d47aaf9692",
+        "file_name": "bird_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/bird_새/bird_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/f199e4b4-2c38-45b2-99f6-57704fc63745.png"
+      }
+    ]
+  },
+  "용": {
+    "word": "용",
+    "name_en": "dragon",
+    "category_group": "04_생물_소환",
+    "desc": "드래곤 소환, 광역 브레스",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "5520b3e3-85a4-471f-a3df-b89de742d07e",
+        "file_name": "dragon_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/dragon_용/dragon_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/31669507-22af-463c-b73d-4affd982639f.png"
+      },
+      {
+        "id": "4131d1c2-b13f-4c65-8f3d-c7f09aa88932",
+        "file_name": "dragon_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/dragon_용/dragon_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/6d01725a-1807-4c37-8d0b-75a303dba9e3.png"
+      },
+      {
+        "id": "aa88cc65-0430-45ca-a94a-55c34918fdf9",
+        "file_name": "dragon_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/dragon_용/dragon_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/43a73120-e9ac-4e8b-a0cf-ce5a4e67afae.png"
+      },
+      {
+        "id": "4757846d-ba7e-4c73-aa9d-dfa3405e0330",
+        "file_name": "dragon_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/dragon_용/dragon_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/b37a593f-7045-471d-bff0-fbf2d520b2e2.png"
+      }
+    ]
+  },
+  "쥐": {
+    "word": "쥐",
+    "name_en": "rat",
+    "category_group": "04_생물_소환",
+    "desc": "쥐 떼 소환, 적 자원 탈취",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "4e9fb07f-d19a-4baf-add3-b2f945a36fa8",
+        "file_name": "rat_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/rat_쥐/rat_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/22aeb14e-6e7e-4d81-831a-091b7c785ab1.png"
+      },
+      {
+        "id": "557fe203-285a-4205-8197-f135e2120426",
+        "file_name": "rat_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/rat_쥐/rat_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/0b39f05a-f488-49b5-a875-c9709892c2c8.png"
+      },
+      {
+        "id": "3ac13250-73e7-4054-994e-8f09442e6c2d",
+        "file_name": "rat_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/rat_쥐/rat_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/89b79fbb-f266-4857-8e4a-876b1039e3e7.png"
+      }
+    ]
+  },
+  "개": {
+    "word": "개",
+    "name_en": "dog_wolf",
+    "category_group": "04_생물_소환",
+    "desc": "늑대/맹견 소환, 호위 및 반격",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "446b8aca-bf40-44b7-9886-81b3ac5e488f",
+        "file_name": "dog_wolf_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/dog_wolf_개/dog_wolf_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/3e403820-3564-44db-b470-627cf0c636c2.png"
+      },
+      {
+        "id": "33358953-d68d-404f-89c4-3baf5f0aaa91",
+        "file_name": "dog_wolf_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/dog_wolf_개/dog_wolf_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/c3eb4ec5-102c-4787-bd72-43c03cb6cd04.png"
+      },
+      {
+        "id": "1d20ceb2-27ef-482e-ad94-918fe129e2cc",
+        "file_name": "dog_wolf_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/dog_wolf_개/dog_wolf_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/8b1f2752-f597-4ce7-a908-288bea718955.png"
+      }
+    ]
+  },
+  "풀": {
+    "word": "풀",
+    "name_en": "herb_plant",
+    "category_group": "04_생물_소환",
+    "desc": "약초/가시 덩굴, 반격 가시 및 지속 재생",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "fc96184e-e751-40db-a84b-f57147f70295",
+        "file_name": "herb_plant_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/herb_plant_풀/herb_plant_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/298b8400-4353-4aa8-b76d-2a11d52e0c0c.png"
+      },
+      {
+        "id": "13daa8ca-5bee-45f3-ad1f-870c38421bab",
+        "file_name": "herb_plant_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/herb_plant_풀/herb_plant_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/4e2bdb79-6b7c-4d7e-9e20-a2ec38dd5180.png"
+      },
+      {
+        "id": "15dc1acb-5ea1-4f43-8cd0-3ba5f2215885",
+        "file_name": "herb_plant_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/herb_plant_풀/herb_plant_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/b7df4481-c26d-49af-ba4f-27a57966198f.png"
+      },
+      {
+        "id": "8801e6fe-6b81-430c-8691-3a60e64af331",
+        "file_name": "herb_plant_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/herb_plant_풀/herb_plant_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/c767a83a-d321-4f89-ab44-c22ffad897e7.png"
+      }
+    ]
+  },
+  "꽃": {
+    "word": "꽃",
+    "name_en": "flower",
+    "category_group": "04_생물_소환",
+    "desc": "환각 꽃가루, 적 매혹 및 수면",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "9f48cb1e-0815-4277-839b-c42f2a3fa1b9",
+        "file_name": "flower_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/flower_꽃/flower_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/01eb26ab-4bc1-4742-b102-8a8c8ca26668.png"
+      },
+      {
+        "id": "d89ec60a-632a-416a-836d-e742634df497",
+        "file_name": "flower_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/flower_꽃/flower_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/74092705-e16f-4dc9-809c-fa57a77fafc7.png"
+      },
+      {
+        "id": "1fe30510-e4e8-4b58-a9f0-994d1aab5c35",
+        "file_name": "flower_3_32px_pastel.png",
+        "relative_path": "04_생물_소환/flower_꽃/flower_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/bf079e76-0465-4c9b-9302-a266d1ed7780.png"
+      },
+      {
+        "id": "0698a004-6779-43e1-82cd-0d62f3b278cf",
+        "file_name": "flower_4_32px_pastel.png",
+        "relative_path": "04_생물_소환/flower_꽃/flower_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/4bff2344-03c4-4f36-b97d-103e258c7dde.png"
+      }
+    ]
+  },
+  "문": {
+    "word": "문",
+    "name_en": "door",
+    "category_group": "05_구조_필드",
+    "desc": "견고한 문, 공격 차단, 1회 무적",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "67426ef5-671b-45f4-82dc-561c497e2f1e",
+        "file_name": "door_1_32px_pastel.png",
+        "relative_path": "05_구조_필드/door_문/door_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/60609590-94b9-479b-a724-2ef7ef2885f3.png"
+      },
+      {
+        "id": "df1ad8e2-d529-4d46-89ab-c49e886adb60",
+        "file_name": "door_2_32px_pastel.png",
+        "relative_path": "05_구조_필드/door_문/door_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/fe63bd66-bab8-40e0-a954-ab22289356b2.png"
+      },
+      {
+        "id": "34390fcc-a9eb-4167-96a9-3f0d3f1018b9",
+        "file_name": "door_3_32px_pastel.png",
+        "relative_path": "05_구조_필드/door_문/door_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/b0f42e38-bcbd-45cb-ab0b-9a76f631a11d.png"
+      },
+      {
+        "id": "01d845b6-19b3-4504-98cb-d3ae3f0458dd",
+        "file_name": "door_4_32px_pastel.png",
+        "relative_path": "05_구조_필드/door_문/door_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/fe1a4d54-416a-4402-872c-30fff5547bd7.png"
+      }
+    ]
+  },
+  "벽": {
+    "word": "벽",
+    "name_en": "wall",
+    "category_group": "05_구조_필드",
+    "desc": "석벽 구축, 방어도 생성 및 피해 반사",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "24659adc-66c9-4312-8a0f-9ee9b23b3b91",
+        "file_name": "wall_1_32px_pastel.png",
+        "relative_path": "05_구조_필드/wall_벽/wall_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/6c80ad9a-7c86-44d6-99e3-3f9d814b674d.png"
+      },
+      {
+        "id": "4c5d056a-db6d-4808-8a62-7cd9f38a73d5",
+        "file_name": "wall_2_32px_pastel.png",
+        "relative_path": "05_구조_필드/wall_벽/wall_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/1d60e9f7-5f96-4b6b-8994-44864f2ab9c0.png"
+      },
+      {
+        "id": "8cefd79f-ec15-45e4-8f55-84c3d3c9439c",
+        "file_name": "wall_3_32px_pastel.png",
+        "relative_path": "05_구조_필드/wall_벽/wall_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/4bbe3379-5d42-4182-bd5a-98a1e2f15c84.png"
+      },
+      {
+        "id": "fd96b027-1641-460a-9b0e-856a1bb1acfa",
+        "file_name": "wall_4_32px_pastel.png",
+        "relative_path": "05_구조_필드/wall_벽/wall_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/ee3b603b-2ade-43fb-941d-0361e6d92117.png"
+      }
+    ]
+  },
+  "성": {
+    "word": "성",
+    "name_en": "castle",
+    "category_group": "05_구조_필드",
+    "desc": "성채 요새화, 진지 구축 방어",
+    "asset_count": 4,
+    "assets": [
+      {
+        "id": "2abe0846-455e-491d-983c-e193dfd5c917",
+        "file_name": "castle_1_32px_pastel.png",
+        "relative_path": "05_구조_필드/castle_성/castle_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/87291084-1230-4cf6-a064-4d3d8a105b23.png"
+      },
+      {
+        "id": "05b4c645-846d-42b2-9a7e-8596b9aa20d9",
+        "file_name": "castle_2_32px_pastel.png",
+        "relative_path": "05_구조_필드/castle_성/castle_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/5479f490-1900-4c75-9de0-c948f8442c7e.png"
+      },
+      {
+        "id": "60182645-06d8-4d67-be38-f98b4d6f8718",
+        "file_name": "castle_3_32px_pastel.png",
+        "relative_path": "05_구조_필드/castle_성/castle_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/8f399f49-b999-4f19-a6c2-eba4941780d6.png"
+      },
+      {
+        "id": "40bfb3fe-9775-4078-a56a-364b403a6b35",
+        "file_name": "castle_4_32px_pastel.png",
+        "relative_path": "05_구조_필드/castle_성/castle_4_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/adb59fbc-a8b2-475f-a360-3efd82ce4a82.png"
+      }
+    ]
+  },
+  "굴": {
+    "word": "굴",
+    "name_en": "cave",
+    "category_group": "05_구조_필드",
+    "desc": "은신처 굴, 아군 1턴 은신",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "1f465f2e-1740-4514-a485-35c8c8245b7c",
+        "file_name": "cave_1_32px_pastel.png",
+        "relative_path": "05_구조_필드/cave_굴/cave_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/dee35726-dc05-4bdf-b772-1a9d07a61e55.png"
+      },
+      {
+        "id": "3a4803fb-f800-4ce2-8ac3-8d2a003a382c",
+        "file_name": "cave_2_32px_pastel.png",
+        "relative_path": "05_구조_필드/cave_굴/cave_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/a779833b-1204-4c94-808d-5912fd7ef336.png"
+      },
+      {
+        "id": "315bb02c-1c11-4cda-bdf6-f27ccb1c477e",
+        "file_name": "cave_3_32px_pastel.png",
+        "relative_path": "05_구조_필드/cave_굴/cave_3_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/b9ad9cce-341d-410b-a381-c0d3fd2723ca.png"
+      }
+    ]
+  },
+  "덫": {
+    "word": "덫",
+    "name_en": "trap",
+    "category_group": "05_구조_필드",
+    "desc": "함정 설치, 적 접근 시 폭발적 반격",
+    "asset_count": 3,
+    "assets": [
+      {
+        "id": "19990e23-dd19-49eb-ae34-750f65a5295f",
+        "file_name": "trap_1_32px.png",
+        "relative_path": "05_구조_필드/trap_덫/trap_1_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/51ca5022-83c5-4819-91b8-a8199c6a18f1.png"
+      },
+      {
+        "id": "b1e1fe0f-bb85-439c-8367-9b7383566286",
+        "file_name": "trap_2_32px.png",
+        "relative_path": "05_구조_필드/trap_덫/trap_2_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/3d8dedac-ed9b-48e4-9fb8-3bfa93a2f2b9.png"
+      },
+      {
+        "id": "67b66348-5f09-4060-82e9-a7dfdc554ff2",
+        "file_name": "trap_3_32px.png",
+        "relative_path": "05_구조_필드/trap_덫/trap_3_32px.png",
+        "style": "32px",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/66e78b7f-0a9c-4bd4-99ff-a94586ba25b5.png"
+      }
+    ]
+  }
+}

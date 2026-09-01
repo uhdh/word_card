@@ -1,0 +1,220 @@
+/* =========================================================
+   <언어의 조각 : 말의 심연> Map, Rest, Shop & Event Styles
+   ========================================================= */
+
+/* === MAP VIEW === */
+.map-view-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  position: relative;
+}
+
+.map-title-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.map-act-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--border-gold);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.map-act-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.map-floors-grid {
+  display: flex;
+  flex-direction: column-reverse; /* Start from bottom (floor 0) to top (boss) */
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.map-floor-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.map-node {
+  width: 52px;
+  height: 52px;
+  background: #201c33;
+  border: 2px solid #3d3958;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: not-allowed;
+  position: relative;
+  transition: all 0.25s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.map-node.available {
+  cursor: pointer;
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 16px rgba(246, 201, 14, 0.8);
+  animation: pulseNode 1.5s infinite;
+  background: #362e1e;
+}
+
+@keyframes pulseNode {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.map-node.current {
+  border-color: var(--accent-blue);
+  background: #192d47;
+  box-shadow: 0 0 18px rgba(61, 169, 252, 0.9);
+}
+
+.map-node.visited {
+  opacity: 0.4;
+  filter: grayscale(0.8);
+}
+
+.node-tooltip {
+  position: absolute;
+  bottom: -20px;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* === REST VIEW (CAMPFIRE) === */
+.rest-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.rest-campfire-icon {
+  font-size: 70px;
+  animation: flame 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes flame {
+  from { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 15px #ff5470); }
+  to { transform: scale(1.1) rotate(3deg); filter: drop-shadow(0 0 25px #f6c90e); }
+}
+
+.rest-options {
+  display: flex;
+  gap: 20px;
+}
+
+.rest-card {
+  width: 200px;
+  height: 150px;
+  background: #1c192d;
+  border: 2px solid var(--border-gold);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.rest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px var(--border-gold-glow);
+  background: #2a2544;
+}
+
+/* === SHOP VIEW === */
+.shop-container {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.shop-item-card {
+  background: #1e1a30;
+  border: 1px solid #3d3958;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.shop-item-icon {
+  font-size: 32px;
+}
+
+.shop-item-price {
+  font-weight: 800;
+  color: var(--accent-yellow);
+}
+
+/* === REWARD POPUP MODAL === */
+.reward-choices-list {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.reward-tile-btn {
+  width: 64px;
+  height: 80px;
+  background: #2b2742;
+  border: 2px solid var(--border-gold);
+  border-radius: 8px;
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reward-tile-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 16px var(--border-gold-glow);
+}
