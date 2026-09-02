@@ -1,158 +1,107 @@
-/**
- * <언어의 조각 : 말의 심연> Hangul Engine
- * 자모 분해, 1음절 조합, 자모 타일 회전 및 합성 로직
+﻿/**
+ * hangulEngine.js - Web ES Module
+ * 한글 자모 분해, 합성, 회전, 완성형 음절 조합 및 희귀도(Rarity) 가중치 엔진
  */
 
 export const CHOSUNG = [
-  'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ',
-  'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+  "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ",
+  "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
 ];
 
 export const JUNGSUNG = [
-  'ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ',
-  'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'
+  "ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ",
+  "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"
 ];
 
 export const JONGSUNG = [
-  '', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ',
-  'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ',
-  'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+  "", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ",
+  "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ",
+  "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
 ];
 
-export const ROTATABLE_TILES = new Set([
-  'ㄱ', 'ㄴ',
-  'ㅏ', 'ㅓ', 'ㅗ', 'ㅜ',
-  'ㅑ', 'ㅕ', 'ㅛ', 'ㅠ',
-  'ㅣ', 'ㅡ'
-]);
+export const RARE_TILES = ["ㄱ", "ㅡ", "ㅜ"];
 
-export function isRotatable(tile) {
-  return ROTATABLE_TILES.has(tile);
-}
+export const ALL_DRAW_POOL = [
+  "ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ",
+  "ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ", "ㅑ", "ㅕ", "ㅛ", "ㅠ"
+];
 
-export const CONSONANT_ROTATIONS = {
-  'ㄱ': 'ㄴ',
-  'ㄴ': 'ㄱ'
-};
-
-export const VOWEL_ROTATIONS = {
-  'ㅏ': 'ㅜ',
-  'ㅜ': 'ㅓ',
-  'ㅓ': 'ㅗ',
-  'ㅗ': 'ㅏ',
-
-  'ㅑ': 'ㅠ',
-  'ㅠ': 'ㅕ',
-  'ㅕ': 'ㅛ',
-  'ㅛ': 'ㅑ',
-
-  'ㅣ': 'ㅡ',
-  'ㅡ': 'ㅣ'
-};
-
-export const VOWEL_REVERSE_ROTATIONS = {
-  'ㅏ': 'ㅗ',
-  'ㅗ': 'ㅓ',
-  'ㅓ': 'ㅜ',
-  'ㅜ': 'ㅏ',
-
-  'ㅑ': 'ㅛ',
-  'ㅛ': 'ㅕ',
-  'ㅕ': 'ㅠ',
-  'ㅠ': 'ㅑ',
-
-  'ㅣ': 'ㅡ',
-  'ㅡ': 'ㅣ'
+export const ROTATABLE_TILES = {
+  "ㄱ": "ㄴ", "ㄴ": "ㄱ",
+  "ㅏ": "ㅜ", "ㅜ": "ㅓ", "ㅓ": "ㅗ", "ㅗ": "ㅏ",
+  "ㅣ": "ㅡ", "ㅡ": "ㅣ"
 };
 
 export const CONSONANT_COMBINATIONS = {
-  'ㄱ+ㄱ': 'ㄲ',
-  'ㄷ+ㄷ': 'ㄸ',
-  'ㅂ+ㅂ': 'ㅃ',
-  'ㅅ+ㅅ': 'ㅆ',
-  'ㅈ+ㅈ': 'ㅉ',
-  'ㄱ+ㅅ': 'ㄳ',
-  'ㄴ+ㅈ': 'ㄵ',
-  'ㄴ+ㅎ': 'ㄶ',
-  'ㄹ+ㄱ': 'ㄺ',
-  'ㄹ+ㅁ': 'ㄻ',
-  'ㄹ+ㅂ': 'ㄼ',
-  'ㄹ+ㅅ': 'ㄽ',
-  'ㄹ+ㅌ': 'ㄾ',
-  'ㄹ+ㅍ': 'ㄿ',
-  'ㄹ+ㅎ': 'ㅀ',
-  'ㅂ+ㅅ': 'ㅄ'
+  "ㄱ+ㄱ": "ㄲ", "ㄷ+ㄷ": "ㄸ", "ㅂ+ㅂ": "ㅃ", "ㅅ+ㅅ": "ㅆ", "ㅈ+ㅈ": "ㅉ",
+  "ㄱ+ㅅ": "ㄳ", "ㄴ+ㅈ": "ㄵ", "ㄴ+ㅎ": "ㄶ", "ㄹ+ㄱ": "ㄺ", "ㄹ+ㅁ": "ㄻ",
+  "ㄹ+ㅂ": "ㄼ", "ㄹ+ㅅ": "ㄽ", "ㄹ+ㅌ": "ㄾ", "ㄹ+ㅍ": "ㄿ", "ㄹ+ㅎ": "ㅀ",
+  "ㅂ+ㅅ": "ㅄ"
 };
 
 export const VOWEL_COMBINATIONS = {
-  'ㅏ+ㅣ': 'ㅐ',
-  'ㅓ+ㅣ': 'ㅔ',
-  'ㅗ+ㅣ': 'ㅚ',
-  'ㅜ+ㅣ': 'ㅟ',
-  'ㅑ+ㅣ': 'ㅒ',
-  'ㅕ+ㅣ': 'ㅖ',
-  'ㅗ+ㅏ': 'ㅘ',
-  'ㅜ+ㅓ': 'ㅝ',
-  'ㅗ+ㅐ': 'ㅙ',
-  'ㅘ+ㅣ': 'ㅙ',
-  'ㅗ+ㅏ+ㅣ': 'ㅙ',
-  'ㅜ+ㅔ': 'ㅞ',
-  'ㅝ+ㅣ': 'ㅞ',
-  'ㅜ+ㅓ+ㅣ': 'ㅞ',
-  'ㅡ+ㅣ': 'ㅢ'
+  "ㅗ+ㅏ": "ㅘ", "ㅗ+ㅐ": "ㅙ", "ㅗ+ㅣ": "ㅚ",
+  "ㅜ+ㅓ": "ㅝ", "ㅜ+ㅔ": "ㅞ", "ㅜ+ㅣ": "ㅟ",
+  "ㅡ+ㅣ": "ㅢ", "ㅏ+ㅣ": "ㅐ", "ㅓ+ㅣ": "ㅔ",
+  "ㅑ+ㅣ": "ㅒ", "ㅕ+ㅣ": "ㅖ"
 };
 
-export function rotateTile(tile, reverse = false) {
-  if (CONSONANT_ROTATIONS[tile]) return CONSONANT_ROTATIONS[tile];
-  if (reverse && VOWEL_REVERSE_ROTATIONS[tile]) return VOWEL_REVERSE_ROTATIONS[tile];
-  if (VOWEL_ROTATIONS[tile]) return VOWEL_ROTATIONS[tile];
-  return tile;
+export function isRare(charStr) {
+  return RARE_TILES.includes(charStr);
 }
 
-export function combineTiles(tiles) {
-  if (!tiles || tiles.length < 2) return null;
-  const key2 = `${tiles[0]}+${tiles[1]}`;
-  if (tiles.length === 2) {
-    if (CONSONANT_COMBINATIONS[key2]) return CONSONANT_COMBINATIONS[key2];
-    if (VOWEL_COMBINATIONS[key2]) return VOWEL_COMBINATIONS[key2];
-  } else if (tiles.length === 3) {
-    const key3 = `${tiles[0]}+${tiles[1]}+${tiles[2]}`;
-    if (VOWEL_COMBINATIONS[key3]) return VOWEL_COMBINATIONS[key3];
+export function getWeightedRandomJamo(customPool = []) {
+  const pool = customPool.length > 0 ? customPool : ALL_DRAW_POOL;
+  const weighted = [];
+  let totalWeight = 0;
+
+  for (const item of pool) {
+    const weight = isRare(item) ? 20 : 100;
+    weighted.push({ char: item, weight });
+    totalWeight += weight;
   }
-  return null;
+
+  const roll = Math.floor(Math.random() * totalWeight) + 1;
+  let current = 0;
+  for (const entry of weighted) {
+    current += entry.weight;
+    if (roll <= current) return entry.char;
+  }
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
-export function isConsonant(char) {
-  return CHOSUNG.includes(char) || JONGSUNG.includes(char);
+export function isRotatable(charStr) {
+  return Object.prototype.hasOwnProperty.call(ROTATABLE_TILES, charStr);
 }
 
-export function isVowel(char) {
-  return JUNGSUNG.includes(char);
+export function rotate(charStr) {
+  return ROTATABLE_TILES[charStr] || charStr;
 }
 
-export function decomposeHangul(char) {
-  if (!char || char.length !== 1) return { cho: '', jung: '', jong: '', isHangul: false };
-  const code = char.charCodeAt(0) - 0xAC00;
-  if (code < 0 || code > 11171) return { cho: char, jung: '', jong: '', isHangul: false };
-  const choIdx = Math.floor(code / 588);
-  const jungIdx = Math.floor((code % 588) / 28);
-  const jongIdx = code % 28;
-  return {
-    cho: CHOSUNG[choIdx],
-    jung: JUNGSUNG[jungIdx],
-    jong: JONGSUNG[jongIdx],
-    isHangul: true
-  };
-}
-
-export function composeHangul(cho, jung, jong = '') {
+export function composeSyllable(cho, jung, jong = "") {
   const choIdx = CHOSUNG.indexOf(cho);
   const jungIdx = JUNGSUNG.indexOf(jung);
   const jongIdx = JONGSUNG.indexOf(jong);
 
-  if (choIdx === -1 || jungIdx === -1 || jongIdx === -1) {
-    return null;
-  }
-  const code = 0xAC00 + (choIdx * 588) + (jungIdx * 28) + jongIdx;
+  if (choIdx === -1 || jungIdx === -1) return "";
+  const finalJongIdx = jongIdx === -1 ? 0 : jongIdx;
+  const code = 0xAC00 + (choIdx * 21 * 28) + (jungIdx * 28) + finalJongIdx;
   return String.fromCharCode(code);
+}
+
+export function decomposeSyllable(syllable) {
+  if (!syllable || syllable.length !== 1) return null;
+  const code = syllable.charCodeAt(0);
+  if (code < 0xAC00 || code > 0xD7A3) return null;
+
+  const offset = code - 0xAC00;
+  const jongIdx = offset % 28;
+  const jungIdx = Math.floor(offset / 28) % 21;
+  const choIdx = Math.floor(offset / (21 * 28));
+
+  return {
+    chosung: CHOSUNG[choIdx],
+    jungsung: JUNGSUNG[jungIdx],
+    jongsung: JONGSUNG[jongIdx]
+  };
 }

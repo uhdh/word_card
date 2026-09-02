@@ -1,0 +1,418 @@
+﻿* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background-color: #0b0914;
+  color: #f8fafc;
+  font-family: 'Malgun Gothic', -apple-system, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 1000px;
+  height: 680px;
+  background: #110e1d;
+  border: 2px solid #3b3353;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* TopBar */
+.top-bar {
+  height: 52px;
+  background: #181428;
+  border-bottom: 2px solid #2d2642;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.info-group {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.info-item.hp { color: #f43f5e; }
+.info-item.gold { color: #facc15; }
+.info-item.wave { color: #38bdf8; }
+
+.actions-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  background: #272138;
+  color: #e2e8f0;
+  border: 1px solid #4a3e68;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #393052;
+  border-color: #7c6c9e;
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary { background: #3b82f6; border-color: #60a5fa; color: white; }
+.btn-primary:hover:not(:disabled) { background: #2563eb; }
+
+.btn-shop { background: #854d0e; border-color: #ca8a04; color: #fef08a; }
+.btn-lexicon { background: #4c1d95; border-color: #7c3aed; color: #ddd6fe; }
+
+/* Field Main Canvas */
+.field-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0d0a17;
+  position: relative;
+}
+
+#field-canvas {
+  width: 1000px;
+  height: 420px;
+  cursor: crosshair;
+}
+
+/* Bottom Jamo Belt Section */
+.belt-section {
+  height: 180px;
+  background: #151124;
+  border-top: 2px solid #2d2642;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  gap: 10px;
+}
+
+.belt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-text {
+  font-size: 13px;
+  font-weight: bold;
+  color: #93c5fd;
+}
+
+.tiles-scroll {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.tiles-container {
+  display: flex;
+  gap: 10px;
+}
+
+.jamo-tile-box {
+  width: 60px;
+  height: 94px;
+  background: #231c36;
+  border: 2px solid #4a3e68;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px;
+  cursor: grab;
+  transition: all 0.15s ease;
+}
+
+.jamo-tile-box:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+}
+
+.jamo-tile-box.rare-tile {
+  border-color: #eab308;
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+}
+
+.jamo-tile-box.selected-tile {
+  border-color: #38bdf8;
+  background: #1e3a5f;
+}
+
+.jamo-tile-box.dragging {
+  opacity: 0.4;
+}
+
+.btn-jamo-tile {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  height: 52px;
+  cursor: pointer;
+}
+
+.rare-tile .btn-jamo-tile {
+  color: #fde047;
+  font-size: 18px;
+}
+
+.btn-rot {
+  background: #181428;
+  border: 1px solid #3b3353;
+  color: #cbd5e1;
+  border-radius: 4px;
+  font-size: 11px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.btn-rot:hover {
+  background: #393052;
+}
+
+/* Modals */
+.modal-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-box {
+  background: #1a152b;
+  border: 2px solid #8b5cf6;
+  border-radius: 12px;
+  padding: 20px;
+  width: 580px;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3b3353;
+  padding-bottom: 8px;
+}
+
+.btn-modal-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.tower-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 13px;
+  background: #120e20;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.modal-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Shop Modal */
+.npc-dialog {
+  font-size: 13px;
+  color: #fde047;
+  font-style: italic;
+  background: #141022;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.shop-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.shop-card {
+  width: 100px;
+  background: #231c36;
+  border: 2px solid #4a3e68;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.shop-card.rare-card {
+  border-color: #eab308;
+}
+
+.shop-char {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.btn-buy-stock {
+  width: 100%;
+  background: #ca8a04;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove-tiles-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.btn-remove-tile {
+  background: #1e1830;
+  color: #ef4444;
+  border: 1px solid #7f1d1d;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-remove-tile:hover {
+  background: #7f1d1d;
+  color: #ffffff;
+}
+
+/* Lexicon Grid */
+.lexicon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.lex-card {
+  background: #231c36;
+  border: 1px solid #4a3e68;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lex-card.locked {
+  opacity: 0.5;
+  border-color: #332b47;
+}
+
+.lex-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.lex-desc {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Reward Modal */
+.reward-choices-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-reward-choice {
+  width: 110px;
+  height: 130px;
+  background: #231c36;
+  border: 2px solid #8b5cf6;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reward-choice:hover {
+  transform: translateY(-4px);
+  border-color: #c084fc;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.btn-reward-choice.rare-choice {
+  border-color: #eab308;
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+}
+
+.reward-char {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.rare-choice .reward-char {
+  color: #fde047;
+}
+
+.reward-tag {
+  font-size: 11px;
+  color: #94a3b8;
+}
