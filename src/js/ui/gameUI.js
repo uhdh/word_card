@@ -4,6 +4,7 @@
  */
 
 import { sound } from '../core/soundEngine.js';
+import { WORD_DATABASE } from '../core/wordDatabase.js';
 
 export class GameUI {
   constructor(appContainer, game) {
@@ -39,6 +40,7 @@ export class GameUI {
         </div>
 
         <div class="top-actions">
+          <button id="btnToggleLexicon" class="btn-icon">📖 단어 도감 (100)</button>
           <button id="btnToggleDeck" class="btn-icon">🎴 덱 (<span id="deckCountBadge">10</span>)</button>
           <button id="btnToggleMap" class="btn-icon">🗺️ 지도</button>
           <button id="btnMute" class="btn-icon">🔊</button>
@@ -56,6 +58,10 @@ export class GameUI {
     document.getElementById('btnMute').addEventListener('click', () => {
       const isMuted = sound.toggleMute();
       document.getElementById('btnMute').innerText = isMuted ? '🔇' : '🔊';
+    });
+
+    document.getElementById('btnToggleLexicon').addEventListener('click', () => {
+      this.showLexiconModal();
     });
 
     document.getElementById('btnToggleMap').addEventListener('click', () => {
@@ -254,7 +260,11 @@ export class GameUI {
             <div class="player-status-row">
               ${player.shield > 0 ? `<div class="status-badge badge-shield">🛡️ ${player.shield}</div>` : ''}
               ${player.power > 0 ? `<div class="status-badge badge-power">⚔️ +${player.power}</div>` : ''}
+              ${player.thorns > 0 ? `<div class="status-badge" style="background:#2d4a22; border:1px solid #7bc676;">🌵 ${player.thorns}</div>` : ''}
+              ${player.regen > 0 ? `<div class="status-badge" style="background:#1d4a3b; border:1px solid #52c49c;">🌿 ${player.regen}</div>` : ''}
+              ${player.invulnerable > 0 ? `<div class="status-badge" style="background:#4a3f12; border:1px solid #f6d365;">✨ ${player.invulnerable}</div>` : ''}
               ${player.poison > 0 ? `<div class="status-badge badge-poison">🧪 ${player.poison}</div>` : ''}
+              ${player.bleed > 0 ? `<div class="status-badge" style="background:#4a1212; border:1px solid #ff4d4f;">🩸 ${player.bleed}</div>` : ''}
             </div>
           </div>
 
@@ -265,6 +275,14 @@ export class GameUI {
               <img src="${enemy.icon}" class="enemy-sprite-img" alt="${enemy.name}" />
             </div>
             <div class="enemy-name">${enemy.name}</div>
+            <div class="player-status-row" style="margin-bottom: 4px;">
+              ${enemy.shield > 0 ? `<div class="status-badge badge-shield">🛡️ ${enemy.shield}</div>` : ''}
+              ${enemy.power > 0 ? `<div class="status-badge badge-power">⚔️ +${enemy.power}</div>` : ''}
+              ${enemy.weak > 0 ? `<div class="status-badge" style="background:#3d234a; border:1px solid #b37feb;">💫 취약 ${enemy.weak}</div>` : ''}
+              ${enemy.stunned ? `<div class="status-badge" style="background:#123a4a; border:1px solid #40a9ff;">⛓️ 기절/빙결</div>` : ''}
+              ${enemy.poison > 0 ? `<div class="status-badge badge-poison">🧪 ${enemy.poison}</div>` : ''}
+              ${enemy.bleed > 0 ? `<div class="status-badge" style="background:#4a1212; border:1px solid #ff4d4f;">🩸 ${enemy.bleed}</div>` : ''}
+            </div>
             <div class="enemy-hp-box">
               <div class="enemy-hp-bar">
                 <div class="enemy-hp-fill" style="width: ${enemyHpPercent}%;"></div>
@@ -761,5 +779,115 @@ export class GameUI {
       modal.style.display = 'none';
       window.location.reload();
     });
+  }
+
+  // === 9. LEXICON / ENCYCLOPEDIA MODAL (100 WORDS) ===
+  showLexiconModal() {
+    const modal = document.getElementById('modalOverlay');
+    modal.style.display = 'flex';
+    sound.playWordCrafted();
+
+    const allWords = Object.values(WORD_DATABASE);
+    const categories = [
+      { id: 'all', name: '전체 (100)' },
+      { id: 'weapon', name: '⚔️ 무기' },
+      { id: 'defense', name: '🛡️ 방어' },
+      { id: 'element', name: '🔮 원소' },
+      { id: 'summon', name: '🐾 생물' },
+      { id: 'heal', name: '💖 회복' },
+      { id: 'skill', name: '✨ 버프/유틸' }
+    ];
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    const renderLexiconContent = () => {
+      const filtered = allWords.filter(w => {
+        const matchesCategory = currentCategory === 'all' || w.category === currentCategory;
+        const matchesSearch = !searchQuery || 
+          w.word.includes(searchQuery) || 
+          w.name.includes(searchQuery) || 
+          w.desc.includes(searchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      const cardsHtml = filtered.map(w => `
+        <div class="lexicon-card" style="background: #252238; border: 1px solid #4a456e; border-radius: 8px; padding: 10px; display: flex; gap: 10px; align-items: center; transition: all 0.2s;">
+          <img src="${w.icon}" alt="${w.word}" style="width: 40px; height: 40px; border-radius: 6px; background: #13111f; padding: 4px; border: 1px solid #3d3958; object-fit: contain;" />
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+              <span style="font-family: var(--font-serif); font-size: 16px; font-weight: 900; color: #fff;">${w.word} <span style="font-size: 11px; color: var(--border-gold); font-weight: normal;">${w.name}</span></span>
+              <span style="font-size: 11px; background: #3d3958; padding: 2px 6px; border-radius: 4px; color: var(--accent-yellow); font-weight: 700;">${w.cost || 0} AP</span>
+            </div>
+            <div style="font-size: 12px; color: #d0d2e6; line-height: 1.35;">${w.desc}</div>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <div class="modal-card" style="max-width: 780px; width: 95%; max-height: 85vh; display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #3d3958; padding-bottom: 12px; margin-bottom: 12px;">
+            <div>
+              <h2 style="font-family: var(--font-serif); font-size: 22px; color: var(--border-gold); margin: 0;">📖 활자술사 단어 도감 (100종)</h2>
+              <span style="font-size: 12px; color: var(--text-muted);">시작 덱 10장으로 조합할 수 있는 모든 단어와 고유 능력</span>
+            </div>
+            <button id="btnCloseLexiconTop" style="background: none; border: none; font-size: 20px; color: #fff; cursor: pointer;">✕</button>
+          </div>
+
+          <!-- Search & Tabs -->
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+            <input type="text" id="lexiconSearch" placeholder="🔍 단어명 또는 능력 검색 (예: 검, 불, 방패, 회복)..." value="${searchQuery}" style="width: 100%; padding: 8px 12px; background: #13111f; border: 1px solid #4a456e; border-radius: 6px; color: #fff; font-size: 13px; box-sizing: border-box;" />
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              ${categories.map(c => `
+                <button class="btn-category-tab ${currentCategory === c.id ? 'active' : ''}" data-cat="${c.id}" style="padding: 4px 10px; border-radius: 4px; border: 1px solid ${currentCategory === c.id ? 'var(--border-gold)' : '#3d3958'}; background: ${currentCategory === c.id ? '#3d3958' : '#1d1a2b'}; color: ${currentCategory === c.id ? 'var(--border-gold)' : '#a7a9be'}; font-size: 12px; font-weight: 700; cursor: pointer;">
+                  ${c.name}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Word Cards Grid -->
+          <div id="lexiconCardsContainer" style="flex: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; padding: 4px; max-height: 460px;">
+            ${cardsHtml.length > 0 ? cardsHtml : '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">검색 결과가 없습니다.</div>'}
+          </div>
+
+          <div style="margin-top: 14px; text-align: right; border-top: 1px solid #3d3958; padding-top: 10px;">
+            <span style="font-size: 12px; color: var(--text-muted); margin-right: 12px;">표시 중: ${filtered.length} / ${allWords.length}개</span>
+            <button id="btnCloseLexiconBottom" class="btn-primary" style="padding: 6px 18px; font-size: 13px;">닫기</button>
+          </div>
+        </div>
+      `;
+    };
+
+    const updateView = () => {
+      modal.innerHTML = renderLexiconContent();
+
+      // Bind Search
+      const searchInput = document.getElementById('lexiconSearch');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.selectionStart = searchInput.selectionEnd = searchInput.value.length;
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim();
+          updateView();
+        });
+      }
+
+      // Bind Category Tabs
+      modal.querySelectorAll('.btn-category-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          currentCategory = tab.dataset.cat;
+          sound.playTileClick();
+          updateView();
+        });
+      });
+
+      // Close handlers
+      const close = () => { modal.style.display = 'none'; };
+      document.getElementById('btnCloseLexiconTop')?.addEventListener('click', close);
+      document.getElementById('btnCloseLexiconBottom')?.addEventListener('click', close);
+    };
+
+    updateView();
   }
 }

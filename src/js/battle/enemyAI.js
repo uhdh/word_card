@@ -156,10 +156,11 @@ export class EnemyInstance {
     const moveLogs = [];
 
     // Calculate actual attack damage with power
-    const dmg = (move.damage || 0) + this.power;
+    let attackDamage = 0;
 
     if (move.type === 'attack') {
       const res = player.takeDamage(dmg);
+      attackDamage = dmg;
       moveLogs.push(`${this.name}의 [${move.name}]! 플레이어에게 ${dmg}의 피해!`);
     } else if (move.type === 'multi_attack') {
       let total = 0;
@@ -167,6 +168,7 @@ export class EnemyInstance {
         player.takeDamage(dmg);
         total += dmg;
       }
+      attackDamage = total;
       moveLogs.push(`${this.name}의 [${move.name}]! 플레이어에게 총 ${total}의 연속 피해!`);
     } else if (move.type === 'defense') {
       this.shield += move.shield || 0;
@@ -176,6 +178,7 @@ export class EnemyInstance {
       moveLogs.push(`${this.name}이(가) [${move.name}]으로 공격력이 +${move.buffPower} 증가했습니다.`);
     } else if (move.type === 'attack_debuff') {
       player.takeDamage(dmg);
+      attackDamage = dmg;
       if (move.poison) player.poison = (player.poison || 0) + move.poison;
       moveLogs.push(`${this.name}의 [${move.name}]! 피해 ${dmg} 및 독 ${move.poison} 부여!`);
     } else if (move.type === 'defense_buff') {
@@ -184,6 +187,7 @@ export class EnemyInstance {
       moveLogs.push(`${this.name}이(가) [${move.name}]으로 방어도와 가시를 얻었습니다.`);
     } else if (move.type === 'heavy_attack') {
       player.takeDamage(dmg);
+      attackDamage = dmg;
       moveLogs.push(`${this.name}의 [${move.name}]! 플레이어에게 강력한 ${dmg}의 피해!`);
     }
 
@@ -193,6 +197,7 @@ export class EnemyInstance {
     this.nextMove = this.decideNextMove();
 
     return {
+      attackDamage,
       log: [...dotLogs, ...moveLogs].join(' ')
     };
   }
