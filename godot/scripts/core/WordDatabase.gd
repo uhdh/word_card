@@ -289,17 +289,6 @@ const WORD_DATABASE: Dictionary = {
 		"sound": "playAttack",
 		"tags": []
 	},
-	"언": {
-		"word": "언",
-		"name": "언 (언약/신성광선)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 15,
-		"desc": "신성의 언약 빛기둥을 내리꽂아 15 신성 광역 피해를 적들에게 가합니다.",
-		"icon": "res://assets/02_방어_장비/pledge_언/pledge_1_32px_pastel.png",
-		"sound": "playAttack",
-		"tags": []
-	},
 	"위": {
 		"word": "위",
 		"name": "위 (위성/궤도레이저)",
@@ -418,17 +407,6 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 6,
 		"desc": "치명적인 독액을 뱉어 6 피해 및 초당 4의 지속 독 피해를 줍니다.",
 		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
-		"sound": "playAttack",
-		"tags": []
-	},
-	"암": {
-		"word": "암",
-		"name": "암 (어둠/그림자)",
-		"category": "element",
-		"cost": 1,
-		"damage": 10,
-		"desc": "어둠의 파동을 뿜어내어 10 암흑 마법 피해를 가합니다.",
-		"icon": "res://assets/03_원소_마법/dark_암/dark_1_32px_pastel.png",
 		"sound": "playAttack",
 		"tags": []
 	},
@@ -663,17 +641,6 @@ const WORD_DATABASE: Dictionary = {
 		"sound": "playAttack",
 		"tags": []
 	},
-	"식": {
-		"word": "식",
-		"name": "식 (보양/독초폭탄)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 13,
-		"desc": "폭발하는 독초 주머니를 던져 13 광역 피해 및 초당 4 중독 피해를 남깁니다.",
-		"icon": "res://assets/05_회복_치유/food_식/food_1_32px_pastel.png",
-		"sound": "playAttack",
-		"tags": []
-	},
 	"무": {
 		"word": "무",
 		"name": "무 (무/대포탄)",
@@ -737,29 +704,6 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 20,
 		"desc": "일직선상 모든 적을 관통하는 푸른 기공파로 20 관통 피해를 입힙니다.",
 		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
-		"sound": "playAttack",
-		"tags": []
-	},
-	"속": {
-		"word": "속",
-		"name": "속 (속도/고속연사)",
-		"category": "skill",
-		"cost": 1,
-		"damage": 8,
-		"rapid_fire": true,
-		"desc": "공격 쿨타임 0.25초로 초당 4회 이상의 고속 활자 난사를 퍼붓습니다.",
-		"icon": "res://assets/06_버프_유틸/speed_속/speed_1_32px_pastel.png",
-		"sound": "playAttack",
-		"tags": []
-	},
-	"능": {
-		"word": "능",
-		"name": "능 (능력/마력증폭)",
-		"category": "skill",
-		"cost": 1,
-		"damage": 16,
-		"desc": "마력 표식을 남겨 대상이 받는 모든 타워 피해를 +30% 증폭시킵니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
 		"sound": "playAttack",
 		"tags": []
 	},
