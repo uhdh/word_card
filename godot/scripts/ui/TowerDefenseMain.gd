@@ -64,11 +64,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not defense_field.is_wave_running:
 				_on_start_wave_pressed()
 		KEY_1:
-			if current_speed_scale != 1.0:
-				_on_speed_pressed()
+			set_speed_scale(1.0)
 		KEY_2:
-			if current_speed_scale != 2.0:
-				_on_speed_pressed()
+			set_speed_scale(2.0)
+		KEY_3, KEY_4:
+			set_speed_scale(4.0)
 		KEY_TAB, KEY_D:
 			_on_lexicon_pressed()
 		KEY_S:
@@ -182,13 +182,21 @@ func _on_start_wave_pressed() -> void:
 
 func _on_speed_pressed() -> void:
 	if current_speed_scale == 1.0:
-		current_speed_scale = 2.0
-		Engine.time_scale = 2.0
-		btn_speed.text = "⏩ 2x 배속"
+		set_speed_scale(2.0)
+	elif current_speed_scale == 2.0:
+		set_speed_scale(4.0)
 	else:
-		current_speed_scale = 1.0
-		Engine.time_scale = 1.0
+		set_speed_scale(1.0)
+
+func set_speed_scale(speed: float) -> void:
+	current_speed_scale = speed
+	Engine.time_scale = speed
+	if speed == 1.0:
 		btn_speed.text = "▶ 1x 배속"
+	elif speed == 2.0:
+		btn_speed.text = "⏩ 2x 배속"
+	elif speed >= 4.0:
+		btn_speed.text = "⚡ 4x 초고속"
 
 func _on_lexicon_pressed() -> void:
 	var modal = load("res://scenes/LexiconModal.tscn").instantiate()
