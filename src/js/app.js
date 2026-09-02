@@ -175,6 +175,7 @@ class HangulTDApp {
   initCanvas() {
     this.canvas = document.getElementById("field-canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.ctx.imageSmoothingEnabled = false;
     this.canvas.width = 1000;
     this.canvas.height = 420;
 
