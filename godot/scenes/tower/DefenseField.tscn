@@ -1,6 +1,9 @@
 ﻿[gd_scene format=3 uid="uid://defense_field_001"]
 
 [ext_resource type="Script" path="res://scripts/tower/DefenseField.gd" id="1_field"]
+[ext_resource type="Texture2D" uid="uid://map_spawn_001" path="res://assets/map_ui/map_spawn_portal_32px_pastel.png" id="2_spawn"]
+[ext_resource type="Texture2D" uid="uid://map_base_001" path="res://assets/map_ui/map_base_crystal_32px_pastel.png" id="3_base"]
+[ext_resource type="Texture2D" uid="uid://map_altar_001" path="res://assets/map_ui/map_tower_altar_1_32px_pastel.png" id="4_altar"]
 
 [sub_resource type="Curve2D" id="Curve2D_road"]
 _data = {
@@ -9,7 +12,7 @@ _data = {
 point_count = 5
 
 [node name="DefenseField" type="Control"]
-custom_minimum_size = Vector2(1000, 380)
+custom_minimum_size = Vector2(1000, 400)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,18 +28,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.09, 0.16, 1)
+color = Color(0.1, 0.08, 0.15, 1)
+
+[node name="GridPattern" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13, 0.11, 0.19, 0.5)
+
+[node name="RoadOuter" type="Line2D" parent="."]
+width = 48.0
+default_color = Color(0.3, 0.25, 0.42, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="RoadLine" type="Line2D" parent="."]
-width = 44.0
-default_color = Color(0.24, 0.22, 0.35, 1)
+width = 40.0
+default_color = Color(0.2, 0.17, 0.3, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="RoadInner" type="Line2D" parent="."]
-width = 38.0
-default_color = Color(0.18, 0.16, 0.28, 1)
+width = 6.0
+default_color = Color(0.4, 0.35, 0.55, 0.6)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -44,58 +63,112 @@ end_cap_mode = 2
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_road")
 
+[node name="SpawnSpot" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 84.0
+offset_bottom = 92.0
+
+[node name="SpawnIcon" type="TextureRect" parent="SpawnSpot"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_spawn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpawnLabel" type="Label" parent="SpawnSpot"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
+text = "차원의 문"
+horizontal_alignment = 1
+
+[node name="BaseSpot" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 340.0
+offset_right = 114.0
+offset_bottom = 404.0
+
+[node name="BaseIcon" type="TextureRect" parent="BaseSpot"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("3_base")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BaseLabel" type="Label" parent="BaseSpot"]
+layout_mode = 2
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
+text = "활자 본진"
+horizontal_alignment = 1
+
 [node name="TowerSlots" type="Node2D" parent="."]
 
 [node name="Slot0" type="Node2D" parent="TowerSlots"]
 position = Vector2(240, 160)
 
-[node name="SlotBase" type="Panel" parent="TowerSlots/Slot0"]
-offset_left = -34.0
-offset_top = -38.0
-offset_right = 34.0
-offset_bottom = 38.0
+[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot0"]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("4_altar")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Slot1" type="Node2D" parent="TowerSlots"]
 position = Vector2(420, 160)
 
-[node name="SlotBase" type="Panel" parent="TowerSlots/Slot1"]
-offset_left = -34.0
-offset_top = -38.0
-offset_right = 34.0
-offset_bottom = 38.0
+[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot1"]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("4_altar")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Slot2" type="Node2D" parent="TowerSlots"]
 position = Vector2(600, 160)
 
-[node name="SlotBase" type="Panel" parent="TowerSlots/Slot2"]
-offset_left = -34.0
-offset_top = -38.0
-offset_right = 34.0
-offset_bottom = 38.0
+[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot2"]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("4_altar")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Slot3" type="Node2D" parent="TowerSlots"]
 position = Vector2(780, 160)
 
-[node name="SlotBase" type="Panel" parent="TowerSlots/Slot3"]
-offset_left = -34.0
-offset_top = -38.0
-offset_right = 34.0
-offset_bottom = 38.0
+[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot3"]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("4_altar")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ProjectilesLayer" type="Node2D" parent="."]
-
-[node name="SpawnLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 100.0
-offset_bottom = 44.0
-text = "🚩 적 스폰"
-
-[node name="BaseLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 370.0
-offset_right = 140.0
-offset_bottom = 394.0
-text = "🏰 플레이어 기지"

@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://tower_defense_main_001"]
+﻿[gd_scene format=3 uid="uid://tower_defense_main_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/TowerDefenseMain.gd" id="1_td_main"]
 [ext_resource type="PackedScene" uid="uid://defense_field_001" path="res://scenes/tower/DefenseField.tscn" id="2_field"]
 [ext_resource type="PackedScene" uid="uid://jamo_belt_001" path="res://scenes/tower/JamoBelt.tscn" id="3_belt"]
+[ext_resource type="Texture2D" uid="uid://ui_heart_001" path="res://assets/map_ui/ui_heart_pixel_32px_pastel.png" id="4_heart"]
+[ext_resource type="Texture2D" uid="uid://ui_gold_001" path="res://assets/map_ui/ui_gold_pixel_32px_pastel.png" id="5_gold"]
+[ext_resource type="Texture2D" uid="uid://ui_wave_001" path="res://assets/map_ui/ui_wave_flag_32px_pastel.png" id="6_wave"]
 
 [node name="TowerDefenseMain" type="Control"]
 layout_mode = 3
@@ -20,10 +23,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.06, 0.05, 0.1, 1)
+color = Color(0.07, 0.06, 0.12, 1)
 
 [node name="TopBar" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -31,55 +34,91 @@ grow_horizontal = 2
 
 [node name="Info" type="HBoxContainer" parent="TopBar"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 20
 
-[node name="HpLabel" type="Label" parent="TopBar/Info"]
+[node name="HpBox" type="HBoxContainer" parent="TopBar/Info"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "❤️ 기지 HP: 20 / 20"
+theme_override_constants/separation = 6
 
-[node name="GoldLabel" type="Label" parent="TopBar/Info"]
+[node name="HpIcon" type="TextureRect" parent="TopBar/Info/HpBox"]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "🪙 40 G"
+size_flags_vertical = 4
+texture = ExtResource("4_heart")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="WaveLabel" type="Label" parent="TopBar/Info"]
+[node name="HpLabel" type="Label" parent="TopBar/Info/HpBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "🌊 0 / 5 웨이브"
+theme_override_font_sizes/font_size = 14
+text = "기지 HP: 20 / 20"
+
+[node name="GoldBox" type="HBoxContainer" parent="TopBar/Info"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="GoldIcon" type="TextureRect" parent="TopBar/Info/GoldBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_gold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="TopBar/Info/GoldBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "40 G"
+
+[node name="WaveBox" type="HBoxContainer" parent="TopBar/Info"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WaveIcon" type="TextureRect" parent="TopBar/Info/WaveBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_wave")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaveLabel" type="Label" parent="TopBar/Info/WaveBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "0 / 5 웨이브"
 
 [node name="Actions" type="HBoxContainer" parent="TopBar"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="BtnStartWave" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(150, 34)
+custom_minimum_size = Vector2(150, 36)
 layout_mode = 2
 text = "▶ 다음 웨이브 시작"
 
 [node name="BtnSave" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(80, 34)
+custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
 text = "💾 저장"
 
 [node name="BtnLoad" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(100, 34)
+custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 text = "📂 이어하기"
 
 [node name="BtnSpeed" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(90, 34)
+custom_minimum_size = Vector2(90, 36)
 layout_mode = 2
 text = "▶ 1x 배속"
 
 [node name="BtnLexicon" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(130, 34)
+custom_minimum_size = Vector2(130, 36)
 layout_mode = 2
 text = "📖 단어 도감"
 
 [node name="BtnMute" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(44, 34)
+custom_minimum_size = Vector2(44, 36)
 layout_mode = 2
 text = "🔊"
 
@@ -89,7 +128,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 56.0
+offset_top = 58.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2

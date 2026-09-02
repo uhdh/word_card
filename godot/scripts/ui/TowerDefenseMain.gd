@@ -2,9 +2,9 @@
 # 한글 자모 결합 타워 디펜스 메인 컨트롤러
 extends Control
 
-@onready var hp_label: Label = $TopBar/Info/HpLabel
-@onready var gold_label: Label = $TopBar/Info/GoldLabel
-@onready var wave_label: Label = $TopBar/Info/WaveLabel
+@onready var hp_label: Label = $TopBar/Info/HpBox/HpLabel
+@onready var gold_label: Label = $TopBar/Info/GoldBox/GoldLabel
+@onready var wave_label: Label = $TopBar/Info/WaveBox/WaveLabel
 
 @onready var btn_start_wave: Button = $TopBar/Actions/BtnStartWave
 @onready var btn_save: Button = $TopBar/Actions/BtnSave

@@ -1,0 +1,52 @@
+{
+  "map_spawn_portal": {
+    "filename": "map_spawn_portal_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_spawn_portal_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/d3f36da6-0867-4391-8504-cd897312d0ef.png"
+  },
+  "map_base_crystal": {
+    "filename": "map_base_crystal_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_base_crystal_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+  },
+  "map_tower_altar_1": {
+    "filename": "map_tower_altar_1_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_tower_altar_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/713798dc-0b1b-41c1-ab40-d0e524018a14.png"
+  },
+  "map_tower_altar_2": {
+    "filename": "map_tower_altar_2_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_tower_altar_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/7cc2811f-9a50-4bbb-a686-d0e10555b81e.png"
+  },
+  "map_tower_altar_3": {
+    "filename": "map_tower_altar_3_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_tower_altar_3_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/054e37a5-c3a5-4e01-8ce3-649ecd853729.png"
+  },
+  "map_tower_altar_4": {
+    "filename": "map_tower_altar_4_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/map_tower_altar_4_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/fc2bb0aa-0874-4389-9059-8e338224bd9d.png"
+  },
+  "ui_heart_pixel": {
+    "filename": "ui_heart_pixel_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/ui_heart_pixel_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/94e5c7da-c32a-4a2f-9fc2-e49a8811cc8d.png"
+  },
+  "ui_gold_pixel": {
+    "filename": "ui_gold_pixel_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/01eb26ab-4bc1-4742-b102-8a8c8ca26668.png"
+  },
+  "ui_wave_flag": {
+    "filename": "ui_wave_flag_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/ui_wave_flag_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/1cc06eff-6430-496a-a75b-cb4d0f83e4f7.png"
+  },
+  "ui_scroll_frame": {
+    "filename": "ui_scroll_frame_32px_pastel.png",
+    "godot_path": "res://assets/map_ui/ui_scroll_frame_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/6b9f2403-2a78-43f5-9a47-f2f78dfcfb62.png"
+  }
+}
