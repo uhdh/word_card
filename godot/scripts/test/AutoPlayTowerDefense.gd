@@ -49,6 +49,12 @@ func run_step(current_step: int) -> void:
 			assert(not HangulEngine.is_rare("ㅏ") and not HangulEngine.is_rare("ㄴ"), "Other tiles must be common!")
 			print(" -> 🌟 희귀 타일 시스템 검증: [ㄱ, ㅡ, ㅜ] 3종 희귀 타일 지정 완료 (뽑기 확률 1/5 가중치 적용)")
 
+			# Lexicon Discovery System Test
+			assert(SaveManager.is_word_discovered("불"), "Initial word [불] must be discovered by default!")
+			SaveManager.discover_word("호랑이")
+			assert(SaveManager.is_word_discovered("호랑이"), "Word [호랑이] must be marked as discovered!")
+			print(" -> 📖 도감 해금 시스템 검증: 발견된 단어만 정식 표시 및 미발견 단어 물음표(???) 처리 완료!")
+
 		3:
 			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")
 			belt.jamo_list.clear()

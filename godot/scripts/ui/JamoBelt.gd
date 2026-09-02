@@ -113,10 +113,12 @@ func render_belt() -> void:
 	# Parse current stream (with automatic sequence combination: ㄱ+ㄱ->ㄲ, ㅗ+ㅏ->ㅘ, etc.)
 	var parsed = HangulStreamParser.parse_jamo_stream(jamo_list)
 
-	# Build preview text
+	# Build preview text & discover newly formed words
 	var preview_words = []
 	for p in parsed:
-		preview_words.append("[%s 타워]" % p["syllable"])
+		var syl = p["syllable"]
+		preview_words.append("[%s 타워]" % syl)
+		SaveManager.discover_word(syl)
 	if parsed_preview_label:
 		parsed_preview_label.text = "🏰 자동 완성 타워: " + (" ➔ ".join(preview_words) if not preview_words.is_empty() else "단어 조합 없음")
 

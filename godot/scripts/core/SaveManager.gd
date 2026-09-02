@@ -1,9 +1,13 @@
 ﻿# SaveManager.gd
-# 게임 상태 (자모 벨트, 기지 체력, 골드, 도달 웨이브 등) 영구 저장 및 불러오기 유틸리티
+# 게임 상태 및 단어 도감 해금(Discovery) 영구 저장 및 불러오기 유틸리티
 class_name SaveManager
 extends RefCounted
 
 const SAVE_PATH: String = "user://tower_defense_save.json"
+const DISCOVERED_PATH: String = "user://discovered_lexicon.json"
+
+static var _cached_discovered: Array = []
+static var _is_discovered_loaded: bool = false
 
 static func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
@@ -50,3 +54,50 @@ static func load_game() -> Dictionary:
 		parse_result.get("current_wave", 0), parse_result.get("gold", 0)
 	])
 	return parse_result
+
+# ==============================================================================
+# 단어 도감 해금 (Lexicon Discovery) 시스템
+# ==============================================================================
+static func get_discovered_words() -> Array:
+	if _is_discovered_loaded:
+		return _cached_discovered
+
+	_cached_discovered = ["불"] # Starting word is unlocked by default
+
+	if FileAccess.file_exists(DISCOVERED_PATH):
+		var file = FileAccess.open(DISCOVERED_PATH, FileAccess.READ)
+		if file != null:
+			var content = file.get_as_text()
+			file.close()
+			var parsed = JSON.parse_string(content)
+			if typeof(parsed) == TYPE_ARRAY:
+				for item in parsed:
+					var w = str(item)
+					if not _cached_discovered.has(w):
+						_cached_discovered.append(w)
+
+	_is_discovered_loaded = true
+	return _cached_discovered
+
+static func is_word_discovered(word: String) -> bool:
+	var list = get_discovered_words()
+	return list.has(word)
+
+static func discover_word(word: String) -> bool:
+	if word == "" or not WordDatabase.WORD_DATABASE.has(word):
+		return false
+
+	var list = get_discovered_words()
+	if not list.has(word):
+		list.append(word)
+		_save_discovered_words()
+		print("✨ [Lexicon] 새 단어 도감 해금: [%s] (총 발견: %d개)" % [word, list.size()])
+		return true # Newly discovered
+	return false
+
+static func _save_discovered_words() -> void:
+	var json_str = JSON.stringify(_cached_discovered, "\t")
+	var file = FileAccess.open(DISCOVERED_PATH, FileAccess.WRITE)
+	if file != null:
+		file.store_string(json_str)
+		file.close()
