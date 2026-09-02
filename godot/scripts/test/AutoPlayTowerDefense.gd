@@ -1,4 +1,4 @@
-﻿# AutoPlayTowerDefense.gd
+# AutoPlayTowerDefense.gd
 # 타워 디펜스 전체 기능(조합 없는 단어 큰 텍스트, 도감, 타워 클릭 팝업, 자동 저장, 세이브/로드) 자동 검증 봇
 extends Node
 
@@ -36,15 +36,23 @@ func run_step(current_step: int) -> void:
 			print(" -> 도감 모달 정상 생성 및 오픈 확인! (에러 없음)")
 
 		3:
-			print("\n[Step 3] 🔤 조합 없는 미지의 단어 [갑] (ㄱ+ㅏ+ㅂ) ➔ 큰 한글 텍스트 타워 렌더링 테스트")
+			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")
 			belt.jamo_list.clear()
-			for c in ["ㄱ", "ㅏ", "ㅂ"]: belt.jamo_list.append(c)
+			for c in ["ㄱ", "ㄱ", "ㅏ"]: belt.jamo_list.append(c)
 			belt.render_belt()
-			var parsed_u = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
-			print(" -> 파싱 결과: [%s] (is_unknown: %s, icon: '%s')" % [
-				parsed_u[0]["syllable"], str(parsed_u[0]["word_data"].get("is_unknown", false)), parsed_u[0]["word_data"].get("icon", "")
+			var parsed_kka = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
+			print(" -> 파싱 결과: [%s] (기본 자모 [ㄱ, ㄱ, ㅏ] ➔ 쌍자음 [까] 자동 합성)" % parsed_kka[0]["syllable"])
+			assert(parsed_kka[0]["syllable"] == "까", "Should automatically combine [ㄱ, ㄱ, ㅏ] into [까]!")
+
+			print("\n -> 2글자 자동 합성 테스트: [ㅂ, ㅜ, ㄹ, ㄱ, ㄱ, ㅗ, ㅊ] ➔ [불꽃] 자동 결합")
+			belt.jamo_list.clear()
+			for c in ["ㅂ", "ㅜ", "ㄹ", "ㄱ", "ㄱ", "ㅗ", "ㅊ"]: belt.jamo_list.append(c)
+			belt.render_belt()
+			var parsed_flower = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
+			print(" -> 파싱 결과: [%s 타워] (티어: %d, 공격력: %s)" % [
+				parsed_flower[0]["syllable"], parsed_flower[0].get("tier", 1), str(parsed_flower[0]["word_data"].get("damage", 0))
 			])
-			assert(parsed_u[0]["syllable"] == "갑", "Unknown syllable should parse as [갑]!")
+			assert(parsed_flower[0]["syllable"] == "불꽃", "Should automatically combine into [불꽃]!")
 
 		4:
 			print("\n[Step 4] 🔍 타워 클릭 시 타워 설명 및 상세 스펙 팝업 테스트")
