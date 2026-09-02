@@ -1,4 +1,4 @@
-﻿# TowerDefenseMain.gd
+# TowerDefenseMain.gd
 # 한글 자모 결합 타워 디펜스 메인 컨트롤러
 extends Control
 
@@ -27,6 +27,7 @@ func _ready() -> void:
 		defense_field.base_hp_changed.connect(_on_base_hp_changed)
 		defense_field.gold_changed.connect(_on_gold_changed)
 		defense_field.wave_status_changed.connect(_on_wave_status_changed)
+		defense_field.wave_cleared.connect(_on_wave_cleared)
 		defense_field.game_over.connect(_on_game_over)
 
 	if jamo_belt:
@@ -46,6 +47,15 @@ func _on_wave_status_changed(wave: int, max_wave: int, is_running: bool) -> void
 	wave_label.text = "🌊 %d / %d 웨이브" % [wave, max_wave]
 	btn_start_wave.disabled = is_running
 	btn_start_wave.text = "⚔️ 웨이브 진행 중..." if is_running else "▶ 다음 웨이브 시작"
+
+func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
+	var modal_scene = load("res://scenes/tower/WaveRewardModal.tscn")
+	if modal_scene != null:
+		var modal = modal_scene.instantiate()
+		modal_layer.add_child(modal)
+		modal.setup(wave, bonus_gold, func(chosen_char: String):
+			jamo_belt.add_jamo(chosen_char)
+		)
 
 func _on_parsed_towers_updated(parsed_list: Array) -> void:
 	if defense_field:

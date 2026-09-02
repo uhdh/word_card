@@ -7,10 +7,7 @@ signal parsed_towers_updated(parsed_list: Array)
 signal request_buy_jamo()
 
 var jamo_list: Array[String] = [
-	"ㄱ", "ㅓ", "ㅁ",  # -> 검 (1번 타워)
-	"ㅂ", "ㅜ", "ㄹ",  # -> 불 (2번 타워)
-	"ㄱ", "ㅗ", "ㅁ",  # -> 곰 (3번 타워)
-	"ㅂ", "ㅏ", "ㅇ"   # -> 방 (4번 타워)
+	"ㅂ", "ㅜ", "ㄹ"  # -> 불 (첫 번째 시작 타워)
 ]
 
 var selected_index_for_swap: int = -1

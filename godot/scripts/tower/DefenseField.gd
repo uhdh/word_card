@@ -1,4 +1,4 @@
-﻿# DefenseField.gd
+# DefenseField.gd
 # 타워 디펜스 맵 필드, 적 이동 경로(Path2D), 타워 슬롯들 및 웨이브 관리
 class_name DefenseField
 extends Control
@@ -6,6 +6,7 @@ extends Control
 signal base_hp_changed(current: int, max: int)
 signal gold_changed(current: int)
 signal wave_status_changed(wave: int, max_wave: int, is_running: bool)
+signal wave_cleared(wave: int, bonus_gold: int)
 signal game_over(is_victory: bool)
 
 @export var max_base_hp: int = 20
@@ -122,12 +123,15 @@ func _on_enemy_reached_base(enemy: EnemyUnit, dmg: int) -> void:
 func _on_wave_cleared() -> void:
 	is_wave_running = false
 	wave_status_changed.emit(current_wave, MAX_WAVES, false)
-	gold += 15 # Wave clear bonus
+	var bonus_gold = 15
+	gold += bonus_gold
 	gold_changed.emit(gold)
 	SoundEngine.play_victory()
 
 	if current_wave >= MAX_WAVES:
 		game_over.emit(true)
+	else:
+		wave_cleared.emit(current_wave, bonus_gold)
 
 func update_towers_from_parsed_list(parsed_list: Array) -> void:
 	# Clear old towers
