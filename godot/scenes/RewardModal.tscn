@@ -1,0 +1,72 @@
+﻿[gd_scene format=3 uid="uid://reward_modal_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/RewardModal.gd" id="1_reward"]
+
+[node name="RewardModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_reward")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(450, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -180.0
+offset_right = 225.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "전투 승리 보상!"
+horizontal_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+text = "🪙 +0 골드"
+horizontal_alignment = 1
+
+[node name="RelicBox" type="PanelContainer" parent="Panel/VBox"]
+visible = false
+layout_mode = 2
+
+[node name="RelicLabel" type="Label" parent="Panel/VBox/RelicBox"]
+layout_mode = 2
+
+[node name="Subtitle" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+text = "새로 획득할 자모 활자 1개를 선택하세요:"
+horizontal_alignment = 1
+
+[node name="TilesContainer" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="BtnSkip" type="Button" parent="Panel/VBox"]
+layout_mode = 2
+text = "선택 없이 진행"

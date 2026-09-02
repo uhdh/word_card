@@ -1,0 +1,82 @@
+﻿[gd_scene format=3 uid="uid://lexicon_modal_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/LexiconModal.gd" id="1_lexicon"]
+
+[node name="LexiconModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lexicon")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(860, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -300.0
+offset_right = 430.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "📖 활자술사 단어 도감 (100종)"
+
+[node name="SearchEdit" type="LineEdit" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+placeholder_text = "🔍 단어 또는 효과 검색..."
+
+[node name="TabsContainer" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardsGrid" type="GridContainer" parent="Panel/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Footer" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="Panel/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "표시 중: 100 / 100개"
+
+[node name="BtnClose" type="Button" parent="Panel/VBox/Footer"]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 2
+text = "닫기"

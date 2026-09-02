@@ -1,0 +1,209 @@
+﻿[gd_scene format=3 uid="uid://battle_view_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/BattleView.gd" id="1_battle"]
+
+[node name="BattleView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_battle")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Arena" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="PlayerBox" type="VBoxContainer" parent="VBox/Arena"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PlayerAvatar" type="Label" parent="VBox/Arena/PlayerBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "🧙‍♂️"
+horizontal_alignment = 1
+
+[node name="StatusBox" type="HBoxContainer" parent="VBox/Arena/PlayerBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="ShieldLabel" type="Label" parent="VBox/Arena/PlayerBox/StatusBox"]
+layout_mode = 2
+
+[node name="PowerLabel" type="Label" parent="VBox/Arena/PlayerBox/StatusBox"]
+layout_mode = 2
+
+[node name="ThornsLabel" type="Label" parent="VBox/Arena/PlayerBox/StatusBox"]
+layout_mode = 2
+
+[node name="RegenLabel" type="Label" parent="VBox/Arena/PlayerBox/StatusBox"]
+layout_mode = 2
+
+[node name="EnemyBox" type="VBoxContainer" parent="VBox/Arena"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="IntentLabel" type="Label" parent="VBox/Arena/EnemyBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="SpriteBox" type="CenterContainer" parent="VBox/Arena/EnemyBox"]
+layout_mode = 2
+
+[node name="EnemySprite" type="TextureRect" parent="VBox/Arena/EnemyBox/SpriteBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnemyName" type="Label" parent="VBox/Arena/EnemyBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBox/Arena/EnemyBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HpBar" type="ProgressBar" parent="VBox/Arena/EnemyBox"]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+value = 100.0
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="VBox/Arena/EnemyBox/HpBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CraftingArea" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="SlotsContainer" type="HBoxContainer" parent="VBox/CraftingArea"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SlotCho" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
+custom_minimum_size = Vector2(64, 80)
+layout_mode = 2
+text = "+"
+
+[node name="SlotJung" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
+custom_minimum_size = Vector2(64, 80)
+layout_mode = 2
+text = "+"
+
+[node name="SlotJong" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
+custom_minimum_size = Vector2(64, 80)
+layout_mode = 2
+text = "+"
+
+[node name="ArrowLabel" type="Label" parent="VBox/CraftingArea"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "➔"
+
+[node name="CardBox" type="PanelContainer" parent="VBox/CraftingArea"]
+custom_minimum_size = Vector2(280, 120)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="VBox/CraftingArea/CardBox"]
+layout_mode = 2
+
+[node name="CardTitle" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="CardCost" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
+layout_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="VBox/CraftingArea/CardBox/VBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="CardDesc" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="BtnPlay" type="Button" parent="VBox/CraftingArea/CardBox/VBox"]
+layout_mode = 2
+text = "발동 (SPACE)"
+
+[node name="BottomPanel" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="EnergyBox" type="VBoxContainer" parent="VBox/BottomPanel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="EnergyLabel" type="Label" parent="VBox/BottomPanel/EnergyBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "1 / 1 AP"
+horizontal_alignment = 1
+
+[node name="HandContainer" type="HBoxContainer" parent="VBox/BottomPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="DeckInfo" type="VBoxContainer" parent="VBox/BottomPanel"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="BtnEndTurn" type="Button" parent="VBox/BottomPanel/DeckInfo"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "턴 종료"
+
+[node name="DeckCountLabel" type="Label" parent="VBox/BottomPanel/DeckInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "뽑을 덱: 0 | 버린 덱: 0"
+horizontal_alignment = 1
+
+[node name="LogScroll" type="ScrollContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CombatLogLabel" type="Label" parent="VBox/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3

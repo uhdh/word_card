@@ -1,0 +1,115 @@
+﻿[gd_scene format=3 uid="uid://main_scene_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.05, 0.1, 1)
+
+[node name="TopBar" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="PlayerInfo" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HpBox" type="HBoxContainer" parent="TopBar/PlayerInfo"]
+layout_mode = 2
+
+[node name="HeartLabel" type="Label" parent="TopBar/PlayerInfo/HpBox"]
+layout_mode = 2
+text = "❤️"
+
+[node name="HpBar" type="ProgressBar" parent="TopBar/PlayerInfo/HpBox"]
+custom_minimum_size = Vector2(120, 20)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+show_percentage = false
+
+[node name="HpText" type="Label" parent="TopBar/PlayerInfo/HpBox"]
+layout_mode = 2
+text = "80/80"
+
+[node name="GoldBox" type="HBoxContainer" parent="TopBar/PlayerInfo"]
+layout_mode = 2
+
+[node name="GoldIcon" type="Label" parent="TopBar/PlayerInfo/GoldBox"]
+layout_mode = 2
+text = "🪙"
+
+[node name="GoldText" type="Label" parent="TopBar/PlayerInfo/GoldBox"]
+layout_mode = 2
+text = "99"
+
+[node name="FloorBox" type="HBoxContainer" parent="TopBar/PlayerInfo"]
+layout_mode = 2
+
+[node name="FloorIcon" type="Label" parent="TopBar/PlayerInfo/FloorBox"]
+layout_mode = 2
+text = "📍"
+
+[node name="FloorText" type="Label" parent="TopBar/PlayerInfo/FloorBox"]
+layout_mode = 2
+text = "1막 시작"
+
+[node name="RelicsContainer" type="HBoxContainer" parent="TopBar/PlayerInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopActions" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 8
+
+[node name="BtnLexicon" type="Button" parent="TopBar/TopActions"]
+layout_mode = 2
+text = "📖 단어 도감 (100)"
+
+[node name="BtnDeck" type="Button" parent="TopBar/TopActions"]
+layout_mode = 2
+text = "🎴 덱 (10)"
+
+[node name="BtnMap" type="Button" parent="TopBar/TopActions"]
+layout_mode = 2
+text = "🗺️ 지도"
+
+[node name="BtnMute" type="Button" parent="TopBar/TopActions"]
+layout_mode = 2
+text = "🔊"
+
+[node name="ViewContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
