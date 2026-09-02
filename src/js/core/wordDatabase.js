@@ -11,7 +11,7 @@ export const WORD_DATABASE = {
     cost: 1,
     damage: 10,
     desc: '적에게 10의 강력한 물리 베기 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/sword_검/sword_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -23,7 +23,7 @@ export const WORD_DATABASE = {
     damage: 6,
     magicPower: 4,
     desc: '적에게 6 피해를 입히고, 다음 마법 단어의 위력을 +4 증가시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/staff_봉/staff_1_32px\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -34,7 +34,7 @@ export const WORD_DATABASE = {
     cost: 1,
     damage: 9,
     desc: '적을 정면 강타하여 9의 묵직한 물리 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/fist_공/fist_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -46,7 +46,7 @@ export const WORD_DATABASE = {
     damage: 8,
     execute: true,
     desc: '적의 목을 베어 8 피해를 입히며, 체력 50% 이하인 적에게는 16 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/axe_목/axe_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -58,7 +58,7 @@ export const WORD_DATABASE = {
     damage: 8,
     stun: true,
     desc: '적의 머리를 강타하여 8 피해를 입히고 1턴간 기절(스턴)시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/mace_골/mace_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -70,7 +70,7 @@ export const WORD_DATABASE = {
     damage: 11,
     stripShield: 4,
     desc: '쇳덩이를 내리쳐 11 피해를 입히고 적 방어도를 4 깎아냅니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/iron_쇠/iron_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -82,7 +82,7 @@ export const WORD_DATABASE = {
     damage: 6,
     bleed: 3,
     desc: '날카로운 대못을 박아 6 피해를 입히고 3턴간 출혈(매 턴 3 피해)을 부여합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/spike_못/spike_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -94,7 +94,7 @@ export const WORD_DATABASE = {
     damage: 8,
     weak: 1,
     desc: '예리한 날로 베어 8 피해를 입히고 1턴간 취약(받는 피해 30% 증가)을 부여합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/blade_날/blade_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -106,7 +106,7 @@ export const WORD_DATABASE = {
     damage: 8,
     breakShield: true,
     desc: '매서운 삭풍을 휘둘러 8 피해를 입히고 적의 모든 실드를 제거합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/wind_slash_삭/wind_slash_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -117,7 +117,7 @@ export const WORD_DATABASE = {
     cost: 1,
     damage: 15,
     desc: '혼신의 일격을 날려 15의 치명적인 단일 물리 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/strike_일/strike_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -129,7 +129,7 @@ export const WORD_DATABASE = {
     damage: 6,
     hits: 2,
     desc: '십자 형태로 베어 6 피해를 2회(총 12 피해) 연속 공격합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/cross_sword_십/cross_sword_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -142,7 +142,7 @@ export const WORD_DATABASE = {
     stun: true,
     selfDmg: 2,
     desc: '단단한 박치기로 9 피해를 입히고 적을 1턴간 기절시킵니다. (자신 2 반동 피해)',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/ram_박/ram_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -154,7 +154,7 @@ export const WORD_DATABASE = {
     damage: 10,
     pierce: true,
     desc: '탄환을 발사하여 10의 원거리 물리 관통 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/shot_발/shot_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -166,7 +166,7 @@ export const WORD_DATABASE = {
     damage: 16,
     selfDmg: 3,
     desc: '괴력을 발휘하여 자신의 HP 3을 소모하고 적에게 16의 폭발적 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/monster_arm_괴/monster_arm_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -177,7 +177,7 @@ export const WORD_DATABASE = {
     cost: 0,
     damage: 5,
     desc: '날카로운 시위를 튕겨 0 AP로 5의 신속 찌르기 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/arrow_시/arrow_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -189,7 +189,7 @@ export const WORD_DATABASE = {
     damage: 8,
     magicDebuff: 0.3,
     desc: '마력 구체를 투척하여 8 마법 피해를 입히고 1턴간 적의 마법 저항을 30% 깎습니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/orb_구/orb_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -201,7 +201,7 @@ export const WORD_DATABASE = {
     damage: 8,
     statusCrit: true,
     desc: '깊은 상흔을 내어 8 피해를 입히며, 대상이 상태이상일 경우 2배(16) 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/wound_상/wound_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -213,7 +213,7 @@ export const WORD_DATABASE = {
     damage: 8,
     weaken: 3,
     desc: '적을 강하게 억눌러 8 피해를 입히고 1턴간 적의 공격력을 3 감소시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/01_무기_공격/press_압/press_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -224,7 +224,7 @@ export const WORD_DATABASE = {
     cost: 1,
     shield: 10,
     desc: '10의 방어도를 즉시 획득합니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/shield_방/shield_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -235,7 +235,7 @@ export const WORD_DATABASE = {
     cost: 1,
     shield: 14,
     desc: '14의 단단한 철갑 방어도를 획득합니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/armor_갑/armor_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -246,7 +246,7 @@ export const WORD_DATABASE = {
     cost: 1,
     invulnerable: 1,
     desc: '견고한 대문을 닫아 다음 1회 동안 적의 모든 피해를 무효화(1회 무적)합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/05_구조_필드/door_문/door_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -258,7 +258,7 @@ export const WORD_DATABASE = {
     shield: 12,
     retainShield: true,
     desc: '12의 방어도를 얻으며, 남은 방어도가 다음 턴으로 100% 이월됩니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/05_구조_필드/castle_성/castle_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -269,7 +269,7 @@ export const WORD_DATABASE = {
     cost: 1,
     shield: 15,
     desc: '태산 같은 굳건함으로 15의 거대한 방어도를 획득합니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/mountain_산/mountain_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -280,7 +280,7 @@ export const WORD_DATABASE = {
     cost: 1,
     shield: 11,
     desc: '보호 장막을 형성하여 11의 방어도를 즉시 얻습니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/barrier_막/barrier_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -291,7 +291,7 @@ export const WORD_DATABASE = {
     cost: 1,
     shield: 13,
     desc: '완벽한 가드를 올려 13의 방어도를 얻습니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/perfect_shield_완/perfect_shield_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -303,7 +303,7 @@ export const WORD_DATABASE = {
     shield: 13,
     retainShield: true,
     desc: '궁전 결계를 쳐 13 방어도를 얻고 2턴 동안 방어도가 파괴되지 않습니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/palace_궁/palace_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -315,7 +315,7 @@ export const WORD_DATABASE = {
     shield: 12,
     immune: 1,
     desc: '강철 같은 인내로 12 방어도를 얻고 1턴간 모든 상태이상에 면역이 됩니다.',
-    icon: './assets/02_방어_장비/drum_북/drum_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/medal_patience_인/medal_patience_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -327,7 +327,7 @@ export const WORD_DATABASE = {
     shield: 14,
     energyNext: 1,
     desc: '최후의 보루를 세워 14 방어도를 얻고 다음 턴 AP 1을 보존합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/fortress_보/fortress_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -339,7 +339,7 @@ export const WORD_DATABASE = {
     shield: 10,
     damageCut: 0.3,
     desc: '불변의 언약을 맺어 10 방어도를 얻고 이번 턴 받는 모든 피해를 30% 경감합니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/vow_seal_언/vow_seal_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -351,7 +351,7 @@ export const WORD_DATABASE = {
     shield: 10,
     shieldRegen: 3,
     desc: '회전하는 위성 방어막으로 10 방어도 및 2턴간 턴마다 3 실드를 자동 생성합니다.',
-    icon: './assets/02_방어_장비/shield_방/shield_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/orbit_shield_위/orbit_shield_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -363,7 +363,7 @@ export const WORD_DATABASE = {
     shield: 10,
     shieldNext: 5,
     desc: '높은 누각을 세워 10 방어도를 얻고 다음 턴 시작 시 5 방어도를 추가로 얻습니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/tower_누/tower_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -375,7 +375,7 @@ export const WORD_DATABASE = {
     shield: 8,
     parry: 1,
     desc: '동굴 속으로 피신하여 8 방어도를 얻고 적의 단일 공격을 1회 패링(무효화)합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/05_구조_필드/cave_굴/cave_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -387,7 +387,7 @@ export const WORD_DATABASE = {
     shield: 6,
     counter: 5,
     desc: '6 방어도를 얻고, 이번 턴 피격받을 때마다 공격자에게 5 반격 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/counter_shield_반/counter_shield_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -399,7 +399,7 @@ export const WORD_DATABASE = {
     shield: 8,
     thorns: 4,
     desc: '가시 울타리를 둘러 8 방어도를 얻고 가시 4(피격 시 4 반사 피해)를 얻습니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/fence_울/fence_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -411,7 +411,7 @@ export const WORD_DATABASE = {
     shield: 8,
     physAbsorb: 0.5,
     desc: '푹신한 솜 방어막으로 8 방어도를 얻고 이번 턴 물리 피해를 50% 흡수합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/cotton_솜/cotton_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -423,7 +423,7 @@ export const WORD_DATABASE = {
     shield: 8,
     magicResist: 0.3,
     desc: '마법 의복을 둘러 8 방어도를 얻고 2턴간 모든 마법 피해를 30% 경감합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/cloth_옷/cloth_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -435,7 +435,7 @@ export const WORD_DATABASE = {
     damage: 7,
     burn: 4,
     desc: '적에게 7 화염 피해를 입히고 3턴간 화상(매 턴 4 피해)을 부여합니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/fire_불/fire_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -448,7 +448,7 @@ export const WORD_DATABASE = {
     shield: 6,
     cleanse: true,
     desc: '적에게 6 피해를 입히고, 6 방어도를 얻으며 자신의 모든 디버프를 정화합니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/water_물/water_1_32px\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -460,7 +460,7 @@ export const WORD_DATABASE = {
     damage: 7,
     freeze: 4,
     desc: '적을 얼려 7 냉기 피해를 입히고 1턴간 적의 공격력을 4 감소시킵니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/ice_빙/ice_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -472,7 +472,7 @@ export const WORD_DATABASE = {
     heal: 6,
     extinguish: true,
     desc: '단비가 내려 체력 6을 회복하고 전장의 모든 화상 효과를 소멸시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/rain_비/rain_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -484,7 +484,7 @@ export const WORD_DATABASE = {
     damage: 8,
     interrupt: true,
     desc: '눈부신 섬광을 터뜨려 8 피해를 입히고 적의 이번 턴 공격 의도를 취소시킵니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/flash_광/flash_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -496,7 +496,7 @@ export const WORD_DATABASE = {
     damage: 8,
     burn: 3,
     desc: '타오르는 노을빛으로 8 광역 피해를 입히고 2턴간 화상(매 턴 3)을 부여합니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/ember_노/ember_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -508,7 +508,7 @@ export const WORD_DATABASE = {
     damage: 9,
     stealAtk: 2,
     desc: '어둠의 파동을 뿜어 9 암흑 피해를 입히고 적 공격력을 2 영구 흡수합니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/darkness_암/darkness_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -520,7 +520,7 @@ export const WORD_DATABASE = {
     damage: 11,
     blind: 1,
     desc: '천둥과 폭우를 소환하여 11 뇌전 피해를 입히고 1턴간 적을 실명시킵니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/thunder_rain_우/thunder_rain_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -532,7 +532,7 @@ export const WORD_DATABASE = {
     damage: 8,
     halveShield: true,
     desc: '소용돌이를 일으켜 8 수류 피해를 입히고 적의 방어도를 절반으로 깎습니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/whirlpool_water_와/whirlpool_water_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -544,7 +544,7 @@ export const WORD_DATABASE = {
     damage: 8,
     freeze: 4,
     desc: '빙하 파편을 꽂아 8 냉기 피해를 입히고 1턴간 적의 공격력을 4 깎습니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/freeze_얼/freeze_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -556,7 +556,7 @@ export const WORD_DATABASE = {
     damage: 10,
     burnReflect: 4,
     desc: '인과의 불꽃으로 10 피해를 입히고, 적이 공격할 때마다 4 화염 반사 피해를 줍니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/karma_ember_업/karma_ember_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -569,7 +569,7 @@ export const WORD_DATABASE = {
     pierce: true,
     silence: 1,
     desc: '강력한 진동 음파로 6 관통 피해를 입히고 적의 마법 시전을 차단합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/soundwave_음/soundwave_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -581,7 +581,7 @@ export const WORD_DATABASE = {
     damage: 9,
     breakShield: 5,
     desc: '단단한 암석을 투척하여 9 물리 피해를 입히고 적 방어도를 5 파괴합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/rock_stone_석/rock_stone_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -593,7 +593,7 @@ export const WORD_DATABASE = {
     damage: 7,
     shield: 6,
     desc: '돌풍을 소환하여 7 피해를 입히고 날아오는 적 투사체를 튕겨냅니다 (방어도 6).',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/wind_mist_선/wind_mist_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -604,7 +604,7 @@ export const WORD_DATABASE = {
     cost: 1,
     blind100: 1,
     desc: '극광의 섬광으로 적을 1턴간 완전 실명(공격 빗맞힘 100%) 상태로 만듭니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/light_flash_섬/light_flash_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -616,7 +616,7 @@ export const WORD_DATABASE = {
     damage: 8,
     shield: 6,
     desc: '수류를 방출하여 적에게 8 피해를 입히고 아군에게 6 방어도를 부여합니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/water_flow_수/water_flow_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -627,7 +627,7 @@ export const WORD_DATABASE = {
     cost: 1,
     damage: 14,
     desc: '천둥 번개를 소환하여 적에게 14의 폭발적인 뇌전 피해를 입힙니다.',
-    icon: './assets/03_원소_마법/fire_불/fire_1_32px_pastel.png',
+    icon: '\./assets/03_원소_마법/lightning_bolt_뇌/lightning_bolt_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -640,7 +640,7 @@ export const WORD_DATABASE = {
     shield: 8,
     taunt: true,
     desc: '거대한 곰을 소환하여 6 피해를 입히고 8 실드 및 1턴간 도발(피해 흡수)을 겁니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/bear_곰/bear_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -652,7 +652,7 @@ export const WORD_DATABASE = {
     damage: 4,
     poison: 4,
     desc: '초록 독사를 소환해 4 피해를 입히고 4의 맹독(지속 피해)을 주입합니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/snake_뱀/snake_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -663,7 +663,7 @@ export const WORD_DATABASE = {
     cost: 1,
     draw: 2,
     desc: '정찰 새를 날려 즉시 자모 타일 2장을 추가 드로우합니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/bird_새/bird_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -675,7 +675,7 @@ export const WORD_DATABASE = {
     damage: 8,
     extraAction: true,
     desc: '야생마가 돌진하여 적에게 8 피해를 입히고 이번 턴 즉시 추가 1회 행동을 얻습니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/horse_말/horse_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -687,7 +687,7 @@ export const WORD_DATABASE = {
     damage: 11,
     breakShield: true,
     desc: '황소가 들이받아 11 피해를 입히고 적의 모든 방어도를 완전히 파괴합니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/bull_소/bull_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -699,7 +699,7 @@ export const WORD_DATABASE = {
     damage: 5,
     shield: 6,
     desc: '충견을 소환하여 적에게 5 피해를 입히고 피해를 대신 흡수하는 6 실드를 얻습니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/dog_wolf_개/dog_wolf_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -712,7 +712,7 @@ export const WORD_DATABASE = {
     hits: 2,
     poison: 3,
     desc: '말벌 떼를 풀어 2 피해를 2회(총 4 피해) 입히고 맹독 3스택을 겁니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/wasp_bee_벌/wasp_bee_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -724,7 +724,7 @@ export const WORD_DATABASE = {
     damage: 13,
     fear: 1,
     desc: '호랑이의 포효로 적 전체에 13 피해를 입히고 1턴간 공포(피해량 -50%)를 겁니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/tiger_범/tiger_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -736,7 +736,7 @@ export const WORD_DATABASE = {
     damage: 9,
     pierce: true,
     desc: '매가 급강하하여 적의 방어도를 완전히 무시하는 9 관통 피해를 입힙니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/hawk_eagle_매/hawk_eagle_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -747,7 +747,7 @@ export const WORD_DATABASE = {
     cost: 1,
     egg: true,
     desc: '신비한 알을 품어 다음 턴 시작 시 강력한 무작위 야수(곰/범/독사)를 자동 소환합니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/egg_알/egg_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -759,7 +759,7 @@ export const WORD_DATABASE = {
     damage: 7,
     reduceShield: 4,
     desc: '늑대 무리를 불러 7 피해를 입히고 적의 방어도를 4 깎아냅니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/wolf_낭/wolf_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -771,7 +771,7 @@ export const WORD_DATABASE = {
     shield: 7,
     dodge: 0.4,
     desc: '물고기처럼 유연하게 움직여 7 방어도를 얻고 다음 공격 회피율 40%를 얻습니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/fish_어/fish_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -783,7 +783,7 @@ export const WORD_DATABASE = {
     shield: 8,
     drawNext: 1,
     desc: '거대한 날개를 펼쳐 8 방어도를 얻고 다음 턴 드로우를 +1장 늘립니다.',
-    icon: './assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/wing_익/wing_1_32px_pastel\.png',
     sound: 'playSummon',
     tags: []
   },
@@ -794,7 +794,7 @@ export const WORD_DATABASE = {
     cost: 1,
     damage: 10,
     desc: '솔방울 폭탄을 던져 10의 범위 폭발 피해를 입힙니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/pinecone_솔/pinecone_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -806,7 +806,7 @@ export const WORD_DATABASE = {
     draw: 2,
     shield: 5,
     desc: '운명의 수레바퀴: 자모 카드 2장을 즉시 드로우하고 5 방어도를 얻습니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/04_생물_소환/fortune_cloud_운/fortune_cloud_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -818,7 +818,7 @@ export const WORD_DATABASE = {
     heal: 5,
     cleanse: 1,
     desc: '깊은 심호흡을 하여 체력 5를 회복하고 상태이상 1개를 즉시 정화합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/breath_wind_숨/breath_wind_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -830,7 +830,7 @@ export const WORD_DATABASE = {
     heal: 10,
     maxHp: 2,
     desc: '생명의 환희로 체력 10을 회복하고 최대 체력을 +2 영구 증가시킵니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/life_sprout_생/life_sprout_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -841,7 +841,7 @@ export const WORD_DATABASE = {
     cost: 1,
     heal: 9,
     desc: '생명의 샘물을 마셔 체력 9를 즉시 회복합니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/spring_water_샘/spring_water_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -853,7 +853,7 @@ export const WORD_DATABASE = {
     heal: 6,
     draw: 1,
     desc: '달콤한 감을 먹어 체력 6을 회복하고 자모 타일 1장을 드로우합니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/persimmon_감/persimmon_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -865,7 +865,7 @@ export const WORD_DATABASE = {
     regen: 3,
     duration: 3,
     desc: '살점이 재생되어 3턴 동안 매 턴 종료 시 HP를 3씩 회복합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/flesh_heal_살/flesh_heal_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -877,7 +877,7 @@ export const WORD_DATABASE = {
     heal: 7,
     reduceDebuff: 1,
     desc: '따스한 봄기운으로 아군 체력 7 회복 및 모든 디버프 지속시간을 1턴 단축합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/spring_season_봄/spring_season_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -889,7 +889,7 @@ export const WORD_DATABASE = {
     heal: 5,
     cleanse: 2,
     desc: '맑은 시냇물로 체력 5를 회복하고 해로운 효과 2개를 씻어냅니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/stream_water_내/stream_water_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -901,7 +901,7 @@ export const WORD_DATABASE = {
     heal: 6,
     resist: 0.3,
     desc: '보양식을 섭취하여 체력 6을 회복하고 1턴간 모든 속성 저항력을 +30% 높입니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/food_rice_식/food_rice_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -913,7 +913,7 @@ export const WORD_DATABASE = {
     heal: 6,
     stopBleed: true,
     desc: '상처를 꿰매어 출혈을 즉시 멈추고 체력 6을 회복합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/thread_stitch_실/thread_stitch_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -925,7 +925,7 @@ export const WORD_DATABASE = {
     heal: 7,
     reduceDebuff: 1,
     desc: '따스한 온천욕으로 체력 7을 회복하고 모든 디버프 지속시간을 1턴 감소시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/warm_glow_온/warm_glow_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -937,7 +937,7 @@ export const WORD_DATABASE = {
     damage: 4,
     vamp: 4,
     desc: '적에게 4 피해를 입히고 입힌 피해만큼 체력을 그대로 흡수(흡혈)합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/mouth_blood_입/mouth_blood_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -949,7 +949,7 @@ export const WORD_DATABASE = {
     damage: 9,
     vamp: 4,
     desc: '초승달 검기로 9 암흑 피해를 입히고 체력 4를 흡혈합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/moon_light_월/moon_light_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -961,7 +961,7 @@ export const WORD_DATABASE = {
     heal: 7,
     buffAtk: 2,
     desc: '맛있는 요리를 맛보아 체력 7을 회복하고 공격력 +2를 얻습니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/food_tasty_맛/food_tasty_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -972,7 +972,7 @@ export const WORD_DATABASE = {
     cost: 1,
     cycleHand: [2, 3],
     desc: '소화 작용: 손패의 불필요한 타일 2장을 버리고 새 타일 3장을 즉시 드로우합니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/radish_무/radish_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -984,7 +984,7 @@ export const WORD_DATABASE = {
     maxHp: 3,
     heal: 5,
     desc: '산약 마를 복용하여 최대 체력 +3 영구 증가 및 체력 5를 즉시 회복합니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/yam_herb_마/yam_herb_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -996,7 +996,7 @@ export const WORD_DATABASE = {
     shield: 7,
     absorb: 4,
     desc: '도토리묵의 탄력으로 7 방어도를 얻고 적의 단일 공격 피해를 4 흡수합니다.',
-    icon: './assets/03_원소_마법/potion_약/potion_1_32px_pastel.png',
+    icon: '\./assets/06_회복_치유/jelly_food_묵/jelly_food_1_32px_pastel\.png',
     sound: 'playMagic',
     tags: []
   },
@@ -1007,7 +1007,7 @@ export const WORD_DATABASE = {
     cost: 1,
     buffAttack: 3,
     desc: '전투 북을 울려 이번 전투 동안 모든 공격 단어의 피해량을 +3 증가시킵니다.',
-    icon: './assets/02_방어_장비/drum_북/drum_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/drum_북/drum_1_32px\.png',
     sound: 'playShield',
     tags: []
   },
@@ -1018,7 +1018,7 @@ export const WORD_DATABASE = {
     cost: 1,
     gainAp: 1,
     desc: '기력을 끌어올려 즉시 1 AP를 추가 충전합니다.',
-    icon: './assets/02_방어_장비/drum_북/drum_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/chi_orb_기/chi_orb_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -1029,7 +1029,7 @@ export const WORD_DATABASE = {
     cost: 1,
     speedDraw: 3,
     desc: '가속 태세를 취해 이번 턴 단어 카드를 쓸 때마다 타일 1장씩 드로우(최대 3회)합니다.',
-    icon: './assets/02_방어_장비/drum_북/drum_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/speed_boots_속/speed_boots_1_32px_pastel\.png',
     sound: 'playShield',
     tags: []
   },
@@ -1040,7 +1040,7 @@ export const WORD_DATABASE = {
     cost: 1,
     amplify: 1.5,
     desc: '잠재능력을 개화하여 이번 턴에 사용하는 모든 단어 카드의 효과를 1.5배 증폭합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/power_orb_능/power_orb_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1051,7 +1051,7 @@ export const WORD_DATABASE = {
     cost: 1,
     doublePower: 1,
     desc: '언어의 이치를 깨달아 다음 사용하는 단어 카드의 효과를 2배(100% 증폭)로 발동합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/wisdom_gem_이/wisdom_gem_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1062,7 +1062,7 @@ export const WORD_DATABASE = {
     cost: 1,
     sharpWeapon: 4,
     desc: '대장간 모루로 무기를 벼려 다음 3회 공격의 피해량을 +4 증가시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/anvil_tool_모/anvil_tool_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1074,7 +1074,7 @@ export const WORD_DATABASE = {
     maxHp: 8,
     buffAtk: 2,
     desc: '심장을 강화하여 이번 전투 동안 최대 체력 +8 및 공격력 +2를 영구 획득합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/heart_심/heart_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1086,7 +1086,7 @@ export const WORD_DATABASE = {
     heal: 6,
     buffAtk: 2,
     desc: '따스한 남풍이 불어와 아군 체력 6 회복 및 공격력 +2 버프를 부여합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/wind_south_남/wind_south_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1098,7 +1098,7 @@ export const WORD_DATABASE = {
     damage: 8,
     buffNext: 4,
     desc: '도도한 기세로 8 피해를 입히고 다음 내 카드의 공격력을 +4 증가시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/power_surge_세/power_surge_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1109,7 +1109,7 @@ export const WORD_DATABASE = {
     cost: 1,
     drawNext: 2,
     desc: '순풍의 돛을 올려 다음 턴 시작 시 자모 타일을 +2장 추가로 드로우합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/pure_wind_순/pure_wind_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1120,7 +1120,7 @@ export const WORD_DATABASE = {
     cost: 1,
     randomBuff: 2,
     desc: '오복의 축복을 받아 무작위 이로운 버프 2종(공격력, 방어도, 힐)을 획득합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/fortune_lucky_복/fortune_lucky_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1132,7 +1132,7 @@ export const WORD_DATABASE = {
     shield: 8,
     bonusGold: 0.2,
     desc: '황금빛 가호로 8 방어도를 얻고 이번 전투 승리 시 골드 획득량이 +20% 증가합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/gold_coin_금/gold_coin_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1143,7 +1143,7 @@ export const WORD_DATABASE = {
     cost: 1,
     weaken50: 1,
     desc: '그물을 던져 적을 1턴간 포박하여 적 공격력을 50% 약화시킵니다.',
-    icon: './assets/02_방어_장비/drum_북/drum_1_32px_pastel.png',
+    icon: '\./assets/02_방어_장비/net_망/net_1_32px\.png',
     sound: 'playShield',
     tags: []
   },
@@ -1154,7 +1154,7 @@ export const WORD_DATABASE = {
     cost: 1,
     weaken: 5,
     desc: '끈끈한 송진을 묻혀 적의 발을 묶고 다음 턴 적 공격력을 5 감소시킵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/pine_resin_송/pine_resin_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1165,7 +1165,7 @@ export const WORD_DATABASE = {
     cost: 1,
     rerollTile: 1,
     desc: '손끝의 공명으로 손패의 자모 타일 1장을 원하는 다른 자모로 변환합니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/hand_magic_손/hand_magic_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   },
@@ -1176,7 +1176,7 @@ export const WORD_DATABASE = {
     cost: 1,
     searchTile: 1,
     desc: '문자의 지혜로 덱에서 원하는 자모 타일 1장을 직접 선택하여 손패로 가져옵니다.',
-    icon: './assets/01_무기_공격/sword_검/sword_1_32px_pastel.png',
+    icon: '\./assets/07_버프_유틸/rune_script_글/rune_script_1_32px_pastel\.png',
     sound: 'playAttack',
     tags: []
   }

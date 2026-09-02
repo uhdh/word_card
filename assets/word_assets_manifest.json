@@ -1443,5 +1443,2089 @@
         "url": "https://cdn.aetherforgeai.com/assets/66e78b7f-0a9c-4bd4-99ff-a94586ba25b5.png"
       }
     ]
+  },
+  "공": {
+    "word": "공",
+    "name_en": "fist",
+    "category_group": "01_무기_공격",
+    "desc": "공 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "a221b594-a8e2-4bee-b992-f3cbf187dba3",
+        "file_name": "fist_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/fist_공/fist_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/567577df-9cc6-4028-a4b1-62e5f4fbaef1.png"
+      },
+      {
+        "id": "d4e772e9-a591-4ec3-a3dd-13bfa156eb18",
+        "file_name": "fist_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/fist_공/fist_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/9ad820a2-ecdb-42f3-b61a-dce514d443f1.png"
+      }
+    ]
+  },
+  "목": {
+    "word": "목",
+    "name_en": "axe",
+    "category_group": "01_무기_공격",
+    "desc": "목 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "45a34db8-0004-483f-aed3-7f999be5646c",
+        "file_name": "axe_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_목/axe_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/f2f389ff-034b-4273-a33e-0fd585ece7cf.png"
+      },
+      {
+        "id": "118ef4e5-b0e2-46d1-80e8-ca601d6be714",
+        "file_name": "axe_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/axe_목/axe_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/0bb60132-3a34-4ec8-b8bf-88ce172c88ff.png"
+      }
+    ]
+  },
+  "골": {
+    "word": "골",
+    "name_en": "mace",
+    "category_group": "01_무기_공격",
+    "desc": "골 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "6749e78f-2f97-44ad-9eb3-fe3566f4a502",
+        "file_name": "mace_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/mace_골/mace_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/2bf8a720-6a81-4b5d-97c7-5ee7ffac278a.png"
+      },
+      {
+        "id": "1743ccf1-a22b-4eea-b631-1f6afa8e540a",
+        "file_name": "mace_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/mace_골/mace_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/562d9620-a282-49b2-924c-8a1588f4cb8d.png"
+      }
+    ]
+  },
+  "쇠": {
+    "word": "쇠",
+    "name_en": "iron",
+    "category_group": "01_무기_공격",
+    "desc": "쇠 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "681c3651-f5a7-49a9-820b-03e27e9b0778",
+        "file_name": "iron_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/iron_쇠/iron_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/6262fa95-8c08-4b3f-a71b-25d1936ab760.png"
+      },
+      {
+        "id": "98adbbc8-4f26-4c88-959f-6d4f0bce8d8b",
+        "file_name": "iron_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/iron_쇠/iron_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/87574e0c-3423-40da-87dd-9638ea834436.png"
+      }
+    ]
+  },
+  "못": {
+    "word": "못",
+    "name_en": "spike",
+    "category_group": "01_무기_공격",
+    "desc": "못 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "94fb4465-0d3f-4ce9-8b2b-26d8d2aaaa89",
+        "file_name": "spike_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/spike_못/spike_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/8065d354-fbd1-4032-8051-721a8e0949df.png"
+      },
+      {
+        "id": "2333fe4a-73dd-4f85-ae61-c2f94d7c34ad",
+        "file_name": "spike_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/spike_못/spike_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/6de38bdb-4140-47a8-acba-1b0dd132fb17.png"
+      }
+    ]
+  },
+  "날": {
+    "word": "날",
+    "name_en": "blade",
+    "category_group": "01_무기_공격",
+    "desc": "날 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "406dc246-881a-4b37-af0d-2bc18f65a2eb",
+        "file_name": "blade_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/blade_날/blade_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/c502bdb3-f293-4148-94d9-d346d3f5ba8a.png"
+      },
+      {
+        "id": "96ad647e-891f-416d-b798-c48f2a3d7b7a",
+        "file_name": "blade_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/blade_날/blade_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/b5b0e321-ee36-4270-b063-a2cc3c61d24f.png"
+      }
+    ]
+  },
+  "삭": {
+    "word": "삭",
+    "name_en": "wind_slash",
+    "category_group": "01_무기_공격",
+    "desc": "삭 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "3a604ba1-2c44-4dfa-81c1-79a6975723f3",
+        "file_name": "wind_slash_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/wind_slash_삭/wind_slash_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/e21dd913-7df2-436c-ac23-fa9133f45ddf.png"
+      },
+      {
+        "id": "64c1fb5d-e30d-4664-b6d3-01ea938b91c3",
+        "file_name": "wind_slash_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/wind_slash_삭/wind_slash_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Spear, Polearm, Gauntlet",
+        "url": "https://cdn.aetherforgeai.com/assets/1de712bb-eb81-4460-a644-c422be8597c9.png"
+      }
+    ]
+  },
+  "일": {
+    "word": "일",
+    "name_en": "strike",
+    "category_group": "01_무기_공격",
+    "desc": "일 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "334a89b7-70d8-4ffb-8b78-85d403c51803",
+        "file_name": "strike_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/strike_일/strike_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/23bbafe1-493a-4bde-a7a9-a9f8f64227b2.png"
+      },
+      {
+        "id": "784d60bd-d47a-4c57-8674-e1e0d9ec12bb",
+        "file_name": "strike_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/strike_일/strike_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/30b039b5-6342-4b46-86bd-860ec6afdfb4.png"
+      }
+    ]
+  },
+  "십": {
+    "word": "십",
+    "name_en": "cross_sword",
+    "category_group": "01_무기_공격",
+    "desc": "십 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "351891e5-8ec2-427d-97e3-075c73a4f86a",
+        "file_name": "cross_sword_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/cross_sword_십/cross_sword_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/9a522a73-d6c5-4df5-871f-bd6a44b7ffa8.png"
+      },
+      {
+        "id": "43583041-c15a-4dc2-a9e9-5f7171c341a1",
+        "file_name": "cross_sword_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/cross_sword_십/cross_sword_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Sword, Greatsword, Dagger",
+        "url": "https://cdn.aetherforgeai.com/assets/2636bab1-1c0a-448e-ac4b-ee55c3f1a04c.png"
+      }
+    ]
+  },
+  "박": {
+    "word": "박",
+    "name_en": "ram",
+    "category_group": "01_무기_공격",
+    "desc": "박 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d400e30e-9ac1-4fc0-b606-aac5c97d3c4f",
+        "file_name": "ram_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/ram_박/ram_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/c8fbea8d-ac52-4812-a99c-00005240e661.png"
+      },
+      {
+        "id": "eea715d8-8c9d-43d1-9971-aa3c33e94e87",
+        "file_name": "ram_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/ram_박/ram_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/1983ca75-883a-41bc-a89a-a903b373d068.png"
+      }
+    ]
+  },
+  "발": {
+    "word": "발",
+    "name_en": "shot",
+    "category_group": "01_무기_공격",
+    "desc": "발 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "4b18ebe0-20cf-4fa9-8697-36e1eeb7ed9d",
+        "file_name": "shot_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/shot_발/shot_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/f5da9803-6602-448e-be79-0b4c0a601825.png"
+      },
+      {
+        "id": "702e3cab-d7d9-43e6-a59a-1a2cb6950099",
+        "file_name": "shot_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/shot_발/shot_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/dd337cee-af02-455e-a47c-96b88fa0b2b6.png"
+      }
+    ]
+  },
+  "괴": {
+    "word": "괴",
+    "name_en": "monster_arm",
+    "category_group": "01_무기_공격",
+    "desc": "괴 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "60d57153-69d8-4357-bbfb-525d73fe5c96",
+        "file_name": "monster_arm_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/monster_arm_괴/monster_arm_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/89e7dabe-cb9a-4ff7-b9eb-ffafe11ded22.png"
+      },
+      {
+        "id": "e925972a-09c9-4a5b-bf3a-d1a5b6389a99",
+        "file_name": "monster_arm_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/monster_arm_괴/monster_arm_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/089c20bc-c4dc-4586-9cf6-b1ceac2c31fe.png"
+      }
+    ]
+  },
+  "시": {
+    "word": "시",
+    "name_en": "arrow",
+    "category_group": "01_무기_공격",
+    "desc": "시 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "2dda0cb4-4b27-4a8c-a7df-8c32997706d0",
+        "file_name": "arrow_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/arrow_시/arrow_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/805cf3d9-c6b1-4662-86a2-ad1f4c10cb6e.png"
+      },
+      {
+        "id": "99023131-56a7-401d-a70d-0416aaf6e88a",
+        "file_name": "arrow_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/arrow_시/arrow_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Bow, Crossbow, Gun",
+        "url": "https://cdn.aetherforgeai.com/assets/1d9acb72-8539-4c23-8994-aacfe46c6620.png"
+      }
+    ]
+  },
+  "구": {
+    "word": "구",
+    "name_en": "orb",
+    "category_group": "01_무기_공격",
+    "desc": "구 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "a1adc0d6-7803-4da4-9026-90e4340a5c13",
+        "file_name": "orb_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/orb_구/orb_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/332002a2-40b6-4870-a20f-4a98d0231951.png"
+      },
+      {
+        "id": "d94de8e5-0c4e-4aaa-82c9-94a9f5317c82",
+        "file_name": "orb_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/orb_구/orb_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/24bcc11a-4291-44ef-8c83-cca4df207ac1.png"
+      }
+    ]
+  },
+  "상": {
+    "word": "상",
+    "name_en": "wound",
+    "category_group": "01_무기_공격",
+    "desc": "상 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "0b59f16d-cd0e-42be-9196-fa5419e2491b",
+        "file_name": "wound_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/wound_상/wound_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/d975f9c3-c659-475b-8eeb-58a1c4cea483.png"
+      },
+      {
+        "id": "c47927ee-4c35-41e9-ab43-2f4f97d2ea01",
+        "file_name": "wound_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/wound_상/wound_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/124fd3f1-1f9f-45e5-a6ee-85a7e194ae48.png"
+      }
+    ]
+  },
+  "압": {
+    "word": "압",
+    "name_en": "press",
+    "category_group": "01_무기_공격",
+    "desc": "압 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "8f965e6a-48bb-484c-8a77-f95da6b062b2",
+        "file_name": "press_1_32px_pastel.png",
+        "relative_path": "01_무기_공격/press_압/press_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/ce9f1d02-82d9-409a-a850-5f7b7d37f522.png"
+      },
+      {
+        "id": "84cb4749-60f2-4dcd-b9dc-cebbae280dd8",
+        "file_name": "press_2_32px_pastel.png",
+        "relative_path": "01_무기_공격/press_압/press_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Axe, Hammer, Mace",
+        "url": "https://cdn.aetherforgeai.com/assets/4161c78d-ff68-47fe-9743-2a8c77b0093c.png"
+      }
+    ]
+  },
+  "산": {
+    "word": "산",
+    "name_en": "mountain",
+    "category_group": "02_방어_장비",
+    "desc": "산 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "67426ef5-671b-45f4-82dc-561c497e2f1e",
+        "file_name": "mountain_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/mountain_산/mountain_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/60609590-94b9-479b-a724-2ef7ef2885f3.png"
+      },
+      {
+        "id": "df1ad8e2-d529-4d46-89ab-c49e886adb60",
+        "file_name": "mountain_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/mountain_산/mountain_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/fe63bd66-bab8-40e0-a954-ab22289356b2.png"
+      }
+    ]
+  },
+  "막": {
+    "word": "막",
+    "name_en": "barrier",
+    "category_group": "02_방어_장비",
+    "desc": "막 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "f02791ea-7b1b-48be-ad85-a37b25f66974",
+        "file_name": "barrier_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/barrier_막/barrier_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/062c7efe-dcc8-4e33-acd6-b23a47f643c6.png"
+      },
+      {
+        "id": "9944c434-13c9-4ec2-85d6-fae0617f2888",
+        "file_name": "barrier_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/barrier_막/barrier_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/1b223b04-6e3e-4064-a0f9-0af63d3f4ffc.png"
+      }
+    ]
+  },
+  "궁": {
+    "word": "궁",
+    "name_en": "palace",
+    "category_group": "02_방어_장비",
+    "desc": "궁 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "34390fcc-a9eb-4167-96a9-3f0d3f1018b9",
+        "file_name": "palace_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/palace_궁/palace_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/b0f42e38-bcbd-45cb-ab0b-9a76f631a11d.png"
+      },
+      {
+        "id": "01d845b6-19b3-4504-98cb-d3ae3f0458dd",
+        "file_name": "palace_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/palace_궁/palace_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/fe1a4d54-416a-4402-872c-30fff5547bd7.png"
+      }
+    ]
+  },
+  "인": {
+    "word": "인",
+    "name_en": "medal_patience",
+    "category_group": "02_방어_장비",
+    "desc": "인 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b4ccc1bf-6ce1-4e07-aa7d-45ed9e0500df",
+        "file_name": "medal_patience_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/medal_patience_인/medal_patience_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/5954db97-6435-4f7e-8773-be8fd16176a2.png"
+      },
+      {
+        "id": "2a94e9d6-b25f-40d9-a100-9b19e5997ab1",
+        "file_name": "medal_patience_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/medal_patience_인/medal_patience_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/ef245943-751b-4a79-b5e4-b713c54270b2.png"
+      }
+    ]
+  },
+  "보": {
+    "word": "보",
+    "name_en": "fortress",
+    "category_group": "02_방어_장비",
+    "desc": "보 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "24659adc-66c9-4312-8a0f-9ee9b23b3b91",
+        "file_name": "fortress_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/fortress_보/fortress_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/6c80ad9a-7c86-44d6-99e3-3f9d814b674d.png"
+      },
+      {
+        "id": "4c5d056a-db6d-4808-8a62-7cd9f38a73d5",
+        "file_name": "fortress_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/fortress_보/fortress_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/1d60e9f7-5f96-4b6b-8994-44864f2ab9c0.png"
+      }
+    ]
+  },
+  "언": {
+    "word": "언",
+    "name_en": "vow_seal",
+    "category_group": "02_방어_장비",
+    "desc": "언 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "66066064-119b-4999-816c-5245056a67e9",
+        "file_name": "vow_seal_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/vow_seal_언/vow_seal_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/c25613a5-99a5-4a4b-b505-72069e9d680f.png"
+      },
+      {
+        "id": "bbc60e2e-fddb-4786-8c4b-e345665a56eb",
+        "file_name": "vow_seal_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/vow_seal_언/vow_seal_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/9f46a3c6-4957-4373-8662-380ae271736e.png"
+      }
+    ]
+  },
+  "위": {
+    "word": "위",
+    "name_en": "orbit_shield",
+    "category_group": "02_방어_장비",
+    "desc": "위 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "fd2bc50d-cdd3-49d2-adc4-afac459ea7b2",
+        "file_name": "orbit_shield_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/orbit_shield_위/orbit_shield_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/208182cc-3853-4fe9-a71c-a8f5380c01c9.png"
+      },
+      {
+        "id": "f9099f49-c84c-4ee0-83d2-1e30bfd24e63",
+        "file_name": "orbit_shield_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/orbit_shield_위/orbit_shield_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/bd1c28ca-e03c-45d8-881e-1014f17bcea4.png"
+      }
+    ]
+  },
+  "누": {
+    "word": "누",
+    "name_en": "tower",
+    "category_group": "02_방어_장비",
+    "desc": "누 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "8cefd79f-ec15-45e4-8f55-84c3d3c9439c",
+        "file_name": "tower_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/tower_누/tower_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/4bbe3379-5d42-4182-bd5a-98a1e2f15c84.png"
+      },
+      {
+        "id": "fd96b027-1641-460a-9b0e-856a1bb1acfa",
+        "file_name": "tower_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/tower_누/tower_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/ee3b603b-2ade-43fb-941d-0361e6d92117.png"
+      }
+    ]
+  },
+  "울": {
+    "word": "울",
+    "name_en": "fence",
+    "category_group": "02_방어_장비",
+    "desc": "울 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "2abe0846-455e-491d-983c-e193dfd5c917",
+        "file_name": "fence_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/fence_울/fence_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/87291084-1230-4cf6-a064-4d3d8a105b23.png"
+      },
+      {
+        "id": "05b4c645-846d-42b2-9a7e-8596b9aa20d9",
+        "file_name": "fence_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/fence_울/fence_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Building",
+        "url": "https://cdn.aetherforgeai.com/assets/5479f490-1900-4c75-9de0-c948f8442c7e.png"
+      }
+    ]
+  },
+  "솜": {
+    "word": "솜",
+    "name_en": "cotton",
+    "category_group": "02_방어_장비",
+    "desc": "솜 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "39726b45-923c-4b50-a6a3-ba108d864d1e",
+        "file_name": "cotton_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/cotton_솜/cotton_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Textile Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/9b3621fd-78c7-4869-832e-75d997b620bb.png"
+      },
+      {
+        "id": "e92dc354-9c1d-4173-a7b5-47e7debbe458",
+        "file_name": "cotton_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/cotton_솜/cotton_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Textile Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/27a5ed9b-1872-43fa-b5c3-c139574ec048.png"
+      }
+    ]
+  },
+  "빙": {
+    "word": "빙",
+    "name_en": "ice",
+    "category_group": "03_원소_마법",
+    "desc": "빙 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b9d3b0a5-742d-481d-b6b2-1c03e79db900",
+        "file_name": "ice_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/e2cde03e-2c2c-4ea1-a189-26d54ad52362.png"
+      },
+      {
+        "id": "8e1d1e2f-29a3-42b5-a083-9601843d68dd",
+        "file_name": "ice_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/ice_빙/ice_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/8f74db9e-d336-4af4-ae08-3a1d20879f73.png"
+      }
+    ]
+  },
+  "비": {
+    "word": "비",
+    "name_en": "rain",
+    "category_group": "03_원소_마법",
+    "desc": "비 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "rain_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/rain_비/rain_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "rain_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/rain_비/rain_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "광": {
+    "word": "광",
+    "name_en": "flash",
+    "category_group": "03_원소_마법",
+    "desc": "광 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "743f6499-48bd-468c-b0fb-35c7e19d50cd",
+        "file_name": "flash_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/flash_광/flash_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/4928b978-1058-418a-9a46-bfec94b77afa.png"
+      },
+      {
+        "id": "11e31468-2fe9-4f4d-bb92-ecc71680e062",
+        "file_name": "flash_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/flash_광/flash_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/fc3e5498-8a47-43da-a644-81cc7a5a2f0d.png"
+      }
+    ]
+  },
+  "노": {
+    "word": "노",
+    "name_en": "ember",
+    "category_group": "03_원소_마법",
+    "desc": "노 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "ember_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/ember_노/ember_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "ember_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/ember_노/ember_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "암": {
+    "word": "암",
+    "name_en": "darkness",
+    "category_group": "03_원소_마법",
+    "desc": "암 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "4a22c2e7-d670-43db-9a3e-408006b182f3",
+        "file_name": "darkness_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/darkness_암/darkness_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/e50221fa-f385-42bc-8ec2-2b524bc6bc75.png"
+      },
+      {
+        "id": "410e247a-65a0-4ec8-9b98-d312efac8851",
+        "file_name": "darkness_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/darkness_암/darkness_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/3890f936-5b96-46d1-a457-0682419674dc.png"
+      }
+    ]
+  },
+  "얼": {
+    "word": "얼",
+    "name_en": "freeze",
+    "category_group": "03_원소_마법",
+    "desc": "얼 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "1efd775e-0456-4392-a7c9-32359b34559f",
+        "file_name": "freeze_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/freeze_얼/freeze_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/31ca54a0-46b4-4562-b589-ca9e3ca8ae60.png"
+      },
+      {
+        "id": "8fea525f-6760-4a59-9341-7b37ee44033b",
+        "file_name": "freeze_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/freeze_얼/freeze_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/ad84b584-fd38-4c1f-a3ae-6231aefb58a1.png"
+      }
+    ]
+  },
+  "음": {
+    "word": "음",
+    "name_en": "soundwave",
+    "category_group": "03_원소_마법",
+    "desc": "음 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "839c52e3-2ce4-4938-95dd-d95afca13589",
+        "file_name": "soundwave_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/soundwave_음/soundwave_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Prop",
+        "url": "https://cdn.aetherforgeai.com/assets/f7a3e04a-0a84-4a4d-ac1e-7b6004180151.png"
+      },
+      {
+        "id": "4e4f3934-f634-4c06-abc0-92f71eeec1f8",
+        "file_name": "soundwave_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/soundwave_음/soundwave_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Prop",
+        "url": "https://cdn.aetherforgeai.com/assets/c06cd22d-0445-4d74-9684-6de55eff8486.png"
+      }
+    ]
+  },
+  "말": {
+    "word": "말",
+    "name_en": "horse",
+    "category_group": "04_생물_소환",
+    "desc": "말 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "eb24c8c3-a34e-49c2-af34-8e9f4cf346ed",
+        "file_name": "horse_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/horse_말/horse_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/d8ec82a7-d246-4aad-9342-f0324fa04151.png"
+      },
+      {
+        "id": "a57ca29f-986b-4bb5-929b-413c7b43c57a",
+        "file_name": "horse_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/horse_말/horse_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/03a5f2ad-1fb5-4a49-81d4-99fa35922d86.png"
+      }
+    ]
+  },
+  "소": {
+    "word": "소",
+    "name_en": "bull",
+    "category_group": "04_생물_소환",
+    "desc": "소 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "07c6dc43-0a46-4438-a105-b8b64d291957",
+        "file_name": "bull_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/bull_소/bull_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/771f6200-0135-432a-9dd6-f2c6213622cb.png"
+      },
+      {
+        "id": "29eb1359-b764-4a9b-885c-390a1a06e66e",
+        "file_name": "bull_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/bull_소/bull_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/858f5bad-3dc4-4d34-b640-bc42c2e13769.png"
+      }
+    ]
+  },
+  "벌": {
+    "word": "벌",
+    "name_en": "wasp_bee",
+    "category_group": "04_생물_소환",
+    "desc": "벌 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "f7849448-922e-4307-b77d-c5ce5dc84539",
+        "file_name": "wasp_bee_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/wasp_bee_벌/wasp_bee_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/712d5626-35d9-4aef-a7c7-a2f34ca9ebd0.png"
+      },
+      {
+        "id": "87f03e22-bdf2-4a7a-8848-798f9c58fdeb",
+        "file_name": "wasp_bee_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/wasp_bee_벌/wasp_bee_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/0ac12dc7-ff6c-491d-b8e8-a0b404e33915.png"
+      }
+    ]
+  },
+  "범": {
+    "word": "범",
+    "name_en": "tiger",
+    "category_group": "04_생물_소환",
+    "desc": "범 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "42e77187-cae5-4659-930b-57fa40b906dd",
+        "file_name": "tiger_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/tiger_범/tiger_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/3a9d329b-d814-45fa-b8f4-64e8892f1d47.png"
+      },
+      {
+        "id": "65e9a6d3-9570-4c31-b5db-d62438dde640",
+        "file_name": "tiger_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/tiger_범/tiger_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/c90329f1-5603-4694-b781-9ef9cd1237da.png"
+      }
+    ]
+  },
+  "매": {
+    "word": "매",
+    "name_en": "hawk_eagle",
+    "category_group": "04_생물_소환",
+    "desc": "매 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b9eac8b0-cc04-49e6-bf48-88eb8f5c4298",
+        "file_name": "hawk_eagle_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/hawk_eagle_매/hawk_eagle_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/14a91078-c28b-455a-bb49-65289f4b9e1c.png"
+      },
+      {
+        "id": "37d3aecf-add3-4320-92c5-09d47aaf9692",
+        "file_name": "hawk_eagle_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/hawk_eagle_매/hawk_eagle_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/f199e4b4-2c38-45b2-99f6-57704fc63745.png"
+      }
+    ]
+  },
+  "알": {
+    "word": "알",
+    "name_en": "egg",
+    "category_group": "04_생물_소환",
+    "desc": "알 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "fc96184e-e751-40db-a84b-f57147f70295",
+        "file_name": "egg_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/egg_알/egg_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/298b8400-4353-4aa8-b76d-2a11d52e0c0c.png"
+      },
+      {
+        "id": "13daa8ca-5bee-45f3-ad1f-870c38421bab",
+        "file_name": "egg_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/egg_알/egg_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/4e2bdb79-6b7c-4d7e-9e20-a2ec38dd5180.png"
+      }
+    ]
+  },
+  "낭": {
+    "word": "낭",
+    "name_en": "wolf",
+    "category_group": "04_생물_소환",
+    "desc": "낭 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "5520b3e3-85a4-471f-a3df-b89de742d07e",
+        "file_name": "wolf_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/wolf_낭/wolf_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/31669507-22af-463c-b73d-4affd982639f.png"
+      },
+      {
+        "id": "4131d1c2-b13f-4c65-8f3d-c7f09aa88932",
+        "file_name": "wolf_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/wolf_낭/wolf_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/6d01725a-1807-4c37-8d0b-75a303dba9e3.png"
+      }
+    ]
+  },
+  "어": {
+    "word": "어",
+    "name_en": "fish",
+    "category_group": "04_생물_소환",
+    "desc": "어 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "aa88cc65-0430-45ca-a94a-55c34918fdf9",
+        "file_name": "fish_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/fish_어/fish_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/43a73120-e9ac-4e8b-a0cf-ce5a4e67afae.png"
+      },
+      {
+        "id": "4757846d-ba7e-4c73-aa9d-dfa3405e0330",
+        "file_name": "fish_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/fish_어/fish_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster",
+        "url": "https://cdn.aetherforgeai.com/assets/b37a593f-7045-471d-bff0-fbf2d520b2e2.png"
+      }
+    ]
+  },
+  "익": {
+    "word": "익",
+    "name_en": "wing",
+    "category_group": "04_생물_소환",
+    "desc": "익 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "28b0029f-a221-4e21-bf04-e8f599fc503a",
+        "file_name": "wing_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/wing_익/wing_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/2fa47e98-9a58-4870-a7f2-348af7976dcb.png"
+      },
+      {
+        "id": "1d750b2e-da88-417f-b48f-7c15f6961e49",
+        "file_name": "wing_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/wing_익/wing_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Head Accessory, Wings",
+        "url": "https://cdn.aetherforgeai.com/assets/a6d89ba2-7c81-4424-9448-f2cf2055d8fa.png"
+      }
+    ]
+  },
+  "솔": {
+    "word": "솔",
+    "name_en": "pinecone",
+    "category_group": "04_생물_소환",
+    "desc": "솔 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "15dc1acb-5ea1-4f43-8cd0-3ba5f2215885",
+        "file_name": "pinecone_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/pinecone_솔/pinecone_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/b7df4481-c26d-49af-ba4f-27a57966198f.png"
+      },
+      {
+        "id": "8801e6fe-6b81-430c-8691-3a60e64af331",
+        "file_name": "pinecone_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/pinecone_솔/pinecone_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/c767a83a-d321-4f89-ab44-c22ffad897e7.png"
+      }
+    ]
+  },
+  "생": {
+    "word": "생",
+    "name_en": "life_sprout",
+    "category_group": "06_회복_치유",
+    "desc": "생 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "9f48cb1e-0815-4277-839b-c42f2a3fa1b9",
+        "file_name": "life_sprout_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/life_sprout_생/life_sprout_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/01eb26ab-4bc1-4742-b102-8a8c8ca26668.png"
+      },
+      {
+        "id": "d89ec60a-632a-416a-836d-e742634df497",
+        "file_name": "life_sprout_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/life_sprout_생/life_sprout_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/74092705-e16f-4dc9-809c-fa57a77fafc7.png"
+      }
+    ]
+  },
+  "감": {
+    "word": "감",
+    "name_en": "persimmon",
+    "category_group": "06_회복_치유",
+    "desc": "감 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "1fe30510-e4e8-4b58-a9f0-994d1aab5c35",
+        "file_name": "persimmon_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/persimmon_감/persimmon_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/bf079e76-0465-4c9b-9302-a266d1ed7780.png"
+      },
+      {
+        "id": "0698a004-6779-43e1-82cd-0d62f3b278cf",
+        "file_name": "persimmon_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/persimmon_감/persimmon_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/4bff2344-03c4-4f36-b97d-103e258c7dde.png"
+      }
+    ]
+  },
+  "살": {
+    "word": "살",
+    "name_en": "flesh_heal",
+    "category_group": "06_회복_치유",
+    "desc": "살 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "f713a21f-8203-4498-9000-828cea9d9c09",
+        "file_name": "flesh_heal_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/flesh_heal_살/flesh_heal_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/875c83cc-d1be-4ed2-9e8c-f1ad26493a26.png"
+      },
+      {
+        "id": "f07e355d-2c50-4390-b7c2-1b8c639baf48",
+        "file_name": "flesh_heal_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/flesh_heal_살/flesh_heal_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/713798dc-0b1b-41c1-ab40-d0e524018a14.png"
+      }
+    ]
+  },
+  "봄": {
+    "word": "봄",
+    "name_en": "spring_season",
+    "category_group": "06_회복_치유",
+    "desc": "봄 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "8040e721-c1ee-4614-b838-e8c8b211c43c",
+        "file_name": "spring_season_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/spring_season_봄/spring_season_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/df5f23b7-2adb-46a7-900a-70a879e31efc.png"
+      },
+      {
+        "id": "03005bbc-d4ae-456a-a5c1-15656eec30b7",
+        "file_name": "spring_season_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/spring_season_봄/spring_season_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/1cc06eff-6430-496a-a75b-cb4d0f83e4f7.png"
+      }
+    ]
+  },
+  "식": {
+    "word": "식",
+    "name_en": "food_rice",
+    "category_group": "06_회복_치유",
+    "desc": "식 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "52502de5-5f90-43ba-ad85-eef417cf768c",
+        "file_name": "food_rice_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/food_rice_식/food_rice_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/95edc807-ee8e-4d40-8e88-11bd6c44cbf8.png"
+      },
+      {
+        "id": "2b8cf5ed-3478-47fd-be6c-9f4a6e808988",
+        "file_name": "food_rice_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/food_rice_식/food_rice_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d360cc8a-5e3c-48e0-8fdc-86a22866e2e6.png"
+      }
+    ]
+  },
+  "실": {
+    "word": "실",
+    "name_en": "thread_stitch",
+    "category_group": "06_회복_치유",
+    "desc": "실 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "4d205985-e5d0-4972-af74-f0205702e5a5",
+        "file_name": "thread_stitch_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/thread_stitch_실/thread_stitch_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Textile Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/0eadc9f6-ad12-44ed-82a5-db559ad22542.png"
+      },
+      {
+        "id": "0c48b6d4-e12a-4c4c-b9ff-1e4b2796299d",
+        "file_name": "thread_stitch_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/thread_stitch_실/thread_stitch_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Textile Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/aed78e01-c788-46d0-8a91-7ba5a2a1e783.png"
+      }
+    ]
+  },
+  "입": {
+    "word": "입",
+    "name_en": "mouth_blood",
+    "category_group": "06_회복_치유",
+    "desc": "입 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "e855c238-e289-4218-a264-8288c3930c0a",
+        "file_name": "mouth_blood_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/mouth_blood_입/mouth_blood_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/2b262d02-c1a5-44ea-b7fe-6be77e394bdd.png"
+      },
+      {
+        "id": "37200fd0-4a37-4b54-b07d-1f33c857a39a",
+        "file_name": "mouth_blood_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/mouth_blood_입/mouth_blood_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/a04eb3a9-b9da-4789-aec3-06ce3eda3aa4.png"
+      }
+    ]
+  },
+  "맛": {
+    "word": "맛",
+    "name_en": "food_tasty",
+    "category_group": "06_회복_치유",
+    "desc": "맛 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "6359dce4-efa8-4022-ae72-856d87cf1fd3",
+        "file_name": "food_tasty_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/food_tasty_맛/food_tasty_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/f20f7cb6-57fc-44b4-839b-615656dcc0c5.png"
+      },
+      {
+        "id": "e32ccd98-6c9a-4de2-a640-1c310799a08c",
+        "file_name": "food_tasty_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/food_tasty_맛/food_tasty_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/fc2bb0aa-0874-4389-9059-8e338224bd9d.png"
+      }
+    ]
+  },
+  "무": {
+    "word": "무",
+    "name_en": "radish",
+    "category_group": "06_회복_치유",
+    "desc": "무 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b42840aa-b2db-4747-aeae-c00903ce7504",
+        "file_name": "radish_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/radish_무/radish_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/76e70801-3b64-4324-9e65-8b362ccb8b97.png"
+      },
+      {
+        "id": "b801461c-86ce-4cb9-8842-2e7a13211492",
+        "file_name": "radish_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/radish_무/radish_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/e7626cb0-05c5-4615-a96b-cc4f1992921d.png"
+      }
+    ]
+  },
+  "마": {
+    "word": "마",
+    "name_en": "yam_herb",
+    "category_group": "06_회복_치유",
+    "desc": "마 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "62631e05-259d-42c9-a801-2ea392f5e7d5",
+        "file_name": "yam_herb_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/yam_herb_마/yam_herb_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/6b9f2403-2a78-43f5-9a47-f2f78dfcfb62.png"
+      },
+      {
+        "id": "1ac39b4c-a6d8-4722-8383-b0f5fb70c21f",
+        "file_name": "yam_herb_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/yam_herb_마/yam_herb_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/ab29f7d4-e342-4621-817c-0bd429f6ec16.png"
+      }
+    ]
+  },
+  "묵": {
+    "word": "묵",
+    "name_en": "jelly_food",
+    "category_group": "06_회복_치유",
+    "desc": "묵 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "cc4514e5-1d83-4f73-a8d2-0efbd326f74d",
+        "file_name": "jelly_food_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/jelly_food_묵/jelly_food_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/7d153e2a-b116-439d-9bd1-2c0f47e49fa7.png"
+      },
+      {
+        "id": "55a8c44d-102c-421f-9a96-2e59a9a435b0",
+        "file_name": "jelly_food_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/jelly_food_묵/jelly_food_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Consumables",
+        "url": "https://cdn.aetherforgeai.com/assets/c1e0a256-4c8c-4bc8-bafa-019bb2b891e2.png"
+      }
+    ]
+  },
+  "속": {
+    "word": "속",
+    "name_en": "speed_boots",
+    "category_group": "07_버프_유틸",
+    "desc": "속 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "314f9662-2bb6-40f8-a6cb-c998e98c6b83",
+        "file_name": "speed_boots_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/speed_boots_속/speed_boots_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Belt, Cape, Cloak, Mask, Shoulder Accessory",
+        "url": "https://cdn.aetherforgeai.com/assets/915ceb7b-61e4-4680-bfc0-d6e0a8e6ff61.png"
+      },
+      {
+        "id": "d2aeef2b-f831-4cec-9025-9caaf7f48350",
+        "file_name": "speed_boots_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/speed_boots_속/speed_boots_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Belt, Cape, Cloak, Mask, Shoulder Accessory",
+        "url": "https://cdn.aetherforgeai.com/assets/3217fe99-d63d-476d-9d11-702e38697a26.png"
+      }
+    ]
+  },
+  "능": {
+    "word": "능",
+    "name_en": "power_orb",
+    "category_group": "07_버프_유틸",
+    "desc": "능 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "8a14795a-20bd-4de7-aa68-8f16fb880623",
+        "file_name": "power_orb_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/power_orb_능/power_orb_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/7a3eb6fd-31f0-42fb-8581-1a707e564e45.png"
+      },
+      {
+        "id": "74da4a61-ea29-44e0-ac22-2f3bee8c7046",
+        "file_name": "power_orb_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/power_orb_능/power_orb_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Staff, Wand, Orb, Spellbook",
+        "url": "https://cdn.aetherforgeai.com/assets/f87e592f-862f-40b7-bfb7-58c9d5c18d7f.png"
+      }
+    ]
+  },
+  "심": {
+    "word": "심",
+    "name_en": "heart",
+    "category_group": "07_버프_유틸",
+    "desc": "심 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "7870a677-450c-4ae9-85e0-fc75b2353f6c",
+        "file_name": "heart_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/heart_심/heart_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/b15e9c1f-a6f1-4353-b3c5-7b692bb9eb56.png"
+      },
+      {
+        "id": "0b2f5a50-aa19-407c-97e3-77a64afffced",
+        "file_name": "heart_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/heart_심/heart_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Monster Loot",
+        "url": "https://cdn.aetherforgeai.com/assets/d630e760-7af1-4837-ad8c-f6c7d86bf076.png"
+      }
+    ]
+  },
+  "금": {
+    "word": "금",
+    "name_en": "gold_coin",
+    "category_group": "07_버프_유틸",
+    "desc": "금 단어 에셋",
+    "asset_count": 1,
+    "assets": [
+      {
+        "id": "b750c285-6ed1-432f-bb18-61bfd58ee721",
+        "file_name": "gold_coin_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/gold_coin_금/gold_coin_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/b17b5a43-90c7-4f93-aa30-df206dd7c468.png"
+      }
+    ]
+  },
+  "송": {
+    "word": "송",
+    "name_en": "pine_resin",
+    "category_group": "07_버프_유틸",
+    "desc": "송 단어 에셋",
+    "asset_count": 1,
+    "assets": [
+      {
+        "id": "c0111782-2e89-4507-938a-7f4f5759e44f",
+        "file_name": "pine_resin_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/pine_resin_송/pine_resin_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Gathering Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/7b9967fb-96ad-4416-9b69-85aba8025e01.png"
+      }
+    ]
+  },
+  "완": {
+    "word": "완",
+    "name_en": "perfect_shield",
+    "category_group": "02_방어_장비",
+    "desc": "완 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "f02791ea-7b1b-48be-ad85-a37b25f66974",
+        "file_name": "perfect_shield_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/perfect_shield_완/perfect_shield_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/062c7efe-dcc8-4e33-acd6-b23a47f643c6.png"
+      },
+      {
+        "id": "9944c434-13c9-4ec2-85d6-fae0617f2888",
+        "file_name": "perfect_shield_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/perfect_shield_완/perfect_shield_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/1b223b04-6e3e-4064-a0f9-0af63d3f4ffc.png"
+      }
+    ]
+  },
+  "반": {
+    "word": "반",
+    "name_en": "counter_shield",
+    "category_group": "02_방어_장비",
+    "desc": "반 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "f02791ea-7b1b-48be-ad85-a37b25f66974",
+        "file_name": "counter_shield_1_32px_pastel.png",
+        "relative_path": "02_방어_장비/counter_shield_반/counter_shield_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/062c7efe-dcc8-4e33-acd6-b23a47f643c6.png"
+      },
+      {
+        "id": "9944c434-13c9-4ec2-85d6-fae0617f2888",
+        "file_name": "counter_shield_2_32px_pastel.png",
+        "relative_path": "02_방어_장비/counter_shield_반/counter_shield_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Whip, Scythe, Shield",
+        "url": "https://cdn.aetherforgeai.com/assets/1b223b04-6e3e-4064-a0f9-0af63d3f4ffc.png"
+      }
+    ]
+  },
+  "우": {
+    "word": "우",
+    "name_en": "thunder_rain",
+    "category_group": "03_원소_마법",
+    "desc": "우 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "thunder_rain_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/thunder_rain_우/thunder_rain_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "thunder_rain_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/thunder_rain_우/thunder_rain_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "와": {
+    "word": "와",
+    "name_en": "whirlpool_water",
+    "category_group": "03_원소_마법",
+    "desc": "와 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "whirlpool_water_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/whirlpool_water_와/whirlpool_water_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "whirlpool_water_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/whirlpool_water_와/whirlpool_water_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "업": {
+    "word": "업",
+    "name_en": "karma_ember",
+    "category_group": "03_원소_마법",
+    "desc": "업 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "karma_ember_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/karma_ember_업/karma_ember_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "karma_ember_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/karma_ember_업/karma_ember_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "석": {
+    "word": "석",
+    "name_en": "rock_stone",
+    "category_group": "03_원소_마법",
+    "desc": "석 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b9d3b0a5-742d-481d-b6b2-1c03e79db900",
+        "file_name": "rock_stone_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/rock_stone_석/rock_stone_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/e2cde03e-2c2c-4ea1-a189-26d54ad52362.png"
+      },
+      {
+        "id": "8e1d1e2f-29a3-42b5-a083-9601843d68dd",
+        "file_name": "rock_stone_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/rock_stone_석/rock_stone_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Minerals & Gem Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/8f74db9e-d336-4af4-ae08-3a1d20879f73.png"
+      }
+    ]
+  },
+  "선": {
+    "word": "선",
+    "name_en": "wind_mist",
+    "category_group": "03_원소_마법",
+    "desc": "선 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "wind_mist_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/wind_mist_선/wind_mist_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "wind_mist_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/wind_mist_선/wind_mist_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "섬": {
+    "word": "섬",
+    "name_en": "light_flash",
+    "category_group": "03_원소_마법",
+    "desc": "섬 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "4a22c2e7-d670-43db-9a3e-408006b182f3",
+        "file_name": "light_flash_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_flash_섬/light_flash_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/e50221fa-f385-42bc-8ec2-2b524bc6bc75.png"
+      },
+      {
+        "id": "410e247a-65a0-4ec8-9b98-d312efac8851",
+        "file_name": "light_flash_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/light_flash_섬/light_flash_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/3890f936-5b96-46d1-a457-0682419674dc.png"
+      }
+    ]
+  },
+  "수": {
+    "word": "수",
+    "name_en": "water_flow",
+    "category_group": "03_원소_마법",
+    "desc": "수 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "water_flow_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/water_flow_수/water_flow_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "water_flow_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/water_flow_수/water_flow_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "뇌": {
+    "word": "뇌",
+    "name_en": "lightning_bolt",
+    "category_group": "03_원소_마법",
+    "desc": "뇌 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "lightning_bolt_1_32px_pastel.png",
+        "relative_path": "03_원소_마법/lightning_bolt_뇌/lightning_bolt_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "lightning_bolt_2_32px_pastel.png",
+        "relative_path": "03_원소_마법/lightning_bolt_뇌/lightning_bolt_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "운": {
+    "word": "운",
+    "name_en": "fortune_cloud",
+    "category_group": "04_생물_소환",
+    "desc": "운 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b4ccc1bf-6ce1-4e07-aa7d-45ed9e0500df",
+        "file_name": "fortune_cloud_1_32px_pastel.png",
+        "relative_path": "04_생물_소환/fortune_cloud_운/fortune_cloud_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/5954db97-6435-4f7e-8773-be8fd16176a2.png"
+      },
+      {
+        "id": "2a94e9d6-b25f-40d9-a100-9b19e5997ab1",
+        "file_name": "fortune_cloud_2_32px_pastel.png",
+        "relative_path": "04_생물_소환/fortune_cloud_운/fortune_cloud_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/ef245943-751b-4a79-b5e4-b713c54270b2.png"
+      }
+    ]
+  },
+  "숨": {
+    "word": "숨",
+    "name_en": "breath_wind",
+    "category_group": "06_회복_치유",
+    "desc": "숨 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "breath_wind_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/breath_wind_숨/breath_wind_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "breath_wind_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/breath_wind_숨/breath_wind_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "샘": {
+    "word": "샘",
+    "name_en": "spring_water",
+    "category_group": "06_회복_치유",
+    "desc": "샘 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "spring_water_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/spring_water_샘/spring_water_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "spring_water_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/spring_water_샘/spring_water_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "내": {
+    "word": "내",
+    "name_en": "stream_water",
+    "category_group": "06_회복_치유",
+    "desc": "내 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "stream_water_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/stream_water_내/stream_water_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "stream_water_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/stream_water_내/stream_water_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "온": {
+    "word": "온",
+    "name_en": "warm_glow",
+    "category_group": "06_회복_치유",
+    "desc": "온 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "warm_glow_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/warm_glow_온/warm_glow_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "warm_glow_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/warm_glow_온/warm_glow_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "월": {
+    "word": "월",
+    "name_en": "moon_light",
+    "category_group": "06_회복_치유",
+    "desc": "월 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "66066064-119b-4999-816c-5245056a67e9",
+        "file_name": "moon_light_1_32px_pastel.png",
+        "relative_path": "06_회복_치유/moon_light_월/moon_light_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/c25613a5-99a5-4a4b-b505-72069e9d680f.png"
+      },
+      {
+        "id": "bbc60e2e-fddb-4786-8c4b-e345665a56eb",
+        "file_name": "moon_light_2_32px_pastel.png",
+        "relative_path": "06_회복_치유/moon_light_월/moon_light_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/9f46a3c6-4957-4373-8662-380ae271736e.png"
+      }
+    ]
+  },
+  "기": {
+    "word": "기",
+    "name_en": "chi_orb",
+    "category_group": "07_버프_유틸",
+    "desc": "기 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "fd2bc50d-cdd3-49d2-adc4-afac459ea7b2",
+        "file_name": "chi_orb_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/chi_orb_기/chi_orb_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/208182cc-3853-4fe9-a71c-a8f5380c01c9.png"
+      },
+      {
+        "id": "f9099f49-c84c-4ee0-83d2-1e30bfd24e63",
+        "file_name": "chi_orb_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/chi_orb_기/chi_orb_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/bd1c28ca-e03c-45d8-881e-1014f17bcea4.png"
+      }
+    ]
+  },
+  "이": {
+    "word": "이",
+    "name_en": "wisdom_gem",
+    "category_group": "07_버프_유틸",
+    "desc": "이 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "743f6499-48bd-468c-b0fb-35c7e19d50cd",
+        "file_name": "wisdom_gem_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/wisdom_gem_이/wisdom_gem_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/4928b978-1058-418a-9a46-bfec94b77afa.png"
+      },
+      {
+        "id": "11e31468-2fe9-4f4d-bb92-ecc71680e062",
+        "file_name": "wisdom_gem_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/wisdom_gem_이/wisdom_gem_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/fc3e5498-8a47-43da-a644-81cc7a5a2f0d.png"
+      }
+    ]
+  },
+  "모": {
+    "word": "모",
+    "name_en": "anvil_tool",
+    "category_group": "07_버프_유틸",
+    "desc": "모 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "94fb4465-0d3f-4ce9-8b2b-26d8d2aaaa89",
+        "file_name": "anvil_tool_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/anvil_tool_모/anvil_tool_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/8065d354-fbd1-4032-8051-721a8e0949df.png"
+      },
+      {
+        "id": "2333fe4a-73dd-4f85-ae61-c2f94d7c34ad",
+        "file_name": "anvil_tool_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/anvil_tool_모/anvil_tool_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Daily Tools",
+        "url": "https://cdn.aetherforgeai.com/assets/6de38bdb-4140-47a8-acba-1b0dd132fb17.png"
+      }
+    ]
+  },
+  "남": {
+    "word": "남",
+    "name_en": "wind_south",
+    "category_group": "07_버프_유틸",
+    "desc": "남 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "ab5d6dc4-2fe8-4160-ad1c-41d9baa292a9",
+        "file_name": "wind_south_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/wind_south_남/wind_south_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/d79c8a73-ab7a-463e-9f6e-ad586fb2f287.png"
+      },
+      {
+        "id": "801aaa8a-6156-410b-97e2-d309fc9e424c",
+        "file_name": "wind_south_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/wind_south_남/wind_south_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+      }
+    ]
+  },
+  "세": {
+    "word": "세",
+    "name_en": "power_surge",
+    "category_group": "07_버프_유틸",
+    "desc": "세 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "4a22c2e7-d670-43db-9a3e-408006b182f3",
+        "file_name": "power_surge_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/power_surge_세/power_surge_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/e50221fa-f385-42bc-8ec2-2b524bc6bc75.png"
+      },
+      {
+        "id": "410e247a-65a0-4ec8-9b98-d312efac8851",
+        "file_name": "power_surge_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/power_surge_세/power_surge_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/3890f936-5b96-46d1-a457-0682419674dc.png"
+      }
+    ]
+  },
+  "순": {
+    "word": "순",
+    "name_en": "pure_wind",
+    "category_group": "07_버프_유틸",
+    "desc": "순 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "d84bb30e-8b8e-43af-8945-b24f6999ef24",
+        "file_name": "pure_wind_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/pure_wind_순/pure_wind_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/3c0e0736-98df-4b4b-87f3-46a47d39dad7.png"
+      },
+      {
+        "id": "163fbf6a-7386-47d0-aac3-1b9697a5f55d",
+        "file_name": "pure_wind_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/pure_wind_순/pure_wind_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Alchemy Materials",
+        "url": "https://cdn.aetherforgeai.com/assets/a13debea-cc9e-490a-b5e6-d49607c240c4.png"
+      }
+    ]
+  },
+  "복": {
+    "word": "복",
+    "name_en": "fortune_lucky",
+    "category_group": "07_버프_유틸",
+    "desc": "복 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "b4ccc1bf-6ce1-4e07-aa7d-45ed9e0500df",
+        "file_name": "fortune_lucky_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/fortune_lucky_복/fortune_lucky_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/5954db97-6435-4f7e-8773-be8fd16176a2.png"
+      },
+      {
+        "id": "2a94e9d6-b25f-40d9-a100-9b19e5997ab1",
+        "file_name": "fortune_lucky_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/fortune_lucky_복/fortune_lucky_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/ef245943-751b-4a79-b5e4-b713c54270b2.png"
+      }
+    ]
+  },
+  "손": {
+    "word": "손",
+    "name_en": "hand_magic",
+    "category_group": "07_버프_유틸",
+    "desc": "손 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "66066064-119b-4999-816c-5245056a67e9",
+        "file_name": "hand_magic_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/hand_magic_손/hand_magic_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/c25613a5-99a5-4a4b-b505-72069e9d680f.png"
+      },
+      {
+        "id": "bbc60e2e-fddb-4786-8c4b-e345665a56eb",
+        "file_name": "hand_magic_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/hand_magic_손/hand_magic_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/9f46a3c6-4957-4373-8662-380ae271736e.png"
+      }
+    ]
+  },
+  "글": {
+    "word": "글",
+    "name_en": "rune_script",
+    "category_group": "07_버프_유틸",
+    "desc": "글 단어 에셋",
+    "asset_count": 2,
+    "assets": [
+      {
+        "id": "fd2bc50d-cdd3-49d2-adc4-afac459ea7b2",
+        "file_name": "rune_script_1_32px_pastel.png",
+        "relative_path": "07_버프_유틸/rune_script_글/rune_script_1_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/208182cc-3853-4fe9-a71c-a8f5380c01c9.png"
+      },
+      {
+        "id": "f9099f49-c84c-4ee0-83d2-1e30bfd24e63",
+        "file_name": "rune_script_2_32px_pastel.png",
+        "relative_path": "07_버프_유틸/rune_script_글/rune_script_2_32px_pastel.png",
+        "style": "32px_pastel",
+        "category": "Seal, Talisman, Artifact, Emblem",
+        "url": "https://cdn.aetherforgeai.com/assets/bd1c28ca-e03c-45d8-881e-1014f17bcea4.png"
+      }
+    ]
   }
 }
