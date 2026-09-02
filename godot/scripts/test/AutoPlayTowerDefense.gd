@@ -69,8 +69,27 @@ func run_step() -> void:
 			print(" -> 기지 상태: HP %d/%d, 골드: %d G" % [field.base_hp, field.max_base_hp, field.gold])
 
 		14:
+			print("\n[Step 6] 💾 게임 영구 저장 (Save Game) 테스트")
+			main_node.save_game_state()
+			assert(SaveManager.has_save_file(), "Save file must exist after saving!")
+			print(" -> 세이브 파일 저장 확인 완료!")
+
+			# 강제로 상태 변조 (테스트용)
+			main_node.defense_field.gold = 0
+			main_node.jamo_belt.jamo_list.clear()
+			print(" -> 상태 임의 변조: 골드 0, 자모 벨트 비움")
+
+		16:
+			print("\n[Step 7] 📂 게임 불러오기 (Load Game) 및 상태 복원 검증")
+			main_node._on_load_pressed()
+			print(" -> 복원된 자모 벨트: %s" % str(main_node.jamo_belt.jamo_list))
+			print(" -> 복원된 골드: %d G" % main_node.defense_field.gold)
+			assert(main_node.jamo_belt.jamo_list.size() > 0, "Jamo list should be restored!")
+			assert(main_node.defense_field.gold > 0, "Gold should be restored!")
+
+		18:
 			print("\n=======================================================")
-			print("🎉 [ALL TESTS PASSED] 1글자 / 2글자 / 3글자 단어 타워 결합 완벽 검증 성공!")
+			print("🎉 [ALL TESTS PASSED] 타워 디펜스 및 세이브/로드 기능 완벽 검증 성공!")
 			print("=======================================================\n")
 			Engine.time_scale = 1.0
 			get_tree().quit(0)

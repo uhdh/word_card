@@ -24,6 +24,7 @@ HangulEngine="*res://scripts/core/HangulEngine.gd"
 WordDatabase="*res://scripts/core/WordDatabase.gd"
 SoundEngine="*res://scripts/core/SoundEngine.gd"
 HangulStreamParser="*res://scripts/core/HangulStreamParser.gd"
+SaveManager="*res://scripts/core/SaveManager.gd"
 
 [display]
 
