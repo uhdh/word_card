@@ -51,8 +51,8 @@ func run_step(current_step: int) -> void:
 
 			# Lexicon Discovery System Test
 			assert(SaveManager.is_word_discovered("불"), "Initial word [불] must be discovered by default!")
-			SaveManager.discover_word("호랑이")
-			assert(SaveManager.is_word_discovered("호랑이"), "Word [호랑이] must be marked as discovered!")
+			SaveManager.discover_word("금강석")
+			assert(SaveManager.is_word_discovered("금강석"), "Word [금강석] must be marked as discovered!")
 			print(" -> 📖 도감 해금 시스템 검증: 발견된 단어만 정식 표시 및 미발견 단어 물음표(???) 처리 완료!")
 
 		3:
@@ -64,21 +64,21 @@ func run_step(current_step: int) -> void:
 			print(" -> 파싱 결과: [%s] (기본 자모 [ㄱ, ㄱ, ㅏ] ➔ 쌍자음 [까] 자동 합성)" % parsed_kka[0]["syllable"])
 			assert(parsed_kka[0]["syllable"] == "까", "Should automatically combine [ㄱ, ㄱ, ㅏ] into [까]!")
 
-			print("\n -> 2글자 자동 합성 테스트: [ㅂ, ㅜ, ㄹ, ㄱ, ㄱ, ㅗ, ㅊ] ➔ [불꽃] 자동 결합")
+			print("\n -> 2글자 자동 합성 테스트: [ㅂ, ㅓ, ㄴ, ㄱ, ㅐ] ➔ [번개] 자동 결합")
 			belt.jamo_list.clear()
-			for c in ["ㅂ", "ㅜ", "ㄹ", "ㄱ", "ㄱ", "ㅗ", "ㅊ"]: belt.jamo_list.append(c)
+			for c in ["ㅂ", "ㅓ", "ㄴ", "ㄱ", "ㅐ"]: belt.jamo_list.append(c)
 			belt.render_belt()
-			var parsed_flower = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
+			var parsed_lightning = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 파싱 결과: [%s 타워] (티어: %d, 공격력: %s)" % [
-				parsed_flower[0]["syllable"], parsed_flower[0].get("tier", 1), str(parsed_flower[0]["word_data"].get("damage", 0))
+				parsed_lightning[0]["syllable"], parsed_lightning[0].get("tier", 1), str(parsed_lightning[0]["word_data"].get("damage", 0))
 			])
-			assert(parsed_flower[0]["syllable"] == "불꽃", "Should automatically combine into [불꽃]!")
+			assert(parsed_lightning[0]["syllable"] == "번개", "Should automatically combine into [번개]!")
 
 			print("\n -> 🖐️ 자모 타일 드래그 앤 드롭(Drag & Drop) 이동 테스트")
-			# Drag 0th tile ('ㅂ') to 6th position -> ['ㅜ', 'ㄹ', 'ㄱ', 'ㄱ', 'ㅗ', 'ㅊ', 'ㅂ']
-			belt.handle_drag_drop(0, 6)
-			print(" -> 0번 타일 'ㅂ'을 6번 위치로 드래그 이동 완료! 현재 벨트: %s" % str(belt.jamo_list))
-			assert(belt.jamo_list[6] == "ㅂ", "Dragged tile 'ㅂ' should be at index 6!")
+			# Drag 0th tile ('ㅂ') to 4th position -> ['ㅓ', 'ㄴ', 'ㄱ', 'ㅐ', 'ㅂ']
+			belt.handle_drag_drop(0, 4)
+			print(" -> 0번 타일 'ㅂ'을 4번 위치로 드래그 이동 완료! 현재 벨트: %s" % str(belt.jamo_list))
+			assert(belt.jamo_list[4] == "ㅂ", "Dragged tile 'ㅂ' should be at index 4!")
 
 		4:
 			print("\n[Step 4] 🔍 타워 클릭 시 타워 설명 및 상세 스펙 팝업 테스트")
@@ -92,24 +92,23 @@ func run_step(current_step: int) -> void:
 				print(" -> 특수 효과 설명: %s" % first_tower.word_data.get("desc", ""))
 
 		5:
-			print("\n[Step 5] 🐯 3글자 신화 단어 [호랑이] (ㅎㅗ + ㄹㅏㅇ + ㅇㅣ) 결합 테스트")
+			print("\n[Step 5] 💎 3글자 신화 단어 [금강석] (ㄱㅡㅁ + ㄱㅏㅇ + ㅅㅓㄱ) 결합 테스트")
 			belt.jamo_list.clear()
-			for c in ["ㅎ", "ㅗ", "ㄹ", "ㅏ", "ㅇ", "ㅇ", "ㅣ"]:
+			for c in ["ㄱ", "ㅡ", "ㅁ", "ㄱ", "ㅏ", "ㅇ", "ㅅ", "ㅓ", "ㄱ"]:
 				belt.jamo_list.append(c)
 			belt.render_belt()
 			var parsed_3 = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 3글자 파싱 결과: [%s 타워] (티어: %d, 공격력: %s)" % [
 				parsed_3[0]["syllable"], parsed_3[0].get("tier", 1), str(parsed_3[0]["word_data"].get("damage", 0))
 			])
-			assert(parsed_3[0]["syllable"] == "호랑이", "Should parse into 3-letter word [호랑이]!")
+			assert(parsed_3[0]["syllable"] == "금강석", "Should combine 3 letters into [금강석]!")
 
 		6:
-			print("\n[Step 6] 🌊 [호랑이] 타워 배치 상태로 웨이브 스폰 & 전투 테스트")
-			field.start_next_wave()
-			Engine.time_scale = 3.5
+			print("\n[Step 6] 🌊 [금강석] 타워 배치 상태로 웨이브 스폰 & 전투 테스트")
+			main_node._on_start_wave_pressed()
 
-		12:
-			print("\n[Step 7] 💥 [호랑이] 신화 타워의 50 강력 피해로 웨이브 압살 완료!")
+		7:
+			print("\n[Step 7] 💥 [금강석] 신화 타워의 강력 피해로 웨이브 압살 완료!")
 			print(" -> 기지 상태: HP %d/%d, 골드: %d G" % [field.base_hp, field.max_base_hp, field.gold])
 
 		14:
