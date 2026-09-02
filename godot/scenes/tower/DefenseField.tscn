@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_road"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 60, 100, 0, 0, 0, 0, 395, 100, 0, 0, 0, 0, 395, 300, 0, 0, 0, 0, 585, 300, 0, 0, 0, 0, 585, 100, 0, 0, 0, 0, 775, 100, 0, 0, 0, 0, 775, 300, 0, 0, 0, 0, 960, 300, 0, 0, 0, 0, 960, 100, 0, 0, 0, 0, 975, 100, 0, 0, 0, 0, 975, 370, 0, 0, 0, 0, 80, 370)
+"points": PackedVector2Array(0, 0, 0, 0, 60, 100, 0, 0, 0, 0, 395, 100, 0, 0, 0, 0, 395, 300, 0, 0, 0, 0, 585, 300, 0, 0, 0, 0, 585, 100, 0, 0, 0, 0, 775, 100, 0, 0, 0, 0, 775, 300, 0, 0, 0, 0, 960, 300, 0, 0, 0, 0, 960, 100, 0, 0, 0, 0, 775, 100, 0, 0, 0, 0, 775, 300, 0, 0, 0, 0, 585, 300, 0, 0, 0, 0, 585, 100, 0, 0, 0, 0, 395, 100, 0, 0, 0, 0, 395, 300, 0, 0, 0, 0, 60, 300)
 }
-point_count = 12
+point_count = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
 bg_color = Color(0.12, 0.1, 0.18, 0.8)
@@ -95,10 +95,10 @@ horizontal_alignment = 1
 [node name="BaseSpot" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 56.0
-offset_top = 340.0
-offset_right = 114.0
-offset_bottom = 404.0
+offset_left = 36.0
+offset_top = 268.0
+offset_right = 84.0
+offset_bottom = 332.0
 
 [node name="BaseIcon" type="TextureRect" parent="BaseSpot"]
 custom_minimum_size = Vector2(48, 48)

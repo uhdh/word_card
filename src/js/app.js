@@ -91,7 +91,7 @@ class HangulTDApp {
       { x: 870, y: 200, label: "4번 슬롯" }
     ];
 
-    // Winding Path Points (Encircling all 4 slots in full S-curve)
+    // Winding Path Points (Forward S-Curve ➔ Turnaround at Slot 4 ➔ Returning S-Curve to Base at y=300)
     this.pathPoints = [
       { x: 60, y: 100 },
       { x: 395, y: 100 },
@@ -102,9 +102,13 @@ class HangulTDApp {
       { x: 775, y: 300 },
       { x: 960, y: 300 },
       { x: 960, y: 100 },
-      { x: 975, y: 100 },
-      { x: 975, y: 370 },
-      { x: 80, y: 370 }
+      { x: 775, y: 100 },
+      { x: 775, y: 300 },
+      { x: 585, y: 300 },
+      { x: 585, y: 100 },
+      { x: 395, y: 100 },
+      { x: 395, y: 300 },
+      { x: 60, y: 300 }
     ];
 
     this.isLoadingState = true;
@@ -637,10 +641,10 @@ class HangulTDApp {
 
     ctx.fillStyle = "#06b6d4";
     ctx.beginPath();
-    ctx.arc(80, 370, 24, 0, Math.PI * 2);
+    ctx.arc(60, 300, 22, 0, Math.PI * 2);
     ctx.fill();
     ctx.fillStyle = "#ffffff";
-    ctx.fillText("활자 본진", 80, 410);
+    ctx.fillText("활자 본진", 60, 340);
 
     // 3. Draw Tower Slots
     this.slots.forEach((slot, idx) => {
