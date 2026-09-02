@@ -13,8 +13,8 @@ config_version=5
 [application]
 
 config/name="Fragments of Language: Word Card"
-config/description="Hangul Roguelike Deckbuilder - Word Card"
-run/main_scene="res://scenes/Main.tscn"
+config/description="Hangul Tower Defense - Word Card"
+run/main_scene="res://scenes/TowerDefenseMain.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png"
 
@@ -23,6 +23,7 @@ config/icon="res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png"
 HangulEngine="*res://scripts/core/HangulEngine.gd"
 WordDatabase="*res://scripts/core/WordDatabase.gd"
 SoundEngine="*res://scripts/core/SoundEngine.gd"
+HangulStreamParser="*res://scripts/core/HangulStreamParser.gd"
 
 [display]
 
