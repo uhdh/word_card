@@ -1,5 +1,6 @@
-/**
+﻿/**
  * Hangul Roguelike Tower Defense - Web Main App Controller
+ * (Event Merchant, Relic Artifacts, Balanced Economy, Streamlined Jamos)
  */
 
 import { WORD_DATABASE, getWordData, getAllWords } from './core/wordDatabase.js';
@@ -8,14 +9,60 @@ import { parseJamoStream } from './core/hangulStreamParser.js';
 import { SaveManager } from './core/saveManager.js';
 import { sound } from './core/soundEngine.js';
 
+const ALL_RELIC_POOL = [
+  {
+    id: "relic_golden_dice",
+    name: "🎲 황금 주사위",
+    cost: 25,
+    desc: "보상 리롤 주사위를 +2개 즉시 지급합니다.",
+    icon: "./assets/relics/relic_golden_dice_32px_pastel.png"
+  },
+  {
+    id: "relic_essence_power",
+    name: "⚔️ 활자의 정수",
+    cost: 35,
+    desc: "모든 활자 타워의 공격력이 +20% 증가합니다.",
+    icon: "./assets/relics/relic_essence_power_32px_pastel.png"
+  },
+  {
+    id: "relic_fortress_rune",
+    name: "🛡️ 철옹성 룬",
+    cost: 30,
+    desc: "기지 최대 체력이 +10 증가하고 즉시 10 회복합니다.",
+    icon: "./assets/relics/relic_fortress_rune_32px_pastel.png"
+  },
+  {
+    id: "relic_haste_compass",
+    name: "⏱️ 신속의 나침반",
+    cost: 35,
+    desc: "모든 활자 타워의 공격 속도가 20% 빨라집니다.",
+    icon: "./assets/relics/relic_haste_compass_32px_pastel.png"
+  },
+  {
+    id: "relic_merchant_pouch",
+    name: "💰 상인의 보물주머니",
+    cost: 30,
+    desc: "웨이브 클리어 골드 보상이 +50% 증가합니다.",
+    icon: "./assets/relics/relic_merchant_pouch_32px_pastel.png"
+  },
+  {
+    id: "relic_crit_lens",
+    name: "🎯 예리한 렌즈",
+    cost: 35,
+    desc: "타워 공격 시 25% 확률로 2배 치명타 피해를 입힙니다.",
+    icon: "./assets/relics/relic_crit_lens_32px_pastel.png"
+  }
+];
+
 class HangulTDApp {
   constructor() {
     this.baseHp = 20;
     this.maxBaseHp = 20;
-    this.gold = 40;
+    this.gold = 30; // 시작 골드 30 G 밸런스
     this.currentWave = 0;
     this.maxWave = 5;
     this.rerollDice = 3;
+    this.ownedRelics = [];
     this.isWaveRunning = false;
     this.speedScale = 1.0;
 
@@ -68,12 +115,12 @@ class HangulTDApp {
     this.hpLabel = document.getElementById("hp-label");
     this.goldLabel = document.getElementById("gold-label");
     this.waveLabel = document.getElementById("wave-label");
+    this.diceTopLabel = document.getElementById("dice-top-label");
 
     this.btnStartWave = document.getElementById("btn-start-wave");
     this.btnSave = document.getElementById("btn-save");
     this.btnLoad = document.getElementById("btn-load");
     this.btnSpeed = document.getElementById("btn-speed");
-    this.btnShop = document.getElementById("btn-shop");
     this.btnLexicon = document.getElementById("btn-lexicon");
     this.btnMute = document.getElementById("btn-mute");
 
@@ -86,13 +133,10 @@ class HangulTDApp {
     this.btnSave.addEventListener("click", () => this.saveGame(true));
     this.btnLoad.addEventListener("click", () => this.loadGame());
     this.btnSpeed.addEventListener("click", () => this.toggleSpeed());
-    this.btnShop.addEventListener("click", () => this.openShopModal());
     this.btnLexicon.addEventListener("click", () => this.openLexiconModal());
     this.btnMute.addEventListener("click", () => this.toggleMute());
 
-    document.getElementById("btn-buy-jamo").addEventListener("click", () => this.buyJamoRandom());
     this.btnLoad.disabled = !SaveManager.hasSaveFile();
-
     this.updateTopBar();
   }
 
@@ -109,7 +153,6 @@ class HangulTDApp {
       const clickX = (e.clientX - rect.left) * scaleX;
       const clickY = (e.clientY - rect.top) * scaleY;
 
-      // Check slot clicked
       for (let i = 0; i < this.slots.length; i++) {
         const slot = this.slots[i];
         if (Math.abs(clickX - slot.x) < 36 && Math.abs(clickY - slot.y) < 40) {
@@ -125,9 +168,7 @@ class HangulTDApp {
   initShortcuts() {
     window.addEventListener("keydown", (e) => {
       if (this.modalOverlay.style.display === "flex") {
-        if (e.key === "Escape" || e.key === "b" || e.key === "B") {
-          this.closeModal();
-        }
+        if (e.key === "Escape") this.closeModal();
         return;
       }
 
@@ -140,8 +181,6 @@ class HangulTDApp {
         this.setSpeed(2.0);
       } else if (e.key === "3" || e.key === "4") {
         this.setSpeed(4.0);
-      } else if (e.key === "b" || e.key === "B") {
-        this.openShopModal();
       } else if (e.key === "Tab" || e.key === "d" || e.key === "D") {
         e.preventDefault();
         this.openLexiconModal();
@@ -151,8 +190,6 @@ class HangulTDApp {
         this.loadGame();
       } else if (e.key === "m" || e.key === "M") {
         this.toggleMute();
-      } else if (e.key === "r" || e.key === "R") {
-        this.rotateFirstAvailable();
       }
     });
   }
@@ -161,6 +198,7 @@ class HangulTDApp {
     this.hpLabel.textContent = `기지 HP: ${this.baseHp} / ${this.maxBaseHp}`;
     this.goldLabel.textContent = `${this.gold} G`;
     this.waveLabel.textContent = `${this.currentWave} / ${this.maxWave} 웨이브`;
+    if (this.diceTopLabel) this.diceTopLabel.textContent = `🎲 ${this.rerollDice}개`;
     this.btnStartWave.disabled = this.isWaveRunning;
     this.btnStartWave.textContent = this.isWaveRunning ? "⚔️ 웨이브 진행 중..." : "▶ 다음 웨이브 시작";
   }
@@ -183,45 +221,28 @@ class HangulTDApp {
     this.btnMute.textContent = isMuted ? "🔇" : "🔊";
   }
 
-  rotateFirstAvailable() {
-    for (let i = 0; i < this.jamoList.length; i++) {
-      if (HangulEngine.isRotatable(this.jamoList[i])) {
-        this.jamoList[i] = HangulEngine.rotate(this.jamoList[i]);
-        sound.playTileRotate();
-        this.renderBelt();
-        break;
-      }
-    }
-  }
-
-  buyJamoRandom() {
-    if (this.gold >= 10 && this.jamoList.length < 15) {
-      this.gold -= 10;
-      sound.playCoin();
-      const pick = HangulEngine.getWeightedRandomJamo();
-      this.jamoList.push(pick);
-      this.renderBelt();
-      this.updateTopBar();
-      this.saveGame();
-    }
+  hasRelic(rId) {
+    return this.ownedRelics.some(r => r.id === rId);
   }
 
   renderBelt() {
     this.beltContainer.innerHTML = "";
 
-    // Parse stream
     const parsed = parseJamoStream(this.jamoList);
+    const speedBoost = this.hasRelic("relic_haste_compass") ? 0.8 : 1.0;
+    const powerBoost = this.hasRelic("relic_essence_power") ? 1.2 : 1.0;
+
     this.activeTowers = parsed.map((p, idx) => ({
       slotIndex: idx,
       syllable: p.syllable,
       wordData: p.wordData,
       tier: p.tier,
       attackCooldown: 0,
-      attackInterval: p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95)),
-      range: p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150)
+      attackInterval: (p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95))) * speedBoost,
+      range: p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150),
+      damage: Math.round((p.wordData.damage || 4) * powerBoost)
     }));
 
-    // Build preview & discover
     const previewTexts = [];
     for (const p of parsed) {
       previewTexts.push(`[${p.syllable} 타워]`);
@@ -230,7 +251,6 @@ class HangulTDApp {
     this.previewLabel.textContent = previewTexts.length > 0 ?
       `🏰 자동 완성 타워: ${previewTexts.join(" ➔ ")}` : "단어 조합 없음";
 
-    // Render Tiles
     this.jamoList.forEach((charStr, idx) => {
       const isRare = HangulEngine.isRare(charStr);
       const isRot = HangulEngine.isRotatable(charStr);
@@ -239,7 +259,6 @@ class HangulTDApp {
       tileBox.className = `jamo-tile-box ${isRare ? "rare-tile" : ""} ${this.selectedSwapIndex === idx ? "selected-tile" : ""}`;
       tileBox.draggable = true;
 
-      // Drag & Drop
       tileBox.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text/plain", idx.toString());
         tileBox.classList.add("dragging");
@@ -309,7 +328,6 @@ class HangulTDApp {
     this.updateTopBar();
     sound.playWaveStart();
 
-    // Spawn enemies
     const count = 5 + this.currentWave * 3;
     const enemyHp = 20 + this.currentWave * 15;
     const speed = 65;
@@ -329,7 +347,7 @@ class HangulTDApp {
         maxHp: enemyHp,
         speed: speed,
         isBoss: (spawned === count - 1 && this.currentWave % 2 === 0),
-        goldValue: 2 + Math.floor(this.currentWave * 0.8)
+        goldValue: 1 + Math.floor(this.currentWave * 0.6)
       });
       spawned += 1;
     }, 900 / this.speedScale);
@@ -352,20 +370,16 @@ class HangulTDApp {
   update(dt) {
     if (dt <= 0) return;
 
-    // Update Enemies Movement along Winding S-curve
     for (let i = this.enemies.length - 1; i >= 0; i--) {
       const enemy = this.enemies[i];
       const targetPt = this.pathPoints[enemy.pathIndex + 1];
 
       if (!targetPt) {
-        // Reached base
         this.baseHp -= enemy.isBoss ? 5 : 1;
         sound.playHurt();
         this.enemies.splice(i, 1);
         this.updateTopBar();
-        if (this.baseHp <= 0) {
-          this.handleGameOver(false);
-        }
+        if (this.baseHp <= 0) this.handleGameOver(false);
         continue;
       }
 
@@ -392,7 +406,6 @@ class HangulTDApp {
 
       tower.attackCooldown -= dt;
       if (tower.attackCooldown <= 0) {
-        // Find closest enemy in range
         let target = null;
         let minDist = tower.range;
 
@@ -406,9 +419,15 @@ class HangulTDApp {
 
         if (target) {
           tower.attackCooldown = tower.attackInterval;
-          const dmg = tower.wordData.damage || 4;
+          let dmg = tower.damage || 4;
 
-          // Projectile beam/bullet
+          // Crit check
+          let isCrit = false;
+          if (this.hasRelic("relic_crit_lens") && Math.random() < 0.25) {
+            dmg *= 2;
+            isCrit = true;
+          }
+
           this.projectiles.push({
             startX: slot.x,
             startY: slot.y,
@@ -420,16 +439,14 @@ class HangulTDApp {
             life: 0.15
           });
 
-          // Apply damage
           target.hp -= dmg;
           sound.playAttack();
 
-          // Particle
           this.particles.push({
             x: target.x,
             y: target.y,
-            text: `-${dmg}`,
-            color: tower.tier >= 3 ? "#f43f5e" : (tower.tier === 2 ? "#eab308" : "#38bdf8"),
+            text: isCrit ? `💥CRIT -${dmg}` : `-${dmg}`,
+            color: isCrit ? "#fbbf24" : (tower.tier >= 3 ? "#f43f5e" : (tower.tier === 2 ? "#eab308" : "#38bdf8")),
             life: 0.6
           });
 
@@ -446,7 +463,6 @@ class HangulTDApp {
       }
     }
 
-    // Update Projectiles & Particles
     for (let i = this.projectiles.length - 1; i >= 0; i--) {
       this.projectiles[i].life -= dt;
       if (this.projectiles[i].life <= 0) this.projectiles.splice(i, 1);
@@ -461,11 +477,21 @@ class HangulTDApp {
     // Check Wave Clear
     if (this.isWaveRunning && this.enemies.length === 0) {
       this.isWaveRunning = false;
-      const bonusGold = 12 + this.currentWave * 4;
-      this.gold += bonusGold;
+      let baseBonus = 10 + this.currentWave * 5; // 15G, 20G, 25G, 30G, 35G
+      if (this.hasRelic("relic_merchant_pouch")) {
+        baseBonus = Math.round(baseBonus * 1.5);
+      }
+      this.gold += baseBonus;
       sound.playWaveClear();
       this.updateTopBar();
-      this.openWaveRewardModal(this.currentWave, bonusGold);
+
+      const clearedWave = this.currentWave;
+      this.openWaveRewardModal(clearedWave, baseBonus, () => {
+        // 방랑 상인 이벤트 조우 (2, 4 웨이브 클리어 시)
+        if (clearedWave === 2 || clearedWave === 4) {
+          setTimeout(() => this.openShopModal(), 300);
+        }
+      });
       this.saveGame();
 
       if (this.currentWave >= this.maxWave) {
@@ -482,7 +508,6 @@ class HangulTDApp {
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    // Road outer border
     ctx.strokeStyle = "#473c60";
     ctx.lineWidth = 46;
     ctx.beginPath();
@@ -492,12 +517,10 @@ class HangulTDApp {
     });
     ctx.stroke();
 
-    // Road inner lane
     ctx.strokeStyle = "#272138";
     ctx.lineWidth = 38;
     ctx.stroke();
 
-    // Road dashed guideline
     ctx.strokeStyle = "#6d5e8a";
     ctx.lineWidth = 2;
     ctx.setLineDash([8, 8]);
@@ -521,11 +544,10 @@ class HangulTDApp {
     ctx.fillStyle = "#ffffff";
     ctx.fillText("활자 본진", 80, 410);
 
-    // 3. Draw Tower Slots & Towers
+    // 3. Draw Tower Slots
     this.slots.forEach((slot, idx) => {
       const tower = this.activeTowers[idx];
 
-      // Slot Panel
       ctx.fillStyle = "#1e1a2e";
       ctx.strokeStyle = tower ? (tower.tier >= 3 ? "#ec4899" : (tower.tier === 2 ? "#eab308" : "#3b82f6")) : "#554c6d";
       ctx.lineWidth = 2;
@@ -535,16 +557,14 @@ class HangulTDApp {
       ctx.stroke();
 
       if (tower) {
-        // Draw Tower Name
         ctx.fillStyle = tower.tier >= 3 ? "#f472b6" : (tower.tier === 2 ? "#fde047" : "#67e8f9");
         ctx.font = "bold 16px sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(tower.syllable, slot.x, slot.y - 8);
 
-        // Tier / Damage
         ctx.fillStyle = "#ffffff";
         ctx.font = "11px sans-serif";
-        ctx.fillText(`💥 ${tower.wordData.damage || 4}`, slot.x, slot.y + 12);
+        ctx.fillText(`💥 ${tower.damage}`, slot.x, slot.y + 12);
         ctx.fillStyle = "#94a3b8";
         ctx.font = "10px sans-serif";
         ctx.fillText(tower.tier === 3 ? "⭐⭐⭐" : (tower.tier === 2 ? "⭐⭐" : "⭐"), slot.x, slot.y + 26);
@@ -568,13 +588,11 @@ class HangulTDApp {
 
     // 5. Draw Enemies
     this.enemies.forEach((enemy) => {
-      // Body
       ctx.fillStyle = enemy.isBoss ? "#dc2626" : "#7c3aed";
       ctx.beginPath();
       ctx.arc(enemy.x, enemy.y, enemy.isBoss ? 18 : 12, 0, Math.PI * 2);
       ctx.fill();
 
-      // HP bar
       const barW = enemy.isBoss ? 36 : 24;
       ctx.fillStyle = "#1e293b";
       ctx.fillRect(enemy.x - barW / 2, enemy.y - (enemy.isBoss ? 28 : 20), barW, 4);
@@ -583,7 +601,7 @@ class HangulTDApp {
       ctx.fillRect(enemy.x - barW / 2, enemy.y - (enemy.isBoss ? 28 : 20), barW * hpRatio, 4);
     });
 
-    // 6. Draw Damage Floating Particles
+    // 6. Draw Particles
     this.particles.forEach((p) => {
       ctx.fillStyle = p.color;
       ctx.font = "bold 13px sans-serif";
@@ -599,7 +617,8 @@ class HangulTDApp {
       maxBaseHp: this.maxBaseHp,
       gold: this.gold,
       currentWave: this.currentWave,
-      rerollDice: this.rerollDice
+      rerollDice: this.rerollDice,
+      relics: this.ownedRelics
     });
     this.btnLoad.disabled = false;
     if (showToast) {
@@ -615,9 +634,10 @@ class HangulTDApp {
     this.jamoList = data.jamoList || ["ㅂ", "ㅜ", "ㄹ"];
     this.baseHp = data.baseHp || 20;
     this.maxBaseHp = data.maxBaseHp || 20;
-    this.gold = data.gold || 40;
+    this.gold = data.gold || 30;
     this.currentWave = data.currentWave || 0;
     this.rerollDice = data.rerollDice !== undefined ? data.rerollDice : 3;
+    this.ownedRelics = data.relics || [];
     this.isWaveRunning = false;
     this.enemies = [];
 
@@ -638,8 +658,6 @@ class HangulTDApp {
 
   openTowerInfoModal(tower) {
     const data = tower.wordData;
-    const isRare = HangulEngine.isRare(tower.syllable);
-
     this.openModal(`
       <div class="modal-box">
         <div class="modal-header">
@@ -648,7 +666,7 @@ class HangulTDApp {
         </div>
         <div class="tower-specs-grid">
           <div><strong>티어:</strong> ${tower.tier === 3 ? "⭐⭐⭐ 3글자 신화" : (tower.tier === 2 ? "⭐⭐ 2글자 상위" : "⭐ 1글자 기본")}</div>
-          <div><strong>공격력:</strong> 💥 ${data.damage || 4}</div>
+          <div><strong>공격력:</strong> 💥 ${tower.damage}</div>
           <div><strong>사거리:</strong> 🎯 ${tower.range} px</div>
           <div><strong>공속:</strong> ⏱️ ${tower.attackInterval.toFixed(2)} 초</div>
         </div>
@@ -661,6 +679,8 @@ class HangulTDApp {
 
   openShopModal() {
     sound.playTileClick();
+    let currentTab = "buy";
+
     const stock = [];
     for (let i = 0; i < 4; i++) {
       const pick = HangulEngine.getWeightedRandomJamo();
@@ -668,9 +688,11 @@ class HangulTDApp {
       stock.push({
         char: pick,
         isRare,
-        cost: isRare ? 15 : (HangulEngine.JUNGSUNG.includes(pick) ? 8 : 10)
+        cost: isRare ? 20 : 12
       });
     }
+
+    const availableRelics = ALL_RELIC_POOL.filter(r => !this.hasRelic(r.id)).slice(0, 3);
 
     const renderShop = () => {
       let stockHtml = "";
@@ -683,6 +705,20 @@ class HangulTDApp {
         `;
       });
 
+      let relicHtml = "";
+      availableRelics.forEach((r, idx) => {
+        const isOwned = this.hasRelic(r.id);
+        relicHtml += `
+          <div class="relic-card">
+            <div class="relic-name">${r.name}</div>
+            <div class="relic-desc">${r.desc}</div>
+            <button class="btn-buy-relic" data-idx="${idx}" ${isOwned ? 'disabled' : ''}>
+              ${isOwned ? '보유 중' : r.cost + ' G 구매'}
+            </button>
+          </div>
+        `;
+      });
+
       let removeTilesHtml = "";
       this.jamoList.forEach((ch, idx) => {
         removeTilesHtml += `<button class="btn-remove-tile" data-idx="${idx}">${ch}</button>`;
@@ -691,23 +727,40 @@ class HangulTDApp {
       this.openModal(`
         <div class="modal-box shop-modal">
           <div class="modal-header">
-            <h3>🧙‍♂️ 활자 상인 모로크</h3>
+            <h3>🧙‍♂️ 방랑 상인 모로크 (이벤트 조우)</h3>
             <div class="shop-gold">🪙 보유: ${this.gold} G</div>
             <button class="btn-modal-close" id="btn-modal-close">✖</button>
           </div>
-          <p class="npc-dialog">“어서오게! 강력한 자모를 구매하거나 덱을 압축(제거)해보게나.”</p>
+          <p class="npc-dialog">“운이 좋군! 차원의 길목에서 나를 만나다니. 자모와 신비한 유물을 둘러보게.”</p>
           
-          <h4 style="margin: 12px 0 6px 0; color: #fde047;">🏪 자모 타일 구매</h4>
-          <div class="shop-grid">${stockHtml}</div>
+          <div class="shop-tab-buttons" style="display:flex; gap:8px; margin: 8px 0;">
+            <button class="btn ${currentTab === 'buy' ? 'btn-primary' : ''}" id="tab-btn-buy">🏪 자모 구매</button>
+            <button class="btn ${currentTab === 'relic' ? 'btn-primary' : ''}" id="tab-btn-relic">🏺 신비한 유물</button>
+            <button class="btn ${currentTab === 'remove' ? 'btn-primary' : ''}" id="tab-btn-remove">✂️ 덱 압축 (15 G)</button>
+          </div>
 
-          <h4 style="margin: 16px 0 6px 0; color: #f87171;">✂️ 자모 타일 제거 (10 G)</h4>
-          <div class="remove-tiles-row">${removeTilesHtml}</div>
+          <div id="shop-tab-buy" style="display: ${currentTab === 'buy' ? 'block' : 'none'};">
+            <div class="shop-grid">${stockHtml}</div>
+          </div>
+
+          <div id="shop-tab-relic" style="display: ${currentTab === 'relic' ? 'block' : 'none'};">
+            <div class="relic-grid" style="display:flex; gap:10px; justify-content:center;">${relicHtml}</div>
+          </div>
+
+          <div id="shop-tab-remove" style="display: ${currentTab === 'remove' ? 'block' : 'none'};">
+            <p style="font-size:12px; color:#94a3b8; margin-bottom:6px;">제거할 자모 타일을 클릭하세요 (비용: 15 G):</p>
+            <div class="remove-tiles-row">${removeTilesHtml}</div>
+          </div>
         </div>
       `);
 
       document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
 
-      // Buy click
+      document.getElementById("tab-btn-buy").addEventListener("click", () => { currentTab = "buy"; renderShop(); });
+      document.getElementById("tab-btn-relic").addEventListener("click", () => { currentTab = "relic"; renderShop(); });
+      document.getElementById("tab-btn-remove").addEventListener("click", () => { currentTab = "remove"; renderShop(); });
+
+      // Buy Jamo
       document.querySelectorAll(".btn-buy-stock").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const idx = parseInt(e.target.getAttribute("data-idx"), 10);
@@ -724,12 +777,33 @@ class HangulTDApp {
         });
       });
 
-      // Remove click
+      // Buy Relic
+      document.querySelectorAll(".btn-buy-relic").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
+          const r = availableRelics[idx];
+          if (!this.hasRelic(r.id) && this.gold >= r.cost) {
+            this.gold -= r.cost;
+            this.ownedRelics.push(r);
+            if (r.id === "relic_golden_dice") this.rerollDice += 2;
+            if (r.id === "relic_fortress_rune") {
+              this.maxBaseHp += 10;
+              this.baseHp = Math.min(this.baseHp + 10, this.maxBaseHp);
+            }
+            sound.playBuff();
+            this.renderBelt();
+            this.updateTopBar();
+            renderShop();
+          }
+        });
+      });
+
+      // Remove Jamo
       document.querySelectorAll(".btn-remove-tile").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const idx = parseInt(e.target.getAttribute("data-idx"), 10);
-          if (this.gold >= 10 && this.jamoList.length > 1) {
-            this.gold -= 10;
+          if (this.gold >= 15 && this.jamoList.length > 1) {
+            this.gold -= 15;
             this.jamoList.splice(idx, 1);
             sound.playTileClick();
             this.renderBelt();
@@ -790,7 +864,7 @@ class HangulTDApp {
     document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
   }
 
-  openWaveRewardModal(wave, bonusGold) {
+  openWaveRewardModal(wave, bonusGold, onClosedCallback = null) {
     const renderRewardModal = () => {
       const choices = [];
       for (let i = 0; i < 3; i++) {
@@ -834,6 +908,7 @@ class HangulTDApp {
             this.renderBelt();
             this.closeModal();
             this.saveGame();
+            if (onClosedCallback) onClosedCallback();
           }
         });
       });
@@ -866,8 +941,11 @@ class HangulTDApp {
 
     document.getElementById("btn-restart").addEventListener("click", () => {
       this.baseHp = 20;
-      this.gold = 40;
+      this.maxBaseHp = 20;
+      this.gold = 30;
       this.currentWave = 0;
+      this.rerollDice = 3;
+      this.ownedRelics = [];
       this.jamoList = ["ㅂ", "ㅜ", "ㄹ"];
       this.isWaveRunning = false;
       this.enemies = [];

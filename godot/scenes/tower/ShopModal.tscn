@@ -48,17 +48,17 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.65)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(620, 440)
+custom_minimum_size = Vector2(640, 460)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -310.0
-offset_top = -220.0
-offset_right = 310.0
-offset_bottom = 220.0
+offset_left = -320.0
+offset_top = -230.0
+offset_right = 320.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
@@ -95,7 +95,7 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
-text = "🪙 40 G"
+text = "🪙 30 G"
 
 [node name="BtnClose" type="Button" parent="Panel/VBox/Header"]
 custom_minimum_size = Vector2(32, 32)
@@ -109,14 +109,20 @@ theme_override_constants/separation = 8
 [node name="BtnTabBuy" type="Button" parent="Panel/VBox/TabButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 14
-text = "🏪 자모 타일 구매"
+theme_override_font_sizes/font_size = 13
+text = "🏪 자모 구매"
+
+[node name="BtnTabRelic" type="Button" parent="Panel/VBox/TabButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "🏺 신비한 유물"
 
 [node name="BtnTabRemove" type="Button" parent="Panel/VBox/TabButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 14
-text = "✂️ 자모 타일 제거 (덱 압축)"
+theme_override_font_sizes/font_size = 13
+text = "✂️ 덱 압축(제거)"
 
 [node name="TabBuyContainer" type="VBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -127,7 +133,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
-text = "벨트에 추가할 자모를 선택하여 구매하세요. (최대 15칸)"
+text = "벨트에 추가할 자모를 선택하여 구매하세요. (일반 12 G / 희귀 20 G)"
 horizontal_alignment = 1
 
 [node name="ItemsGrid" type="HBoxContainer" parent="Panel/VBox/TabBuyContainer"]
@@ -144,7 +150,26 @@ alignment = 1
 custom_minimum_size = Vector2(180, 36)
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "🔄 상품 새로고침 (5 G)"
+text = "🔄 상품 새로고침 (8 G)"
+
+[node name="TabRelicContainer" type="VBoxContainer" parent="Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="RelicDescLabel" type="Label" parent="Panel/VBox/TabRelicContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.7, 1, 1)
+text = "전투에 영구적인 강화 효과를 주는 유물을 구매하세요. (25 ~ 35 G)"
+horizontal_alignment = 1
+
+[node name="RelicGrid" type="HBoxContainer" parent="Panel/VBox/TabRelicContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 12
 
 [node name="TabRemoveContainer" type="VBoxContainer" parent="Panel/VBox"]
 visible = false
@@ -156,7 +181,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
-text = "제거하고 싶은 자모 타일을 클릭하여 덱에서 영구히 삭제하세요."
+text = "제거하고 싶은 자모 타일을 클릭하여 덱에서 영구히 삭제하세요. (15 G)"
 horizontal_alignment = 1
 
 [node name="Scroll" type="ScrollContainer" parent="Panel/VBox/TabRemoveContainer"]
@@ -179,8 +204,8 @@ text = "제거할 자모 타일을 위 목록에서 선택하세요."
 horizontal_alignment = 1
 
 [node name="BtnConfirmRemove" type="Button" parent="Panel/VBox/TabRemoveContainer"]
-custom_minimum_size = Vector2(220, 40)
+custom_minimum_size = Vector2(240, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 13
-text = "✂️ 자모 타일 제거 (10 G)"
+text = "✂️ 자모 타일 영구 제거 (15 G)"

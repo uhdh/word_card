@@ -1,5 +1,5 @@
 ﻿# SaveManager.gd
-# 게임 상태 (자모 벨트, 기지 체력, 골드, 도달 웨이브, 리롤 주사위 등) 및 단어 도감 해금 영구 저장 유틸리티
+# 게임 상태 (자모 벨트, 기지 체력, 골드, 도달 웨이브, 리롤 주사위, 보유 유물) 및 단어 도감 해금 영구 저장 유틸리티
 class_name SaveManager
 extends RefCounted
 
@@ -12,7 +12,7 @@ static var _is_discovered_loaded: bool = false
 static func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
-static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3) -> bool:
+static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = []) -> bool:
 	var save_dict = {
 		"jamo_list": jamo_list,
 		"base_hp": base_hp,
@@ -20,6 +20,7 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 		"gold": gold,
 		"current_wave": current_wave,
 		"reroll_dice": reroll_dice,
+		"relics": relics,
 		"saved_at": Time.get_datetime_string_from_system()
 	}
 
@@ -31,7 +32,9 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 
 	file.store_string(json_str)
 	file.close()
-	print("💾 [SaveManager] Game successfully saved! (Wave %d, Gold %d, Dice %d, Jamo %d)" % [current_wave, gold, reroll_dice, jamo_list.size()])
+	print("💾 [SaveManager] Game successfully saved! (Wave %d, Gold %d, Dice %d, Relics %d, Jamo %d)" % [
+		current_wave, gold, reroll_dice, relics.size(), jamo_list.size()
+	])
 	return true
 
 static func load_game() -> Dictionary:

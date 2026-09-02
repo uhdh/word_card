@@ -1,5 +1,5 @@
-# TowerDefenseMain.gd
-# 한글 자모 결합 타워 디펜스 메인 컨트롤러
+﻿# TowerDefenseMain.gd
+# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (특정 웨이브 상점 이벤트, 유물 시스템, 밸런스 조정)
 extends Control
 
 const SaveManager = preload("res://scripts/core/SaveManager.gd")
@@ -12,7 +12,6 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 @onready var btn_save: Button = $TopBar/Actions/BtnSave
 @onready var btn_load: Button = $TopBar/Actions/BtnLoad
 @onready var btn_speed: Button = $TopBar/Actions/BtnSpeed
-@onready var btn_shop: Button = $TopBar/Actions/BtnShop
 @onready var btn_lexicon: Button = $TopBar/Actions/BtnLexicon
 @onready var btn_mute: Button = $TopBar/Actions/BtnMute
 
@@ -22,19 +21,20 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 
 var current_speed_scale: float = 1.0
 var reroll_dice: int = 3
+var owned_relics: Array = []
 
 func _ready() -> void:
 	btn_start_wave.pressed.connect(_on_start_wave_pressed)
 	btn_save.pressed.connect(_on_save_pressed)
 	btn_load.pressed.connect(_on_load_pressed)
 	btn_speed.pressed.connect(_on_speed_pressed)
-	if btn_shop: btn_shop.pressed.connect(_on_shop_pressed)
 	btn_lexicon.pressed.connect(_on_lexicon_pressed)
 	btn_mute.pressed.connect(_on_mute_pressed)
 
 	btn_load.disabled = not SaveManager.has_save_file()
 
 	if defense_field:
+		defense_field.gold = 30 # 시작 골드 30 G 밸런스
 		defense_field.base_hp_changed.connect(_on_base_hp_changed)
 		defense_field.gold_changed.connect(_on_gold_changed)
 		defense_field.wave_status_changed.connect(_on_wave_status_changed)
@@ -44,7 +44,6 @@ func _ready() -> void:
 
 	if jamo_belt:
 		jamo_belt.parsed_towers_updated.connect(_on_parsed_towers_updated)
-		jamo_belt.request_buy_jamo.connect(_on_buy_jamo_requested)
 		jamo_belt.jamo_changed.connect(_on_jamo_changed)
 
 	# Setup button tooltips / shortcut hints
@@ -52,7 +51,6 @@ func _ready() -> void:
 	btn_save.tooltip_text = "단축키: [Ctrl + S] 또는 [S]"
 	btn_load.tooltip_text = "단축키: [L]"
 	btn_speed.tooltip_text = "단축키: [1] / [2] / [3] / [4]"
-	if btn_shop: btn_shop.tooltip_text = "단축키: [B] (상점 오픈)"
 	btn_lexicon.tooltip_text = "단축키: [TAB] 또는 [D]"
 	btn_mute.tooltip_text = "단축키: [M]"
 
@@ -73,44 +71,33 @@ func _unhandled_input(event: InputEvent) -> void:
 			set_speed_scale(2.0)
 		KEY_3, KEY_4:
 			set_speed_scale(4.0)
-		KEY_B:
-			_on_shop_pressed()
 		KEY_TAB, KEY_D:
 			_on_lexicon_pressed()
 		KEY_S:
-			_on_save_pressed()
+			if event.ctrl_pressed or not event.alt_pressed:
+				_on_save_pressed()
 		KEY_L:
-			_on_load_pressed()
+			if not btn_load.disabled:
+				_on_load_pressed()
 		KEY_M:
 			_on_mute_pressed()
-		KEY_R:
-			if jamo_belt:
-				jamo_belt.rotate_first_available()
-
-func _on_jamo_changed() -> void:
-	# Automatic background save whenever the player rearranges the belt
-	save_game_state()
 
 func _on_save_pressed() -> void:
 	save_game_state()
 	btn_save.text = "✅ 저장됨!"
 	SoundEngine.play_buff()
-	btn_load.disabled = false
-	var timer = get_tree().create_timer(1.5)
-	timer.timeout.connect(func(): if is_instance_valid(btn_save): btn_save.text = "💾 저장")
+	var timer = get_tree().create_timer(1.2)
+	timer.timeout.connect(func(): btn_save.text = "💾 저장")
 
 func _on_load_pressed() -> void:
-	if not SaveManager.has_save_file():
-		return
 	var data = SaveManager.load_game()
 	if data.is_empty():
 		return
 
-	# Restore state
 	if data.has("jamo_list"):
 		jamo_belt.jamo_list.clear()
 		for c in data["jamo_list"]:
-			jamo_belt.jamo_list.append(c)
+			jamo_belt.jamo_list.append(str(c))
 
 	if data.has("base_hp"):
 		defense_field.base_hp = int(data["base_hp"])
@@ -127,9 +114,12 @@ func _on_load_pressed() -> void:
 	if data.has("reroll_dice"):
 		reroll_dice = int(data["reroll_dice"])
 
+	if data.has("relics"):
+		owned_relics = data["relics"].duplicate()
+
 	jamo_belt.render_belt()
 	SoundEngine.play_victory()
-	print("📂 Game state successfully restored from save! (Dice: %d)" % reroll_dice)
+	print("📂 Game state successfully restored from save! (Dice: %d, Relics: %d)" % [reroll_dice, owned_relics.size()])
 
 func save_game_state() -> void:
 	if defense_field == null or jamo_belt == null:
@@ -140,7 +130,8 @@ func save_game_state() -> void:
 		defense_field.max_base_hp,
 		defense_field.gold,
 		defense_field.current_wave,
-		reroll_dice
+		reroll_dice,
+		owned_relics
 	)
 
 func _on_base_hp_changed(current: int, max_hp: int) -> void:
@@ -155,21 +146,75 @@ func _on_wave_status_changed(wave: int, max_wave: int, is_running: bool) -> void
 	btn_start_wave.text = "⚔️ 웨이브 진행 중..." if is_running else "▶ 다음 웨이브 시작"
 
 func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
+	# 밸런스: 상인의 보물주머니 보유 시 보너스 골드 +50%
+	var final_bonus = bonus_gold
+	if has_relic("relic_merchant_pouch"):
+		final_bonus = int(bonus_gold * 1.5)
+
 	var modal_scene = load("res://scenes/tower/WaveRewardModal.tscn")
 	if modal_scene != null:
 		var modal = modal_scene.instantiate()
 		modal_layer.add_child(modal)
 		modal.setup(
 			wave,
-			bonus_gold,
+			final_bonus,
 			reroll_dice,
 			func(chosen_char: String):
 				jamo_belt.add_jamo(chosen_char)
-				save_game_state(),
+				save_game_state()
+				# 특정 웨이브(2, 4웨이브) 클리어 후 방랑 상인 이벤트 조우!
+				if wave == 2 or wave == 4:
+					_trigger_merchant_encounter(wave),
 			func(new_dice_count: int):
 				reroll_dice = new_dice_count
 				save_game_state()
 		)
+
+func _trigger_merchant_encounter(wave: int) -> void:
+	var modal_scene = load("res://scenes/tower/ShopModal.tscn")
+	if modal_scene != null:
+		var modal = modal_scene.instantiate()
+		modal_layer.add_child(modal)
+		modal.setup(defense_field.gold, jamo_belt.jamo_list, owned_relics)
+
+		modal.jamo_bought.connect(func(char_str: String, cost: int):
+			defense_field.gold -= cost
+			defense_field.gold_changed.emit(defense_field.gold)
+			jamo_belt.add_jamo(char_str)
+			save_game_state()
+		)
+
+		modal.jamo_removed.connect(func(idx: int, cost: int):
+			defense_field.gold -= cost
+			defense_field.gold_changed.emit(defense_field.gold)
+			if idx >= 0 and idx < jamo_belt.jamo_list.size():
+				jamo_belt.jamo_list.remove_at(idx)
+				jamo_belt.render_belt()
+			save_game_state()
+		)
+
+		modal.relic_bought.connect(func(relic_data: Dictionary, cost: int):
+			defense_field.gold -= cost
+			defense_field.gold_changed.emit(defense_field.gold)
+			apply_relic_effect(relic_data)
+			save_game_state()
+		)
+
+func apply_relic_effect(relic_data: Dictionary) -> void:
+	owned_relics.append(relic_data)
+	var r_id = relic_data.get("id", "")
+
+	if r_id == "relic_golden_dice":
+		reroll_dice += 2
+	elif r_id == "relic_fortress_rune":
+		defense_field.max_base_hp += 10
+		defense_field.base_hp = mini(defense_field.base_hp + 10, defense_field.max_base_hp)
+		defense_field.base_hp_changed.emit(defense_field.base_hp, defense_field.max_base_hp)
+
+func has_relic(r_id: String) -> bool:
+	for r in owned_relics:
+		if r.get("id") == r_id: return true
+	return false
 
 func _on_tower_info_requested(tower: WordTower) -> void:
 	if tower == null or tower.word_data.is_empty():
@@ -180,21 +225,19 @@ func _on_tower_info_requested(tower: WordTower) -> void:
 		modal_layer.add_child(modal)
 		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval)
 
+func _on_jamo_changed() -> void:
+	save_game_state()
+
 func _on_parsed_towers_updated(parsed_list: Array) -> void:
 	if defense_field:
 		defense_field.update_towers_from_parsed_list(parsed_list)
 
-func _on_buy_jamo_requested() -> void:
-	if defense_field.gold >= 10:
-		defense_field.gold -= 10
-		defense_field.gold_changed.emit(defense_field.gold)
-		
-		var pick = HangulEngine.get_weighted_random_jamo()
-		jamo_belt.add_jamo(pick)
-		SoundEngine.play_coin()
-
 func _on_start_wave_pressed() -> void:
-	defense_field.start_next_wave()
+	if defense_field:
+		defense_field.start_next_wave()
+		btn_start_wave.disabled = true
+		btn_start_wave.text = "⚔️ 웨이브 진행 중..."
+		SoundEngine.play_wave_start()
 
 func _on_speed_pressed() -> void:
 	if current_speed_scale == 1.0:
@@ -214,29 +257,6 @@ func set_speed_scale(speed: float) -> void:
 	elif speed >= 4.0:
 		btn_speed.text = "⚡ 4x 초고속"
 
-func _on_shop_pressed() -> void:
-	var modal_scene = load("res://scenes/tower/ShopModal.tscn")
-	if modal_scene != null:
-		var modal = modal_scene.instantiate()
-		modal_layer.add_child(modal)
-		modal.setup(defense_field.gold, jamo_belt.jamo_list)
-
-		modal.jamo_bought.connect(func(char_str: String, cost: int):
-			defense_field.gold -= cost
-			defense_field.gold_changed.emit(defense_field.gold)
-			jamo_belt.add_jamo(char_str)
-			save_game_state()
-		)
-
-		modal.jamo_removed.connect(func(idx: int, cost: int):
-			defense_field.gold -= cost
-			defense_field.gold_changed.emit(defense_field.gold)
-			if idx >= 0 and idx < jamo_belt.jamo_list.size():
-				jamo_belt.jamo_list.remove_at(idx)
-				jamo_belt.render_belt()
-			save_game_state()
-		)
-
 func _on_lexicon_pressed() -> void:
 	var modal = load("res://scenes/LexiconModal.tscn").instantiate()
 	modal_layer.add_child(modal)
@@ -254,26 +274,15 @@ func _on_game_over(is_victory: bool) -> void:
 	modal.add_child(vbox)
 
 	var title = Label.new()
-	title.theme_override_font_sizes.font_size = 22
+	title.text = "🎉 디펜스 승리!" if is_victory else "💀 기지 함락 (패배)"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	if is_victory:
-		title.text = "🏆 타워 디펜스 승리!\n모든 활자 웨이브를 성공적으로 방어했습니다!"
-		title.modulate = Color(1.0, 0.85, 0.3)
-		SoundEngine.play_victory()
-	else:
-		title.text = "💀 기지가 파괴되었습니다...\n활자의 힘이 흩어졌습니다."
-		title.modulate = Color(1.0, 0.4, 0.4)
-		SoundEngine.play_hit()
+	title.add_theme_font_size_override("font_size", 22)
 	vbox.add_child(title)
 
-	var btn = Button.new()
-	btn.text = "다시 플레이하기"
-	btn.custom_minimum_size = Vector2(160, 40)
-	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	btn.pressed.connect(func():
-		Engine.time_scale = 1.0
+	var btn_retry = Button.new()
+	btn_retry.text = "처음부터 다시하기"
+	btn_retry.pressed.connect(func():
 		get_tree().reload_current_scene()
 	)
-	vbox.add_child(btn)
-
+	vbox.add_child(btn_retry)
 	modal_layer.add_child(modal)

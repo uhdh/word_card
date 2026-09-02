@@ -1,4 +1,4 @@
-﻿# SoundEngine.gd
+# SoundEngine.gd
 # Web Audio API와 동일한 원리로 오디오 데이터를 절차적으로 합성하여 재생하는 엔진
 extends Node
 
@@ -267,5 +267,9 @@ func play_buff() -> void:
 # 14. 빙결음
 func play_freeze() -> void:
 	play_magic()
+
+# 15. 웨이브 시작음
+func play_wave_start() -> void:
+	play_victory()
 
 

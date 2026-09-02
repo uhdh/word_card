@@ -4,7 +4,6 @@ class_name JamoBelt
 extends PanelContainer
 
 signal parsed_towers_updated(parsed_list: Array)
-signal request_buy_jamo()
 signal jamo_changed()
 
 var jamo_list: Array[String] = [
@@ -15,7 +14,6 @@ var selected_index_for_swap: int = -1
 
 @onready var tiles_container: HBoxContainer = $VBox/Scroll/TilesContainer
 @onready var parsed_preview_label: Label = $VBox/Header/PreviewLabel
-@onready var btn_buy_jamo: Button = $VBox/Header/BtnBuyJamo
 
 # Draggable Tile Container Box
 class JamoTileBox extends PanelContainer:
@@ -77,8 +75,6 @@ class JamoTileBox extends PanelContainer:
 				belt.handle_drag_drop(from_idx, tile_index)
 
 func _ready() -> void:
-	if btn_buy_jamo:
-		btn_buy_jamo.pressed.connect(func(): request_buy_jamo.emit())
 	render_belt()
 
 func add_jamo(c: String) -> void:

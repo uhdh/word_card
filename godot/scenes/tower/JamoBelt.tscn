@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://jamo_belt_001"]
+[gd_scene format=3 uid="uid://jamo_belt_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/JamoBelt.gd" id="1_belt"]
 
@@ -33,11 +33,6 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(0.4, 0.9, 1, 1)
 text = "자동 완성 타워: -"
-
-[node name="BtnBuyJamo" type="Button" parent="VBox/Header"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "🎲 자모 뽑기 (-10 G)"
 
 [node name="Scroll" type="ScrollContainer" parent="VBox"]
 layout_mode = 2

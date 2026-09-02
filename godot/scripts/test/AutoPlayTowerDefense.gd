@@ -31,19 +31,29 @@ func run_step(current_step: int) -> void:
 			assert(parsed[0]["syllable"] == "불", "First tower must be [불]!")
 
 		2:
-			print("\n[Step 2] 📖 도감(LexiconModal) 및 🏪 상점(ShopModal) 오픈/조작 테스트")
+			print("\n[Step 2] 📖 도감(LexiconModal) 및 🧙‍♂️ 방랑 상인(ShopModal) 이벤트/유물 테스트")
 			main_node._on_lexicon_pressed()
 			print(" -> 도감 모달 정상 생성 및 오픈 확인! (에러 없음)")
 
-			# Shop Modal Test
-			main_node._on_shop_pressed()
-			print(" -> 상점 모달(ShopModal) 정상 생성 및 NPC 에셋 로드 확인!")
-			# Simulate buying '꽃' (or 'ㄱ')
+			# Event Shop Modal & Relic Test
+			main_node._trigger_merchant_encounter(2)
+			print(" -> 방랑 상인 모달(ShopModal) 정상 생성 및 NPC/유물 탭 로드 확인!")
+			# Simulate buying 'ㄱ'
 			var initial_count = belt.jamo_list.size()
 			belt.add_jamo("ㄱ")
 			print(" -> 상점에서 자모 [ㄱ] 구매 시뮬레이션 완료! (자모 수: %d ➔ %d)" % [initial_count, belt.jamo_list.size()])
-			# Simulate removing last jamo
 			belt.jamo_list.remove_at(belt.jamo_list.size() - 1)
+
+			# Relic purchase test
+			main_node.apply_relic_effect({
+				"id": "relic_essence_power",
+				"name": "⚔️ 활자의 정수",
+				"cost": 35,
+				"desc": "모든 활자 타워 공격력 +20%"
+			})
+			assert(main_node.has_relic("relic_essence_power"), "Must own relic_essence_power!")
+			print(" -> 🏺 유물 시스템 검증: [⚔️ 활자의 정수] 구매 및 보유 확인 완료!")
+
 			# Rare Tile System Test
 			assert(HangulEngine.is_rare("ㄱ") and HangulEngine.is_rare("ㅡ") and HangulEngine.is_rare("ㅜ"), "ㄱ, ㅡ, ㅜ must be rare tiles!")
 			assert(not HangulEngine.is_rare("ㅏ") and not HangulEngine.is_rare("ㄴ"), "Other tiles must be common!")

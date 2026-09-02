@@ -113,11 +113,6 @@ custom_minimum_size = Vector2(90, 36)
 layout_mode = 2
 text = "▶ 1x 배속"
 
-[node name="BtnShop" type="Button" parent="TopBar/Actions"]
-custom_minimum_size = Vector2(100, 36)
-layout_mode = 2
-text = "🏪 상점"
-
 [node name="BtnLexicon" type="Button" parent="TopBar/Actions"]
 custom_minimum_size = Vector2(130, 36)
 layout_mode = 2
