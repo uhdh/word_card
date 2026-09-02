@@ -537,7 +537,7 @@ class HangulTDApp {
     ctx.arc(60, 100, 22, 0, Math.PI * 2);
     ctx.fill();
     ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 11px sans-serif";
+    ctx.font = "bold 12px 'NeoDunggeunmo', monospace";
     ctx.textAlign = "center";
     ctx.fillText("차원의 문", 60, 140);
 
@@ -562,19 +562,19 @@ class HangulTDApp {
 
       if (tower) {
         ctx.fillStyle = tower.tier >= 3 ? "#f472b6" : (tower.tier === 2 ? "#fde047" : "#67e8f9");
-        ctx.font = "bold 16px sans-serif";
+        ctx.font = "bold 17px 'NeoDunggeunmo', monospace";
         ctx.textAlign = "center";
         ctx.fillText(tower.syllable, slot.x, slot.y - 8);
 
         ctx.fillStyle = "#ffffff";
-        ctx.font = "11px sans-serif";
+        ctx.font = "12px 'NeoDunggeunmo', monospace";
         ctx.fillText(`💥 ${tower.damage}`, slot.x, slot.y + 12);
         ctx.fillStyle = "#94a3b8";
-        ctx.font = "10px sans-serif";
+        ctx.font = "11px 'NeoDunggeunmo', monospace";
         ctx.fillText(tower.tier === 3 ? "⭐⭐⭐" : (tower.tier === 2 ? "⭐⭐" : "⭐"), slot.x, slot.y + 26);
       } else {
         ctx.fillStyle = "#64748b";
-        ctx.font = "11px sans-serif";
+        ctx.font = "12px 'NeoDunggeunmo', monospace";
         ctx.textAlign = "center";
         ctx.fillText(slot.label, slot.x, slot.y + 4);
       }
@@ -608,7 +608,7 @@ class HangulTDApp {
     // 6. Draw Particles
     this.particles.forEach((p) => {
       ctx.fillStyle = p.color;
-      ctx.font = "bold 13px sans-serif";
+      ctx.font = "bold 13px 'NeoDunggeunmo', monospace";
       ctx.textAlign = "center";
       ctx.fillText(p.text, p.x, p.y);
     });
