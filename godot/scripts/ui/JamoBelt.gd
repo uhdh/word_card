@@ -1,5 +1,5 @@
 # JamoBelt.gd
-# 하단 자모 타일 벨트: 실시간 자모 순서 배치, 드래그 앤 드롭(Drag & Drop), 회전(🔄), 클릭-스왑 및 자동 스트림 파싱
+# 하단 자모 타일 벨트: 실시간 자모 순서 배치, 정밀 드래그 앤 드롭 삽입(타일 사이 / 맨 끝), 회전(🔄), 클릭-스왑 및 자동 스트림 파싱
 class_name JamoBelt
 extends PanelContainer
 
@@ -12,36 +12,31 @@ var jamo_list: Array[String] = [
 
 var selected_index_for_swap: int = -1
 
+@onready var scroll_container: ScrollContainer = $VBox/Scroll
 @onready var tiles_container: HBoxContainer = $VBox/Scroll/TilesContainer
 @onready var parsed_preview_label: Label = $VBox/Header/PreviewLabel
 
-# Draggable Tile Container Box
+# Draggable Tile Container Box (좌/우 정밀 사이 삽입 지원)
 class JamoTileBox extends PanelContainer:
 	var belt: JamoBelt
 	var tile_index: int
 	var char_str: String
 
-	func _init(p_belt: JamoBelt, p_idx: int, p_char: String):
+	func _init(p_belt: JamoBelt, p_index: int, p_char: String) -> void:
 		belt = p_belt
-		tile_index = p_idx
+		tile_index = p_index
 		char_str = p_char
-		mouse_filter = Control.MOUSE_FILTER_STOP
+		custom_minimum_size = Vector2(58, 96)
+		mouse_filter = Control.MOUSE_FILTER_PASS
 
 	func _get_drag_data(_at_position: Vector2) -> Variant:
-		# Create visual drag preview following mouse cursor
 		var preview = PanelContainer.new()
-		preview.custom_minimum_size = Vector2(60, 68)
+		preview.custom_minimum_size = Vector2(58, 66)
 		var style = StyleBoxFlat.new()
-		style.bg_color = Color(0.2, 0.16, 0.3, 0.9)
-		style.border_width_left = 2
-		style.border_width_top = 2
-		style.border_width_right = 2
-		style.border_width_bottom = 2
-		style.border_color = Color(0.9, 0.8, 0.3, 1.0)
-		style.corner_radius_top_left = 6
-		style.corner_radius_top_right = 6
-		style.corner_radius_bottom_right = 6
-		style.corner_radius_bottom_left = 6
+		style.bg_color = HangulEngine.get_rarity_bg_color(char_str)
+		style.border_color = Color(1.0, 0.9, 0.4, 1.0)
+		style.set_border_width_all(2)
+		style.set_corner_radius_all(6)
 		preview.add_theme_stylebox_override("panel", style)
 
 		var lbl = Label.new()
@@ -68,14 +63,25 @@ class JamoTileBox extends PanelContainer:
 	func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		return data is Dictionary and data.get("type") == "jamo_tile"
 
-	func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	func _drop_data(at_position: Vector2, data: Variant) -> void:
 		if data is Dictionary and data.get("type") == "jamo_tile":
 			var from_idx = data.get("from_index", -1)
+			var is_right_half = at_position.x > (size.x * 0.5)
+			var target_insert_idx = tile_index + (1 if is_right_half else 0)
 			if is_instance_valid(belt):
-				belt.handle_drag_drop(from_idx, tile_index)
+				belt.handle_insert_drag_drop(from_idx, target_insert_idx)
 
 func _ready() -> void:
 	render_belt()
+
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	return data is Dictionary and data.get("type") == "jamo_tile"
+
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	if data is Dictionary and data.get("type") == "jamo_tile":
+		var from_idx = data.get("from_index", -1)
+		# 빈 공간이나 맨 끝에 드롭하면 맨 뒤로 이동
+		handle_insert_drag_drop(from_idx, jamo_list.size())
 
 func add_jamo(c: String) -> void:
 	if jamo_list.size() < 15:
@@ -90,17 +96,26 @@ func rotate_first_available() -> void:
 			render_belt()
 			break
 
-func handle_drag_drop(from_idx: int, to_idx: int) -> void:
-	if from_idx < 0 or from_idx >= jamo_list.size() or to_idx < 0 or to_idx >= jamo_list.size() or from_idx == to_idx:
+func handle_insert_drag_drop(from_idx: int, target_insert_idx: int) -> void:
+	if from_idx < 0 or from_idx >= jamo_list.size():
 		return
 
-	# Reorder / Move the tile to the target position
 	var item = jamo_list[from_idx]
 	jamo_list.remove_at(from_idx)
-	jamo_list.insert(to_idx, item)
+
+	# If moving from left to right, adjust index after removal
+	var final_insert_idx = target_insert_idx
+	if from_idx < target_insert_idx:
+		final_insert_idx -= 1
+
+	final_insert_idx = clampi(final_insert_idx, 0, jamo_list.size())
+	jamo_list.insert(final_insert_idx, item)
 
 	SoundEngine.play_tile_click()
 	render_belt()
+
+func handle_drag_drop(from_idx: int, to_idx: int) -> void:
+	handle_insert_drag_drop(from_idx, to_idx)
 
 func render_belt() -> void:
 	for c in tiles_container.get_children():
@@ -122,7 +137,7 @@ func render_belt() -> void:
 	parsed_towers_updated.emit(parsed)
 	jamo_changed.emit()
 
-	# Render tile buttons with Drag & Drop support
+	# Render tile buttons with Drag & Drop Insertion support
 	for idx in range(jamo_list.size()):
 		var char_str = jamo_list[idx]
 		var is_rotatable = HangulEngine.is_rotatable(char_str)
@@ -152,7 +167,7 @@ func render_belt() -> void:
 		if rarity == "super_rare": rarity_name = "🔥 초희귀 (4변환 만능)"
 		elif rarity == "rare": rarity_name = "✨ 희귀 (2변환)"
 
-		btn_tile.tooltip_text = "[%s 타일: %s]\n마우스로 끌어서(드래그) 순서를 바꾸거나, 클릭하여 다른 타일과 교환하세요." % [rarity_name, char_str]
+		btn_tile.tooltip_text = "[%s 타일: %s]\n드래그하여 원하는 타일 사이나 맨 끝으로 자유롭게 배치하세요." % [rarity_name, char_str]
 		btn_tile.custom_minimum_size = Vector2(58, 66)
 		btn_tile.add_theme_font_size_override("font_size", 24)
 		btn_tile.mouse_filter = Control.MOUSE_FILTER_PASS
@@ -191,7 +206,6 @@ func _on_tile_clicked(idx: int) -> void:
 		selected_index_for_swap = -1
 		render_belt()
 	else:
-		# Swap positions
 		var tmp = jamo_list[selected_index_for_swap]
 		jamo_list[selected_index_for_swap] = jamo_list[idx]
 		jamo_list[idx] = tmp

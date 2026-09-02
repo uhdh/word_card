@@ -94,9 +94,9 @@ func run_step(current_step: int) -> void:
 			assert(parsed_lightning[0]["syllable"] == "번개", "Should automatically combine into [번개]!")
 
 			print("\n -> 🖐️ 자모 타일 드래그 앤 드롭(Drag & Drop) 이동 테스트")
-			# Drag 0th tile ('ㅂ') to 4th position -> ['ㅓ', 'ㄴ', 'ㄱ', 'ㅐ', 'ㅂ']
-			belt.handle_drag_drop(0, 4)
-			print(" -> 0번 타일 'ㅂ'을 4번 위치로 드래그 이동 완료! 현재 벨트: %s" % str(belt.jamo_list))
+			# Drag 0th tile ('ㅂ') to the end (index 5) -> ['ㅓ', 'ㄴ', 'ㄱ', 'ㅐ', 'ㅂ']
+			belt.handle_insert_drag_drop(0, 5)
+			print(" -> 0번 타일 'ㅂ'을 맨 끝 4번 위치로 드래그 이동 완료! 현재 벨트: %s" % str(belt.jamo_list))
 			assert(belt.jamo_list[4] == "ㅂ", "Dragged tile 'ㅂ' should be at index 4!")
 
 		4:

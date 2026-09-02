@@ -186,8 +186,21 @@ body {
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
+.jamo-tile-box.drop-left {
+  border-left: 4px solid #38bdf8 !important;
+  box-shadow: -4px 0 12px rgba(56, 189, 248, 0.7);
+  transform: translateX(4px);
+}
+
+.jamo-tile-box.drop-right {
+  border-right: 4px solid #38bdf8 !important;
+  box-shadow: 4px 0 12px rgba(56, 189, 248, 0.7);
+  transform: translateX(-4px);
+}
+
 .jamo-tile-box.dragging {
-  opacity: 0.4;
+  opacity: 0.35;
+  transform: scale(0.92);
 }
 
 .btn-jamo-tile {

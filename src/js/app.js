@@ -142,6 +142,21 @@ class HangulTDApp {
     this.btnLexicon.addEventListener("click", () => this.openLexiconModal());
     this.btnMute.addEventListener("click", () => this.toggleMute());
 
+    this.beltContainer.addEventListener("dragover", (e) => e.preventDefault());
+    this.beltContainer.addEventListener("drop", (e) => {
+      if (e.target === this.beltContainer) {
+        e.preventDefault();
+        const fromIdx = parseInt(e.dataTransfer.getData("text/plain"), 10);
+        if (!isNaN(fromIdx) && fromIdx >= 0 && fromIdx < this.jamoList.length) {
+          const item = this.jamoList.splice(fromIdx, 1)[0];
+          this.jamoList.push(item);
+          sound.playTileClick();
+          this.renderBelt();
+          this.saveGame();
+        }
+      }
+    });
+
     this.btnLoad.disabled = !SaveManager.hasSaveFile();
     this.updateTopBar();
   }
@@ -273,14 +288,30 @@ class HangulTDApp {
         e.dataTransfer.setData("text/plain", idx.toString());
         tileBox.classList.add("dragging");
       });
-      tileBox.addEventListener("dragend", () => tileBox.classList.remove("dragging"));
-      tileBox.addEventListener("dragover", (e) => e.preventDefault());
+      tileBox.addEventListener("dragend", () => {
+        document.querySelectorAll(".jamo-tile-box").forEach(el => el.classList.remove("dragging", "drop-left", "drop-right"));
+      });
+      tileBox.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const rect = tileBox.getBoundingClientRect();
+        const isRight = (e.clientX - rect.left) > (rect.width / 2);
+        tileBox.classList.toggle("drop-left", !isRight);
+        tileBox.classList.toggle("drop-right", isRight);
+      });
+      tileBox.addEventListener("dragleave", () => {
+        tileBox.classList.remove("drop-left", "drop-right");
+      });
       tileBox.addEventListener("drop", (e) => {
         e.preventDefault();
+        tileBox.classList.remove("drop-left", "drop-right");
         const fromIdx = parseInt(e.dataTransfer.getData("text/plain"), 10);
-        if (!isNaN(fromIdx) && fromIdx !== idx) {
+        if (!isNaN(fromIdx) && fromIdx >= 0 && fromIdx < this.jamoList.length) {
+          const rect = tileBox.getBoundingClientRect();
+          const isRight = (e.clientX - rect.left) > (rect.width / 2);
+          let targetIdx = idx + (isRight ? 1 : 0);
           const item = this.jamoList.splice(fromIdx, 1)[0];
-          this.jamoList.splice(idx, 0, item);
+          if (fromIdx < targetIdx) targetIdx -= 1;
+          this.jamoList.splice(targetIdx, 0, item);
           sound.playTileClick();
           this.renderBelt();
           this.saveGame();
