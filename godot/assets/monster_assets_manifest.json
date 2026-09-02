@@ -1,0 +1,114 @@
+{
+  "monster_slime_1": {
+    "id": "60d57153-69d8-4357-bbfb-525d73fe5c96",
+    "filename": "monster_slime_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_slime_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_slime_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/89e7dabe-cb9a-4ff7-b9eb-ffafe11ded22.png"
+  },
+  "monster_slime_2": {
+    "id": "e925972a-09c9-4a5b-bf3a-d1a5b6389a99",
+    "filename": "monster_slime_2_32px_pastel.png",
+    "local_path": "assets/monsters/monster_slime_2_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_slime_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/089c20bc-c4dc-4586-9cf6-b1ceac2c31fe.png"
+  },
+  "monster_boar_1": {
+    "id": "eb24c8c3-a34e-49c2-af34-8e9f4cf346ed",
+    "filename": "monster_boar_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_boar_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_boar_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/d8ec82a7-d246-4aad-9342-f0324fa04151.png"
+  },
+  "monster_boar_2": {
+    "id": "a57ca29f-986b-4bb5-929b-413c7b43c57a",
+    "filename": "monster_boar_2_32px_pastel.png",
+    "local_path": "assets/monsters/monster_boar_2_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_boar_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/03a5f2ad-1fb5-4a49-81d4-99fa35922d86.png"
+  },
+  "monster_vine_1": {
+    "id": "07c6dc43-0a46-4438-a105-b8b64d291957",
+    "filename": "monster_vine_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_vine_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_vine_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/771f6200-0135-432a-9dd6-f2c6213622cb.png"
+  },
+  "monster_vine_2": {
+    "id": "29eb1359-b764-4a9b-885c-390a1a06e66e",
+    "filename": "monster_vine_2_32px_pastel.png",
+    "local_path": "assets/monsters/monster_vine_2_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_vine_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/858f5bad-3dc4-4d34-b640-bc42c2e13769.png"
+  },
+  "monster_spirit_1": {
+    "id": "f7849448-922e-4307-b77d-c5ce5dc84539",
+    "filename": "monster_spirit_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_spirit_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_spirit_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/712d5626-35d9-4aef-a7c7-a2f34ca9ebd0.png"
+  },
+  "monster_spirit_2": {
+    "id": "87f03e22-bdf2-4a7a-8848-798f9c58fdeb",
+    "filename": "monster_spirit_2_32px_pastel.png",
+    "local_path": "assets/monsters/monster_spirit_2_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_spirit_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/0ac12dc7-ff6c-491d-b8e8-a0b404e33915.png"
+  },
+  "monster_golem_boss_1": {
+    "id": "42e77187-cae5-4659-930b-57fa40b906dd",
+    "filename": "monster_golem_boss_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_golem_boss_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/3a9d329b-d814-45fa-b8f4-64e8892f1d47.png"
+  },
+  "monster_golem_boss_2": {
+    "id": "65e9a6d3-9570-4c31-b5db-d62438dde640",
+    "filename": "monster_golem_boss_2_32px_pastel.png",
+    "local_path": "assets/monsters/monster_golem_boss_2_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_golem_boss_2_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/c90329f1-5603-4694-b781-9ef9cd1237da.png"
+  },
+  "monster_goblin_1": {
+    "id": "b9eac8b0-cc04-49e6-bf48-88eb8f5c4298",
+    "filename": "monster_goblin_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_goblin_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_goblin_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/14a91078-c28b-455a-bb49-65289f4b9e1c.png"
+  },
+  "monster_bat_1": {
+    "id": "37d3aecf-add3-4320-92c5-09d47aaf9692",
+    "filename": "monster_bat_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_bat_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_bat_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/f199e4b4-2c38-45b2-99f6-57704fc63745.png"
+  },
+  "monster_wolf_1": {
+    "id": "5520b3e3-85a4-471f-a3df-b89de742d07e",
+    "filename": "monster_wolf_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_wolf_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_wolf_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/31669507-22af-463c-b73d-4affd982639f.png"
+  },
+  "monster_skeleton_1": {
+    "id": "4131d1c2-b13f-4c65-8f3d-c7f09aa88932",
+    "filename": "monster_skeleton_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_skeleton_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_skeleton_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/6d01725a-1807-4c37-8d0b-75a303dba9e3.png"
+  },
+  "monster_dragon_1": {
+    "id": "aa88cc65-0430-45ca-a94a-55c34918fdf9",
+    "filename": "monster_dragon_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_dragon_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_dragon_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/43a73120-e9ac-4e8b-a0cf-ce5a4e67afae.png"
+  },
+  "monster_spider_1": {
+    "id": "4757846d-ba7e-4c73-aa9d-dfa3405e0330",
+    "filename": "monster_spider_1_32px_pastel.png",
+    "local_path": "assets/monsters/monster_spider_1_32px_pastel.png",
+    "godot_path": "res://assets/monsters/monster_spider_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/b37a593f-7045-471d-bff0-fbf2d520b2e2.png"
+  }
+}

@@ -74,27 +74,27 @@ func start_next_wave() -> void:
 	match current_wave:
 		1:
 			for i in range(5):
-				spawn_queue.append({"name": "낱자 슬라임", "hp": 16.0, "speed": 85.0, "gold": 4, "icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png"})
+				spawn_queue.append({"name": "낱자 슬라임", "hp": 16.0, "speed": 85.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_1_32px_pastel.png"})
 		2:
 			for i in range(3):
-				spawn_queue.append({"name": "낱자 슬라임", "hp": 18.0, "speed": 90.0, "gold": 4, "icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png"})
+				spawn_queue.append({"name": "낱자 슬라임", "hp": 18.0, "speed": 90.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_2_32px_pastel.png"})
 			for i in range(2):
-				spawn_queue.append({"name": "사나운 멧돼지", "hp": 30.0, "speed": 65.0, "gold": 8, "icon": "res://assets/04_생물_소환/dog_wolf_개/dog_wolf_1_32px_pastel.png"})
+				spawn_queue.append({"name": "사나운 멧돼지", "hp": 30.0, "speed": 65.0, "gold": 8, "icon": "res://assets/monsters/monster_boar_1_32px_pastel.png"})
 		3:
 			for i in range(3):
-				spawn_queue.append({"name": "가시 넝쿨", "hp": 25.0, "speed": 75.0, "gold": 6, "icon": "res://assets/04_생물_소환/herb_plant_풀/herb_plant_1_32px_pastel.png"})
+				spawn_queue.append({"name": "가시 넝쿨", "hp": 25.0, "speed": 75.0, "gold": 6, "icon": "res://assets/monsters/monster_vine_1_32px_pastel.png"})
 			for i in range(3):
-				spawn_queue.append({"name": "사나운 멧돼지", "hp": 35.0, "speed": 70.0, "gold": 8, "icon": "res://assets/04_생물_소환/dog_wolf_개/dog_wolf_1_32px_pastel.png"})
+				spawn_queue.append({"name": "사나운 멧돼지", "hp": 35.0, "speed": 70.0, "gold": 8, "icon": "res://assets/monsters/monster_boar_2_32px_pastel.png"})
 		4:
 			for i in range(2):
-				spawn_queue.append({"name": "먹물 악령", "hp": 55.0, "speed": 60.0, "gold": 12, "icon": "res://assets/04_생물_소환/dragon_용/dragon_1_32px_pastel.png"})
+				spawn_queue.append({"name": "먹물 악령", "hp": 55.0, "speed": 60.0, "gold": 12, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
 			for i in range(4):
-				spawn_queue.append({"name": "가시 넝쿨", "hp": 28.0, "speed": 80.0, "gold": 6, "icon": "res://assets/04_생물_소환/herb_plant_풀/herb_plant_1_32px_pastel.png"})
+				spawn_queue.append({"name": "가시 넝쿨", "hp": 28.0, "speed": 80.0, "gold": 6, "icon": "res://assets/monsters/monster_vine_2_32px_pastel.png"})
 		5:
 			# Boss wave
-			spawn_queue.append({"name": "서예 골렘 (BOSS)", "hp": 150.0, "speed": 45.0, "gold": 30, "icon": "res://assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png"})
+			spawn_queue.append({"name": "서예 골렘 (BOSS)", "hp": 150.0, "speed": 45.0, "gold": 30, "icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png"})
 			for i in range(4):
-				spawn_queue.append({"name": "낱자 슬라임", "hp": 20.0, "speed": 95.0, "gold": 4, "icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png"})
+				spawn_queue.append({"name": "낱자 슬라임", "hp": 20.0, "speed": 95.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_1_32px_pastel.png"})
 
 	wave_status_changed.emit(current_wave, MAX_WAVES, true)
 	SoundEngine.play_summon()

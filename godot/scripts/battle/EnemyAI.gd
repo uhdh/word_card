@@ -1,4 +1,4 @@
-﻿# EnemyAI.gd
+# EnemyAI.gd
 # 1막(Act 1. 흩어진 활자의 숲) 몬스터 데이터 및 행동 패턴
 class_name EnemyInstance
 extends RefCounted
@@ -8,7 +8,7 @@ const ENEMIES_ACT_1 = {
 		"id": "letter_slime",
 		"name": "낱자 슬라임",
 		"maxHp": 16,
-		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
+		"icon": "res://assets/monsters/monster_slime_1_32px_pastel.png",
 		"type": "normal",
 		"moves": [
 			{ "name": "먹물 뱉기", "type": "attack", "damage": 4, "desc": "4의 피해를 입힙니다." },
@@ -20,7 +20,7 @@ const ENEMIES_ACT_1 = {
 		"id": "wild_boar",
 		"name": "사나운 멧돼지",
 		"maxHp": 22,
-		"icon": "res://assets/04_생물_소환/dog_wolf_개/dog_wolf_1_32px_pastel.png",
+		"icon": "res://assets/monsters/monster_boar_1_32px_pastel.png",
 		"type": "normal",
 		"moves": [
 			{ "name": "돌진 들이받기", "type": "attack", "damage": 7, "desc": "7의 돌진 피해를 입힙니다." },
@@ -32,7 +32,7 @@ const ENEMIES_ACT_1 = {
 		"id": "thorn_vine",
 		"name": "가시 돋친 넝쿨",
 		"maxHp": 18,
-		"icon": "res://assets/04_생물_소환/herb_plant_풀/herb_plant_1_32px_pastel.png",
+		"icon": "res://assets/monsters/monster_vine_1_32px_pastel.png",
 		"type": "normal",
 		"moves": [
 			{ "name": "가시 채찍", "type": "attack", "damage": 5, "bleed": 2, "desc": "5의 피해와 2턴간 출혈을 입힙니다." },
@@ -43,7 +43,7 @@ const ENEMIES_ACT_1 = {
 		"id": "ink_spirit",
 		"name": "먹물 웅덩이의 악령",
 		"maxHp": 38,
-		"icon": "res://assets/04_생물_소환/dragon_용/dragon_1_32px_pastel.png",
+		"icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png",
 		"type": "elite",
 		"moves": [
 			{ "name": "먹물 폭풍", "type": "attack", "damage": 9, "desc": "9의 암흑 피해를 입힙니다." },
@@ -55,7 +55,7 @@ const ENEMIES_ACT_1 = {
 		"id": "ink_golem",
 		"name": "먹물에 잠식된 서예 골렘",
 		"maxHp": 65,
-		"icon": "res://assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png",
+		"icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png",
 		"type": "boss",
 		"moves": [
 			{ "name": "대필 일격", "type": "attack", "damage": 8, "desc": "8의 묵직한 붓질 타격을 가합니다." },
