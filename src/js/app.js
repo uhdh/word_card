@@ -833,7 +833,10 @@ class HangulTDApp {
         const isOwned = this.hasRelic(r.id);
         relicHtml += `
           <div class="relic-card">
-            <div class="relic-name">${r.name}</div>
+            <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:4px;">
+              <img src="${r.icon}" style="width:24px; height:24px; image-rendering:pixelated;" onerror="this.style.display='none'" />
+              <div class="relic-name">${r.name}</div>
+            </div>
             <div class="relic-desc">${r.desc}</div>
             <button class="btn-buy-relic" data-idx="${idx}" ${isOwned ? 'disabled' : ''}>
               ${isOwned ? '보유 중' : r.cost + ' G 구매'}
@@ -844,36 +847,36 @@ class HangulTDApp {
 
       let removeTilesHtml = "";
       this.jamoList.forEach((ch, idx) => {
-        removeTilesHtml += `<button class="btn-remove-tile" data-idx="${idx}">${ch}</button>`;
+        removeTilesHtml += `<button class="btn-remove-tile" data-idx="${idx}" ${this.gold < 15 || this.jamoList.length <= 1 ? 'disabled' : ''}>${ch}</button>`;
       });
 
       this.openModal(`
-        <div class="modal-box shop-modal">
+        <div class="modal-box shop-modal" style="width: 680px; max-height: 600px; overflow-y: auto;">
           <div class="modal-header">
-            <h3>🧙‍♂️ 방랑 상인 모로크 (골드: ${this.gold} G)</h3>
+            <h3>🧙‍♂️ 방랑 상인 모로크 (보유 골드: ${this.gold} G)</h3>
             <button class="btn-modal-close" id="btn-modal-close">✖</button>
           </div>
-          <div class="shop-npc-dialog">
-            “길목에서 마주쳐 반갑소, 영웅이여! 활자의 신비와 귀한 유물들을 둘러보시게.”
-          </div>
-          <div class="shop-tabs">
-            <button class="btn-shop-tab ${currentTab === 'buy' ? 'active' : ''}" id="tab-buy">자모 상점</button>
-            <button class="btn-shop-tab ${currentTab === 'relics' ? 'active' : ''}" id="tab-relics">신비한 유물</button>
-            <button class="btn-shop-tab ${currentTab === 'remove' ? 'active' : ''}" id="tab-remove">덱 압축 (타일 제거 15 G)</button>
+          <div class="shop-npc-dialog" style="font-size: 12px; margin-bottom: 6px;">
+            “길목에서 마주쳐 반갑소, 영웅이여! 자모 활자와 귀한 에테르 유물들을 한눈에 둘러보시게.”
           </div>
 
-          <div class="shop-content">
-            <div class="shop-view ${currentTab === 'buy' ? '' : 'hidden'}" id="view-buy">
-              <div class="shop-grid">${stockHtml}</div>
+          <div class="shop-all-sections" style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Section 1: Jamo Shelf -->
+            <div class="shop-section">
+              <h4 style="font-size: 13px; color: #fde047; margin-bottom: 8px;">🔤 자모 활자 진열대 (일반 10G / 희귀 18G / 초희귀 25G)</h4>
+              <div class="shop-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">${stockHtml}</div>
             </div>
 
-            <div class="shop-view ${currentTab === 'relics' ? '' : 'hidden'}" id="view-relics">
-              <div class="relics-grid">${relicHtml}</div>
+            <!-- Section 2: Relics -->
+            <div class="shop-section">
+              <h4 style="font-size: 13px; color: #c084fc; margin-bottom: 8px;">🏺 신비한 에테르 유물 (고유 패시브 아티팩트)</h4>
+              <div class="relics-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">${relicHtml}</div>
             </div>
 
-            <div class="shop-view ${currentTab === 'remove' ? '' : 'hidden'}" id="view-remove">
-              <p style="font-size:12px; color:#94a3b8; margin-bottom:8px;">불필요한 자모를 골라 벨트에서 완전히 제거합니다:</p>
-              <div class="remove-tiles-grid">${removeTilesHtml}</div>
+            <!-- Section 3: Deck Thinning -->
+            <div class="shop-section">
+              <h4 style="font-size: 13px; color: #f87171; margin-bottom: 6px;">✂️ 덱 압축 (타일 영구 제거 - 15 G)</h4>
+              <div class="remove-tiles-grid" style="display: flex; flex-wrap: wrap; gap: 8px;">${removeTilesHtml}</div>
             </div>
           </div>
         </div>
@@ -881,9 +884,6 @@ class HangulTDApp {
 
       // Events
       document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
-      document.getElementById("tab-buy").addEventListener("click", () => { currentTab = "buy"; renderShop(); });
-      document.getElementById("tab-relics").addEventListener("click", () => { currentTab = "relics"; renderShop(); });
-      document.getElementById("tab-remove").addEventListener("click", () => { currentTab = "remove"; renderShop(); });
 
       document.querySelectorAll(".btn-buy-stock").forEach((btn) => {
         btn.addEventListener("click", (e) => {

@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://npc_merchant_001" path="res://assets/npc/npc_merchant_1_32px_pastel.png" id="2_npc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.1, 0.08, 0.16, 0.95)
+bg_color = Color(0.1, 0.08, 0.16, 0.96)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.8, 0.7, 0.3, 0.9)
+border_color = Color(0.85, 0.75, 0.35, 0.95)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.6)
-shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
 bg_color = Color(0.16, 0.13, 0.24, 0.9)
@@ -45,34 +45,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.65)
+color = Color(0, 0, 0, 0.7)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(640, 460)
+custom_minimum_size = Vector2(740, 560)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -230.0
-offset_right = 320.0
-offset_bottom = 230.0
+offset_left = -370.0
+offset_top = -280.0
+offset_right = 370.0
+offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="Header" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="NpcIcon" type="TextureRect" parent="Panel/VBox/Header"]
-custom_minimum_size = Vector2(56, 56)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_npc")
 expand_mode = 1
@@ -86,126 +86,73 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
 [node name="DialogLabel" type="Label" parent="Panel/VBox/Header/DialogBox"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
-text = "“어서오게 활자술사여! 원하는 자모를 구매하거나 불필요한 자모를 갈아보게나.”"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.95, 0.9, 0.75, 1)
+text = "“어서오게 활자술사여! 자모 활자와 귀한 에테르 유물들을 한눈에 둘러보시게.”"
 autowrap_mode = 2
 
 [node name="GoldLabel" type="Label" parent="Panel/VBox/Header"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 text = "🪙 30 G"
 
 [node name="BtnClose" type="Button" parent="Panel/VBox/Header"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 text = "✖"
 
-[node name="TabButtons" type="HBoxContainer" parent="Panel/VBox"]
+[node name="Scroll" type="ScrollContainer" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="BtnTabBuy" type="Button" parent="Panel/VBox/TabButtons"]
+[node name="AllContentVBox" type="VBoxContainer" parent="Panel/VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 13
-text = "🏪 자모 구매"
+theme_override_constants/separation = 14
 
-[node name="BtnTabRelic" type="Button" parent="Panel/VBox/TabButtons"]
+[node name="SectionJamo" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 13
-text = "🏺 신비한 유물"
+theme_override_constants/separation = 6
 
-[node name="BtnTabRemove" type="Button" parent="Panel/VBox/TabButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 13
-text = "✂️ 덱 압축(제거)"
-
-[node name="TabBuyContainer" type="VBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="BuyDescLabel" type="Label" parent="Panel/VBox/TabBuyContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
-text = "벨트에 추가할 자모를 선택하여 구매하세요. (일반 12 G / 희귀 20 G)"
-horizontal_alignment = 1
-
-[node name="ItemsGrid" type="HBoxContainer" parent="Panel/VBox/TabBuyContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-theme_override_constants/separation = 16
-
-[node name="RerollRow" type="HBoxContainer" parent="Panel/VBox/TabBuyContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="BtnReroll" type="Button" parent="Panel/VBox/TabBuyContainer/RerollRow"]
-custom_minimum_size = Vector2(180, 36)
+[node name="JamoTitleLabel" type="Label" parent="Panel/VBox/Scroll/AllContentVBox/SectionJamo"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "🔄 상품 새로고침 (8 G)"
+theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
+text = "🔤 자모 활자 진열대 (일반 10G / 희귀 18G / 초희귀 25G)"
 
-[node name="TabRelicContainer" type="VBoxContainer" parent="Panel/VBox"]
-visible = false
+[node name="ShopItemsGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionJamo"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="RelicDescLabel" type="Label" parent="Panel/VBox/TabRelicContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.8, 0.7, 1, 1)
-text = "전투에 영구적인 강화 효과를 주는 유물을 구매하세요. (25 ~ 35 G)"
-horizontal_alignment = 1
-
-[node name="RelicGrid" type="HBoxContainer" parent="Panel/VBox/TabRelicContainer"]
-layout_mode = 2
-size_flags_vertical = 3
 alignment = 1
 theme_override_constants/separation = 12
 
-[node name="TabRemoveContainer" type="VBoxContainer" parent="Panel/VBox"]
-visible = false
+[node name="SectionRelics" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 6
 
-[node name="RemoveDescLabel" type="Label" parent="Panel/VBox/TabRemoveContainer"]
+[node name="RelicTitleLabel" type="Label" parent="Panel/VBox/Scroll/AllContentVBox/SectionRelics"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
-text = "제거하고 싶은 자모 타일을 클릭하여 덱에서 영구히 삭제하세요. (15 G)"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.7, 0.5, 1, 1)
+text = "🏺 신비한 에테르 유물 (고유 패시브 아티팩트)"
 
-[node name="Scroll" type="ScrollContainer" parent="Panel/VBox/TabRemoveContainer"]
-custom_minimum_size = Vector2(0, 90)
+[node name="RelicItemsGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionRelics"]
 layout_mode = 2
-size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 12
 
-[node name="TilesContainer" type="HBoxContainer" parent="Panel/VBox/TabRemoveContainer/Scroll"]
+[node name="SectionRemove" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="RemoveTitleLabel" type="Label" parent="Panel/VBox/Scroll/AllContentVBox/SectionRemove"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
+text = "✂️ 덱 압축 (선택한 타일 영구 제거 - 15 G)"
+
+[node name="RemoveTilesGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionRemove"]
+layout_mode = 2
 alignment = 1
 theme_override_constants/separation = 8
-
-[node name="RemoveInfoLabel" type="Label" parent="Panel/VBox/TabRemoveContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
-text = "제거할 자모 타일을 위 목록에서 선택하세요."
-horizontal_alignment = 1
-
-[node name="BtnConfirmRemove" type="Button" parent="Panel/VBox/TabRemoveContainer"]
-custom_minimum_size = Vector2(240, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 13
-text = "✂️ 자모 타일 영구 제거 (15 G)"

@@ -300,7 +300,6 @@ body {
 }
 
 .shop-card {
-  width: 100px;
   background: #231c36;
   border: 2px solid #4a3e68;
   border-radius: 8px;
@@ -308,11 +307,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-}
-
-.shop-card.rare-card {
-  border-color: #eab308;
+  gap: 6px;
 }
 
 .shop-char {
@@ -330,6 +325,60 @@ body {
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.btn-buy-stock:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #475569;
+}
+
+.relic-card {
+  background: #1d1830;
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.relic-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #e2e8f0;
+}
+
+.relic-desc {
+  font-size: 10px;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.btn-buy-relic {
+  width: 100%;
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.btn-buy-relic:hover:not(:disabled) {
+  background: #9333ea;
+}
+
+.btn-buy-relic:disabled {
+  opacity: 0.5;
+  background: #475569;
+  cursor: not-allowed;
 }
 
 .remove-tiles-row {
