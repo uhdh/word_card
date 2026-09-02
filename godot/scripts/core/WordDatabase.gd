@@ -3,166 +3,6 @@
 extends Node
 
 const WORD_DATABASE: Dictionary = {
-	"갑": {
-		"word": "갑",
-		"name": "갑 (철갑/가시파편)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 15,
-		"desc": "가시 철갑 파편을 사방으로 발사하여 15 관통 물리 피해를 입힙니다.",
-		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"막": {
-		"word": "막",
-		"name": "막 (결계/감속장막)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 12,
-		"desc": "지나가는 적에게 12 장막 충격을 주며 이동속도를 50% 감속시킵니다.",
-		"icon": "res://assets/02_방어_장비/barrier_막/barrier_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"문": {
-		"word": "문",
-		"name": "문 (관문/철문낙하)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 14,
-		"desc": "적의 경로 위에 거대한 철문을 내리찍어 14 피해 및 1.5초 기절을 줍니다.",
-		"icon": "res://assets/02_방어_장비/gate_문/gate_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"방": {
-		"word": "방",
-		"name": "방 (방패/충격파)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 12,
-		"desc": "접근하는 적들에게 12 방어 충격파를 발사하여 넉백시킵니다.",
-		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"산": {
-		"word": "산",
-		"name": "산 (태산/낙석)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 18,
-		"desc": "태산 같은 거대한 낙석을 떨어뜨려 18 광역 피해 및 넉백을 입힙니다.",
-		"icon": "res://assets/02_방어_장비/mountain_산/mountain_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"성": {
-		"word": "성",
-		"name": "성 (성채/요새포)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 18,
-		"desc": "요새의 육중한 성채 방어포를 발사하여 18의 광역 포격 피해를 줍니다.",
-		"icon": "res://assets/02_방어_장비/castle_성/castle_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"완": {
-		"word": "완",
-		"name": "완 (완벽/철퇴타격)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 16,
-		"desc": "완벽한 타이밍의 묵직한 강타로 16 단일 물리 피해 및 0.8초 기절을 줍니다.",
-		"icon": "res://assets/02_방어_장비/guard_완/guard_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"위": {
-		"word": "위",
-		"name": "위 (위성/궤도레이저)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 13,
-		"desc": "주변을 회전하는 궤도 레이저를 연사하여 13 지속 피해를 입힙니다.",
-		"icon": "res://assets/02_방어_장비/orbit_위/orbit_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"인": {
-		"word": "인",
-		"name": "인 (인내/강철탄)",
-		"category": "defense",
-		"cost": 1,
-		"damage": 14,
-		"desc": "강철 같은 단단한 탄환을 쏘아보내어 14 단일 관통 피해를 입힙니다.",
-		"icon": "res://assets/02_방어_장비/patience_인/patience_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"냉": {
-		"word": "냉",
-		"name": "냉 (냉기/동결)",
-		"category": "element",
-		"cost": 1,
-		"damage": 7,
-		"desc": "서늘한 냉기를 뿜어 7 피해와 함께 적의 공속을 깎습니다.",
-		"icon": "res://assets/03_원소_마법/cold_냉/cold_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"뇌": {
-		"word": "뇌",
-		"name": "뇌 (번개/감전)",
-		"category": "element",
-		"cost": 1,
-		"damage": 11,
-		"desc": "번갯불을 내리쳐 11 피해 및 2체의 적에게 연쇄 감전을 일으킵니다.",
-		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"달": {
-		"word": "달",
-		"name": "달 (월광/마력)",
-		"category": "element",
-		"cost": 1,
-		"damage": 10,
-		"desc": "은은한 월광 마법탄을 발사하여 10 마법 피해를 입힙니다.",
-		"icon": "res://assets/03_원소_마법/moon_달/moon_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"독": {
-		"word": "독",
-		"name": "독 (맹독/부식)",
-		"category": "element",
-		"cost": 1,
-		"damage": 6,
-		"desc": "치명적인 독액을 뱉어 6 피해 및 초당 4의 지속 독 피해를 줍니다.",
-		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"물": {
-		"word": "물",
-		"name": "물 (수류/물줄기)",
-		"category": "element",
-		"cost": 1,
-		"damage": 6,
-		"desc": "차가운 물줄기를 발사하여 6 피해 및 적을 20% 둔화시킵니다.",
-		"icon": "res://assets/03_원소_마법/water_물/water_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"불": {
-		"word": "불",
-		"name": "불 (화염/화구)",
-		"category": "element",
-		"cost": 1,
-		"damage": 7,
-		"desc": "적에게 7 피해를 주고 초당 3의 화상 피해를 남깁니다.",
-		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"빙": {
-		"word": "빙",
-		"name": "빙 (얼음/빙결)",
-		"category": "element",
-		"cost": 1,
-		"damage": 8,
-		"desc": "날카로운 얼음 조각을 쏘아 8 피해 및 40% 둔화를 겁니다.",
-		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
 	"감": {
 		"word": "감",
 		"name": "감 (단감/투척)",
@@ -170,97 +10,17 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 11,
 		"desc": "단단한 감 열매를 고속 투척하여 11 피해 및 30% 둔화를 줍니다.",
-		"icon": "res://assets/05_회복_치유/persimmon_감/persimmon_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_감_persimmon_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"마": {
-		"word": "마",
-		"name": "마 (산약/마비침)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 12,
-		"desc": "적의 급소에 마비 침을 발사하여 12 피해 및 1초간 마비(스턴)를 줍니다.",
-		"icon": "res://assets/05_회복_치유/yam_마/yam_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"무": {
-		"word": "무",
-		"name": "무 (무/대포탄)",
-		"category": "heal",
+	"갑": {
+		"word": "갑",
+		"name": "갑 (철갑/가시파편)",
+		"category": "defense",
 		"cost": 1,
 		"damage": 15,
-		"desc": "거대한 무 대포탄을 발사하여 착탄 지점에 15 폭발 피해를 입힙니다.",
-		"icon": "res://assets/05_회복_치유/radish_무/radish_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"묵": {
-		"word": "묵",
-		"name": "묵 (도토리묵/슬로우)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 10,
-		"desc": "끈적한 도토리묵을 뿜어 10 피해 및 적 이동속도를 60% 감속시킵니다.",
-		"icon": "res://assets/05_회복_치유/jelly_묵/jelly_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"샘": {
-		"word": "샘",
-		"name": "샘 (치유샘/물기둥)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 12,
-		"desc": "바닥에서 솟구치는 거대한 물기둥으로 12 피해 및 0.5초 에어본을 가합니다.",
-		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"생": {
-		"word": "생",
-		"name": "생 (생명/영혼흡수)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 14,
-		"desc": "적에게 14 영혼 흡수탄을 쏘며, 처치 시 기지 HP를 +1 회복합니다.",
-		"icon": "res://assets/05_회복_치유/life_생/life_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"숨": {
-		"word": "숨",
-		"name": "숨 (숨결/영기방출)",
-		"category": "heal",
-		"cost": 1,
-		"damage": 16,
-		"desc": "전방 부채꼴 범위로 16의 거대한 영기 숨결을 뿜어냅니다.",
-		"icon": "res://assets/05_회복_치유/breath_숨/breath_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"기": {
-		"word": "기",
-		"name": "기 (기공/관통기공파)",
-		"category": "skill",
-		"cost": 1,
-		"damage": 20,
-		"desc": "일직선상 모든 적을 관통하는 푸른 기공파로 20 관통 피해를 입힙니다.",
-		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"망": {
-		"word": "망",
-		"name": "망 (포획망/속박)",
-		"category": "skill",
-		"cost": 1,
-		"damage": 14,
-		"desc": "올가미 그물을 투척하여 14 피해 및 적들을 1.2초간 속박합니다.",
-		"icon": "res://assets/06_버프_유틸/net_망/net_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"북": {
-		"word": "북",
-		"name": "북 (전쟁의북/고동)",
-		"category": "skill",
-		"cost": 1,
-		"damage": 10,
-		"desc": "둥둥 울리는 북소리로 10 음파 피해 및 주변 아군 타워 공속을 +40% 가속합니다.",
-		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
+		"desc": "가시 철갑 파편을 사방으로 발사하여 15 관통 물리 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_갑_armor_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"개": {
@@ -270,77 +30,7 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 9,
 		"desc": "사냥개를 풀어 9 피해 및 1초간 적을 물고 늘어집니다.",
-		"icon": "res://assets/04_생물_소환/dog_개/dog_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"곰": {
-		"word": "곰",
-		"name": "곰 (맹수/앞발)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 14,
-		"desc": "거대한 곰의 앞발로 내리쳐 14 물리 피해 및 0.5초 기절을 가합니다.",
-		"icon": "res://assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"말": {
-		"word": "말",
-		"name": "말 (군마/질주)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 11,
-		"desc": "강력한 말발굽으로 짓밟아 11 피해를 입힙니다.",
-		"icon": "res://assets/04_생물_소환/horse_말/horse_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"뱀": {
-		"word": "뱀",
-		"name": "뱀 (파충/맹독)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 8,
-		"desc": "독사를 소환하여 8 피해 및 초당 3의 중독 피해를 부여합니다.",
-		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"벌": {
-		"word": "벌",
-		"name": "벌 (군집/독침)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 6,
-		"desc": "사나운 벌떼를 날려 6 고속 다단히트 침 피해를 줍니다.",
-		"icon": "res://assets/04_생물_소환/bee_벌/bee_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"새": {
-		"word": "새",
-		"name": "새 (조류/비행)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 7,
-		"desc": "영리한 새를 날려 7의 빠른 쪼기 피해를 연속으로 가합니다.",
-		"icon": "res://assets/04_생물_소환/bird_새/bird_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"소": {
-		"word": "소",
-		"name": "소 (황소/돌진)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 13,
-		"desc": "성난 황소의 뿔로 들이받아 13 물리 피해 및 넉백을 가합니다.",
-		"icon": "res://assets/04_생물_소환/bull_소/bull_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"쥐": {
-		"word": "쥐",
-		"name": "쥐 (역병/기습)",
-		"category": "summon",
-		"cost": 1,
-		"damage": 6,
-		"desc": "재빠른 역병 쥐를 풀어 6 피해 및 이동속도 20% 둔화를 겁니다.",
-		"icon": "res://assets/04_생물_소환/rat_쥐/rat_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_개_dog_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"검": {
@@ -350,7 +40,7 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 6,
 		"desc": "기본 활자 검을 휘둘러 6의 물리 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_검_sword_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"곡": {
@@ -360,7 +50,7 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 9,
 		"desc": "곡괭이로 적을 찍어 9 피해를 입히고 추가 골드를 획득합니다.",
-		"icon": "res://assets/01_무기_공격/pickaxe_곡/pickaxe_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_곡_pickaxe_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"골": {
@@ -370,7 +60,27 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 12,
 		"desc": "육중한 철퇴로 내리쳐 12 분쇄 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/mace_골/mace_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_골_mace_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"곰": {
+		"word": "곰",
+		"name": "곰 (맹수/앞발)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 14,
+		"desc": "거대한 곰의 앞발로 내리쳐 14 물리 피해 및 0.5초 기절을 가합니다.",
+		"icon": "res://assets/words_1letter/word_1_곰_bear_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"궁": {
+		"word": "궁",
+		"name": "궁 (활/원거리사격)",
+		"category": "weapon",
+		"cost": 1,
+		"damage": 5,
+		"desc": "긴 사거리의 활 화살을 발사하여 5의 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_궁_bow_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"권": {
@@ -380,7 +90,7 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 10,
 		"desc": "묵직한 주먹 강타로 10 물리 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/fist_권/fist_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_권_fist_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"극": {
@@ -390,7 +100,17 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 13,
 		"desc": "세 갈래 창날로 13의 날카로운 찌르기 피해를 가합니다.",
-		"icon": "res://assets/01_무기_공격/trident_극/trident_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_극_spear_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"기": {
+		"word": "기",
+		"name": "기 (기공/관통기공파)",
+		"category": "skill",
+		"cost": 1,
+		"damage": 20,
+		"desc": "일직선상 모든 적을 관통하는 푸른 기공파로 20 관통 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_기_aura_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"날": {
@@ -400,7 +120,7 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 9,
 		"desc": "예리한 칼날로 베어 9 피해 및 30% 취약 표식을 부여합니다.",
-		"icon": "res://assets/01_무기_공격/blade_날/blade_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_날_blade_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"낫": {
@@ -410,7 +130,57 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 13,
 		"desc": "거대한 낫을 휘둘러 13 광역 베기 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/scythe_낫/scythe_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_낫_scythe_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"낮": {
+		"word": "낮",
+		"name": "낮 (태양광/광역)",
+		"category": "element",
+		"cost": 1,
+		"damage": 6,
+		"desc": "낮의 햇살 에너지로 6의 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_낮_sun_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"냉": {
+		"word": "냉",
+		"name": "냉 (냉기/동결)",
+		"category": "element",
+		"cost": 1,
+		"damage": 7,
+		"desc": "서늘한 냉기를 뿜어 7 피해와 함께 적의 공속을 깎습니다.",
+		"icon": "res://assets/words_1letter/word_1_냉_cold_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"뇌": {
+		"word": "뇌",
+		"name": "뇌 (번개/감전)",
+		"category": "element",
+		"cost": 1,
+		"damage": 11,
+		"desc": "번갯불을 내리쳐 11 피해 및 2체의 적에게 연쇄 감전을 일으킵니다.",
+		"icon": "res://assets/words_1letter/word_1_뇌_lightning_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"눈": {
+		"word": "눈",
+		"name": "눈 (빙설/감속)",
+		"category": "element",
+		"cost": 1,
+		"damage": 5,
+		"desc": "차가운 눈송이를 발사하여 적을 감속시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_눈_snow_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"달": {
+		"word": "달",
+		"name": "달 (월광/마력)",
+		"category": "element",
+		"cost": 1,
+		"damage": 10,
+		"desc": "은은한 월광 마법탄을 발사하여 10 마법 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_달_moon_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"도": {
@@ -420,7 +190,67 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 6,
 		"desc": "직도로 적을 베어 6의 물리 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_도_katana_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"독": {
+		"word": "독",
+		"name": "독 (맹독/부식)",
+		"category": "element",
+		"cost": 1,
+		"damage": 6,
+		"desc": "치명적인 독액을 뱉어 6 피해 및 초당 4의 지속 독 피해를 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_독_poison_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"돌": {
+		"word": "돌",
+		"name": "돌 (투석/기절)",
+		"category": "weapon",
+		"cost": 1,
+		"damage": 5,
+		"desc": "무거운 돌을 던져 5의 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_돌_stone_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마": {
+		"word": "마",
+		"name": "마 (산약/마비침)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 12,
+		"desc": "적의 급소에 마비 침을 발사하여 12 피해 및 1초간 마비(스턴)를 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_마_herb_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"막": {
+		"word": "막",
+		"name": "막 (결계/감속장막)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 12,
+		"desc": "지나가는 적에게 12 장막 충격을 주며 이동속도를 50% 감속시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_막_barrier_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"말": {
+		"word": "말",
+		"name": "말 (군마/질주)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 11,
+		"desc": "강력한 말발굽으로 짓밟아 11 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_말_horse_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"망": {
+		"word": "망",
+		"name": "망 (포획망/속박)",
+		"category": "skill",
+		"cost": 1,
+		"damage": 14,
+		"desc": "올가미 그물을 투척하여 14 피해 및 적들을 1.2초간 속박합니다.",
+		"icon": "res://assets/words_1letter/word_1_망_net_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"못": {
@@ -430,7 +260,77 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 7,
 		"desc": "날카로운 대못을 박아 7 피해 및 초당 3 출혈 피해를 줍니다.",
-		"icon": "res://assets/01_무기_공격/spike_못/spike_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_못_spike_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"무": {
+		"word": "무",
+		"name": "무 (무/대포탄)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 15,
+		"desc": "거대한 무 대포탄을 발사하여 착탄 지점에 15 폭발 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_무_radish_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"묵": {
+		"word": "묵",
+		"name": "묵 (도토리묵/슬로우)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 10,
+		"desc": "끈적한 도토리묵을 뿜어 10 피해 및 적 이동속도를 60% 감속시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_묵_jelly_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"문": {
+		"word": "문",
+		"name": "문 (관문/철문낙하)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 14,
+		"desc": "적의 경로 위에 거대한 철문을 내리찍어 14 피해 및 1.5초 기절을 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_문_gate_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"물": {
+		"word": "물",
+		"name": "물 (수류/물줄기)",
+		"category": "element",
+		"cost": 1,
+		"damage": 6,
+		"desc": "차가운 물줄기를 발사하여 6 피해 및 적을 20% 둔화시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_물_water_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"방": {
+		"word": "방",
+		"name": "방 (방패/충격파)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 12,
+		"desc": "접근하는 적들에게 12 방어 충격파를 발사하여 넉백시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_방_shield_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"뱀": {
+		"word": "뱀",
+		"name": "뱀 (파충/맹독)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 8,
+		"desc": "독사를 소환하여 8 피해 및 초당 3의 중독 피해를 부여합니다.",
+		"icon": "res://assets/words_1letter/word_1_뱀_snake_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"벌": {
+		"word": "벌",
+		"name": "벌 (군집/독침)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 6,
+		"desc": "사나운 벌떼를 날려 6 고속 다단히트 침 피해를 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_벌_bee_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"봉": {
@@ -440,7 +340,47 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 8,
 		"desc": "장봉을 크게 회전시켜 범위 내 적들에게 8 타격을 입힙니다.",
-		"icon": "res://assets/01_무기_공격/staff_봉/staff_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_봉_staff_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"북": {
+		"word": "북",
+		"name": "북 (전쟁의북/고동)",
+		"category": "skill",
+		"cost": 1,
+		"damage": 10,
+		"desc": "둥둥 울리는 북소리로 10 음파 피해 및 주변 아군 타워 공속을 +40% 가속합니다.",
+		"icon": "res://assets/words_1letter/word_1_북_drum_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"불": {
+		"word": "불",
+		"name": "불 (화염/화구)",
+		"category": "element",
+		"cost": 1,
+		"damage": 7,
+		"desc": "적에게 7 피해를 주고 초당 3의 화상 피해를 남깁니다.",
+		"icon": "res://assets/words_1letter/word_1_불_fire_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"비": {
+		"word": "비",
+		"name": "비 (단비/연속사격)",
+		"category": "element",
+		"cost": 1,
+		"damage": 4,
+		"desc": "비처럼 빠른 연사 탄환을 쏟아붓습니다.",
+		"icon": "res://assets/words_1letter/word_1_비_rain_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"빙": {
+		"word": "빙",
+		"name": "빙 (얼음/빙결)",
+		"category": "element",
+		"cost": 1,
+		"damage": 8,
+		"desc": "날카로운 얼음 조각을 쏘아 8 피해 및 40% 둔화를 겁니다.",
+		"icon": "res://assets/words_1letter/word_1_빙_ice_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"삭": {
@@ -450,7 +390,67 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 10,
 		"desc": "매서운 삭풍을 휘둘러 10 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/wind_slash_삭/wind_slash_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_삭_slash_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"산": {
+		"word": "산",
+		"name": "산 (태산/낙석)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 18,
+		"desc": "태산 같은 거대한 낙석을 떨어뜨려 18 광역 피해 및 넉백을 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_산_mountain_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"새": {
+		"word": "새",
+		"name": "새 (조류/비행)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 7,
+		"desc": "영리한 새를 날려 7의 빠른 쪼기 피해를 연속으로 가합니다.",
+		"icon": "res://assets/words_1letter/word_1_새_bird_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"샘": {
+		"word": "샘",
+		"name": "샘 (치유샘/물기둥)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 12,
+		"desc": "바닥에서 솟구치는 거대한 물기둥으로 12 피해 및 0.5초 에어본을 가합니다.",
+		"icon": "res://assets/words_1letter/word_1_샘_spring_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"생": {
+		"word": "생",
+		"name": "생 (생명/영혼흡수)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 14,
+		"desc": "적에게 14 영혼 흡수탄을 쏘며, 처치 시 기지 HP를 +1 회복합니다.",
+		"icon": "res://assets/words_1letter/word_1_생_life_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"성": {
+		"word": "성",
+		"name": "성 (성채/요새포)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 18,
+		"desc": "요새의 육중한 성채 방어포를 발사하여 18의 광역 포격 피해를 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_성_castle_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"소": {
+		"word": "소",
+		"name": "소 (황소/돌진)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 13,
+		"desc": "성난 황소의 뿔로 들이받아 13 물리 피해 및 넉백을 가합니다.",
+		"icon": "res://assets/words_1letter/word_1_소_bull_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"쇠": {
@@ -460,7 +460,47 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 11,
 		"desc": "쇳덩이를 내리쳐 11 물리 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/iron_쇠/iron_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_쇠_iron_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"숨": {
+		"word": "숨",
+		"name": "숨 (숨결/영기방출)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 16,
+		"desc": "전방 부채꼴 범위로 16의 거대한 영기 숨결을 뿜어냅니다.",
+		"icon": "res://assets/words_1letter/word_1_숨_breath_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"완": {
+		"word": "완",
+		"name": "완 (완벽/철퇴타격)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 16,
+		"desc": "완벽한 타이밍의 묵직한 강타로 16 단일 물리 피해 및 0.8초 기절을 줍니다.",
+		"icon": "res://assets/words_1letter/word_1_완_guard_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"위": {
+		"word": "위",
+		"name": "위 (위성/궤도레이저)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 13,
+		"desc": "주변을 회전하는 궤도 레이저를 연사하여 13 지속 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_위_orbit_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"인": {
+		"word": "인",
+		"name": "인 (인내/강철탄)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 14,
+		"desc": "강철 같은 단단한 탄환을 쏘아보내어 14 단일 관통 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_인_patience_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"일": {
@@ -470,297 +510,17 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 1,
 		"damage": 15,
 		"desc": "혼신의 일격을 날려 15의 치명적인 단일 물리 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/strike_일/strike_1_32px_pastel.png",
+		"icon": "res://assets/words_1letter/word_1_일_strike_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"갑옷": {
-		"word": "갑옷",
-		"name": "갑옷 (중갑/가시반사)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 23,
-		"desc": "[2글자 상위 타워] 23의 중갑 파편을 난사하여 사방의 적들에게 물리 피해를 가합니다.",
-		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"관문": {
-		"word": "관문",
-		"name": "관문 (철문/철문압살)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 25,
-		"desc": "[2글자 상위 타워] 육중한 관문 철문을 떨어뜨려 25 피해 및 범위 기절을 일으킵니다.",
-		"icon": "res://assets/02_방어_장비/gate_문/gate_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"금강": {
-		"word": "금강",
-		"name": "금강 (불괴/금강석)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 30,
-		"desc": "[2글자 상위 타워] 다이아몬드처럼 단단한 금강 탄환으로 30의 파괴 피해를 입힙니다.",
-		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"망루": {
-		"word": "망루",
-		"name": "망루 (저격망루/고공사격)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 높은 망루 위에서 27의 원거리 저격 화살을 쏩니다.",
-		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"백금": {
-		"word": "백금",
-		"name": "백금 (플래티넘/금속결계)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 29,
-		"desc": "[2글자 상위 타워] 귀한 백금 방벽을 세워 29 피해 및 적의 접근을 차단합니다.",
-		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"보루": {
-		"word": "보루",
-		"name": "보루 (최후보루/일제사격)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 최후의 보루에서 일제 사격을 퍼부어 27의 집중 포화를 가합니다.",
-		"icon": "res://assets/02_방어_장비/castle_성/castle_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"성문": {
-		"word": "성문",
-		"name": "성문 (철통/성문낙하)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 거대한 성문을 쾅 내리찍어 28 피해 및 광역 기절을 줍니다.",
-		"icon": "res://assets/02_방어_장비/gate_문/gate_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"진지": {
-		"word": "진지",
-		"name": "진지 (거점/화력진지)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 29,
-		"desc": "[2글자 상위 타워] 단단한 화력 진지에서 29의 집중 사격을 쏟아냅니다.",
-		"icon": "res://assets/02_방어_장비/castle_성/castle_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"광선": {
-		"word": "광선",
-		"name": "광선 (레이저/집중조사)",
-		"category": "element",
-		"cost": 2,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 고에너지 마력 광선을 집중 조사하여 28의 지속 관통 피해를 가합니다.",
-		"icon": "res://assets/03_원소_마법/light_빛/light_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"낙뢰": {
-		"word": "낙뢰",
-		"name": "낙뢰 (번개/푸른낙뢰)",
-		"category": "element",
-		"cost": 2,
-		"damage": 32,
-		"desc": "[2글자 상위 타워] 하늘을 가르는 벼락으로 32 피해 및 감전 쇼크를 일으킵니다.",
-		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"냉기": {
-		"word": "냉기",
-		"name": "냉기 (극저온/서리폭풍)",
-		"category": "element",
-		"cost": 2,
-		"damage": 23,
-		"desc": "[2글자 상위 타워] 극저온 냉기를 뿜어 23 피해 및 광역 50% 둔화를 겁니다.",
-		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"뇌우": {
-		"word": "뇌우",
-		"name": "뇌우 (번개비/전기폭풍)",
-		"category": "element",
-		"cost": 2,
-		"damage": 31,
-		"desc": "[2글자 상위 타워] 번개를 동반한 뇌우를 내려쳐 31의 광역 감전 피해를 줍니다.",
-		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"대지": {
-		"word": "대지",
-		"name": "대지 타워 (광역 지진)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 24,
-		"desc": "대지를 울리는 지진파로 지상 적들에게 24 광역 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"맹독": {
-		"word": "맹독",
-		"name": "맹독 타워 (지속 중독)",
-		"category": "element",
-		"cost": 2,
-		"damage": 20,
-		"desc": "치명적인 맹독을 주입하여 20 피해와 지속 중독을 부여합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"바람": {
-		"word": "바람",
-		"name": "바람 (자연/신속관통)",
-		"category": "element",
-		"cost": 2,
-		"damage": 20,
-		"desc": "[2글자 상위 타워] 날카로운 진공 칼날 3연발을 발사하여 일직선상의 적들을 관통합니다.",
-		"icon": "res://assets/03_원소_마법/wind_풍/wind_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"빙마": {
-		"word": "빙마",
-		"name": "빙마 (얼음귀신/혹한)",
-		"category": "element",
-		"cost": 2,
-		"damage": 29,
-		"desc": "[2글자 상위 타워] 빙마의 혹한 폭풍으로 29 냉기 피해 및 결빙을 일으킵니다.",
-		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"빙산": {
-		"word": "빙산",
-		"name": "빙산 (거대빙하/낙하)",
-		"category": "element",
-		"cost": 2,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 거대한 빙산을 소환하여 적들 머리 위에 28 낙하 피해를 줍니다.",
-		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"산성": {
-		"word": "산성",
-		"name": "산성 (부식/방어파괴)",
-		"category": "element",
-		"cost": 2,
-		"damage": 23,
-		"desc": "[2글자 상위 타워] 부식성 산성액을 뿜어 적의 방어력을 0으로 만들며 23 피해를 가합니다.",
-		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"섬광": {
-		"word": "섬광",
-		"name": "섬광 타워 (빛의 폭발)",
-		"category": "element",
-		"cost": 2,
-		"damage": 26,
-		"desc": "눈부신 섬광으로 26의 광역 마법 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"안개": {
-		"word": "안개",
-		"name": "안개 타워 (실명 감속)",
-		"category": "element",
-		"cost": 2,
-		"damage": 16,
-		"desc": "짙은 안개로 적의 시야를 가리고 16 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"암석": {
-		"word": "암석",
-		"name": "암석 (바위탄/거석강타)",
-		"category": "element",
-		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 단단한 거대 암석을 투척하여 27 물리 충격파를 발생시킵니다.",
-		"icon": "res://assets/03_원소_마법/earth_흙/earth_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"얼음": {
-		"word": "얼음",
-		"name": "얼음 타워 (빙결 감속)",
-		"category": "element",
-		"cost": 2,
-		"damage": 18,
-		"desc": "차가운 얼음 결정을 발사하여 18 피해와 30% 감속을 부여합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"운석": {
-		"word": "운석",
-		"name": "운석 (메테오/소형운석)",
-		"category": "element",
-		"cost": 2,
-		"damage": 34,
-		"desc": "[2글자 상위 타워] 하늘에서 불타는 소형 운석을 떨어뜨려 34의 파괴적인 충격을 줍니다.",
-		"icon": "res://assets/03_원소_마법/star_별/star_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"전기": {
-		"word": "전기",
-		"name": "전기 (전격/고압전류)",
-		"category": "element",
-		"cost": 2,
-		"damage": 24,
-		"desc": "[2글자 상위 타워] 고압 전류를 방출하여 주변 적들을 지속적으로 지져버립니다.",
-		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"지진": {
-		"word": "지진",
-		"name": "지진 (진동/대지충격파)",
-		"category": "element",
-		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 강력한 지진파를 일으켜 경로 상의 적들을 모두 넘어뜨립니다.",
-		"icon": "res://assets/03_원소_마법/earth_흙/earth_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"기적": {
-		"word": "기적",
-		"name": "기적 (은총/대역전)",
-		"category": "heal",
-		"cost": 2,
-		"damage": 30,
-		"desc": "[2글자 상위 타워] 기적의 빛을 쏟아부어 30의 강력한 신성 피해를 입힙니다.",
-		"icon": "res://assets/05_회복_치유/life_생/life_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"샘물": {
-		"word": "샘물",
-		"name": "샘물 (영천/청량폭격)",
-		"category": "heal",
-		"cost": 2,
-		"damage": 22,
-		"desc": "[2글자 상위 타워] 맑은 영천수를 쏘아올려 22 광역 피해 및 적들을 40% 감속시킵니다.",
-		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"성수": {
-		"word": "성수",
-		"name": "성수 (정화수/악마퇴치)",
-		"category": "heal",
-		"cost": 2,
-		"damage": 26,
-		"desc": "[2글자 상위 타워] 성수를 뿌려 26의 강력한 언데드/마수 퇴치 피해를 입힙니다.",
-		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"재생": {
-		"word": "재생",
-		"name": "재생 타워 (자가 수리)",
-		"category": "heal",
-		"cost": 2,
-		"damage": 18,
-		"desc": "18 피해를 입히고 본진 기지를 지속 수리합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+	"쥐": {
+		"word": "쥐",
+		"name": "쥐 (역병/기습)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 6,
+		"desc": "재빠른 역병 쥐를 풀어 6 피해 및 이동속도 20% 둔화를 겁니다.",
+		"icon": "res://assets/words_1letter/word_1_쥐_rat_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"가속": {
@@ -773,214 +533,24 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/06_버프_유틸/speed_속/speed_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"기운": {
-		"word": "기운",
-		"name": "기운 (영기/기공폭발)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 응축된 기운을 폭발시켜 27의 강력한 영기 충격파를 발생시킵니다.",
-		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"마법": {
-		"word": "마법",
-		"name": "마법 (비전/마력유도)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 25,
-		"desc": "[2글자 상위 타워] 적을 추적하는 3개의 마력 유도탄을 발사하여 25의 강력한 비전 피해를 줍니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"보물": {
-		"word": "보물",
-		"name": "보물 (유틸/황금포격)",
-		"category": "skill",
+	"가시": {
+		"word": "가시",
+		"name": "가시 타워 (가시덤불)",
+		"category": "defense",
 		"cost": 2,
 		"damage": 18,
-		"desc": "[2글자 상위 타워] 18의 황금 코인 탄환을 발사하며 이 타워가 적을 처치하면 2배의 골드를 획득합니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"분노": {
-		"word": "분노",
-		"name": "분노 (격노/피해증폭)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 32,
-		"desc": "[2글자 상위 타워] 타오르는 분노로 공격력이 극대화된 32의 격노탄을 발사합니다.",
-		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"비기": {
-		"word": "비기",
-		"name": "비기 (비술/감춰진힘)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 32,
-		"desc": "[2글자 상위 타워] 숨겨진 비기를 발동하여 32의 강력한 마력 폭풍을 일으킵니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"승리": {
-		"word": "승리",
-		"name": "승리 (승전보/환호)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 33,
-		"desc": "[2글자 상위 타워] 승리의 축포를 쏘아올려 33 광역 폭발 피해를 입힙니다.",
-		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"신속": {
-		"word": "신속",
-		"name": "신속 (초고속/광속탄)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 18,
-		"desc": "[2글자 상위 타워] 공격 쿨타임 0.20초로 초당 5회 이상의 광속 탄환을 난사합니다.",
-		"icon": "res://assets/06_버프_유틸/speed_속/speed_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"오의": {
-		"word": "오의",
-		"name": "오의 (비기/문파오의)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 34,
-		"desc": "[2글자 상위 타워] 비전 오의를 개방하여 34의 화려한 연환계를 가합니다.",
-		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"주문": {
-		"word": "주문",
-		"name": "주문 (비전/비전문자)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 26,
-		"desc": "[2글자 상위 타워] 고대 활자 주문을 영창하여 26의 마법 광역 폭격을 퍼붓습니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"집중": {
-		"word": "집중",
-		"name": "집중 (명경지수/치명타)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 극도의 집중력으로 100% 치명타율의 28 정밀 탄환을 쏩니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"징벌": {
-		"word": "징벌",
-		"name": "징벌 (심판/신의철퇴)",
-		"category": "skill",
-		"cost": 2,
-		"damage": 31,
-		"desc": "[2글자 상위 타워] 신의 징벌 철퇴를 내리쳐 31의 압도적인 단일 파쇄 피해를 가합니다.",
-		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"거미": {
-		"word": "거미",
-		"name": "거미 (독거미/거미줄)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 20,
-		"desc": "[2글자 상위 타워] 끈끈한 거미줄과 맹독을 뿜어 20 피해 및 60% 슬로우를 겁니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"골렘": {
-		"word": "골렘",
-		"name": "골렘 (바위거인/지면타격)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 30,
-		"desc": "[2글자 상위 타워] 바위 골렘이 지면을 내리쳐 30 물리 광역 피해 및 기절을 일으킵니다.",
-		"icon": "res://assets/04_생물_소환/golem_골렘/golem_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"괴물": {
-		"word": "괴물",
-		"name": "괴물 (이형/거대촉수)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 29,
-		"desc": "[2글자 상위 타워] 이형의 거대 촉수를 휘둘러 29 광역 타격을 입힙니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"괴수": {
-		"word": "괴수",
-		"name": "괴수 (거대마수/포효)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 31,
-		"desc": "[2글자 상위 타워] 거대 괴수의 포효로 전방의 모든 적에게 31의 혼돈 피해를 입힙니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"귀신": {
-		"word": "귀신",
-		"name": "귀신 (원혼/빙의저주)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 24,
-		"desc": "[2글자 상위 타워] 원혼의 저주를 내려 24 피해 및 적 공격력을 40% 약화시킵니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"늑대": {
-		"word": "늑대",
-		"name": "늑대 타워 (야수의 엄니)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 21,
-		"desc": "날카로운 이빨로 물어뜯어 21의 출혈 피해를 입힙니다.",
+		"desc": "가시를 사방으로 뿜어내 18의 광역 피해를 입힙니다.",
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"마수": {
-		"word": "마수",
-		"name": "마수 (마물/암흑발톱)",
-		"category": "summon",
+	"갑옷": {
+		"word": "갑옷",
+		"name": "갑옷 (중갑/가시반사)",
+		"category": "defense",
 		"cost": 2,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 포악한 마수를 불러내어 27의 어둠 발톱 공격을 가합니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"사자": {
-		"word": "사자",
-		"name": "사자 타워 (백수의 포효)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 28,
-		"desc": "위압적인 포효로 적들을 위축시키며 28 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"악어": {
-		"word": "악어",
-		"name": "악어 (파충/데스로우)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 거대한 악어의 턱으로 적을 물고 회전하여 28 피해를 가합니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"전갈": {
-		"word": "전갈",
-		"name": "전갈 (맹독/독침찌르기)",
-		"category": "summon",
-		"cost": 2,
-		"damage": 24,
-		"desc": "[2글자 상위 타워] 날카로운 전갈 꼬리로 24 피해 및 초당 7의 치명상을 입힙니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"damage": 23,
+		"desc": "[2글자 상위 타워] 23의 중갑 파편을 난사하여 사방의 적들에게 물리 피해를 가합니다.",
+		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"강습": {
@@ -1003,6 +573,16 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"거미": {
+		"word": "거미",
+		"name": "거미 (독거미/거미줄)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 20,
+		"desc": "[2글자 상위 타워] 끈끈한 거미줄과 맹독을 뿜어 20 피해 및 60% 슬로우를 겁니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"검술": {
 		"word": "검술",
 		"name": "검술 (도검/연속베기)",
@@ -1011,6 +591,136 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 26,
 		"desc": "[2글자 상위 타워] 화려한 2연속 참격을 펼쳐 적들에게 26의 물리 피해를 입힙니다.",
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"골렘": {
+		"word": "골렘",
+		"name": "골렘 (바위거인/지면타격)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 30,
+		"desc": "[2글자 상위 타워] 바위 골렘이 지면을 내리쳐 30 물리 광역 피해 및 기절을 일으킵니다.",
+		"icon": "res://assets/04_생물_소환/golem_골렘/golem_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"관문": {
+		"word": "관문",
+		"name": "관문 (철문/철문압살)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 육중한 관문 철문을 떨어뜨려 25 피해 및 범위 기절을 일으킵니다.",
+		"icon": "res://assets/02_방어_장비/gate_문/gate_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"광선": {
+		"word": "광선",
+		"name": "광선 (레이저/집중조사)",
+		"category": "element",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 고에너지 마력 광선을 집중 조사하여 28의 지속 관통 피해를 가합니다.",
+		"icon": "res://assets/03_원소_마법/light_빛/light_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"괴물": {
+		"word": "괴물",
+		"name": "괴물 (이형/거대촉수)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 29,
+		"desc": "[2글자 상위 타워] 이형의 거대 촉수를 휘둘러 29 광역 타격을 입힙니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"괴수": {
+		"word": "괴수",
+		"name": "괴수 (거대마수/포효)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 31,
+		"desc": "[2글자 상위 타워] 거대 괴수의 포효로 전방의 모든 적에게 31의 혼돈 피해를 입힙니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"군단": {
+		"word": "군단",
+		"name": "군단 타워 (연속 사격)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 32,
+		"desc": "군단의 일제 사격으로 32 피해를 빠르게 연사합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"귀신": {
+		"word": "귀신",
+		"name": "귀신 (원혼/빙의저주)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 24,
+		"desc": "[2글자 상위 타워] 원혼의 저주를 내려 24 피해 및 적 공격력을 40% 약화시킵니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"금강": {
+		"word": "금강",
+		"name": "금강 (불괴/금강석)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 30,
+		"desc": "[2글자 상위 타워] 다이아몬드처럼 단단한 금강 탄환으로 30의 파괴 피해를 입힙니다.",
+		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"기습": {
+		"word": "기습",
+		"name": "기습 타워 (돌발 공격)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 23,
+		"desc": "예상치 못한 각도에서 23의 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"기운": {
+		"word": "기운",
+		"name": "기운 (영기/기공폭발)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 응축된 기운을 폭발시켜 27의 강력한 영기 충격파를 발생시킵니다.",
+		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"기적": {
+		"word": "기적",
+		"name": "기적 (은총/대역전)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 30,
+		"desc": "[2글자 상위 타워] 기적의 빛을 쏟아부어 30의 강력한 신성 피해를 입힙니다.",
+		"icon": "res://assets/05_회복_치유/life_생/life_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"나무": {
+		"word": "나무",
+		"name": "나무 타워 (대지의 뿌리)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 19,
+		"desc": "단단한 줄기로 후려쳐 19 피해와 속박을 겁니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"낙뢰": {
+		"word": "낙뢰",
+		"name": "낙뢰 (번개/푸른낙뢰)",
+		"category": "element",
+		"cost": 2,
+		"damage": 32,
+		"desc": "[2글자 상위 타워] 하늘을 가르는 벼락으로 32 피해 및 감전 쇼크를 일으킵니다.",
+		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"난무": {
@@ -1023,6 +733,46 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/fist_권/fist_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"냉기": {
+		"word": "냉기",
+		"name": "냉기 (극저온/서리폭풍)",
+		"category": "element",
+		"cost": 2,
+		"damage": 23,
+		"desc": "[2글자 상위 타워] 극저온 냉기를 뿜어 23 피해 및 광역 50% 둔화를 겁니다.",
+		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"뇌검": {
+		"word": "뇌검",
+		"name": "뇌검 타워 (번개 칼날)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 28,
+		"desc": "번개가 감도는 검으로 28의 감전 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"뇌우": {
+		"word": "뇌우",
+		"name": "뇌우 (번개비/전기폭풍)",
+		"category": "element",
+		"cost": 2,
+		"damage": 31,
+		"desc": "[2글자 상위 타워] 번개를 동반한 뇌우를 내려쳐 31의 광역 감전 피해를 줍니다.",
+		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"늑대": {
+		"word": "늑대",
+		"name": "늑대 타워 (야수의 엄니)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 21,
+		"desc": "날카로운 이빨로 물어뜯어 21의 출혈 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"단검": {
 		"word": "단검",
 		"name": "단검 (암살/급소찌르기)",
@@ -1031,6 +781,16 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 24,
 		"desc": "[2글자 상위 타워] 적의 약점을 찔러 24의 치명적인 암살 피해를 입힙니다.",
 		"icon": "res://assets/01_무기_공격/blade_도/blade_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"대지": {
+		"word": "대지",
+		"name": "대지 타워 (광역 지진)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 24,
+		"desc": "대지를 울리는 지진파로 지상 적들에게 24 광역 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"마검": {
@@ -1043,6 +803,36 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"마법": {
+		"word": "마법",
+		"name": "마법 (비전/마력유도)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 적을 추적하는 3개의 마력 유도탄을 발사하여 25의 강력한 비전 피해를 줍니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마수": {
+		"word": "마수",
+		"name": "마수 (마물/암흑발톱)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 포악한 마수를 불러내어 27의 어둠 발톱 공격을 가합니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"망루": {
+		"word": "망루",
+		"name": "망루 (저격망루/고공사격)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 높은 망루 위에서 27의 원거리 저격 화살을 쏩니다.",
+		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"맹공": {
 		"word": "맹공",
 		"name": "맹공 (연타/노도)",
@@ -1051,6 +841,46 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 30,
 		"desc": "[2글자 상위 타워] 노도와 같은 맹공으로 적들을 쉴 새 없이 몰아붙여 30 피해를 가합니다.",
 		"icon": "res://assets/01_무기_공격/strike_일/strike_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"맹독": {
+		"word": "맹독",
+		"name": "맹독 타워 (지속 중독)",
+		"category": "element",
+		"cost": 2,
+		"damage": 20,
+		"desc": "치명적인 맹독을 주입하여 20 피해와 지속 중독을 부여합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"바람": {
+		"word": "바람",
+		"name": "바람 (자연/신속관통)",
+		"category": "element",
+		"cost": 2,
+		"damage": 20,
+		"desc": "[2글자 상위 타워] 날카로운 진공 칼날 3연발을 발사하여 일직선상의 적들을 관통합니다.",
+		"icon": "res://assets/03_원소_마법/wind_풍/wind_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"바위": {
+		"word": "바위",
+		"name": "바위 타워 (강타 기절)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 22,
+		"desc": "단단한 바위를 투척하여 22 피해와 짧은 기절을 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"백금": {
+		"word": "백금",
+		"name": "백금 (플래티넘/금속결계)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 29,
+		"desc": "[2글자 상위 타워] 귀한 백금 방벽을 세워 29 피해 및 적의 접근을 차단합니다.",
+		"icon": "res://assets/02_방어_장비/armor_갑/armor_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"백발": {
@@ -1063,6 +893,16 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/bow_활/bow_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"번개": {
+		"word": "번개",
+		"name": "번개 타워 (연쇄 뇌격)",
+		"category": "element",
+		"cost": 2,
+		"damage": 26,
+		"desc": "적들에게 26의 연쇄 번개 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"보검": {
 		"word": "보검",
 		"name": "보검 (보물검/보석참격)",
@@ -1071,6 +911,46 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 30,
 		"desc": "[2글자 상위 타워] 보석이 박힌 보검으로 30 피해 및 추가 골드를 획득합니다.",
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"보루": {
+		"word": "보루",
+		"name": "보루 (최후보루/일제사격)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 최후의 보루에서 일제 사격을 퍼부어 27의 집중 포화를 가합니다.",
+		"icon": "res://assets/02_방어_장비/castle_성/castle_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"보물": {
+		"word": "보물",
+		"name": "보물 (유틸/황금포격)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 18,
+		"desc": "[2글자 상위 타워] 18의 황금 코인 탄환을 발사하며 이 타워가 적을 처치하면 2배의 골드를 획득합니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"보석": {
+		"word": "보석",
+		"name": "보석 타워 (마나 증폭)",
+		"category": "buff",
+		"cost": 2,
+		"damage": 25,
+		"desc": "마나 광선을 발사하여 25의 순수 마법 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"분노": {
+		"word": "분노",
+		"name": "분노 (격노/피해증폭)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 32,
+		"desc": "[2글자 상위 타워] 타오르는 분노로 공격력이 극대화된 32의 격노탄을 발사합니다.",
+		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"분쇄": {
@@ -1093,6 +973,16 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"비기": {
+		"word": "비기",
+		"name": "비기 (비술/감춰진힘)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 32,
+		"desc": "[2글자 상위 타워] 숨겨진 비기를 발동하여 32의 강력한 마력 폭풍을 일으킵니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"비도": {
 		"word": "비도",
 		"name": "비도 (투척/표창난사)",
@@ -1101,6 +991,126 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 21,
 		"desc": "[2글자 상위 타워] 날카로운 비도 4자루를 사방으로 투척하여 다수의 적을 요격합니다.",
 		"icon": "res://assets/01_무기_공격/blade_도/blade_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"빙검": {
+		"word": "빙검",
+		"name": "빙검 타워 (얼음 칼날)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 27,
+		"desc": "혹한의 칼날로 27 피해와 동결을 유발합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"빙마": {
+		"word": "빙마",
+		"name": "빙마 (얼음귀신/혹한)",
+		"category": "element",
+		"cost": 2,
+		"damage": 29,
+		"desc": "[2글자 상위 타워] 빙마의 혹한 폭풍으로 29 냉기 피해 및 결빙을 일으킵니다.",
+		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"빙산": {
+		"word": "빙산",
+		"name": "빙산 (거대빙하/낙하)",
+		"category": "element",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 거대한 빙산을 소환하여 적들 머리 위에 28 낙하 피해를 줍니다.",
+		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"사자": {
+		"word": "사자",
+		"name": "사자 타워 (백수의 포효)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 28,
+		"desc": "위압적인 포효로 적들을 위축시키며 28 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"산성": {
+		"word": "산성",
+		"name": "산성 (부식/방어파괴)",
+		"category": "element",
+		"cost": 2,
+		"damage": 23,
+		"desc": "[2글자 상위 타워] 부식성 산성액을 뿜어 적의 방어력을 0으로 만들며 23 피해를 가합니다.",
+		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"샘물": {
+		"word": "샘물",
+		"name": "샘물 (영천/청량폭격)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 22,
+		"desc": "[2글자 상위 타워] 맑은 영천수를 쏘아올려 22 광역 피해 및 적들을 40% 감속시킵니다.",
+		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"서리": {
+		"word": "서리",
+		"name": "서리 타워 (동결 냉기)",
+		"category": "element",
+		"cost": 2,
+		"damage": 20,
+		"desc": "서리 서린 칼바람으로 20 피해를 입히고 이동을 방해합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"섬광": {
+		"word": "섬광",
+		"name": "섬광 타워 (빛의 폭발)",
+		"category": "element",
+		"cost": 2,
+		"damage": 26,
+		"desc": "눈부신 섬광으로 26의 광역 마법 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"성검": {
+		"word": "성검",
+		"name": "성검 타워 (신성한 심판)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 30,
+		"desc": "신성한 칼날로 30의 강력한 언데드/마수 특효 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"성문": {
+		"word": "성문",
+		"name": "성문 (철통/성문낙하)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 거대한 성문을 쾅 내리찍어 28 피해 및 광역 기절을 줍니다.",
+		"icon": "res://assets/02_방어_장비/gate_문/gate_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"성수": {
+		"word": "성수",
+		"name": "성수 (정화수/악마퇴치)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 26,
+		"desc": "[2글자 상위 타워] 성수를 뿌려 26의 강력한 언데드/마수 퇴치 피해를 입힙니다.",
+		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"승리": {
+		"word": "승리",
+		"name": "승리 (승전보/환호)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 33,
+		"desc": "[2글자 상위 타워] 승리의 축포를 쏘아올려 33 광역 폭발 피해를 입힙니다.",
+		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"신검": {
@@ -1113,6 +1123,16 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"신속": {
+		"word": "신속",
+		"name": "신속 (초고속/광속탄)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 18,
+		"desc": "[2글자 상위 타워] 공격 쿨타임 0.20초로 초당 5회 이상의 광속 탄환을 난사합니다.",
+		"icon": "res://assets/06_버프_유틸/speed_속/speed_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"쌍검": {
 		"word": "쌍검",
 		"name": "쌍검 (난무/초고속)",
@@ -1121,6 +1141,26 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 22,
 		"desc": "[2글자 상위 타워] 두 자루의 검으로 초당 3회 이상의 연속 참격을 퍼붓습니다.",
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"악어": {
+		"word": "악어",
+		"name": "악어 (파충/데스로우)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 거대한 악어의 턱으로 적을 물고 회전하여 28 피해를 가합니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"안개": {
+		"word": "안개",
+		"name": "안개 타워 (실명 감속)",
+		"category": "element",
+		"cost": 2,
+		"damage": 16,
+		"desc": "짙은 안개로 적의 시야를 가리고 16 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"암기": {
@@ -1133,6 +1173,26 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/spike_못/spike_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"암살": {
+		"word": "암살",
+		"name": "암살 타워 (후방 기습)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 27,
+		"desc": "보스 및 강력한 몬스터를 우선 저격하여 27 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"암석": {
+		"word": "암석",
+		"name": "암석 (바위탄/거석강타)",
+		"category": "element",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 단단한 거대 암석을 투척하여 27 물리 충격파를 발생시킵니다.",
+		"icon": "res://assets/03_원소_마법/earth_흙/earth_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"압살": {
 		"word": "압살",
 		"name": "압살 (압축/지면압살)",
@@ -1141,6 +1201,46 @@ const WORD_DATABASE: Dictionary = {
 		"damage": 32,
 		"desc": "[2글자 상위 타워] 적을 바닥으로 짓눌러 32의 파괴적인 압살 피해를 줍니다.",
 		"icon": "res://assets/01_무기_공격/mace_골/mace_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"어둠": {
+		"word": "어둠",
+		"name": "어둠 타워 (암흑 일격)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 25,
+		"desc": "어둠의 심연 탄환으로 25의 치명적인 암흑 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"얼음": {
+		"word": "얼음",
+		"name": "얼음 타워 (빙결 감속)",
+		"category": "element",
+		"cost": 2,
+		"damage": 18,
+		"desc": "차가운 얼음 결정을 발사하여 18 피해와 30% 감속을 부여합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"오의": {
+		"word": "오의",
+		"name": "오의 (비기/문파오의)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 34,
+		"desc": "[2글자 상위 타워] 비전 오의를 개방하여 34의 화려한 연환계를 가합니다.",
+		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"운석": {
+		"word": "운석",
+		"name": "운석 (메테오/소형운석)",
+		"category": "element",
+		"cost": 2,
+		"damage": 34,
+		"desc": "[2글자 상위 타워] 하늘에서 불타는 소형 운석을 떨어뜨려 34의 파괴적인 충격을 줍니다.",
+		"icon": "res://assets/03_원소_마법/star_별/star_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"장검": {
@@ -1153,6 +1253,36 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"재생": {
+		"word": "재생",
+		"name": "재생 타워 (자가 수리)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 18,
+		"desc": "18 피해를 입히고 본진 기지를 지속 수리합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"전갈": {
+		"word": "전갈",
+		"name": "전갈 (맹독/독침찌르기)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 24,
+		"desc": "[2글자 상위 타워] 날카로운 전갈 꼬리로 24 피해 및 초당 7의 치명상을 입힙니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"전기": {
+		"word": "전기",
+		"name": "전기 (전격/고압전류)",
+		"category": "element",
+		"cost": 2,
+		"damage": 24,
+		"desc": "[2글자 상위 타워] 고압 전류를 방출하여 주변 적들을 지속적으로 지져버립니다.",
+		"icon": "res://assets/03_원소_마법/thunder_뇌/thunder_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"절단": {
 		"word": "절단",
 		"name": "절단 (예기/단면절단)",
@@ -1163,234 +1293,74 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/scythe_낫/scythe_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"금강석": {
-		"word": "금강석",
-		"name": "금강석 타워 (신화 다이아몬드)",
-		"category": "buff",
-		"cost": 3,
-		"damage": 55,
-		"desc": "단단한 다이아몬드 레이저로 55의 파괴적인 관통 피해를 입힙니다.",
+	"제압": {
+		"word": "제압",
+		"name": "제압 타워 (행동 불능)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 21,
+		"desc": "강력한 중력장으로 적을 제압하며 21 피해를 줍니다.",
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"성기사": {
-		"word": "성기사",
-		"name": "성기사 (신화/신의수호자)",
-		"category": "defense",
-		"cost": 3,
-		"damage": 50,
-		"desc": "[3글자 신화 타워] 50의 신성 철퇴 강타와 함께 전 타워에 피해 감소 보호막을 부여합니다.",
-		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
+	"주문": {
+		"word": "주문",
+		"name": "주문 (비전/비전문자)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 26,
+		"desc": "[2글자 상위 타워] 고대 활자 주문을 영창하여 26의 마법 광역 폭격을 퍼붓습니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"절대자": {
-		"word": "절대자",
-		"name": "절대자 (신화/절대수호자)",
-		"category": "defense",
-		"cost": 3,
-		"damage": 58,
-		"desc": "[3글자 신화 타워] 절대자의 권능으로 58 피해 및 전장에 무적 보호막을 펼칩니다.",
-		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"그림자": {
-		"word": "그림자",
-		"name": "그림자 타워 (암살 일격)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 36,
-		"desc": "그림자 속에서 나타나 36의 막대한 치명타 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"눈보라": {
-		"word": "눈보라",
-		"name": "눈보라 (한파/동결풍)",
+	"지진": {
+		"word": "지진",
+		"name": "지진 (진동/대지충격파)",
 		"category": "element",
-		"cost": 3,
-		"damage": 25,
-		"desc": "[2글자 상위 타워] 살을 에는 눈보라를 뿜어 25 피해 및 적들의 공속/이속을 60% 깎습니다.",
-		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"대지진": {
-		"word": "대지진",
-		"name": "대지진 (신화/지각붕괴)",
-		"category": "element",
-		"cost": 3,
-		"damage": 60,
-		"desc": "[3글자 신화 타워] 지각을 붕괴시키는 60의 파괴적 지진파로 모든 적을 넘어뜨립니다.",
+		"cost": 2,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 강력한 지진파를 일으켜 경로 상의 적들을 모두 넘어뜨립니다.",
 		"icon": "res://assets/03_원소_마법/earth_흙/earth_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"독안개": {
-		"word": "독안개",
-		"name": "독안개 (신화/부식절멸)",
-		"category": "element",
-		"cost": 3,
-		"damage": 42,
-		"desc": "[3글자 신화 타워] 전장 전체를 뒤덮는 맹독 안개로 모든 적에게 초당 12 피해를 입힙니다.",
-		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"마그마": {
-		"word": "마그마",
-		"name": "마그마 (지열/용암탄)",
-		"category": "element",
-		"cost": 3,
+	"진지": {
+		"word": "진지",
+		"name": "진지 (거점/화력진지)",
+		"category": "defense",
+		"cost": 2,
 		"damage": 29,
-		"desc": "[2글자 상위 타워] 작열하는 마그마 덩어리를 투척하여 29 광역 화염 폭발을 일으킵니다.",
-		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"desc": "[2글자 상위 타워] 단단한 화력 진지에서 29의 집중 사격을 쏟아냅니다.",
+		"icon": "res://assets/02_방어_장비/castle_성/castle_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"주작날": {
-		"word": "주작날",
-		"name": "주작날 (신화/주작화염)",
-		"category": "element",
-		"cost": 3,
-		"damage": 56,
-		"desc": "[3글자 신화 타워] 주작의 붉은 날갯짓으로 전장에 56의 화염 폭풍을 휘몰아칩니다.",
-		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"지옥불": {
-		"word": "지옥불",
-		"name": "지옥불 (신화/헬파이어)",
-		"category": "element",
-		"cost": 3,
-		"damage": 66,
-		"desc": "[3글자 신화 타워] 꺼지지 않는 지옥의 화염으로 66의 암흑 화염 피해를 퍼붓습니다.",
-		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"기적수": {
-		"word": "기적수",
-		"name": "기적수 (신화/기적의샘물)",
-		"category": "heal",
-		"cost": 3,
-		"damage": 46,
-		"desc": "[3글자 신화 타워] 기적의 성역을 펼쳐 46 피해 및 아군 전 타워를 완벽 강화합니다.",
-		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"궁극기": {
-		"word": "궁극기",
-		"name": "궁극기 (신화/궁극의오의)",
+	"집중": {
+		"word": "집중",
+		"name": "집중 (명경지수/치명타)",
 		"category": "skill",
-		"cost": 3,
-		"damage": 66,
-		"desc": "[3글자 신화 타워] 궁극의 활자 오의를 개방하여 66의 전 화면 정화 폭격을 가합니다.",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 극도의 집중력으로 100% 치명타율의 28 정밀 탄환을 쏩니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"징벌": {
+		"word": "징벌",
+		"name": "징벌 (심판/신의철퇴)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 31,
+		"desc": "[2글자 상위 타워] 신의 징벌 철퇴를 내리쳐 31의 압도적인 단일 파쇄 피해를 가합니다.",
 		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"극마법": {
-		"word": "극마법",
-		"name": "극마법 (신화/궁극의마법)",
-		"category": "skill",
-		"cost": 3,
-		"damage": 65,
-		"desc": "[3글자 신화 타워] 5대 원소를 융합한 궁극의 비전 마법으로 65의 원소 폭격을 퍼붓습니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"마도사": {
-		"word": "마도사",
-		"name": "마도사 (신화/대마도사)",
-		"category": "skill",
-		"cost": 3,
-		"damage": 62,
-		"desc": "[3글자 신화 타워] 대마도사의 룬 영창으로 62의 연속 비전 번개를 쏟아붓습니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"승전가": {
-		"word": "승전가",
-		"name": "승전가 (신화/승리의함성)",
-		"category": "skill",
-		"cost": 3,
-		"damage": 40,
-		"desc": "[3글자 신화 타워] 40 음파 피해 및 전 필드 아군 타워 공격력을 +30% 영구 버프합니다.",
-		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"신기루": {
-		"word": "신기루",
-		"name": "신기루 (사막/신기루폭격)",
-		"category": "skill",
-		"cost": 3,
-		"damage": 27,
-		"desc": "[2글자 상위 타워] 아지랑이 신기루 속에서 27의 기습 마법탄을 쏟아붓습니다.",
-		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"진군가": {
-		"word": "진군가",
-		"name": "진군가 (신화/진격의북소리)",
-		"category": "skill",
-		"cost": 3,
-		"damage": 42,
-		"desc": "[3글자 신화 타워] 웅장한 진군가로 42 음파 피해 및 전 타워 공격속도를 +40% 버프합니다.",
-		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"구렁이": {
-		"word": "구렁이",
-		"name": "구렁이 (대사/조르기)",
+	"개구리": {
+		"word": "개구리",
+		"name": "개구리 타워 (독침 혓바닥)",
 		"category": "summon",
 		"cost": 3,
-		"damage": 25,
-		"desc": "[2글자 상위 타워] 거대한 구렁이로 적을 휘감아 25 피해 및 1.5초간 행동 불능으로 만듭니다.",
-		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"도깨비": {
-		"word": "도깨비",
-		"name": "도깨비 (도깨비방망이/뚝딱)",
-		"category": "summon",
-		"cost": 3,
-		"damage": 28,
-		"desc": "[2글자 상위 타워] 도깨비방망이로 내려쳐 28 피해 및 금은보화(추가 골드)를 드롭시킵니다.",
-		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"독수리": {
-		"word": "독수리",
-		"name": "독수리 (맹금/급강하)",
-		"category": "summon",
-		"cost": 3,
-		"damage": 25,
-		"desc": "[2글자 상위 타워] 하늘에서 급강하하여 25의 강력한 발톱 낚아채기 공격을 가합니다.",
-		"icon": "res://assets/04_생물_소환/bird_새/bird_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"불사조": {
-		"word": "불사조",
-		"name": "불사조 (신화/영생화염)",
-		"category": "summon",
-		"cost": 3,
-		"damage": 58,
-		"desc": "[3글자 신화 타워] 불사조를 소환하여 58의 영원히 꺼지지 않는 성스러운 화염을 쏟아붓습니다.",
-		"icon": "res://assets/04_생물_소환/bird_새/bird_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"살무사": {
-		"word": "살무사",
-		"name": "살무사 (독사/맹독분사)",
-		"category": "summon",
-		"cost": 3,
-		"damage": 23,
-		"desc": "[2글자 상위 타워] 살무사의 독액을 뿜어내어 23 피해 및 광역 부식 독을 퍼뜨립니다.",
-		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"질주마": {
-		"word": "질주마",
-		"name": "질주마 (신화/천마질주)",
-		"category": "summon",
-		"cost": 3,
-		"damage": 53,
-		"desc": "[3글자 신화 타워] 날개 달린 천마가 전장을 질주하며 53 피해 및 적들을 짓밟습니다.",
-		"icon": "res://assets/04_생물_소환/horse_말/horse_1_32px_pastel.png",
+		"damage": 32,
+		"desc": "긴 혀로 적을 끌어당기며 32 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"광전사": {
@@ -1413,6 +1383,26 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/axe_도끼/axe_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"구렁이": {
+		"word": "구렁이",
+		"name": "구렁이 (대사/조르기)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 거대한 구렁이로 적을 휘감아 25 피해 및 1.5초간 행동 불능으로 만듭니다.",
+		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"궁극기": {
+		"word": "궁극기",
+		"name": "궁극기 (신화/궁극의오의)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 66,
+		"desc": "[3글자 신화 타워] 궁극의 활자 오의를 개방하여 66의 전 화면 정화 폭격을 가합니다.",
+		"icon": "res://assets/06_버프_유틸/ki_기/ki_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"궁술사": {
 		"word": "궁술사",
 		"name": "궁술사 (신화/신궁일발)",
@@ -1423,184 +1413,44 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/01_무기_공격/bow_활/bow_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"대검술": {
-		"word": "대검술",
-		"name": "대검술 (신화/초대형검기)",
+	"그림자": {
+		"word": "그림자",
+		"name": "그림자 타워 (암살 일격)",
 		"category": "weapon",
+		"cost": 3,
+		"damage": 36,
+		"desc": "그림자 속에서 나타나 36의 막대한 치명타 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"극마법": {
+		"word": "극마법",
+		"name": "극마법 (신화/궁극의마법)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 65,
+		"desc": "[3글자 신화 타워] 5대 원소를 융합한 궁극의 비전 마법으로 65의 원소 폭격을 퍼붓습니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"금강석": {
+		"word": "금강석",
+		"name": "금강석 타워 (신화 다이아몬드)",
+		"category": "buff",
 		"cost": 3,
 		"damage": 55,
-		"desc": "[3글자 신화 타워] 경로 위의 모든 적을 가르는 초대형 청색 검기로 55 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"desc": "단단한 다이아몬드 레이저로 55의 파괴적인 관통 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"마신검": {
-		"word": "마신검",
-		"name": "마신검 (신화/마신의저주)",
-		"category": "weapon",
+	"기적수": {
+		"word": "기적수",
+		"name": "기적수 (신화/기적의샘물)",
+		"category": "heal",
 		"cost": 3,
-		"damage": 66,
-		"desc": "[3글자 신화 타워] 마신의 저주가 서린 참격으로 66의 암흑 화염 피해를 가합니다.",
-		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"사신낫": {
-		"word": "사신낫",
-		"name": "사신낫 (신화/사신의대낫)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 60,
-		"desc": "[3글자 신화 타워] 사신의 거대한 대낫으로 60의 즉사급 암흑 영혼 피해를 입힙니다.",
-		"icon": "res://assets/01_무기_공격/scythe_낫/scythe_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"쌍검술": {
-		"word": "쌍검술",
-		"name": "쌍검술 (신화/극의난무)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 48,
-		"desc": "[3글자 신화 타워] 눈에 보이지 않는 속도로 48의 6연속 극의 참격을 난사합니다.",
-		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"얼음검": {
-		"word": "얼음검",
-		"name": "얼음검 (신화/빙결참격)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 42,
-		"desc": "[3글자 신화 타워] 절대영도의 빙결검으로 적 피격 즉시 2초간 완전 동결(Stun)시킵니다.",
-		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"궁": {
-		"word": "궁",
-		"name": "궁 (활/원거리사격)",
-		"category": "weapon",
-		"cost": 1,
-		"damage": 5,
-		"desc": "긴 사거리의 활 화살을 발사하여 5의 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"돌": {
-		"word": "돌",
-		"name": "돌 (투석/기절)",
-		"category": "weapon",
-		"cost": 1,
-		"damage": 5,
-		"desc": "무거운 돌을 던져 5의 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"눈": {
-		"word": "눈",
-		"name": "눈 (빙설/감속)",
-		"category": "element",
-		"cost": 1,
-		"damage": 5,
-		"desc": "차가운 눈송이를 발사하여 적을 감속시킵니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"비": {
-		"word": "비",
-		"name": "비 (단비/연속사격)",
-		"category": "element",
-		"cost": 1,
-		"damage": 4,
-		"desc": "비처럼 빠른 연사 탄환을 쏟아붓습니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"낮": {
-		"word": "낮",
-		"name": "낮 (태양광/광역)",
-		"category": "element",
-		"cost": 1,
-		"damage": 6,
-		"desc": "낮의 햇살 에너지로 6의 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"번개": {
-		"word": "번개",
-		"name": "번개 타워 (연쇄 뇌격)",
-		"category": "element",
-		"cost": 2,
-		"damage": 26,
-		"desc": "적들에게 26의 연쇄 번개 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"바위": {
-		"word": "바위",
-		"name": "바위 타워 (강타 기절)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 22,
-		"desc": "단단한 바위를 투척하여 22 피해와 짧은 기절을 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"서리": {
-		"word": "서리",
-		"name": "서리 타워 (동결 냉기)",
-		"category": "element",
-		"cost": 2,
-		"damage": 20,
-		"desc": "서리 서린 칼바람으로 20 피해를 입히고 이동을 방해합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"어둠": {
-		"word": "어둠",
-		"name": "어둠 타워 (암흑 일격)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 25,
-		"desc": "어둠의 심연 탄환으로 25의 치명적인 암흑 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"암살": {
-		"word": "암살",
-		"name": "암살 타워 (후방 기습)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 27,
-		"desc": "보스 및 강력한 몬스터를 우선 저격하여 27 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"기습": {
-		"word": "기습",
-		"name": "기습 타워 (돌발 공격)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 23,
-		"desc": "예상치 못한 각도에서 23의 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"군단": {
-		"word": "군단",
-		"name": "군단 타워 (연속 사격)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 32,
-		"desc": "군단의 일제 사격으로 32 피해를 빠르게 연사합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"제압": {
-		"word": "제압",
-		"name": "제압 타워 (행동 불능)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 21,
-		"desc": "강력한 중력장으로 적을 제압하며 21 피해를 줍니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"damage": 46,
+		"desc": "[3글자 신화 타워] 기적의 성역을 펼쳐 46 피해 및 아군 전 타워를 완벽 강화합니다.",
+		"icon": "res://assets/05_회복_치유/spring_샘/spring_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"까마귀": {
@@ -1613,94 +1463,54 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"개구리": {
-		"word": "개구리",
-		"name": "개구리 타워 (독침 혓바닥)",
+	"눈보라": {
+		"word": "눈보라",
+		"name": "눈보라 (한파/동결풍)",
+		"category": "element",
+		"cost": 3,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 살을 에는 눈보라를 뿜어 25 피해 및 적들의 공속/이속을 60% 깎습니다.",
+		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"대검술": {
+		"word": "대검술",
+		"name": "대검술 (신화/초대형검기)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 55,
+		"desc": "[3글자 신화 타워] 경로 위의 모든 적을 가르는 초대형 청색 검기로 55 피해를 입힙니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"대성당": {
+		"word": "대성당",
+		"name": "대성당 타워 (성스러운 빛줄기)",
+		"category": "heal",
+		"cost": 3,
+		"damage": 50,
+		"desc": "성스러운 빛줄기로 50 피해를 주며 기지를 치유합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"대지진": {
+		"word": "대지진",
+		"name": "대지진 (신화/지각붕괴)",
+		"category": "element",
+		"cost": 3,
+		"damage": 60,
+		"desc": "[3글자 신화 타워] 지각을 붕괴시키는 60의 파괴적 지진파로 모든 적을 넘어뜨립니다.",
+		"icon": "res://assets/03_원소_마법/earth_흙/earth_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"도깨비": {
+		"word": "도깨비",
+		"name": "도깨비 (도깨비방망이/뚝딱)",
 		"category": "summon",
 		"cost": 3,
-		"damage": 32,
-		"desc": "긴 혀로 적을 끌어당기며 32 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"나무": {
-		"word": "나무",
-		"name": "나무 타워 (대지의 뿌리)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 19,
-		"desc": "단단한 줄기로 후려쳐 19 피해와 속박을 겁니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"가시": {
-		"word": "가시",
-		"name": "가시 타워 (가시덤불)",
-		"category": "defense",
-		"cost": 2,
-		"damage": 18,
-		"desc": "가시를 사방으로 뿜어내 18의 광역 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"보석": {
-		"word": "보석",
-		"name": "보석 타워 (마나 증폭)",
-		"category": "buff",
-		"cost": 2,
-		"damage": 25,
-		"desc": "마나 광선을 발사하여 25의 순수 마법 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"성검": {
-		"word": "성검",
-		"name": "성검 타워 (신성한 심판)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 30,
-		"desc": "신성한 칼날로 30의 강력한 언데드/마수 특효 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"뇌검": {
-		"word": "뇌검",
-		"name": "뇌검 타워 (번개 칼날)",
-		"category": "weapon",
-		"cost": 2,
 		"damage": 28,
-		"desc": "번개가 감도는 검으로 28의 감전 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"빙검": {
-		"word": "빙검",
-		"name": "빙검 타워 (얼음 칼날)",
-		"category": "weapon",
-		"cost": 2,
-		"damage": 27,
-		"desc": "혹한의 칼날로 27 피해와 동결을 유발합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"쇠사슬": {
-		"word": "쇠사슬",
-		"name": "쇠사슬 타워 (구속 족쇄)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 45,
-		"desc": "묵직한 쇠사슬을 휘둘러 45 피해와 적 이동 차단을 유발합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"쇠구슬": {
-		"word": "쇠구슬",
-		"name": "쇠구슬 타워 (산탄 폭쇄)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 46,
-		"desc": "쇠구슬 탄환을 쏟아부어 46의 광역 산탄 피해를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"desc": "[2글자 상위 타워] 도깨비방망이로 내려쳐 28 피해 및 금은보화(추가 골드)를 드롭시킵니다.",
+		"icon": "res://assets/04_생물_소환/tiger_호/tiger_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 	"도술사": {
@@ -1710,36 +1520,6 @@ const WORD_DATABASE: Dictionary = {
 		"cost": 3,
 		"damage": 50,
 		"desc": "신비한 도술 부적으로 50의 원소 폭풍을 일으킵니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"주술사": {
-		"word": "주술사",
-		"name": "주술사 타워 (저주의 토템)",
-		"category": "element",
-		"cost": 3,
-		"damage": 48,
-		"desc": "토템의 저주로 48 피해와 지속 데미지를 입힙니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"마술사": {
-		"word": "마술사",
-		"name": "마술사 타워 (환영 마술)",
-		"category": "buff",
-		"cost": 3,
-		"damage": 46,
-		"desc": "환영 비둘기와 카드로 46의 빠른 연속 마법 피해를 가합니다.",
-		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
-		"sound": "play_attack"
-	},
-	"암살자": {
-		"word": "암살자",
-		"name": "암살자 타워 (처형의 비수)",
-		"category": "weapon",
-		"cost": 3,
-		"damage": 52,
-		"desc": "그림자 속에서 단검을 찔러 52의 치명타 피해를 입힙니다.",
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
@@ -1753,6 +1533,96 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
+	"독수리": {
+		"word": "독수리",
+		"name": "독수리 (맹금/급강하)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 하늘에서 급강하하여 25의 강력한 발톱 낚아채기 공격을 가합니다.",
+		"icon": "res://assets/04_생물_소환/bird_새/bird_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"독안개": {
+		"word": "독안개",
+		"name": "독안개 (신화/부식절멸)",
+		"category": "element",
+		"cost": 3,
+		"damage": 42,
+		"desc": "[3글자 신화 타워] 전장 전체를 뒤덮는 맹독 안개로 모든 적에게 초당 12 피해를 입힙니다.",
+		"icon": "res://assets/03_원소_마법/poison_독/poison_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마그마": {
+		"word": "마그마",
+		"name": "마그마 (지열/용암탄)",
+		"category": "element",
+		"cost": 3,
+		"damage": 29,
+		"desc": "[2글자 상위 타워] 작열하는 마그마 덩어리를 투척하여 29 광역 화염 폭발을 일으킵니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마도사": {
+		"word": "마도사",
+		"name": "마도사 (신화/대마도사)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 62,
+		"desc": "[3글자 신화 타워] 대마도사의 룬 영창으로 62의 연속 비전 번개를 쏟아붓습니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마술사": {
+		"word": "마술사",
+		"name": "마술사 타워 (환영 마술)",
+		"category": "buff",
+		"cost": 3,
+		"damage": 46,
+		"desc": "환영 비둘기와 카드로 46의 빠른 연속 마법 피해를 가합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"마신검": {
+		"word": "마신검",
+		"name": "마신검 (신화/마신의저주)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 66,
+		"desc": "[3글자 신화 타워] 마신의 저주가 서린 참격으로 66의 암흑 화염 피해를 가합니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"불사조": {
+		"word": "불사조",
+		"name": "불사조 (신화/영생화염)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 58,
+		"desc": "[3글자 신화 타워] 불사조를 소환하여 58의 영원히 꺼지지 않는 성스러운 화염을 쏟아붓습니다.",
+		"icon": "res://assets/04_생물_소환/bird_새/bird_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"사신낫": {
+		"word": "사신낫",
+		"name": "사신낫 (신화/사신의대낫)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 60,
+		"desc": "[3글자 신화 타워] 사신의 거대한 대낫으로 60의 즉사급 암흑 영혼 피해를 입힙니다.",
+		"icon": "res://assets/01_무기_공격/scythe_낫/scythe_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"살무사": {
+		"word": "살무사",
+		"name": "살무사 (독사/맹독분사)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 23,
+		"desc": "[2글자 상위 타워] 살무사의 독액을 뿜어내어 23 피해 및 광역 부식 독을 퍼뜨립니다.",
+		"icon": "res://assets/04_생물_소환/snake_뱀/snake_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"상인단": {
 		"word": "상인단",
 		"name": "상인단 타워 (황금 투척)",
@@ -1763,14 +1633,144 @@ const WORD_DATABASE: Dictionary = {
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
 		"sound": "play_attack"
 	},
-	"대성당": {
-		"word": "대성당",
-		"name": "대성당 타워 (성스러운 빛줄기)",
-		"category": "heal",
+	"성기사": {
+		"word": "성기사",
+		"name": "성기사 (신화/신의수호자)",
+		"category": "defense",
 		"cost": 3,
 		"damage": 50,
-		"desc": "성스러운 빛줄기로 50 피해를 주며 기지를 치유합니다.",
+		"desc": "[3글자 신화 타워] 50의 신성 철퇴 강타와 함께 전 타워에 피해 감소 보호막을 부여합니다.",
+		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"쇠구슬": {
+		"word": "쇠구슬",
+		"name": "쇠구슬 타워 (산탄 폭쇄)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 46,
+		"desc": "쇠구슬 탄환을 쏟아부어 46의 광역 산탄 피해를 입힙니다.",
 		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"쇠사슬": {
+		"word": "쇠사슬",
+		"name": "쇠사슬 타워 (구속 족쇄)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 45,
+		"desc": "묵직한 쇠사슬을 휘둘러 45 피해와 적 이동 차단을 유발합니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"승전가": {
+		"word": "승전가",
+		"name": "승전가 (신화/승리의함성)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 40,
+		"desc": "[3글자 신화 타워] 40 음파 피해 및 전 필드 아군 타워 공격력을 +30% 영구 버프합니다.",
+		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"신기루": {
+		"word": "신기루",
+		"name": "신기루 (사막/신기루폭격)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 27,
+		"desc": "[2글자 상위 타워] 아지랑이 신기루 속에서 27의 기습 마법탄을 쏟아붓습니다.",
+		"icon": "res://assets/06_버프_유틸/mana_능/mana_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"쌍검술": {
+		"word": "쌍검술",
+		"name": "쌍검술 (신화/극의난무)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 48,
+		"desc": "[3글자 신화 타워] 눈에 보이지 않는 속도로 48의 6연속 극의 참격을 난사합니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"암살자": {
+		"word": "암살자",
+		"name": "암살자 타워 (처형의 비수)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 52,
+		"desc": "그림자 속에서 단검을 찔러 52의 치명타 피해를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"얼음검": {
+		"word": "얼음검",
+		"name": "얼음검 (신화/빙결참격)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 42,
+		"desc": "[3글자 신화 타워] 절대영도의 빙결검으로 적 피격 즉시 2초간 완전 동결(Stun)시킵니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"절대자": {
+		"word": "절대자",
+		"name": "절대자 (신화/절대수호자)",
+		"category": "defense",
+		"cost": 3,
+		"damage": 58,
+		"desc": "[3글자 신화 타워] 절대자의 권능으로 58 피해 및 전장에 무적 보호막을 펼칩니다.",
+		"icon": "res://assets/02_방어_장비/shield_방/shield_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"주술사": {
+		"word": "주술사",
+		"name": "주술사 타워 (저주의 토템)",
+		"category": "element",
+		"cost": 3,
+		"damage": 48,
+		"desc": "토템의 저주로 48 피해와 지속 데미지를 입힙니다.",
+		"icon": "res://assets/map_ui/ui_gold_pixel_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"주작날": {
+		"word": "주작날",
+		"name": "주작날 (신화/주작화염)",
+		"category": "element",
+		"cost": 3,
+		"damage": 56,
+		"desc": "[3글자 신화 타워] 주작의 붉은 날갯짓으로 전장에 56의 화염 폭풍을 휘몰아칩니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"지옥불": {
+		"word": "지옥불",
+		"name": "지옥불 (신화/헬파이어)",
+		"category": "element",
+		"cost": 3,
+		"damage": 66,
+		"desc": "[3글자 신화 타워] 꺼지지 않는 지옥의 화염으로 66의 암흑 화염 피해를 퍼붓습니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"진군가": {
+		"word": "진군가",
+		"name": "진군가 (신화/진격의북소리)",
+		"category": "skill",
+		"cost": 3,
+		"damage": 42,
+		"desc": "[3글자 신화 타워] 웅장한 진군가로 42 음파 피해 및 전 타워 공격속도를 +40% 버프합니다.",
+		"icon": "res://assets/06_버프_유틸/drum_북/drum_1_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"질주마": {
+		"word": "질주마",
+		"name": "질주마 (신화/천마질주)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 53,
+		"desc": "[3글자 신화 타워] 날개 달린 천마가 전장을 질주하며 53 피해 및 적들을 짓밟습니다.",
+		"icon": "res://assets/04_생물_소환/horse_말/horse_1_32px_pastel.png",
 		"sound": "play_attack"
 	},
 }

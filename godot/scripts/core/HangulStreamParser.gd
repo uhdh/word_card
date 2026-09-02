@@ -1,9 +1,9 @@
-﻿# HangulStreamParser.gd
+# HangulStreamParser.gd
 # 하단 자모 타일 벨트를 분석하여 연속 자모 자동 합성 (예: ㄱㄱㅏ ➔ 까, ㅗㅏ ➔ ㅘ, ㄹㄱ ➔ ㄺ) 및
 # 1글자 / 2글자 / 3글자 복합 단어 타워를 최장 일치(Greedy)로 자동 파싱
 extends Node
 
-func parse_jamo_stream(jamo_list: Array) -> Array:
+static func parse_jamo_stream(jamo_list: Array) -> Array:
 	var raw_syllables = []
 	var i = 0
 	var n = jamo_list.size()
@@ -167,7 +167,7 @@ func parse_jamo_stream(jamo_list: Array) -> Array:
 
 	return final_towers
 
-func can_be_next_syllable_start(jamo_list: Array, idx: int) -> bool:
+static func can_be_next_syllable_start(jamo_list: Array, idx: int) -> bool:
 	var n = jamo_list.size()
 	if idx >= n:
 		return false
@@ -186,5 +186,5 @@ func can_be_next_syllable_start(jamo_list: Array, idx: int) -> bool:
 				return true
 	return false
 
-func is_vowel(c: String) -> bool:
+static func is_vowel(c: String) -> bool:
 	return HangulEngine.JUNGSUNG.has(c) or HangulEngine.VOWEL_COMBINATIONS.has(c)
