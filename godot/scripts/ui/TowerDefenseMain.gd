@@ -2,6 +2,8 @@
 # 한글 자모 결합 타워 디펜스 메인 컨트롤러
 extends Control
 
+const SaveManager = preload("res://scripts/core/SaveManager.gd")
+
 @onready var hp_label: Label = $TopBar/Info/HpBox/HpLabel
 @onready var gold_label: Label = $TopBar/Info/GoldBox/GoldLabel
 @onready var wave_label: Label = $TopBar/Info/WaveBox/WaveLabel

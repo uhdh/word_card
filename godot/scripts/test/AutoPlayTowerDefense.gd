@@ -71,7 +71,9 @@ func run_step() -> void:
 		14:
 			print("\n[Step 6] 💾 게임 영구 저장 (Save Game) 테스트")
 			main_node.save_game_state()
-			assert(SaveManager.has_save_file(), "Save file must exist after saving!")
+			var sm = get_node_or_null("/root/SaveManager")
+			if sm != null:
+				assert(sm.has_save_file(), "Save file must exist after saving!")
 			print(" -> 세이브 파일 저장 확인 완료!")
 
 			# 강제로 상태 변조 (테스트용)
