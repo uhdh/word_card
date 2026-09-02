@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://main_scene_001"]
+﻿[gd_scene format=3 uid="uid://auto_play_test_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/test/AutoPlayBot.gd" id="2_bot"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -113,3 +114,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AutoPlayBot" type="Node" parent="."]
+script = ExtResource("2_bot")
