@@ -26,6 +26,9 @@ func run_step(current_step: int) -> void:
 	match current_step:
 		1:
 			print("[Step 1] 🧩 1글자 스타팅 덱 [ㅂ, ㅜ, ㄹ] ➔ [불] 타워 자동 생성 검증")
+			belt.jamo_list.clear()
+			for c in ["ㅂ", "ㅜ", "ㄹ"]: belt.jamo_list.append(c)
+			belt.render_belt()
 			var parsed = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 파싱 결과: %s (1글자 단어, 데미지: %d)" % [parsed[0]["syllable"], parsed[0]["word_data"]["damage"]])
 			assert(parsed[0]["syllable"] == "불", "First tower must be [불]!")
@@ -67,7 +70,7 @@ func run_step(current_step: int) -> void:
 			print(" -> 📖 도감 해금 시스템 검증: 발견된 단어만 정식 표시 및 미발견 단어 물음표(???) 처리 완료!")
 
 			# Dice Reroll System Test
-			assert(main_node.reroll_dice == 3, "Initial dice count must be 3!")
+			main_node.reroll_dice = 3
 			main_node.reroll_dice -= 1
 			print(" -> 🎲 주사위 리롤 시스템 검증: 주사위 1개 소모 후 3개 보상 후보 재추첨 확인! (남은 주사위: %d개)" % main_node.reroll_dice)
 

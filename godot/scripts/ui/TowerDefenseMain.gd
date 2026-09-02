@@ -1,5 +1,5 @@
 ﻿# TowerDefenseMain.gd
-# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (특정 웨이브 상점 이벤트, 유물 시스템, 밸런스 조정)
+# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (자동 로드 및 세이브 덮어쓰기 방지 완벽 패치)
 extends Control
 
 const SaveManager = preload("res://scripts/core/SaveManager.gd")
@@ -22,8 +22,11 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 var current_speed_scale: float = 1.0
 var reroll_dice: int = 3
 var owned_relics: Array = []
+var _is_loading_state: bool = true # 게임 시작 시 기존 세이브 덮어쓰기 방지 플래그
 
 func _ready() -> void:
+	_is_loading_state = true
+
 	btn_start_wave.pressed.connect(_on_start_wave_pressed)
 	btn_save.pressed.connect(_on_save_pressed)
 	btn_load.pressed.connect(_on_load_pressed)
@@ -34,7 +37,7 @@ func _ready() -> void:
 	btn_load.disabled = not SaveManager.has_save_file()
 
 	if defense_field:
-		defense_field.gold = 30 # 시작 골드 30 G 밸런스
+		defense_field.gold = 30 # 시작 기본 골드
 		defense_field.base_hp_changed.connect(_on_base_hp_changed)
 		defense_field.gold_changed.connect(_on_gold_changed)
 		defense_field.wave_status_changed.connect(_on_wave_status_changed)
@@ -54,8 +57,13 @@ func _ready() -> void:
 	btn_lexicon.tooltip_text = "단축키: [TAB] 또는 [D]"
 	btn_mute.tooltip_text = "단축키: [M]"
 
-	# Initial sync
-	jamo_belt.render_belt()
+	# 기존 세이브 파일이 있다면 자동으로 직전 게임 상태를 복원
+	if SaveManager.has_save_file():
+		_on_load_pressed()
+	else:
+		jamo_belt.render_belt()
+
+	_is_loading_state = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed or event.echo:
@@ -94,6 +102,8 @@ func _on_load_pressed() -> void:
 	if data.is_empty():
 		return
 
+	_is_loading_state = true
+
 	if data.has("jamo_list"):
 		jamo_belt.jamo_list.clear()
 		for c in data["jamo_list"]:
@@ -119,10 +129,15 @@ func _on_load_pressed() -> void:
 
 	jamo_belt.render_belt()
 	SoundEngine.play_victory()
-	print("📂 Game state successfully restored from save! (Dice: %d, Relics: %d)" % [reroll_dice, owned_relics.size()])
+	btn_load.disabled = false
+	print("📂 Game state successfully restored from save! (Wave: %d, Gold: %d, Dice: %d, Relics: %d)" % [
+		defense_field.current_wave, defense_field.gold, reroll_dice, owned_relics.size()
+	])
+
+	_is_loading_state = false
 
 func save_game_state() -> void:
-	if defense_field == null or jamo_belt == null:
+	if _is_loading_state or defense_field == null or jamo_belt == null:
 		return
 	SaveManager.save_game(
 		jamo_belt.jamo_list,
@@ -133,6 +148,7 @@ func save_game_state() -> void:
 		reroll_dice,
 		owned_relics
 	)
+	btn_load.disabled = false
 
 func _on_base_hp_changed(current: int, max_hp: int) -> void:
 	hp_label.text = "❤️ 기지 HP: %d / %d" % [current, max_hp]
@@ -146,7 +162,6 @@ func _on_wave_status_changed(wave: int, max_wave: int, is_running: bool) -> void
 	btn_start_wave.text = "⚔️ 웨이브 진행 중..." if is_running else "▶ 다음 웨이브 시작"
 
 func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
-	# 밸런스: 상인의 보물주머니 보유 시 보너스 골드 +50%
 	var final_bonus = bonus_gold
 	if has_relic("relic_merchant_pouch"):
 		final_bonus = int(bonus_gold * 1.5)
@@ -162,7 +177,6 @@ func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
 			func(chosen_char: String):
 				jamo_belt.add_jamo(chosen_char)
 				save_game_state()
-				# 특정 웨이브(2, 4웨이브) 클리어 후 방랑 상인 이벤트 조우!
 				if wave == 2 or wave == 4:
 					_trigger_merchant_encounter(wave),
 			func(new_dice_count: int):
@@ -226,7 +240,8 @@ func _on_tower_info_requested(tower: WordTower) -> void:
 		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval)
 
 func _on_jamo_changed() -> void:
-	save_game_state()
+	if not _is_loading_state:
+		save_game_state()
 
 func _on_parsed_towers_updated(parsed_list: Array) -> void:
 	if defense_field:

@@ -101,14 +101,20 @@ class HangulTDApp {
       { x: 80, y: 370 }
     ];
 
+    this.isLoadingState = true;
+
     this.initDOM();
     this.initCanvas();
     this.initShortcuts();
-    this.renderBelt();
-    this.startGameLoop();
 
-    // Initial save
-    this.saveGame();
+    if (SaveManager.hasSaveFile()) {
+      this.loadGame();
+    } else {
+      this.renderBelt();
+    }
+
+    this.isLoadingState = false;
+    this.startGameLoop();
   }
 
   initDOM() {
@@ -321,8 +327,6 @@ class HangulTDApp {
 
       this.beltContainer.appendChild(tileBox);
     });
-
-    this.saveGame();
   }
 
   startNextWave() {
@@ -615,6 +619,7 @@ class HangulTDApp {
   }
 
   saveGame(showToast = false) {
+    if (this.isLoadingState) return;
     SaveManager.saveGame({
       jamoList: this.jamoList,
       baseHp: this.baseHp,
@@ -635,10 +640,11 @@ class HangulTDApp {
   loadGame() {
     const data = SaveManager.loadGame();
     if (!data) return;
+    this.isLoadingState = true;
     this.jamoList = data.jamoList || ["ㅂ", "ㅜ", "ㄹ"];
     this.baseHp = data.baseHp || 20;
     this.maxBaseHp = data.maxBaseHp || 20;
-    this.gold = data.gold || 30;
+    this.gold = data.gold !== undefined ? data.gold : 30;
     this.currentWave = data.currentWave || 0;
     this.rerollDice = data.rerollDice !== undefined ? data.rerollDice : 3;
     this.ownedRelics = data.relics || [];
@@ -647,7 +653,9 @@ class HangulTDApp {
 
     this.renderBelt();
     this.updateTopBar();
+    this.btnLoad.disabled = false;
     sound.playWordCrafted();
+    this.isLoadingState = false;
   }
 
   openModal(contentHtml) {
