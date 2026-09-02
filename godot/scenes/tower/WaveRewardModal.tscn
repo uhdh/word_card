@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://wave_reward_modal_001"]
+[gd_scene format=3 uid="uid://wave_reward_modal_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/WaveRewardModal.gd" id="1_modal"]
 
@@ -82,3 +82,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
 text = "남은 주사위: 3개"
+
+[node name="SkipRow" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnSkip" type="Button" parent="Panel/VBox/SkipRow"]
+custom_minimum_size = Vector2(140, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "⏩ 보상 건너뛰기"

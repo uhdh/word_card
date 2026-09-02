@@ -8,6 +8,7 @@ extends Control
 @onready var choices_container: HBoxContainer = $Panel/VBox/ChoicesContainer
 @onready var btn_reroll: Button = $Panel/VBox/RerollRow/BtnReroll
 @onready var dice_label: Label = $Panel/VBox/RerollRow/DiceLabel
+@onready var btn_skip: Button = $Panel/VBox/SkipRow/BtnSkip
 
 var on_jamo_chosen_cb: Callable
 var on_dice_changed_cb: Callable
@@ -23,6 +24,8 @@ func setup(wave: int, bonus_gold: int, dice_count: int, on_chosen: Callable, on_
 
 	if btn_reroll:
 		btn_reroll.pressed.connect(_on_reroll_pressed)
+	if btn_skip:
+		btn_skip.pressed.connect(_on_skip_pressed)
 
 	generate_choices()
 	update_dice_ui()
@@ -39,12 +42,8 @@ func generate_choices() -> void:
 	for c in choices_container.get_children():
 		c.queue_free()
 
-	var choices = []
-	for i in range(3):
-		var pick = HangulEngine.get_weighted_random_jamo()
-		if choices.has(pick) and choices.size() < 10:
-			pick = HangulEngine.get_weighted_random_jamo()
-		choices.append(pick)
+	# 모음 1개 확정 보장 및 균형 잡힌 가중치 추첨
+	var choices = HangulEngine.generate_reward_choices(3)
 
 	# Render choices with rare tile styling
 	for i in range(choices.size()):
@@ -89,4 +88,10 @@ func _on_choice_selected(chosen_char: String) -> void:
 	SoundEngine.play_word_crafted()
 	if on_jamo_chosen_cb.is_valid():
 		on_jamo_chosen_cb.call(chosen_char)
+	queue_free()
+
+func _on_skip_pressed() -> void:
+	SoundEngine.play_tile_click()
+	if on_jamo_chosen_cb.is_valid():
+		on_jamo_chosen_cb.call("")
 	queue_free()

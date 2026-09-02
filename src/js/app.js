@@ -1020,10 +1020,7 @@ class HangulTDApp {
 
   openWaveRewardModal(wave, bonusGold, onClosedCallback = null) {
     const renderRewardModal = () => {
-      const choices = [];
-      for (let i = 0; i < 3; i++) {
-        choices.push(HangulEngine.getWeightedRandomJamo());
-      }
+      const choices = HangulEngine.generateRewardChoices(3);
 
       let choicesHtml = "";
       choices.forEach((ch) => {
@@ -1059,6 +1056,11 @@ class HangulTDApp {
             </button>
             <span style="color:#fde047; font-size:13px; font-weight:bold;">남은 주사위: ${this.rerollDice}개</span>
           </div>
+          <div style="display:flex; justify-content:center; margin-top:10px;">
+            <button class="btn btn-skip-reward" id="btn-skip-reward" style="background:#334155; color:#cbd5e1; padding:6px 16px; font-size:12px; border:none; border-radius:4px; cursor:pointer;">
+              ⏩ 보상 건너뛰기
+            </button>
+          </div>
         </div>
       `);
 
@@ -1076,6 +1078,16 @@ class HangulTDApp {
           if (onClosedCallback) onClosedCallback();
         });
       });
+
+      // Skip button click
+      const btnSkip = document.getElementById("btn-skip-reward");
+      if (btnSkip) {
+        btnSkip.addEventListener("click", () => {
+          sound.playTileClick();
+          this.closeModal();
+          if (onClosedCallback) onClosedCallback();
+        });
+      }
 
       // Reroll Dice Click
       const btnReroll = document.getElementById("btn-reroll-dice");

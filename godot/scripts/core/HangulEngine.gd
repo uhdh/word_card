@@ -1,4 +1,4 @@
-﻿# HangulEngine.gd
+# HangulEngine.gd
 # 15종 핵심 자모 기반 한글 조합 및 회전 동치성 3단계 등급 시스템 (Common / Rare / Super Rare)
 extends Node
 
@@ -81,6 +81,9 @@ static func get_rarity_border_color(char_str: String) -> Color:
 		return Color(0.68, 0.35, 0.98, 1.0) # 보랏빛 테두리
 	return Color(0.35, 0.30, 0.48, 0.8)     # 차분한 슬레이트 테두리
 
+const VOWEL_POOL = ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"]
+const CONSONANT_POOL = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ"]
+
 static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 	var pool = custom_pool if not custom_pool.is_empty() else ALL_DRAW_POOL
 	var weighted_entries = []
@@ -89,11 +92,11 @@ static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 	for item in pool:
 		var ch = str(item)
 		var r = get_rarity(ch)
-		var weight = 100
+		var weight = 75
 		if r == "super_rare":
-			weight = 10 # 4변환 만능 모음: 가장 희귀 (1/10 확률)
+			weight = 50 # 4변환 모음 충분히 등장
 		elif r == "rare":
-			weight = 30 # 2변환 자음/모음: 희귀 (약 1/3 확률)
+			weight = 65 # 2변환 자음/모음
 		weighted_entries.append({"char": ch, "weight": weight})
 		total_weight += weight
 
@@ -105,6 +108,20 @@ static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 			return entry["char"]
 
 	return ALL_DRAW_POOL.pick_random()
+
+# 3개의 보상 선택지 생성 시 최소 1개는 반드시 모음이 나오도록 보장
+static func generate_reward_choices(count: int = 3) -> Array:
+	var choices = []
+	# 1번: 무작위 가중치 뽑기
+	choices.append(get_weighted_random_jamo())
+	# 2번: 확정 모음 슬롯 (단어 조합을 원활하게 하기 위해 모음 보장)
+	choices.append(get_weighted_random_jamo(VOWEL_POOL))
+	# 3번 이후: 무작위 가중치 뽑기
+	for i in range(2, count):
+		choices.append(get_weighted_random_jamo())
+
+	choices.shuffle()
+	return choices
 
 static func is_rotatable(char_str: String) -> bool:
 	return ROTATABLE_TILES.has(char_str)

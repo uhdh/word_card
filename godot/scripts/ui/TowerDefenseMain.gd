@@ -188,7 +188,8 @@ func _on_wave_cleared(act: int, wave: int, bonus_gold: int) -> void:
 			final_bonus,
 			reroll_dice,
 			func(chosen_char: String):
-				jamo_belt.add_jamo(chosen_char)
+				if not chosen_char.is_empty():
+					jamo_belt.add_jamo(chosen_char)
 				save_game_state()
 				# 2웨이브 클리어 시 방랑 상인 조우
 				if wave == 2:

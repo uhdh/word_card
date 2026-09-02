@@ -64,6 +64,9 @@ export function isSuperRare(charStr) {
   return SUPER_RARE_TILES.includes(charStr);
 }
 
+export const VOWEL_POOL = ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"];
+export const CONSONANT_POOL = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ"];
+
 export function getWeightedRandomJamo(customPool = []) {
   const pool = customPool.length > 0 ? customPool : ALL_DRAW_POOL;
   const weighted = [];
@@ -71,9 +74,9 @@ export function getWeightedRandomJamo(customPool = []) {
 
   for (const item of pool) {
     const r = getRarity(item);
-    let weight = 100;
-    if (r === "super_rare") weight = 10;
-    else if (r === "rare") weight = 30;
+    let weight = 75;
+    if (r === "super_rare") weight = 50; // 4변환 모음 충분히 등장
+    else if (r === "rare") weight = 65;  // 2변환 자음/모음
 
     weighted.push({ char: item, weight });
     totalWeight += weight;
@@ -89,6 +92,21 @@ export function getWeightedRandomJamo(customPool = []) {
   }
 
   return pool[Math.floor(Math.random() * pool.length)];
+}
+
+// 3개의 보상 선택지 생성 시 최소 1개는 반드시 모음이 나오도록 보장
+export function generateRewardChoices(count = 3) {
+  const choices = [];
+  // 1번: 무작위 가중치 뽑기
+  choices.push(getWeightedRandomJamo());
+  // 2번: 확정 모음 슬롯 (단어 조합을 원활하게 하기 위해 모음 보장)
+  choices.append ? choices.push(getWeightedRandomJamo(VOWEL_POOL)) : choices.push(getWeightedRandomJamo(VOWEL_POOL));
+  // 3번 이후: 무작위 가중치 뽑기
+  for (let i = 2; i < count; i++) {
+    choices.push(getWeightedRandomJamo());
+  }
+
+  return choices.sort(() => Math.random() - 0.5);
 }
 
 export function isRotatable(charStr) {
