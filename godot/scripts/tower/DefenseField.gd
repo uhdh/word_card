@@ -141,10 +141,17 @@ func update_towers_from_parsed_list(parsed_list: Array) -> void:
 			t.queue_free()
 	active_towers.clear()
 
+	# Reset slot labels
+	for slot_node in tower_slots:
+		var lbl = slot_node.get_node_or_null("SlotBg/SlotLabel")
+		if lbl: lbl.visible = true
+
 	# Place new towers in slots
 	for i in range(mini(parsed_list.size(), tower_slots.size())):
 		var item = parsed_list[i]
 		var slot_node = tower_slots[i]
+		var lbl = slot_node.get_node_or_null("SlotBg/SlotLabel")
+		if lbl: lbl.visible = false
 		
 		var tower = word_tower_scene.instantiate() as WordTower
 		slot_node.add_child(tower)

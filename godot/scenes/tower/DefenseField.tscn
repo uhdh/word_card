@@ -3,13 +3,24 @@
 [ext_resource type="Script" path="res://scripts/tower/DefenseField.gd" id="1_field"]
 [ext_resource type="Texture2D" uid="uid://map_spawn_001" path="res://assets/map_ui/map_spawn_portal_32px_pastel.png" id="2_spawn"]
 [ext_resource type="Texture2D" uid="uid://map_base_001" path="res://assets/map_ui/map_base_crystal_32px_pastel.png" id="3_base"]
-[ext_resource type="Texture2D" uid="uid://map_altar_001" path="res://assets/map_ui/map_tower_altar_1_32px_pastel.png" id="4_altar"]
 
 [sub_resource type="Curve2D" id="Curve2D_road"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 60, 60, 0, 0, 0, 0, 920, 60, 0, 0, 0, 0, 920, 260, 0, 0, 0, 0, 80, 260, 0, 0, 0, 0, 80, 370)
 }
 point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.12, 0.1, 0.18, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.3, 0.5, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="DefenseField" type="Control"]
 custom_minimum_size = Vector2(1000, 400)
@@ -28,34 +39,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.08, 0.15, 1)
-
-[node name="GridPattern" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.13, 0.11, 0.19, 0.5)
+color = Color(0.09, 0.07, 0.14, 1)
 
 [node name="RoadOuter" type="Line2D" parent="."]
 width = 48.0
-default_color = Color(0.3, 0.25, 0.42, 1)
+default_color = Color(0.28, 0.23, 0.38, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="RoadLine" type="Line2D" parent="."]
 width = 40.0
-default_color = Color(0.2, 0.17, 0.3, 1)
+default_color = Color(0.18, 0.15, 0.26, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="RoadInner" type="Line2D" parent="."]
-width = 6.0
-default_color = Color(0.4, 0.35, 0.55, 0.6)
+width = 4.0
+default_color = Color(0.4, 0.35, 0.55, 0.5)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
@@ -122,53 +124,145 @@ horizontal_alignment = 1
 [node name="Slot0" type="Node2D" parent="TowerSlots"]
 position = Vector2(240, 160)
 
-[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot0"]
-custom_minimum_size = Vector2(48, 48)
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("4_altar")
-expand_mode = 1
-stretch_mode = 5
+[node name="SlotBg" type="Panel" parent="TowerSlots/Slot0"]
+custom_minimum_size = Vector2(68, 76)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -38.0
+offset_right = 34.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotLabel" type="Label" parent="TowerSlots/Slot0/SlotBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.5, 0.45, 0.65, 0.8)
+text = "1번 슬롯"
+horizontal_alignment = 1
 
 [node name="Slot1" type="Node2D" parent="TowerSlots"]
 position = Vector2(420, 160)
 
-[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot1"]
-custom_minimum_size = Vector2(48, 48)
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("4_altar")
-expand_mode = 1
-stretch_mode = 5
+[node name="SlotBg" type="Panel" parent="TowerSlots/Slot1"]
+custom_minimum_size = Vector2(68, 76)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -38.0
+offset_right = 34.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotLabel" type="Label" parent="TowerSlots/Slot1/SlotBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.5, 0.45, 0.65, 0.8)
+text = "2번 슬롯"
+horizontal_alignment = 1
 
 [node name="Slot2" type="Node2D" parent="TowerSlots"]
 position = Vector2(600, 160)
 
-[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot2"]
-custom_minimum_size = Vector2(48, 48)
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("4_altar")
-expand_mode = 1
-stretch_mode = 5
+[node name="SlotBg" type="Panel" parent="TowerSlots/Slot2"]
+custom_minimum_size = Vector2(68, 76)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -38.0
+offset_right = 34.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotLabel" type="Label" parent="TowerSlots/Slot2/SlotBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.5, 0.45, 0.65, 0.8)
+text = "3번 슬롯"
+horizontal_alignment = 1
 
 [node name="Slot3" type="Node2D" parent="TowerSlots"]
 position = Vector2(780, 160)
 
-[node name="SlotAltar" type="TextureRect" parent="TowerSlots/Slot3"]
-custom_minimum_size = Vector2(48, 48)
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("4_altar")
-expand_mode = 1
-stretch_mode = 5
+[node name="SlotBg" type="Panel" parent="TowerSlots/Slot3"]
+custom_minimum_size = Vector2(68, 76)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -38.0
+offset_right = 34.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="SlotLabel" type="Label" parent="TowerSlots/Slot3/SlotBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.5, 0.45, 0.65, 0.8)
+text = "4번 슬롯"
+horizontal_alignment = 1
 
 [node name="ProjectilesLayer" type="Node2D" parent="."]
