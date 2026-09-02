@@ -41,6 +41,17 @@ export class SaveManager {
     }
   }
 
+  static deleteSaveFile() {
+    try {
+      localStorage.removeItem(SAVE_KEY);
+      console.log("🗑️ [SaveManager] Save file deleted from LocalStorage");
+      return true;
+    } catch (e) {
+      console.error("Delete save error:", e);
+      return false;
+    }
+  }
+
   static getDiscoveredWords() {
     try {
       const raw = localStorage.getItem(LEXICON_KEY);

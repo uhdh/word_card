@@ -135,6 +135,7 @@ class HangulTDApp {
     this.diceTopLabel = document.getElementById("dice-top-label");
 
     this.btnStartWave = document.getElementById("btn-start-wave");
+    this.btnReset = document.getElementById("btn-reset");
     this.btnSave = document.getElementById("btn-save");
     this.btnLoad = document.getElementById("btn-load");
     this.btnSpeed = document.getElementById("btn-speed");
@@ -147,6 +148,9 @@ class HangulTDApp {
     this.modalContent = document.getElementById("modal-content");
 
     this.btnStartWave.addEventListener("click", () => this.startNextWave());
+    if (this.btnReset) {
+      this.btnReset.addEventListener("click", () => this.startNewGame());
+    }
     this.btnSave.addEventListener("click", () => this.saveGame(true));
     this.btnLoad.addEventListener("click", () => this.loadGame());
     this.btnSpeed.addEventListener("click", () => this.toggleSpeed());
@@ -1091,6 +1095,35 @@ class HangulTDApp {
     renderRewardModal();
   }
 
+  startNewGame() {
+    SaveManager.deleteSaveFile();
+    this.isLoadingState = true;
+
+    this.baseHp = 20;
+    this.maxBaseHp = 20;
+    this.gold = 30;
+    this.currentAct = 1;
+    this.currentWave = 0;
+    this.rerollDice = 3;
+    this.ownedRelics = [];
+    this.isWaveRunning = false;
+    this.enemies = [];
+    this.projectiles = [];
+    this.particles = [];
+
+    this.jamoList = ["ㅂ", "ㅜ", "ㄹ"];
+    this.selectedSwapIndex = -1;
+
+    this.closeModal();
+    this.renderBelt();
+    this.updateTopBar();
+    this.btnLoad.disabled = true;
+
+    sound.playWordCrafted();
+    this.isLoadingState = false;
+    console.log("🔄 [Game] New game started from Act 1, Wave 0!");
+  }
+
   handleGameOver(isVictory) {
     this.openModal(`
       <div class="modal-box gameover-modal" style="text-align: center; gap: 16px;">
@@ -1103,7 +1136,7 @@ class HangulTDApp {
     `);
 
     document.getElementById("btn-retry").addEventListener("click", () => {
-      location.reload();
+      this.startNewGame();
     });
   }
 }

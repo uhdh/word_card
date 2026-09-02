@@ -1,4 +1,4 @@
-﻿# SaveManager.gd
+# SaveManager.gd
 # 게임 상태 (자모 벨트, 기지 체력, 골드, 현재 막/웨이브, 리롤 주사위, 보유 유물) 및 단어 도감 해금 영구 저장 유틸리티
 class_name SaveManager
 extends RefCounted
@@ -59,6 +59,11 @@ static func load_game() -> Dictionary:
 		parse_result.get("current_act", 1), parse_result.get("current_wave", 0), parse_result.get("gold", 0), parse_result.get("reroll_dice", 3)
 	])
 	return parse_result
+
+static func delete_save_file() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+		print("🗑️ [SaveManager] Save file deleted successfully.")
 
 # ==============================================================================
 # 단어 도감 해금 (Lexicon Discovery) 시스템

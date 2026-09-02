@@ -1,4 +1,4 @@
-﻿# TowerDefenseMain.gd
+# TowerDefenseMain.gd
 # 한글 자모 결합 타워 디펜스 메인 컨트롤러 (3막 4웨이브 구성 완벽 연동)
 extends Control
 
@@ -9,6 +9,7 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 @onready var wave_label: Label = $TopBar/Info/WaveBox/WaveLabel
 
 @onready var btn_start_wave: Button = $TopBar/Actions/BtnStartWave
+@onready var btn_reset: Button = $TopBar/Actions/BtnReset
 @onready var btn_save: Button = $TopBar/Actions/BtnSave
 @onready var btn_load: Button = $TopBar/Actions/BtnLoad
 @onready var btn_speed: Button = $TopBar/Actions/BtnSpeed
@@ -28,6 +29,8 @@ func _ready() -> void:
 	_is_loading_state = true
 
 	btn_start_wave.pressed.connect(_on_start_wave_pressed)
+	if btn_reset:
+		btn_reset.pressed.connect(_on_reset_pressed)
 	btn_save.pressed.connect(_on_save_pressed)
 	btn_load.pressed.connect(_on_load_pressed)
 	btn_speed.pressed.connect(_on_speed_pressed)
@@ -328,12 +331,51 @@ func _on_mute_pressed() -> void:
 	var is_muted = SoundEngine.toggle_mute()
 	btn_mute.text = "🔇" if is_muted else "🔊"
 
+func _on_reset_pressed() -> void:
+	SoundEngine.play_tile_click()
+	start_new_game()
+
+func start_new_game() -> void:
+	SaveManager.delete_save_file()
+	_is_loading_state = true
+
+	# Clear all active modallayers
+	for child in modal_layer.get_children():
+		child.queue_free()
+
+	if defense_field:
+		defense_field.base_hp = 20
+		defense_field.max_base_hp = 20
+		defense_field.gold = 30
+		defense_field.current_act = 1
+		defense_field.current_wave = 0
+		defense_field.is_wave_running = false
+		defense_field.base_hp_changed.emit(20, 20)
+		defense_field.gold_changed.emit(30)
+		_update_topbar_wave_label(1, 0)
+
+	reroll_dice = 3
+	owned_relics.clear()
+
+	if jamo_belt:
+		jamo_belt.jamo_list = ["ㅂ", "ㅜ", "ㄹ"]
+		jamo_belt.render_belt()
+
+	btn_load.disabled = true
+	btn_start_wave.disabled = false
+	btn_start_wave.text = "▶ 다음 웨이브 시작"
+
+	SoundEngine.play_word_crafted()
+	_is_loading_state = false
+	print("🔄 [Game] New game successfully started from Act 1, Wave 0!")
+
 func _on_game_over(is_victory: bool) -> void:
 	var modal = PanelContainer.new()
 	modal.custom_minimum_size = Vector2(400, 240)
 	modal.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	var vbox = VBoxContainer.new()
 	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	vbox.add_theme_constant_override("separation", 16)
 	modal.add_child(vbox)
 
 	var title = Label.new()
@@ -344,8 +386,9 @@ func _on_game_over(is_victory: bool) -> void:
 
 	var btn_retry = Button.new()
 	btn_retry.text = "처음부터 다시하기"
+	btn_retry.custom_minimum_size = Vector2(160, 40)
 	btn_retry.pressed.connect(func():
-		get_tree().reload_current_scene()
+		start_new_game()
 	)
 	vbox.add_child(btn_retry)
 	modal_layer.add_child(modal)

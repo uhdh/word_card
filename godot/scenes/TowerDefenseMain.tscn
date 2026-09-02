@@ -97,6 +97,11 @@ custom_minimum_size = Vector2(150, 36)
 layout_mode = 2
 text = "▶ 다음 웨이브 시작"
 
+[node name="BtnReset" type="Button" parent="TopBar/Actions"]
+custom_minimum_size = Vector2(90, 36)
+layout_mode = 2
+text = "🔄 새 게임"
+
 [node name="BtnSave" type="Button" parent="TopBar/Actions"]
 custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
