@@ -64,13 +64,22 @@ func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node) -> void:
 			attack_interval = 0.9
 		"summon":
 			attack_range = 140.0
-			attack_interval = 1.1
-		"defense":
-			attack_range = 120.0
-			attack_interval = 1.3
-		"heal", "skill":
-			attack_range = 140.0
 			attack_interval = 1.0
+		"defense":
+			attack_range = 130.0
+			attack_interval = 0.95
+		"heal":
+			attack_range = 145.0
+			attack_interval = 0.85
+		"skill":
+			attack_range = 150.0
+			attack_interval = 0.8
+
+	# Specific word mechanics
+	if word_data.get("rapid_fire", false):
+		attack_interval = 0.25
+	if word_data.has("range_bonus"):
+		attack_range += float(word_data["range_bonus"])
 
 	# Multi-syllable Tier Bonus
 	var word_len = syllable.length()

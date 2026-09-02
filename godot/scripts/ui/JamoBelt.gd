@@ -85,6 +85,7 @@ func render_belt() -> void:
 		if is_rotatable:
 			var btn_rot = Button.new()
 			btn_rot.text = "🔄"
+			btn_rot.tooltip_text = "90도 회전 (예: ㅏ ➔ ㅗ, ㄱ ➔ ㄴ)"
 			btn_rot.custom_minimum_size = Vector2(26, 24)
 			btn_rot.add_theme_font_size_override("font_size", 11)
 			btn_rot.pressed.connect(func():
@@ -96,6 +97,7 @@ func render_belt() -> void:
 
 		var btn_comb = Button.new()
 		btn_comb.text = "⚡"
+		btn_comb.tooltip_text = "자모 합성 (2개 자모를 합쳐 쌍자음/이중모음 생성)"
 		btn_comb.custom_minimum_size = Vector2(26, 24)
 		btn_comb.add_theme_font_size_override("font_size", 11)
 		btn_comb.pressed.connect(func():
