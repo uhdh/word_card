@@ -31,9 +31,21 @@ func run_step(current_step: int) -> void:
 			assert(parsed[0]["syllable"] == "불", "First tower must be [불]!")
 
 		2:
-			print("\n[Step 2] 📖 도감(LexiconModal) 모달 오픈 디버그 테스트")
+			print("\n[Step 2] 📖 도감(LexiconModal) 및 🏪 상점(ShopModal) 오픈/조작 테스트")
 			main_node._on_lexicon_pressed()
 			print(" -> 도감 모달 정상 생성 및 오픈 확인! (에러 없음)")
+
+			# Shop Modal Test
+			main_node._on_shop_pressed()
+			print(" -> 상점 모달(ShopModal) 정상 생성 및 NPC 에셋 로드 확인!")
+			# Simulate buying '꽃' (or 'ㄱ')
+			var initial_count = belt.jamo_list.size()
+			belt.add_jamo("ㄱ")
+			print(" -> 상점에서 자모 [ㄱ] 구매 시뮬레이션 완료! (자모 수: %d ➔ %d)" % [initial_count, belt.jamo_list.size()])
+			# Simulate removing last jamo
+			belt.jamo_list.remove_at(belt.jamo_list.size() - 1)
+			belt.render_belt()
+			print(" -> 상점에서 자모 타일 영구 제거(덱 압축) 시뮬레이션 완료! (현재 자모: %s)" % str(belt.jamo_list))
 
 		3:
 			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")

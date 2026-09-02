@@ -1,0 +1,186 @@
+﻿[gd_scene format=3 uid="uid://shop_modal_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/ShopModal.gd" id="1_shop"]
+[ext_resource type="Texture2D" uid="uid://npc_merchant_001" path="res://assets/npc/npc_merchant_1_32px_pastel.png" id="2_npc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.1, 0.08, 0.16, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.7, 0.3, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0.16, 0.13, 0.24, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.35, 0.55, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="ShopModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shop")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(620, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -220.0
+offset_right = 310.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NpcIcon" type="TextureRect" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("2_npc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogBox" type="PanelContainer" parent="Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
+
+[node name="DialogLabel" type="Label" parent="Panel/VBox/Header/DialogBox"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+text = "“어서오게 활자술사여! 원하는 자모를 구매하거나 불필요한 자모를 갈아보게나.”"
+autowrap_mode = 2
+
+[node name="GoldLabel" type="Label" parent="Panel/VBox/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+text = "🪙 40 G"
+
+[node name="BtnClose" type="Button" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "✖"
+
+[node name="TabButtons" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BtnTabBuy" type="Button" parent="Panel/VBox/TabButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🏪 자모 타일 구매"
+
+[node name="BtnTabRemove" type="Button" parent="Panel/VBox/TabButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "✂️ 자모 타일 제거 (덱 압축)"
+
+[node name="TabBuyContainer" type="VBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="BuyDescLabel" type="Label" parent="Panel/VBox/TabBuyContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+text = "벨트에 추가할 자모를 선택하여 구매하세요. (최대 15칸)"
+horizontal_alignment = 1
+
+[node name="ItemsGrid" type="HBoxContainer" parent="Panel/VBox/TabBuyContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="RerollRow" type="HBoxContainer" parent="Panel/VBox/TabBuyContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnReroll" type="Button" parent="Panel/VBox/TabBuyContainer/RerollRow"]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "🔄 상품 새로고침 (5 G)"
+
+[node name="TabRemoveContainer" type="VBoxContainer" parent="Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="RemoveDescLabel" type="Label" parent="Panel/VBox/TabRemoveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+text = "제거하고 싶은 자모 타일을 클릭하여 덱에서 영구히 삭제하세요."
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/VBox/TabRemoveContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TilesContainer" type="HBoxContainer" parent="Panel/VBox/TabRemoveContainer/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="RemoveInfoLabel" type="Label" parent="Panel/VBox/TabRemoveContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
+text = "제거할 자모 타일을 위 목록에서 선택하세요."
+horizontal_alignment = 1
+
+[node name="BtnConfirmRemove" type="Button" parent="Panel/VBox/TabRemoveContainer"]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
+text = "✂️ 자모 타일 제거 (10 G)"

@@ -12,6 +12,7 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 @onready var btn_save: Button = $TopBar/Actions/BtnSave
 @onready var btn_load: Button = $TopBar/Actions/BtnLoad
 @onready var btn_speed: Button = $TopBar/Actions/BtnSpeed
+@onready var btn_shop: Button = $TopBar/Actions/BtnShop
 @onready var btn_lexicon: Button = $TopBar/Actions/BtnLexicon
 @onready var btn_mute: Button = $TopBar/Actions/BtnMute
 
@@ -26,6 +27,7 @@ func _ready() -> void:
 	btn_save.pressed.connect(_on_save_pressed)
 	btn_load.pressed.connect(_on_load_pressed)
 	btn_speed.pressed.connect(_on_speed_pressed)
+	if btn_shop: btn_shop.pressed.connect(_on_shop_pressed)
 	btn_lexicon.pressed.connect(_on_lexicon_pressed)
 	btn_mute.pressed.connect(_on_mute_pressed)
 
@@ -48,7 +50,8 @@ func _ready() -> void:
 	btn_start_wave.tooltip_text = "단축키: [SPACE]"
 	btn_save.tooltip_text = "단축키: [Ctrl + S] 또는 [S]"
 	btn_load.tooltip_text = "단축키: [L]"
-	btn_speed.tooltip_text = "단축키: [1] / [2]"
+	btn_speed.tooltip_text = "단축키: [1] / [2] / [3] / [4]"
+	if btn_shop: btn_shop.tooltip_text = "단축키: [B] (상점 오픈)"
 	btn_lexicon.tooltip_text = "단축키: [TAB] 또는 [D]"
 	btn_mute.tooltip_text = "단축키: [M]"
 
@@ -69,6 +72,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			set_speed_scale(2.0)
 		KEY_3, KEY_4:
 			set_speed_scale(4.0)
+		KEY_B:
+			_on_shop_pressed()
 		KEY_TAB, KEY_D:
 			_on_lexicon_pressed()
 		KEY_S:
@@ -197,6 +202,29 @@ func set_speed_scale(speed: float) -> void:
 		btn_speed.text = "⏩ 2x 배속"
 	elif speed >= 4.0:
 		btn_speed.text = "⚡ 4x 초고속"
+
+func _on_shop_pressed() -> void:
+	var modal_scene = load("res://scenes/tower/ShopModal.tscn")
+	if modal_scene != null:
+		var modal = modal_scene.instantiate()
+		modal_layer.add_child(modal)
+		modal.setup(defense_field.gold, jamo_belt.jamo_list)
+
+		modal.jamo_bought.connect(func(char_str: String, cost: int):
+			defense_field.gold -= cost
+			defense_field.gold_changed.emit(defense_field.gold)
+			jamo_belt.add_jamo(char_str)
+			save_game_state()
+		)
+
+		modal.jamo_removed.connect(func(idx: int, cost: int):
+			defense_field.gold -= cost
+			defense_field.gold_changed.emit(defense_field.gold)
+			if idx >= 0 and idx < jamo_belt.jamo_list.size():
+				jamo_belt.jamo_list.remove_at(idx)
+				jamo_belt.render_belt()
+			save_game_state()
+		)
 
 func _on_lexicon_pressed() -> void:
 	var modal = load("res://scenes/LexiconModal.tscn").instantiate()

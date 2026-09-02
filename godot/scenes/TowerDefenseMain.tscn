@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://tower_defense_main_001"]
+[gd_scene format=3 uid="uid://tower_defense_main_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/TowerDefenseMain.gd" id="1_td_main"]
 [ext_resource type="PackedScene" uid="uid://defense_field_001" path="res://scenes/tower/DefenseField.tscn" id="2_field"]
@@ -111,6 +111,11 @@ text = "📂 이어하기"
 custom_minimum_size = Vector2(90, 36)
 layout_mode = 2
 text = "▶ 1x 배속"
+
+[node name="BtnShop" type="Button" parent="TopBar/Actions"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+text = "🏪 상점"
 
 [node name="BtnLexicon" type="Button" parent="TopBar/Actions"]
 custom_minimum_size = Vector2(130, 36)
