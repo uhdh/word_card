@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Hangul Roguelike Tower Defense - Web Main App Controller
  */
 
@@ -15,6 +15,7 @@ class HangulTDApp {
     this.gold = 40;
     this.currentWave = 0;
     this.maxWave = 5;
+    this.rerollDice = 3;
     this.isWaveRunning = false;
     this.speedScale = 1.0;
 
@@ -597,7 +598,8 @@ class HangulTDApp {
       baseHp: this.baseHp,
       maxBaseHp: this.maxBaseHp,
       gold: this.gold,
-      currentWave: this.currentWave
+      currentWave: this.currentWave,
+      rerollDice: this.rerollDice
     });
     this.btnLoad.disabled = false;
     if (showToast) {
@@ -615,6 +617,7 @@ class HangulTDApp {
     this.maxBaseHp = data.maxBaseHp || 20;
     this.gold = data.gold || 40;
     this.currentWave = data.currentWave || 0;
+    this.rerollDice = data.rerollDice !== undefined ? data.rerollDice : 3;
     this.isWaveRunning = false;
     this.enemies = [];
 
@@ -788,44 +791,68 @@ class HangulTDApp {
   }
 
   openWaveRewardModal(wave, bonusGold) {
-    const choices = [];
-    for (let i = 0; i < 3; i++) {
-      choices.push(HangulEngine.getWeightedRandomJamo());
-    }
+    const renderRewardModal = () => {
+      const choices = [];
+      for (let i = 0; i < 3; i++) {
+        choices.push(HangulEngine.getWeightedRandomJamo());
+      }
 
-    let choicesHtml = "";
-    choices.forEach((ch) => {
-      const isRare = HangulEngine.isRare(ch);
-      choicesHtml += `
-        <button class="btn-reward-choice ${isRare ? 'rare-choice' : ''}" data-char="${ch}">
-          <div class="reward-char">${isRare ? '🌟\n' + ch : ch}</div>
-          <div class="reward-tag">${isRare ? '🌟 희귀 자모' : '기본 자모'}</div>
-        </button>
-      `;
-    });
-
-    this.openModal(`
-      <div class="modal-box reward-modal">
-        <div class="modal-header">
-          <h3>🏆 제 ${wave} 웨이브 클리어! (+${bonusGold} G)</h3>
-        </div>
-        <p>벨트에 추가할 자모 1개를 선택하세요:</p>
-        <div class="reward-choices-row">${choicesHtml}</div>
-      </div>
-    `);
-
-    document.querySelectorAll(".btn-reward-choice").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const charStr = e.currentTarget.getAttribute("data-char");
-        if (charStr && this.jamoList.length < 15) {
-          this.jamoList.push(charStr);
-          sound.playWordCrafted();
-          this.renderBelt();
-          this.closeModal();
-          this.saveGame();
-        }
+      let choicesHtml = "";
+      choices.forEach((ch) => {
+        const isRare = HangulEngine.isRare(ch);
+        choicesHtml += `
+          <button class="btn-reward-choice ${isRare ? 'rare-choice' : ''}" data-char="${ch}">
+            <div class="reward-char">${isRare ? '🌟\n' + ch : ch}</div>
+            <div class="reward-tag">${isRare ? '🌟 희귀 자모' : '기본 자모'}</div>
+          </button>
+        `;
       });
-    });
+
+      this.openModal(`
+        <div class="modal-box reward-modal">
+          <div class="modal-header">
+            <h3>🏆 제 ${wave} 웨이브 클리어! (+${bonusGold} G)</h3>
+          </div>
+          <p>벨트에 추가할 자모 1개를 선택하세요:</p>
+          <div class="reward-choices-row">${choicesHtml}</div>
+          <div class="reward-reroll-row" style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:14px;">
+            <button class="btn btn-reroll-dice" id="btn-reroll-dice" ${this.rerollDice <= 0 ? 'disabled' : ''}>
+              ${this.rerollDice > 0 ? '🎲 보상 새로고침' : '🎲 주사위 소진'}
+            </button>
+            <span style="color:#fde047; font-size:13px; font-weight:bold;">남은 주사위: ${this.rerollDice}개</span>
+          </div>
+        </div>
+      `);
+
+      // Choice click
+      document.querySelectorAll(".btn-reward-choice").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const charStr = e.currentTarget.getAttribute("data-char");
+          if (charStr && this.jamoList.length < 15) {
+            this.jamoList.push(charStr);
+            sound.playWordCrafted();
+            this.renderBelt();
+            this.closeModal();
+            this.saveGame();
+          }
+        });
+      });
+
+      // Reroll click
+      const btnReroll = document.getElementById("btn-reroll-dice");
+      if (btnReroll) {
+        btnReroll.addEventListener("click", () => {
+          if (this.rerollDice > 0) {
+            this.rerollDice -= 1;
+            sound.playTileRotate();
+            this.saveGame();
+            renderRewardModal();
+          }
+        });
+      }
+    };
+
+    renderRewardModal();
   }
 
   handleGameOver(isVictory) {

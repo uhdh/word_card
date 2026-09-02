@@ -1,4 +1,4 @@
-﻿* {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -400,6 +400,21 @@ body {
 .btn-reward-choice.rare-choice {
   border-color: #eab308;
   box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+}
+
+.btn-reroll-dice {
+  background: #0284c7;
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-reroll-dice:hover:not(:disabled) {
+  background: #0369a1;
 }
 
 .reward-char {

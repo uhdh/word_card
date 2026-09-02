@@ -1,5 +1,5 @@
 ﻿# SaveManager.gd
-# 게임 상태 및 단어 도감 해금(Discovery) 영구 저장 및 불러오기 유틸리티
+# 게임 상태 (자모 벨트, 기지 체력, 골드, 도달 웨이브, 리롤 주사위 등) 및 단어 도감 해금 영구 저장 유틸리티
 class_name SaveManager
 extends RefCounted
 
@@ -12,13 +12,14 @@ static var _is_discovered_loaded: bool = false
 static func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
-static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int) -> bool:
+static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3) -> bool:
 	var save_dict = {
 		"jamo_list": jamo_list,
 		"base_hp": base_hp,
 		"max_base_hp": max_base_hp,
 		"gold": gold,
 		"current_wave": current_wave,
+		"reroll_dice": reroll_dice,
 		"saved_at": Time.get_datetime_string_from_system()
 	}
 
@@ -30,7 +31,7 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 
 	file.store_string(json_str)
 	file.close()
-	print("💾 [SaveManager] Game successfully saved! (Wave %d, Gold %d, Jamo %d)" % [current_wave, gold, jamo_list.size()])
+	print("💾 [SaveManager] Game successfully saved! (Wave %d, Gold %d, Dice %d, Jamo %d)" % [current_wave, gold, reroll_dice, jamo_list.size()])
 	return true
 
 static func load_game() -> Dictionary:
@@ -50,8 +51,8 @@ static func load_game() -> Dictionary:
 		push_error("Corrupted save file content: %s" % content)
 		return {}
 
-	print("📂 [SaveManager] Game successfully loaded! (Wave %d, Gold %d)" % [
-		parse_result.get("current_wave", 0), parse_result.get("gold", 0)
+	print("📂 [SaveManager] Game successfully loaded! (Wave %d, Gold %d, Dice %d)" % [
+		parse_result.get("current_wave", 0), parse_result.get("gold", 0), parse_result.get("reroll_dice", 3)
 	])
 	return parse_result
 
@@ -92,7 +93,7 @@ static func discover_word(word: String) -> bool:
 		list.append(word)
 		_save_discovered_words()
 		print("✨ [Lexicon] 새 단어 도감 해금: [%s] (총 발견: %d개)" % [word, list.size()])
-		return true # Newly discovered
+		return true
 	return false
 
 static func _save_discovered_words() -> void:

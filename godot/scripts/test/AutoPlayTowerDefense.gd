@@ -55,6 +55,11 @@ func run_step(current_step: int) -> void:
 			assert(SaveManager.is_word_discovered("금강석"), "Word [금강석] must be marked as discovered!")
 			print(" -> 📖 도감 해금 시스템 검증: 발견된 단어만 정식 표시 및 미발견 단어 물음표(???) 처리 완료!")
 
+			# Dice Reroll System Test
+			assert(main_node.reroll_dice == 3, "Initial dice count must be 3!")
+			main_node.reroll_dice -= 1
+			print(" -> 🎲 주사위 리롤 시스템 검증: 주사위 1개 소모 후 3개 보상 후보 재추첨 확인! (남은 주사위: %d개)" % main_node.reroll_dice)
+
 		3:
 			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")
 			belt.jamo_list.clear()

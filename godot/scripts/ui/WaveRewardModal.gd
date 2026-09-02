@@ -1,23 +1,43 @@
-# WaveRewardModal.gd
-# 웨이브 클리어 시 자모 3개 중 1개를 선택하여 벨트에 추가하는 보상 팝업 모달
+﻿# WaveRewardModal.gd
+# 웨이브 클리어 시 자모 3택 1 보상 팝업 및 🎲 주사위 리롤(새로고침) 모달
 class_name WaveRewardModal
 extends Control
 
 @onready var title_label: Label = $Panel/VBox/TitleLabel
 @onready var gold_label: Label = $Panel/VBox/GoldLabel
 @onready var choices_container: HBoxContainer = $Panel/VBox/ChoicesContainer
+@onready var btn_reroll: Button = $Panel/VBox/RerollRow/BtnReroll
+@onready var dice_label: Label = $Panel/VBox/RerollRow/DiceLabel
 
 var on_jamo_chosen_cb: Callable
+var on_dice_changed_cb: Callable
+var remaining_dice: int = 3
 
-func setup(wave: int, bonus_gold: int, on_chosen: Callable) -> void:
+func setup(wave: int, bonus_gold: int, dice_count: int, on_chosen: Callable, on_dice_changed: Callable = Callable()) -> void:
 	on_jamo_chosen_cb = on_chosen
+	on_dice_changed_cb = on_dice_changed
+	remaining_dice = dice_count
+
 	title_label.text = "🏆 제 %d 웨이브 클리어!" % wave
 	gold_label.text = "🪙 클리어 보너스: +%d G" % bonus_gold
 
-	# 3개의 무작위 자모 후보 생성
-	var cho_pool = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
-	var jung_pool = ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"]
-	var jong_pool = ["ㄱ", "ㄴ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ"]
+	if btn_reroll:
+		btn_reroll.pressed.connect(_on_reroll_pressed)
+
+	generate_choices()
+	update_dice_ui()
+	SoundEngine.play_victory()
+
+func update_dice_ui() -> void:
+	if btn_reroll:
+		btn_reroll.text = "🎲 보상 새로고침" if remaining_dice > 0 else "🎲 주사위 소진"
+		btn_reroll.disabled = (remaining_dice <= 0)
+	if dice_label:
+		dice_label.text = "남은 주사위: %d개" % remaining_dice
+
+func generate_choices() -> void:
+	for c in choices_container.get_children():
+		c.queue_free()
 
 	var choices = []
 	for i in range(3):
@@ -40,17 +60,23 @@ func setup(wave: int, bonus_gold: int, on_chosen: Callable) -> void:
 		else:
 			btn.modulate = Color(1.0, 0.9, 0.4)
 
-		# Subtitle hint
-		var type_hint = "초성 자음"
+		var type_hint = "기본 자음"
 		if is_rare: type_hint = "🌟 희귀 자모"
 		elif HangulEngine.JUNGSUNG.has(char_str): type_hint = "중성 (모음)"
-		elif HangulEngine.JONGSUNG.has(char_str): type_hint = "자음/받침"
 
 		btn.tooltip_text = "[%s] (%s) 활자 획득\n타일 벨트에 추가됩니다." % [char_str, type_hint]
 		btn.pressed.connect(_on_choice_selected.bind(char_str))
 		choices_container.add_child(btn)
 
-	SoundEngine.play_victory()
+func _on_reroll_pressed() -> void:
+	if remaining_dice <= 0: return
+	remaining_dice -= 1
+	SoundEngine.play_tile_rotate()
+	generate_choices()
+	update_dice_ui()
+
+	if on_dice_changed_cb.is_valid():
+		on_dice_changed_cb.call(remaining_dice)
 
 func _on_choice_selected(chosen_char: String) -> void:
 	SoundEngine.play_word_crafted()

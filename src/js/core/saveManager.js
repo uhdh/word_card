@@ -1,4 +1,4 @@
-﻿/**
+/**
  * saveManager.js - Web LocalStorage Game & Lexicon Save Manager
  */
 
@@ -18,6 +18,7 @@ export class SaveManager {
         maxBaseHp: state.maxBaseHp || 20,
         gold: state.gold || 40,
         currentWave: state.currentWave || 0,
+        rerollDice: state.rerollDice !== undefined ? state.rerollDice : 3,
         savedAt: new Date().toISOString()
       };
       localStorage.setItem(SAVE_KEY, JSON.stringify(data));

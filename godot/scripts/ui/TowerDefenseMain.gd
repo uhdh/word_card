@@ -21,6 +21,7 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 @onready var modal_layer: Control = $ModalLayer
 
 var current_speed_scale: float = 1.0
+var reroll_dice: int = 3
 
 func _ready() -> void:
 	btn_start_wave.pressed.connect(_on_start_wave_pressed)
@@ -123,9 +124,12 @@ func _on_load_pressed() -> void:
 		defense_field.current_wave = int(data["current_wave"])
 		wave_label.text = "🌊 %d / %d 웨이브" % [defense_field.current_wave, defense_field.MAX_WAVES]
 
+	if data.has("reroll_dice"):
+		reroll_dice = int(data["reroll_dice"])
+
 	jamo_belt.render_belt()
 	SoundEngine.play_victory()
-	print("📂 Game state successfully restored from save!")
+	print("📂 Game state successfully restored from save! (Dice: %d)" % reroll_dice)
 
 func save_game_state() -> void:
 	if defense_field == null or jamo_belt == null:
@@ -135,7 +139,8 @@ func save_game_state() -> void:
 		defense_field.base_hp,
 		defense_field.max_base_hp,
 		defense_field.gold,
-		defense_field.current_wave
+		defense_field.current_wave,
+		reroll_dice
 	)
 
 func _on_base_hp_changed(current: int, max_hp: int) -> void:
@@ -154,9 +159,16 @@ func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
 	if modal_scene != null:
 		var modal = modal_scene.instantiate()
 		modal_layer.add_child(modal)
-		modal.setup(wave, bonus_gold, func(chosen_char: String):
-			jamo_belt.add_jamo(chosen_char)
-			save_game_state()
+		modal.setup(
+			wave,
+			bonus_gold,
+			reroll_dice,
+			func(chosen_char: String):
+				jamo_belt.add_jamo(chosen_char)
+				save_game_state(),
+			func(new_dice_count: int):
+				reroll_dice = new_dice_count
+				save_game_state()
 		)
 
 func _on_tower_info_requested(tower: WordTower) -> void:

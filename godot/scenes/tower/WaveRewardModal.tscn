@@ -21,23 +21,23 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.75)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(460, 320)
+custom_minimum_size = Vector2(480, 340)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.0
-offset_top = -160.0
-offset_right = 230.0
-offset_bottom = 160.0
+offset_left = -240.0
+offset_top = -170.0
+offset_right = 240.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
@@ -64,4 +64,21 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
+
+[node name="RerollRow" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="BtnReroll" type="Button" parent="Panel/VBox/RerollRow"]
+custom_minimum_size = Vector2(160, 36)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "🎲 보상 새로고침"
+
+[node name="DiceLabel" type="Label" parent="Panel/VBox/RerollRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
+text = "남은 주사위: 3개"
