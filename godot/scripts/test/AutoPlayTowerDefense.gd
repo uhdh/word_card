@@ -44,8 +44,10 @@ func run_step(current_step: int) -> void:
 			print(" -> 상점에서 자모 [ㄱ] 구매 시뮬레이션 완료! (자모 수: %d ➔ %d)" % [initial_count, belt.jamo_list.size()])
 			# Simulate removing last jamo
 			belt.jamo_list.remove_at(belt.jamo_list.size() - 1)
-			belt.render_belt()
-			print(" -> 상점에서 자모 타일 영구 제거(덱 압축) 시뮬레이션 완료! (현재 자모: %s)" % str(belt.jamo_list))
+			# Rare Tile System Test
+			assert(HangulEngine.is_rare("ㄱ") and HangulEngine.is_rare("ㅡ") and HangulEngine.is_rare("ㅜ"), "ㄱ, ㅡ, ㅜ must be rare tiles!")
+			assert(not HangulEngine.is_rare("ㅏ") and not HangulEngine.is_rare("ㄴ"), "Other tiles must be common!")
+			print(" -> 🌟 희귀 타일 시스템 검증: [ㄱ, ㅡ, ㅜ] 3종 희귀 타일 지정 완료 (뽑기 확률 1/5 가중치 적용)")
 
 		3:
 			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")

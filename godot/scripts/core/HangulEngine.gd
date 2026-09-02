@@ -1,5 +1,5 @@
 ﻿# HangulEngine.gd
-# 한글 자모 분해, 합성, 회전, 완성형 음절 조합 엔진
+# 한글 자모 분해, 합성, 회전, 완성형 음절 조합 및 타일 등급(희귀도/가중치) 엔진
 extends Node
 
 const CHOSUNG = [
@@ -16,6 +16,14 @@ const JONGSUNG = [
 	"", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ",
 	"ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ",
 	"ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+]
+
+# Rarity System: ㄱ, ㅡ, ㅜ are high-value RARE tiles
+const RARE_TILES = ["ㄱ", "ㅡ", "ㅜ"]
+
+const ALL_DRAW_POOL = [
+	"ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ",
+	"ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ", "ㅑ", "ㅕ", "ㅛ", "ㅠ"
 ]
 
 const ROTATABLE_TILES = {
@@ -38,6 +46,29 @@ const VOWEL_COMBINATIONS = {
 	"ㅑ+ㅣ": "ㅒ", "ㅕ+ㅣ": "ㅖ"
 }
 
+func is_rare(char_str: String) -> bool:
+	return RARE_TILES.has(char_str)
+
+func get_weighted_random_jamo(custom_pool: Array = []) -> String:
+	var pool = custom_pool if not custom_pool.is_empty() else ALL_DRAW_POOL
+	var weighted_entries = []
+	var total_weight = 0
+
+	for item in pool:
+		var ch = str(item)
+		var weight = 20 if is_rare(ch) else 100 # Rare tiles have 1/5 probability
+		weighted_entries.append({"char": ch, "weight": weight})
+		total_weight += weight
+
+	var roll = randi_range(1, total_weight)
+	var current = 0
+	for entry in weighted_entries:
+		current += entry["weight"]
+		if roll <= current:
+			return entry["char"]
+
+	return pool.pick_random()
+
 func is_rotatable(char_str: String) -> bool:
 	return ROTATABLE_TILES.has(char_str)
 
@@ -59,35 +90,34 @@ func combine(char1: String, char2: String) -> String:
 	if VOWEL_COMBINATIONS.has(key2): return VOWEL_COMBINATIONS[key2]
 	return ""
 
-func compose_syllable(cho: String, jung: String, jong: String = "") -> String:
-	var cho_idx = CHOSUNG.find(cho)
-	var jung_idx = JUNGSUNG.find(jung)
-	var jong_idx = JONGSUNG.find(jong)
+func compose_syllable(chosung: String, jungsung: String, jongsung: String = "") -> String:
+	var cho_idx = CHOSUNG.find(chosung)
+	var jung_idx = JUNGSUNG.find(jungsung)
+	var jong_idx = JONGSUNG.find(jongsung)
 
 	if cho_idx == -1 or jung_idx == -1:
 		return ""
 	if jong_idx == -1:
 		jong_idx = 0
 
-	var code = 0xAC00 + (cho_idx * 21 * 28) + (jung_idx * 28) + jong_idx
-	return String.chr(code)
+	var unicode = 0xAC00 + (cho_idx * 21 * 28) + (jung_idx * 28) + jong_idx
+	return String.chr(unicode)
 
 func decompose_syllable(syllable: String) -> Dictionary:
 	if syllable.length() != 1:
 		return {}
+
 	var code = syllable.unicode_at(0)
 	if code < 0xAC00 or code > 0xD7A3:
 		return {}
 
 	var offset = code - 0xAC00
 	var jong_idx = offset % 28
-	var jung_idx = int(offset / 28) % 21
-	var cho_idx = int(offset / (21 * 28))
+	var jung_idx = (offset / 28) % 21
+	var cho_idx = offset / (21 * 28)
 
 	return {
-		"cho": CHOSUNG[cho_idx],
-		"jung": JUNGSUNG[jung_idx],
-		"jong": JONGSUNG[jong_idx]
+		"chosung": CHOSUNG[cho_idx],
+		"jungsung": JUNGSUNG[jung_idx],
+		"jongsung": JONGSUNG[jong_idx]
 	}
-
-

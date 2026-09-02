@@ -1,4 +1,4 @@
-﻿# WaveRewardModal.gd
+# WaveRewardModal.gd
 # 웨이브 클리어 시 자모 3개 중 1개를 선택하여 벨트에 추가하는 보상 팝업 모달
 class_name WaveRewardModal
 extends Control
@@ -20,26 +20,33 @@ func setup(wave: int, bonus_gold: int, on_chosen: Callable) -> void:
 	var jong_pool = ["ㄱ", "ㄴ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ"]
 
 	var choices = []
-	# 1개 초성, 1개 모음, 1개 종성 or 랜덤 조합
-	choices.append(cho_pool.pick_random())
-	choices.append(jung_pool.pick_random())
-	choices.append(cho_pool.pick_random() if randf() < 0.5 else jong_pool.pick_random())
+	for i in range(3):
+		var pick = HangulEngine.get_weighted_random_jamo()
+		if choices.has(pick) and choices.size() < 10:
+			pick = HangulEngine.get_weighted_random_jamo()
+		choices.append(pick)
 
-	# Ensure 3 unique choices if possible
+	# Render choices with rare tile styling
 	for i in range(choices.size()):
 		var char_str = choices[i]
+		var is_rare = HangulEngine.is_rare(char_str)
+
 		var btn = Button.new()
-		btn.text = char_str
-		btn.custom_minimum_size = Vector2(80, 100)
-		btn.add_theme_font_size_override("font_size", 32)
-		btn.modulate = Color(1.0, 0.9, 0.4)
+		btn.text = ("🌟\n" + char_str) if is_rare else char_str
+		btn.custom_minimum_size = Vector2(90, 110)
+		btn.add_theme_font_size_override("font_size", 28 if is_rare else 32)
+		if is_rare:
+			btn.modulate = Color(1.0, 0.85, 0.25, 1.0) # Golden Rare
+		else:
+			btn.modulate = Color(1.0, 0.9, 0.4)
 
 		# Subtitle hint
-		var type_hint = "초성"
-		if HangulEngine.JUNGSUNG.has(char_str): type_hint = "중성 (모음)"
+		var type_hint = "초성 자음"
+		if is_rare: type_hint = "🌟 희귀 자모"
+		elif HangulEngine.JUNGSUNG.has(char_str): type_hint = "중성 (모음)"
 		elif HangulEngine.JONGSUNG.has(char_str): type_hint = "자음/받침"
 
-		btn.tooltip_text = "[%s] 활자 획득\n타일 벨트에 추가됩니다." % char_str
+		btn.tooltip_text = "[%s] (%s) 활자 획득\n타일 벨트에 추가됩니다." % [char_str, type_hint]
 		btn.pressed.connect(_on_choice_selected.bind(char_str))
 		choices_container.add_child(btn)
 

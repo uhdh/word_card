@@ -177,8 +177,7 @@ func _on_buy_jamo_requested() -> void:
 		defense_field.gold -= 10
 		defense_field.gold_changed.emit(defense_field.gold)
 		
-		var pool = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ", "ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"]
-		var pick = pool.pick_random()
+		var pick = HangulEngine.get_weighted_random_jamo()
 		jamo_belt.add_jamo(pick)
 		SoundEngine.play_coin()
 
