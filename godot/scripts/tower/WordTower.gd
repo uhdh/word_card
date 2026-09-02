@@ -1,4 +1,4 @@
-﻿# WordTower.gd
+# WordTower.gd
 # 자모 결합으로 자동 생성되는 단어 타워
 class_name WordTower
 extends Node2D
@@ -39,16 +39,25 @@ func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node) -> void:
 			attack_interval = 0.65
 		"element":
 			attack_range = 160.0
-			attack_interval = 1.0
+			attack_interval = 0.9
 		"summon":
-			attack_range = 130.0
-			attack_interval = 1.2
-		"defense":
-			attack_range = 110.0
-			attack_interval = 1.5
-		"heal", "skill":
 			attack_range = 140.0
 			attack_interval = 1.1
+		"defense":
+			attack_range = 120.0
+			attack_interval = 1.3
+		"heal", "skill":
+			attack_range = 140.0
+			attack_interval = 1.0
+
+	# Multi-syllable Tier Bonus
+	var word_len = syllable.length()
+	if word_len == 2:
+		attack_range += 30.0
+		attack_interval *= 0.85
+	elif word_len >= 3:
+		attack_range += 60.0
+		attack_interval *= 0.7
 
 	queue_redraw()
 

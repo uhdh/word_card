@@ -1179,6 +1179,280 @@ const WORD_DATABASE = {
 		"sound": "playAttack",
 		"tags": [],
 	},
+
+	# === [2글자 복합 단어 타워 30종] ===
+	"불꽃": {
+		"word": "불꽃",
+		"name": "불꽃 (원소/폭발)",
+		"category": "element",
+		"cost": 2,
+		"damage": 24,
+		"burn": 10,
+		"desc": "[2글자 상위 타워] 24의 강력한 광역 화염 폭발을 일으키고 적들을 불태웁니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"얼음": {
+		"word": "얼음",
+		"name": "얼음 (원소/빙결)",
+		"category": "element",
+		"cost": 2,
+		"damage": 18,
+		"freeze": true,
+		"desc": "[2글자 상위 타워] 18의 냉기 피해를 주고 적의 이동속도를 75% 둔화시킵니다.",
+		"icon": "res://assets/03_원소_마법/ice_빙/ice_1_32px_pastel.png",
+		"sound": "playFreeze"
+	},
+	"화살": {
+		"word": "화살",
+		"name": "화살 (무기/원거리)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 22,
+		"desc": "[2글자 상위 타워] 초장거리(220px)에서 22의 관통 화살을 빠르게 사격합니다.",
+		"icon": "res://assets/01_무기_공격/arrow_시/arrow_1_32px_pastel.png",
+		"sound": "playAttack"
+	},
+	"검술": {
+		"word": "검술",
+		"name": "검술 (무기/연타)",
+		"category": "weapon",
+		"cost": 2,
+		"damage": 26,
+		"desc": "[2글자 상위 타워] 26의 예리한 검기로 적을 빠르게 2회 연속 베어 넘깁니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "playAttack"
+	},
+	"방패": {
+		"word": "방패",
+		"name": "방패 (방어/버프)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 12,
+		"desc": "[2글자 상위 타워] 방어 결계를 펼쳐 주변 모든 아군 타워의 공격속도를 +30% 증폭시킵니다.",
+		"icon": "res://assets/02_방어_보호/shield_방/shield_1_32px_pastel.png",
+		"sound": "playBuff"
+	},
+	"성벽": {
+		"word": "성벽",
+		"name": "성벽 (방어/요새)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 16,
+		"desc": "[2글자 상위 타워] 사거리 내 진입한 적들의 이동속도를 50% 영구 감속시킵니다.",
+		"icon": "res://assets/02_방어_보호/wall_성/wall_1_32px_pastel.png",
+		"sound": "playBuff"
+	},
+	"벼락": {
+		"word": "벼락",
+		"name": "벼락 (원소/감전)",
+		"category": "element",
+		"cost": 2,
+		"damage": 30,
+		"desc": "[2글자 상위 타워] 30의 강력한 뇌전을 떨어뜨려 최대 3체의 적에게 연쇄 감전 피해를 입힙니다.",
+		"icon": "res://assets/03_원소_마법/lightning_뇌/lightning_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"폭풍": {
+		"word": "폭풍",
+		"name": "폭풍 (원소/소용돌이)",
+		"category": "element",
+		"cost": 2,
+		"damage": 20,
+		"desc": "[2글자 상위 타워] 거대한 소용돌이를 소환하여 범위 내 적들을 지속적으로 갈아냅니다.",
+		"icon": "res://assets/03_원소_마법/wind_풍/wind_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"바람": {
+		"word": "바람",
+		"name": "바람 (원소/돌풍)",
+		"category": "element",
+		"cost": 2,
+		"damage": 16,
+		"desc": "[2글자 상위 타워] 강한 돌풍을 날려 적을 뒤로 넉백시킵니다.",
+		"icon": "res://assets/03_원소_마법/wind_풍/wind_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"치유": {
+		"word": "치유",
+		"name": "치유 (회복/성역)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 10,
+		"desc": "[2글자 상위 타워] 매 웨이브 클리어 시 플레이어 기지 체력을 +2 추가 회복합니다.",
+		"icon": "res://assets/06_회복_치유/life_sprout_생/life_sprout_1_32px_pastel.png",
+		"sound": "playHeal"
+	},
+	"생명": {
+		"word": "생명",
+		"name": "생명 (회복/축복)",
+		"category": "heal",
+		"cost": 2,
+		"damage": 14,
+		"desc": "[2글자 상위 타워] 기지의 최대 체력을 +5 영구 증가시킵니다.",
+		"icon": "res://assets/06_회복_치유/life_sprout_생/life_sprout_1_32px_pastel.png",
+		"sound": "playHeal"
+	},
+	"맹독": {
+		"word": "맹독",
+		"name": "맹독 (원소/부식)",
+		"category": "element",
+		"cost": 2,
+		"damage": 16,
+		"poison": 8,
+		"desc": "[2글자 상위 타워] 적에게 초당 8의 치명적인 맹독 부식 피해를 부여합니다.",
+		"icon": "res://assets/03_원소_마법/dark_orb_암/dark_orb_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"호랑": {
+		"word": "호랑",
+		"name": "호랑 (생물/맹수)",
+		"category": "summon",
+		"cost": 2,
+		"damage": 28,
+		"desc": "[2글자 상위 타워] 28의 맹수 타격으로 적의 방어도를 무시하고 물어뜯습니다.",
+		"icon": "res://assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png",
+		"sound": "playSummon"
+	},
+	"마법": {
+		"word": "마법",
+		"name": "마법 (마법/비전)",
+		"category": "element",
+		"cost": 2,
+		"damage": 25,
+		"desc": "[2글자 상위 타워] 일직선상의 적을 모두 꿰뚫는 관통 비전 탄환을 발사합니다.",
+		"icon": "res://assets/03_원소_마법/light_holy_광/light_holy_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"보물": {
+		"word": "보물",
+		"name": "보물 (유틸/황금)",
+		"category": "skill",
+		"cost": 2,
+		"damage": 12,
+		"desc": "[2글자 상위 타워] 이 타워가 적을 처치하면 2배의 골드를 획득합니다.",
+		"icon": "res://assets/07_버프_유틸/gold_coin_금/gold_coin_1_32px_pastel.png",
+		"sound": "playCoin"
+	},
+	"강철": {
+		"word": "강철",
+		"name": "강철 (방어/단련)",
+		"category": "defense",
+		"cost": 2,
+		"damage": 20,
+		"desc": "[2글자 상위 타워] 단단한 강철 파편을 투척하여 적을 분쇄합니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "playAttack"
+	},
+	"화염": {
+		"word": "화염",
+		"name": "화염 (원소/업화)",
+		"category": "element",
+		"cost": 2,
+		"damage": 27,
+		"burn": 12,
+		"desc": "[2글자 상위 타워] 전방 부채꼴 범위에 27 피해의 지속 화염 방사를 뿜어냅니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+
+	# === [3글자 신화 단어 타워 12종] ===
+	"호랑이": {
+		"word": "호랑이",
+		"name": "호랑이 (생물/신수)",
+		"category": "summon",
+		"cost": 3,
+		"damage": 50,
+		"desc": "[3글자 신화 타워] 50의 압도적인 맹수 포효로 적들을 공포에 질리게 하고 전방을 도륙합니다.",
+		"icon": "res://assets/04_생물_소환/bear_곰/bear_1_32px_pastel.png",
+		"sound": "playSummon"
+	},
+	"불벼락": {
+		"word": "불벼락",
+		"name": "불벼락 (원소/천벌)",
+		"category": "element",
+		"cost": 3,
+		"damage": 60,
+		"burn": 15,
+		"desc": "[3글자 신화 타워] 60의 화염 낙뢰 폭격으로 화면 내 다수의 적을 일격에 궤멸시킵니다.",
+		"icon": "res://assets/03_원소_마법/fire_불/fire_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"폭풍우": {
+		"word": "폭풍우",
+		"name": "폭풍우 (원소/재앙)",
+		"category": "element",
+		"cost": 3,
+		"damage": 45,
+		"freeze": true,
+		"desc": "[3글자 신화 타워] 거대한 비바람 태풍을 일으켜 적 전체를 80% 슬로우 상태로 묶어둡니다.",
+		"icon": "res://assets/03_원소_마법/wind_풍/wind_1_32px_pastel.png",
+		"sound": "playMagic"
+	},
+	"얼음검": {
+		"word": "얼음검",
+		"name": "얼음검 (무기/동결)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 42,
+		"freeze": true,
+		"desc": "[3글자 신화 타워] 42의 절대영도 검기로 적을 베는 즉시 2초간 완전히 얼려 멈춥니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "playFreeze"
+	},
+	"독화살": {
+		"word": "독화살",
+		"name": "독화살 (무기/맹독)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 38,
+		"poison": 15,
+		"desc": "[3글자 신화 타워] 38 피해와 함께 초당 15의 치사량 맹독을 주입하는 화살을 난사합니다.",
+		"icon": "res://assets/01_무기_공격/arrow_시/arrow_1_32px_pastel.png",
+		"sound": "playAttack"
+	},
+	"대검술": {
+		"word": "대검술",
+		"name": "대검술 (무기/오의)",
+		"category": "weapon",
+		"cost": 3,
+		"damage": 55,
+		"desc": "[3글자 신화 타워] 55의 초대형 참격 검기를 날려 경로 위의 모든 적을 일도양단합니다.",
+		"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+		"sound": "playAttack"
+	},
+	"용의숨": {
+		"word": "용의숨",
+		"name": "용의숨 (원소/신화)",
+		"category": "element",
+		"cost": 3,
+		"damage": 70,
+		"burn": 20,
+		"desc": "[3글자 신화 타워] 70의 신화급 드래곤 브레스를 뿜어 전방의 모든 적을 잿더미로 만듭니다.",
+		"icon": "res://assets/04_생물_소환/dragon_용/dragon_1_32px_pastel.png",
+		"sound": "playSummon"
+	},
+	"생명수": {
+		"word": "생명수",
+		"name": "생명수 (회복/기적)",
+		"category": "heal",
+		"cost": 3,
+		"damage": 25,
+		"desc": "[3글자 신화 타워] 기지 체력을 즉시 +5 회복하고, 전 필드 아군 타워 공속을 +50% 버프합니다.",
+		"icon": "res://assets/06_회복_치유/life_sprout_생/life_sprout_1_32px_pastel.png",
+		"sound": "playHeal"
+	},
+	"철옹성": {
+		"word": "철옹성",
+		"name": "철옹성 (방어/무적)",
+		"category": "defense",
+		"cost": 3,
+		"damage": 30,
+		"desc": "[3글자 신화 타워] 절대적인 방어 요새를 구축하여 기지에 가해지는 피해를 대폭 흡수합니다.",
+		"icon": "res://assets/02_방어_보호/wall_성/wall_1_32px_pastel.png",
+		"sound": "playBuff"
+	},
+
 }
 
 func get_word_data(word: String) -> Dictionary:
