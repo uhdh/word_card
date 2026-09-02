@@ -1,6 +1,6 @@
 /**
  * Hangul Roguelike Tower Defense - Web Main App Controller
- * (Event Merchant, Relic Artifacts, Balanced Economy, Streamlined Jamos)
+ * (3 Acts x 4 Waves = 12 Stages, Precision Drag & Drop, NeoDunggeunmo Pixel Theme)
  */
 
 import { WORD_DATABASE, getWordData, getAllWords } from './core/wordDatabase.js';
@@ -8,6 +8,12 @@ import * as HangulEngine from './core/hangulEngine.js';
 import { parseJamoStream } from './core/hangulStreamParser.js';
 import { SaveManager } from './core/saveManager.js';
 import { sound } from './core/soundEngine.js';
+
+const ACT_NAMES = {
+  1: "초원의 문자",
+  2: "고대 유적의 어둠",
+  3: "차원의 심연"
+};
 
 const ALL_RELIC_POOL = [
   {
@@ -58,9 +64,11 @@ class HangulTDApp {
   constructor() {
     this.baseHp = 20;
     this.maxBaseHp = 20;
-    this.gold = 30; // 시작 골드 30 G 밸런스
+    this.gold = 30;
+    this.currentAct = 1;
+    this.maxActs = 3;
     this.currentWave = 0;
-    this.maxWave = 5;
+    this.maxWavesPerAct = 4;
     this.rerollDice = 3;
     this.ownedRelics = [];
     this.isWaveRunning = false;
@@ -111,6 +119,7 @@ class HangulTDApp {
       this.loadGame();
     } else {
       this.renderBelt();
+      this.updateTopBar();
     }
 
     this.isLoadingState = false;
@@ -178,7 +187,7 @@ class HangulTDApp {
         const slot = this.slots[i];
         if (Math.abs(clickX - slot.x) < 36 && Math.abs(clickY - slot.y) < 40) {
           if (this.activeTowers[i]) {
-            this.openTowerInfoModal(this.activeTowers[i]);
+            this.openTowerDetailModal(this.activeTowers[i]);
           }
           break;
         }
@@ -188,10 +197,7 @@ class HangulTDApp {
 
   initShortcuts() {
     window.addEventListener("keydown", (e) => {
-      if (this.modalOverlay.style.display === "flex") {
-        if (e.key === "Escape") this.closeModal();
-        return;
-      }
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
 
       if (e.code === "Space") {
         e.preventDefault();
@@ -216,9 +222,10 @@ class HangulTDApp {
   }
 
   updateTopBar() {
+    const actName = ACT_NAMES[this.currentAct] || "미지의 영역";
     this.hpLabel.textContent = `기지 HP: ${this.baseHp} / ${this.maxBaseHp}`;
     this.goldLabel.textContent = `${this.gold} G`;
-    this.waveLabel.textContent = `${this.currentWave} / ${this.maxWave} 웨이브`;
+    this.waveLabel.textContent = `🚩 제 ${this.currentAct}막 [${actName}] - 🌊 ${this.currentWave} / ${this.maxWavesPerAct}`;
     if (this.diceTopLabel) this.diceTopLabel.textContent = `🎲 ${this.rerollDice}개`;
     this.btnStartWave.disabled = this.isWaveRunning;
     this.btnStartWave.textContent = this.isWaveRunning ? "⚔️ 웨이브 진행 중..." : "▶ 다음 웨이브 시작";
@@ -248,16 +255,15 @@ class HangulTDApp {
 
   renderBelt() {
     this.beltContainer.innerHTML = "";
-
     const parsed = parseJamoStream(this.jamoList);
+
     const speedBoost = this.hasRelic("relic_haste_compass") ? 0.8 : 1.0;
     const powerBoost = this.hasRelic("relic_essence_power") ? 1.2 : 1.0;
 
-    this.activeTowers = parsed.map((p, idx) => ({
-      slotIndex: idx,
+    this.activeTowers = parsed.map(p => ({
       syllable: p.syllable,
-      wordData: p.wordData,
       tier: p.tier,
+      wordData: p.wordData,
       attackCooldown: 0,
       attackInterval: (p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95))) * speedBoost,
       range: p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150),
@@ -362,14 +368,27 @@ class HangulTDApp {
 
   startNextWave() {
     if (this.isWaveRunning) return;
+
     this.currentWave += 1;
+    if (this.currentWave > this.maxWavesPerAct) {
+      if (this.currentAct < this.maxActs) {
+        this.currentAct += 1;
+        this.currentWave = 1;
+      } else {
+        this.handleGameOver(true);
+        return;
+      }
+    }
+
     this.isWaveRunning = true;
     this.updateTopBar();
     sound.playWaveStart();
 
-    const count = 5 + this.currentWave * 3;
-    const enemyHp = 20 + this.currentWave * 15;
-    const speed = 65;
+    // Calculate difficulty by Act and Wave
+    const totalStage = (this.currentAct - 1) * this.maxWavesPerAct + this.currentWave;
+    const count = 4 + this.currentWave * 2 + (this.currentAct - 1) * 3;
+    const enemyHp = 15 + totalStage * 18 + (this.currentWave === 4 ? 120 : 0);
+    const speed = 65 + (this.currentAct - 1) * 8;
 
     let spawned = 0;
     const spawnTimer = setInterval(() => {
@@ -377,16 +396,17 @@ class HangulTDApp {
         clearInterval(spawnTimer);
         return;
       }
+      const isBoss = (spawned === count - 1 && this.currentWave === 4);
       this.enemies.push({
         id: Math.random(),
         pathIndex: 0,
         x: this.pathPoints[0].x,
         y: this.pathPoints[0].y,
-        hp: enemyHp,
-        maxHp: enemyHp,
-        speed: speed,
-        isBoss: (spawned === count - 1 && this.currentWave % 2 === 0),
-        goldValue: 1 + Math.floor(this.currentWave * 0.6)
+        hp: isBoss ? enemyHp * 2.2 : enemyHp,
+        maxHp: isBoss ? enemyHp * 2.2 : enemyHp,
+        speed: isBoss ? speed * 0.7 : speed,
+        isBoss: isBoss,
+        goldValue: isBoss ? (25 + this.currentAct * 10) : (2 + totalStage)
       });
       spawned += 1;
     }, 900 / this.speedScale);
@@ -437,22 +457,25 @@ class HangulTDApp {
       }
     }
 
-    // Towers Attack
-    for (let tIdx = 0; tIdx < this.activeTowers.length; tIdx++) {
-      const tower = this.activeTowers[tIdx];
-      const slot = this.slots[tIdx];
-      if (!slot) continue;
+    // Tower Attacks
+    for (let i = 0; i < this.activeTowers.length; i++) {
+      const tower = this.activeTowers[i];
+      const slot = this.slots[i];
+      if (!tower || !slot) continue;
 
       tower.attackCooldown -= dt;
-      if (tower.attackCooldown <= 0) {
+      if (tower.attackCooldown <= 0 && this.enemies.length > 0) {
         let target = null;
-        let minDist = tower.range;
+        let maxProgress = -1;
 
         for (const enemy of this.enemies) {
           const d = Math.hypot(enemy.x - slot.x, enemy.y - slot.y);
-          if (d <= minDist) {
-            minDist = d;
-            target = enemy;
+          if (d <= tower.range) {
+            const progress = enemy.pathIndex * 1000 + (enemy.x + enemy.y);
+            if (progress > maxProgress) {
+              maxProgress = progress;
+              target = enemy;
+            }
           }
         }
 
@@ -516,7 +539,8 @@ class HangulTDApp {
     // Check Wave Clear
     if (this.isWaveRunning && this.enemies.length === 0) {
       this.isWaveRunning = false;
-      let baseBonus = 10 + this.currentWave * 5; // 15G, 20G, 25G, 30G, 35G
+      const isActFinal = (this.currentWave >= this.maxWavesPerAct);
+      let baseBonus = isActFinal ? (25 + this.currentAct * 10) : (10 + this.currentWave * 4);
       if (this.hasRelic("relic_merchant_pouch")) {
         baseBonus = Math.round(baseBonus * 1.5);
       }
@@ -524,19 +548,57 @@ class HangulTDApp {
       sound.playWaveClear();
       this.updateTopBar();
 
+      const clearedAct = this.currentAct;
       const clearedWave = this.currentWave;
-      this.openWaveRewardModal(clearedWave, baseBonus, () => {
-        // 방랑 상인 이벤트 조우 (2, 4 웨이브 클리어 시)
-        if (clearedWave === 2 || clearedWave === 4) {
-          setTimeout(() => this.openShopModal(), 300);
-        }
-      });
-      this.saveGame();
 
-      if (this.currentWave >= this.maxWave) {
-        this.handleGameOver(true);
+      if (isActFinal) {
+        if (clearedAct >= this.maxActs) {
+          this.handleGameOver(true);
+        } else {
+          this.openActClearedModal(clearedAct, baseBonus);
+        }
+      } else {
+        this.openWaveRewardModal(clearedWave, baseBonus, () => {
+          // 2웨이브 클리어 시 방랑 상인 조우
+          if (clearedWave === 2) {
+            setTimeout(() => this.openShopModal(), 300);
+          }
+        });
       }
+      this.saveGame();
     }
+  }
+
+  openActClearedModal(act, bonusGold) {
+    const actName = ACT_NAMES[act] || "미지의 영역";
+    const nextAct = act + 1;
+    const nextActName = ACT_NAMES[nextAct] || "다음 장";
+
+    this.rerollDice += 1;
+
+    this.openModal(`
+      <div class="modal-box act-cleared-modal" style="text-align: center; gap: 16px;">
+        <div class="modal-header" style="justify-content: center;">
+          <h2 style="color: #fde047; font-size: 22px;">🏆 [제 ${act}막: ${actName}] 완벽 돌파!</h2>
+        </div>
+        <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6;">
+          막 보스를 물리치고 대보상을 획득했습니다!<br>
+          <span style="color: #38bdf8; font-weight: bold;">보너스 골드: +${bonusGold} G | 🎲 주사위 +1개 충전</span><br><br>
+          다음 장: <strong style="color: #a855f7;">[제 ${nextAct}막: ${nextActName}]</strong>
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
+          <button class="btn btn-start-next-act" id="btn-start-next-act" style="background:#7c3aed; color:#fff; padding:10px 20px; font-weight:bold; border:none; border-radius:6px; cursor:pointer;">
+            ⚔️ 제 ${nextAct}막 진입 & 상점 정비
+          </button>
+        </div>
+      </div>
+    `);
+
+    document.getElementById("btn-start-next-act").addEventListener("click", () => {
+      this.closeModal();
+      this.saveGame();
+      setTimeout(() => this.openShopModal(), 300);
+    });
   }
 
   render() {
@@ -548,25 +610,24 @@ class HangulTDApp {
     ctx.lineJoin = "round";
 
     ctx.strokeStyle = "#473c60";
-    ctx.lineWidth = 46;
+    ctx.lineWidth = 42;
     ctx.beginPath();
-    this.pathPoints.forEach((pt, idx) => {
-      if (idx === 0) ctx.moveTo(pt.x, pt.y);
-      else ctx.lineTo(pt.x, pt.y);
-    });
+    ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
+    for (let i = 1; i < this.pathPoints.length; i++) {
+      ctx.lineTo(this.pathPoints[i].x, this.pathPoints[i].y);
+    }
     ctx.stroke();
 
-    ctx.strokeStyle = "#272138";
-    ctx.lineWidth = 38;
+    ctx.strokeStyle = "#251d38";
+    ctx.lineWidth = 36;
+    ctx.beginPath();
+    ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
+    for (let i = 1; i < this.pathPoints.length; i++) {
+      ctx.lineTo(this.pathPoints[i].x, this.pathPoints[i].y);
+    }
     ctx.stroke();
 
-    ctx.strokeStyle = "#6d5e8a";
-    ctx.lineWidth = 2;
-    ctx.setLineDash([8, 8]);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // 2. Spawn Portal & Base
+    // 2. Draw Spawn & Base
     ctx.fillStyle = "#ef4444";
     ctx.beginPath();
     ctx.arc(60, 100, 22, 0, Math.PI * 2);
@@ -656,6 +717,7 @@ class HangulTDApp {
       baseHp: this.baseHp,
       maxBaseHp: this.maxBaseHp,
       gold: this.gold,
+      currentAct: this.currentAct,
       currentWave: this.currentWave,
       rerollDice: this.rerollDice,
       relics: this.ownedRelics
@@ -676,6 +738,7 @@ class HangulTDApp {
     this.baseHp = data.baseHp || 20;
     this.maxBaseHp = data.maxBaseHp || 20;
     this.gold = data.gold !== undefined ? data.gold : 30;
+    this.currentAct = data.currentAct || 1;
     this.currentWave = data.currentWave || 0;
     this.rerollDice = data.rerollDice !== undefined ? data.rerollDice : 3;
     this.ownedRelics = data.relics || [];
@@ -691,29 +754,36 @@ class HangulTDApp {
 
   openModal(contentHtml) {
     this.modalContent.innerHTML = contentHtml;
-    this.modalOverlay.style.display = "flex";
+    this.modalOverlay.classList.remove("hidden");
   }
 
   closeModal() {
-    this.modalOverlay.style.display = "none";
+    this.modalOverlay.classList.add("hidden");
     this.modalContent.innerHTML = "";
   }
 
-  openTowerInfoModal(tower) {
-    const data = tower.wordData;
+  openTowerDetailModal(tower) {
+    sound.playTileClick();
+    const w = tower.wordData || {};
+    const syl = tower.syllable;
+    const tierBadge = tower.tier === 3 ? "⭐⭐⭐ 신화 단어" : (tower.tier === 2 ? "⭐⭐ 상위 단어" : "⭐ 기본 활자");
+
     this.openModal(`
-      <div class="modal-box">
+      <div class="modal-box tower-info-modal">
         <div class="modal-header">
-          <h3>🏰 ${data.name || tower.syllable}</h3>
+          <h3>🏰 [${syl} 타워] 상세 정보 (${tierBadge})</h3>
           <button class="btn-modal-close" id="btn-modal-close">✖</button>
         </div>
         <div class="tower-specs-grid">
-          <div><strong>티어:</strong> ${tower.tier === 3 ? "⭐⭐⭐ 3글자 신화" : (tower.tier === 2 ? "⭐⭐ 2글자 상위" : "⭐ 1글자 기본")}</div>
-          <div><strong>공격력:</strong> 💥 ${tower.damage}</div>
-          <div><strong>사거리:</strong> 🎯 ${tower.range} px</div>
-          <div><strong>공속:</strong> ⏱️ ${tower.attackInterval.toFixed(2)} 초</div>
+          <div>💥 공격력: <strong>${tower.damage}</strong></div>
+          <div>🏹 사거리: <strong>${tower.range} px</strong></div>
+          <div>⏱️ 쿨타임: <strong>${tower.attackInterval.toFixed(2)}초</strong></div>
+          <div>🏷️ 단어 티어: <strong>${tower.tier}티어</strong></div>
         </div>
-        <div class="modal-desc">${data.desc || "활자 타워입니다."}</div>
+        <div class="tower-effect-box">
+          <h4>📜 고유 활자 효과</h4>
+          <p>${w.desc || "사전에 등록되지 않은 미지의 활자입니다. 기본 활자 탄환을 발사합니다."}</p>
+        </div>
       </div>
     `);
 
@@ -778,87 +848,84 @@ class HangulTDApp {
       this.openModal(`
         <div class="modal-box shop-modal">
           <div class="modal-header">
-            <h3>🧙‍♂️ 방랑 상인 모로크 (이벤트 조우)</h3>
-            <div class="shop-gold">🪙 보유: ${this.gold} G</div>
+            <h3>🧙‍♂️ 방랑 상인 모로크 (골드: ${this.gold} G)</h3>
             <button class="btn-modal-close" id="btn-modal-close">✖</button>
           </div>
-          <p class="npc-dialog">“운이 좋군! 차원의 길목에서 나를 만나다니. 자모와 신비한 유물을 둘러보게.”</p>
-          
-          <div class="shop-tab-buttons" style="display:flex; gap:8px; margin: 8px 0;">
-            <button class="btn ${currentTab === 'buy' ? 'btn-primary' : ''}" id="tab-btn-buy">🏪 자모 구매</button>
-            <button class="btn ${currentTab === 'relic' ? 'btn-primary' : ''}" id="tab-btn-relic">🏺 신비한 유물</button>
-            <button class="btn ${currentTab === 'remove' ? 'btn-primary' : ''}" id="tab-btn-remove">✂️ 덱 압축 (15 G)</button>
+          <div class="shop-npc-dialog">
+            “길목에서 마주쳐 반갑소, 영웅이여! 활자의 신비와 귀한 유물들을 둘러보시게.”
+          </div>
+          <div class="shop-tabs">
+            <button class="btn-shop-tab ${currentTab === 'buy' ? 'active' : ''}" id="tab-buy">자모 상점</button>
+            <button class="btn-shop-tab ${currentTab === 'relics' ? 'active' : ''}" id="tab-relics">신비한 유물</button>
+            <button class="btn-shop-tab ${currentTab === 'remove' ? 'active' : ''}" id="tab-remove">덱 압축 (타일 제거 15 G)</button>
           </div>
 
-          <div id="shop-tab-buy" style="display: ${currentTab === 'buy' ? 'block' : 'none'};">
-            <div class="shop-grid">${stockHtml}</div>
-          </div>
+          <div class="shop-content">
+            <div class="shop-view ${currentTab === 'buy' ? '' : 'hidden'}" id="view-buy">
+              <div class="shop-grid">${stockHtml}</div>
+            </div>
 
-          <div id="shop-tab-relic" style="display: ${currentTab === 'relic' ? 'block' : 'none'};">
-            <div class="relic-grid" style="display:flex; gap:10px; justify-content:center;">${relicHtml}</div>
-          </div>
+            <div class="shop-view ${currentTab === 'relics' ? '' : 'hidden'}" id="view-relics">
+              <div class="relics-grid">${relicHtml}</div>
+            </div>
 
-          <div id="shop-tab-remove" style="display: ${currentTab === 'remove' ? 'block' : 'none'};">
-            <p style="font-size:12px; color:#94a3b8; margin-bottom:6px;">제거할 자모 타일을 클릭하세요 (비용: 15 G):</p>
-            <div class="remove-tiles-row">${removeTilesHtml}</div>
+            <div class="shop-view ${currentTab === 'remove' ? '' : 'hidden'}" id="view-remove">
+              <p style="font-size:12px; color:#94a3b8; margin-bottom:8px;">불필요한 자모를 골라 벨트에서 완전히 제거합니다:</p>
+              <div class="remove-tiles-grid">${removeTilesHtml}</div>
+            </div>
           </div>
         </div>
       `);
 
+      // Events
       document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
+      document.getElementById("tab-buy").addEventListener("click", () => { currentTab = "buy"; renderShop(); });
+      document.getElementById("tab-relics").addEventListener("click", () => { currentTab = "relics"; renderShop(); });
+      document.getElementById("tab-remove").addEventListener("click", () => { currentTab = "remove"; renderShop(); });
 
-      document.getElementById("tab-btn-buy").addEventListener("click", () => { currentTab = "buy"; renderShop(); });
-      document.getElementById("tab-btn-relic").addEventListener("click", () => { currentTab = "relic"; renderShop(); });
-      document.getElementById("tab-btn-remove").addEventListener("click", () => { currentTab = "remove"; renderShop(); });
-
-      // Buy Jamo
       document.querySelectorAll(".btn-buy-stock").forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
+          const idx = parseInt(e.currentTarget.getAttribute("data-idx"), 10);
           const item = stock[idx];
           if (!item.sold && this.gold >= item.cost && this.jamoList.length < 15) {
             this.gold -= item.cost;
             item.sold = true;
             this.jamoList.push(item.char);
-            sound.playCoin();
-            this.renderBelt();
+            sound.playWordCrafted();
             this.updateTopBar();
+            this.renderBelt();
+            this.saveGame();
             renderShop();
           }
         });
       });
 
-      // Buy Relic
       document.querySelectorAll(".btn-buy-relic").forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
+          const idx = parseInt(e.currentTarget.getAttribute("data-idx"), 10);
           const r = availableRelics[idx];
           if (!this.hasRelic(r.id) && this.gold >= r.cost) {
             this.gold -= r.cost;
-            this.ownedRelics.push(r);
-            if (r.id === "relic_golden_dice") this.rerollDice += 2;
-            if (r.id === "relic_fortress_rune") {
-              this.maxBaseHp += 10;
-              this.baseHp = Math.min(this.baseHp + 10, this.maxBaseHp);
-            }
+            this.applyRelic(r);
             sound.playBuff();
-            this.renderBelt();
             this.updateTopBar();
+            this.renderBelt();
+            this.saveGame();
             renderShop();
           }
         });
       });
 
-      // Remove Jamo
       document.querySelectorAll(".btn-remove-tile").forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          const idx = parseInt(e.target.getAttribute("data-idx"), 10);
+          const idx = parseInt(e.currentTarget.getAttribute("data-idx"), 10);
           if (this.gold >= 15 && this.jamoList.length > 1) {
             this.gold -= 15;
             this.jamoList.splice(idx, 1);
-            sound.playTileClick();
-            this.renderBelt();
+            sound.playHit();
             this.updateTopBar();
+            this.renderBelt();
+            this.saveGame();
             renderShop();
           }
         });
@@ -868,11 +935,21 @@ class HangulTDApp {
     renderShop();
   }
 
+  applyRelic(relic) {
+    this.ownedRelics.push(relic);
+    if (relic.id === "relic_golden_dice") {
+      this.rerollDice += 2;
+    } else if (relic.id === "relic_fortress_rune") {
+      this.maxBaseHp += 10;
+      this.baseHp = Math.min(this.baseHp + 10, this.maxBaseHp);
+    }
+  }
+
   openLexiconModal() {
-    sound.playWordCrafted();
+    sound.playTileClick();
     const discovered = SaveManager.getDiscoveredWords();
     const allWords = getAllWords();
-    const rate = ((discovered.length / allWords.length) * 100).toFixed(1);
+    const rate = Math.round((discovered.length / allWords.length) * 100);
 
     let cardsHtml = "";
     allWords.forEach((w) => {
@@ -967,20 +1044,21 @@ class HangulTDApp {
             this.jamoList.push(charStr);
             sound.playWordCrafted();
             this.renderBelt();
-            this.closeModal();
             this.saveGame();
-            if (onClosedCallback) onClosedCallback();
           }
+          this.closeModal();
+          if (onClosedCallback) onClosedCallback();
         });
       });
 
-      // Reroll click
+      // Reroll Dice Click
       const btnReroll = document.getElementById("btn-reroll-dice");
       if (btnReroll) {
         btnReroll.addEventListener("click", () => {
           if (this.rerollDice > 0) {
             this.rerollDice -= 1;
             sound.playTileRotate();
+            this.updateTopBar();
             this.saveGame();
             renderRewardModal();
           }
@@ -993,31 +1071,21 @@ class HangulTDApp {
 
   handleGameOver(isVictory) {
     this.openModal(`
-      <div class="modal-box game-over-modal">
-        <h2>${isVictory ? "🎉 활자 디펜스 승리!" : "💀 기지 함락 (패배)"}</h2>
-        <p>${isVictory ? "모든 차원의 마수들을 활자의 힘으로 소멸시켰습니다!" : "기지가 마수들의 침공으로 무너졌습니다."}</p>
-        <button class="btn-start-again" id="btn-restart">🔄 처음부터 다시하기</button>
+      <div class="modal-box gameover-modal" style="text-align: center; gap: 16px;">
+        <h2>${isVictory ? "🎉 최종 디펜스 승리! (엔딩)" : "💀 기지 함락 (패배)"}</h2>
+        <p>${isVictory ? "축하합니다! 3막의 모든 차원 괴수와 최종 보스를 정복하고 활자의 평화를 지켜냈습니다!" : "기지가 파괴되었습니다. 자모를 다시 조합하여 도전하세요!"}</p>
+        <button class="btn" id="btn-retry" style="background:#8b5cf6; color:#fff; padding:10px 20px; font-weight:bold; border:none; border-radius:6px; cursor:pointer;">
+          처음부터 다시하기
+        </button>
       </div>
     `);
 
-    document.getElementById("btn-restart").addEventListener("click", () => {
-      this.baseHp = 20;
-      this.maxBaseHp = 20;
-      this.gold = 30;
-      this.currentWave = 0;
-      this.rerollDice = 3;
-      this.ownedRelics = [];
-      this.jamoList = ["ㅂ", "ㅜ", "ㄹ"];
-      this.isWaveRunning = false;
-      this.enemies = [];
-      this.renderBelt();
-      this.updateTopBar();
-      this.closeModal();
+    document.getElementById("btn-retry").addEventListener("click", () => {
+      location.reload();
     });
   }
 }
 
-// Start Web App
 window.addEventListener("DOMContentLoaded", () => {
-  window.hangulTDApp = new HangulTDApp();
+  new HangulTDApp();
 });

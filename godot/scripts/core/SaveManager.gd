@@ -1,5 +1,5 @@
 ﻿# SaveManager.gd
-# 게임 상태 (자모 벨트, 기지 체력, 골드, 도달 웨이브, 리롤 주사위, 보유 유물) 및 단어 도감 해금 영구 저장 유틸리티
+# 게임 상태 (자모 벨트, 기지 체력, 골드, 현재 막/웨이브, 리롤 주사위, 보유 유물) 및 단어 도감 해금 영구 저장 유틸리티
 class_name SaveManager
 extends RefCounted
 
@@ -12,12 +12,13 @@ static var _is_discovered_loaded: bool = false
 static func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
-static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = []) -> bool:
+static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = [], current_act: int = 1) -> bool:
 	var save_dict = {
 		"jamo_list": jamo_list,
 		"base_hp": base_hp,
 		"max_base_hp": max_base_hp,
 		"gold": gold,
+		"current_act": current_act,
 		"current_wave": current_wave,
 		"reroll_dice": reroll_dice,
 		"relics": relics,
@@ -32,8 +33,8 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 
 	file.store_string(json_str)
 	file.close()
-	print("💾 [SaveManager] Game successfully saved! (Wave %d, Gold %d, Dice %d, Relics %d, Jamo %d)" % [
-		current_wave, gold, reroll_dice, relics.size(), jamo_list.size()
+	print("💾 [SaveManager] Game successfully saved! (Act %d, Wave %d, Gold %d, Dice %d, Relics %d, Jamo %d)" % [
+		current_act, current_wave, gold, reroll_dice, relics.size(), jamo_list.size()
 	])
 	return true
 
@@ -54,8 +55,8 @@ static func load_game() -> Dictionary:
 		push_error("Corrupted save file content: %s" % content)
 		return {}
 
-	print("📂 [SaveManager] Game successfully loaded! (Wave %d, Gold %d, Dice %d)" % [
-		parse_result.get("current_wave", 0), parse_result.get("gold", 0), parse_result.get("reroll_dice", 3)
+	print("📂 [SaveManager] Game successfully loaded! (Act %d, Wave %d, Gold %d, Dice %d)" % [
+		parse_result.get("current_act", 1), parse_result.get("current_wave", 0), parse_result.get("gold", 0), parse_result.get("reroll_dice", 3)
 	])
 	return parse_result
 
@@ -75,27 +76,26 @@ static func get_discovered_words() -> Array:
 			file.close()
 			var parsed = JSON.parse_string(content)
 			if typeof(parsed) == TYPE_ARRAY:
-				for item in parsed:
-					var w = str(item)
-					if not _cached_discovered.has(w):
-						_cached_discovered.append(w)
+				for w in parsed:
+					var w_str = str(w)
+					if not _cached_discovered.has(w_str):
+						_cached_discovered.append(w_str)
 
 	_is_discovered_loaded = true
 	return _cached_discovered
 
-static func is_word_discovered(word: String) -> bool:
+static func is_word_discovered(word_str: String) -> bool:
 	var list = get_discovered_words()
-	return list.has(word)
+	return list.has(word_str)
 
-static func discover_word(word: String) -> bool:
-	if word == "" or not WordDatabase.WORD_DATABASE.has(word):
+static func discover_word(word_str: String) -> bool:
+	if word_str.is_empty():
 		return false
-
 	var list = get_discovered_words()
-	if not list.has(word):
-		list.append(word)
+	if not list.has(word_str):
+		list.append(word_str)
 		_save_discovered_words()
-		print("✨ [Lexicon] 새 단어 도감 해금: [%s] (총 발견: %d개)" % [word, list.size()])
+		print("🌟 [Lexicon] New word discovered: [%s]!" % word_str)
 		return true
 	return false
 

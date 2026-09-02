@@ -128,7 +128,9 @@ func run_step(current_step: int) -> void:
 
 		7:
 			print("\n[Step 7] 💥 [금강석] 신화 타워의 강력 피해로 웨이브 압살 완료!")
-			print(" -> 기지 상태: HP %d/%d, 골드: %d G" % [field.base_hp, field.max_base_hp, field.gold])
+			print(" -> 기지 상태: HP %d/%d, 골드: %d G, 현재 막: 제 %d막 / 총 %d막" % [field.base_hp, field.max_base_hp, field.gold, field.current_act, field.MAX_ACTS])
+			assert(field.MAX_ACTS == 3 and field.MAX_WAVES_PER_ACT == 4, "Game must have 3 Acts with 4 Waves per Act!")
+			print(" -> 🚩 [3막 4웨이브] 로그라이크 스테이지 구성 검증 완료!")
 
 		14:
 			print("\n[Step 8] 💾 게임 영구 저장 (Save Game) 테스트")

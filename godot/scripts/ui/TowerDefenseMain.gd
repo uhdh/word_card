@@ -1,5 +1,5 @@
 ﻿# TowerDefenseMain.gd
-# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (자동 로드 및 세이브 덮어쓰기 방지 완벽 패치)
+# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (3막 4웨이브 구성 완벽 연동)
 extends Control
 
 const SaveManager = preload("res://scripts/core/SaveManager.gd")
@@ -22,7 +22,7 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 var current_speed_scale: float = 1.0
 var reroll_dice: int = 3
 var owned_relics: Array = []
-var _is_loading_state: bool = true # 게임 시작 시 기존 세이브 덮어쓰기 방지 플래그
+var _is_loading_state: bool = true
 
 func _ready() -> void:
 	_is_loading_state = true
@@ -37,11 +37,12 @@ func _ready() -> void:
 	btn_load.disabled = not SaveManager.has_save_file()
 
 	if defense_field:
-		defense_field.gold = 30 # 시작 기본 골드
+		defense_field.gold = 30
 		defense_field.base_hp_changed.connect(_on_base_hp_changed)
 		defense_field.gold_changed.connect(_on_gold_changed)
 		defense_field.wave_status_changed.connect(_on_wave_status_changed)
 		defense_field.wave_cleared.connect(_on_wave_cleared)
+		defense_field.act_cleared.connect(_on_act_cleared)
 		defense_field.tower_info_requested.connect(_on_tower_info_requested)
 		defense_field.game_over.connect(_on_game_over)
 
@@ -57,11 +58,11 @@ func _ready() -> void:
 	btn_lexicon.tooltip_text = "단축키: [TAB] 또는 [D]"
 	btn_mute.tooltip_text = "단축키: [M]"
 
-	# 기존 세이브 파일이 있다면 자동으로 직전 게임 상태를 복원
 	if SaveManager.has_save_file():
 		_on_load_pressed()
 	else:
 		jamo_belt.render_belt()
+		_update_topbar_wave_label(1, 0)
 
 	_is_loading_state = false
 
@@ -90,6 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		KEY_M:
 			_on_mute_pressed()
 
+func _update_topbar_wave_label(act: int, wave: int) -> void:
+	var act_name = DefenseField.ACT_NAMES.get(act, "미지의 영역")
+	wave_label.text = "🚩 제 %d막 [%s] - 🌊 %d / %d" % [act, act_name, wave, defense_field.MAX_WAVES_PER_ACT]
+
 func _on_save_pressed() -> void:
 	save_game_state()
 	btn_save.text = "✅ 저장됨!"
@@ -117,9 +122,13 @@ func _on_load_pressed() -> void:
 		defense_field.gold = int(data["gold"])
 		defense_field.gold_changed.emit(defense_field.gold)
 
+	if data.has("current_act"):
+		defense_field.current_act = int(data["current_act"])
+
 	if data.has("current_wave"):
 		defense_field.current_wave = int(data["current_wave"])
-		wave_label.text = "🌊 %d / %d 웨이브" % [defense_field.current_wave, defense_field.MAX_WAVES]
+
+	_update_topbar_wave_label(defense_field.current_act, defense_field.current_wave)
 
 	if data.has("reroll_dice"):
 		reroll_dice = int(data["reroll_dice"])
@@ -130,8 +139,8 @@ func _on_load_pressed() -> void:
 	jamo_belt.render_belt()
 	SoundEngine.play_victory()
 	btn_load.disabled = false
-	print("📂 Game state successfully restored from save! (Wave: %d, Gold: %d, Dice: %d, Relics: %d)" % [
-		defense_field.current_wave, defense_field.gold, reroll_dice, owned_relics.size()
+	print("📂 Game state successfully restored! (Act: %d, Wave: %d, Gold: %d, Dice: %d, Relics: %d)" % [
+		defense_field.current_act, defense_field.current_wave, defense_field.gold, reroll_dice, owned_relics.size()
 	])
 
 	_is_loading_state = false
@@ -146,7 +155,8 @@ func save_game_state() -> void:
 		defense_field.gold,
 		defense_field.current_wave,
 		reroll_dice,
-		owned_relics
+		owned_relics,
+		defense_field.current_act
 	)
 	btn_load.disabled = false
 
@@ -156,12 +166,12 @@ func _on_base_hp_changed(current: int, max_hp: int) -> void:
 func _on_gold_changed(current: int) -> void:
 	gold_label.text = "🪙 %d G" % current
 
-func _on_wave_status_changed(wave: int, max_wave: int, is_running: bool) -> void:
-	wave_label.text = "🌊 %d / %d 웨이브" % [wave, max_wave]
+func _on_wave_status_changed(act: int, max_act: int, wave: int, max_wave: int, is_running: bool) -> void:
+	_update_topbar_wave_label(act, wave)
 	btn_start_wave.disabled = is_running
 	btn_start_wave.text = "⚔️ 웨이브 진행 중..." if is_running else "▶ 다음 웨이브 시작"
 
-func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
+func _on_wave_cleared(act: int, wave: int, bonus_gold: int) -> void:
 	var final_bonus = bonus_gold
 	if has_relic("relic_merchant_pouch"):
 		final_bonus = int(bonus_gold * 1.5)
@@ -177,12 +187,50 @@ func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
 			func(chosen_char: String):
 				jamo_belt.add_jamo(chosen_char)
 				save_game_state()
-				if wave == 2 or wave == 4:
+				# 2웨이브 클리어 시 방랑 상인 조우
+				if wave == 2:
 					_trigger_merchant_encounter(wave),
 			func(new_dice_count: int):
 				reroll_dice = new_dice_count
 				save_game_state()
 		)
+
+func _on_act_cleared(act: int, bonus_gold: int) -> void:
+	var act_name = DefenseField.ACT_NAMES.get(act, "미지의 영역")
+	var next_act = act + 1
+	var next_act_name = DefenseField.ACT_NAMES.get(next_act, "다음 장")
+
+	var modal = PanelContainer.new()
+	modal.custom_minimum_size = Vector2(460, 260)
+	modal.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	var vbox = VBoxContainer.new()
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	modal.add_child(vbox)
+
+	var title = Label.new()
+	title.text = "🏆 [제 %d막: %s] 완벽 돌파!" % [act, act_name]
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 22)
+	title.add_theme_color_override("font_color", Color(1.0, 0.85, 0.2))
+	vbox.add_child(title)
+
+	var desc = Label.new()
+	desc.text = "막 보스를 물리치고 대보상을 획득했습니다!\n보너스 골드: +%d G | 주사위 +1개 충전\n\n다음 장: [제 %d막: %s]" % [bonus_gold, next_act, next_act_name]
+	desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	desc.add_theme_font_size_override("font_size", 14)
+	vbox.add_child(desc)
+
+	reroll_dice += 1
+
+	var btn_next = Button.new()
+	btn_next.text = "⚔️ 제 %d막 진입하기" % next_act
+	btn_next.pressed.connect(func():
+		modal.queue_free()
+		save_game_state()
+		_trigger_merchant_encounter(4)
+	)
+	vbox.add_child(btn_next)
+	modal_layer.add_child(modal)
 
 func _trigger_merchant_encounter(wave: int) -> void:
 	var modal_scene = load("res://scenes/tower/ShopModal.tscn")
@@ -289,7 +337,7 @@ func _on_game_over(is_victory: bool) -> void:
 	modal.add_child(vbox)
 
 	var title = Label.new()
-	title.text = "🎉 디펜스 승리!" if is_victory else "💀 기지 함락 (패배)"
+	title.text = "🎉 최종 디펜스 승리! (엔딩)" if is_victory else "💀 기지 함락 (패배)"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 22)
 	vbox.add_child(title)
