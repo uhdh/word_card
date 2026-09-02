@@ -54,6 +54,12 @@ func run_step(current_step: int) -> void:
 			])
 			assert(parsed_flower[0]["syllable"] == "불꽃", "Should automatically combine into [불꽃]!")
 
+			print("\n -> 🖐️ 자모 타일 드래그 앤 드롭(Drag & Drop) 이동 테스트")
+			# Drag 0th tile ('ㅂ') to 6th position -> ['ㅜ', 'ㄹ', 'ㄱ', 'ㄱ', 'ㅗ', 'ㅊ', 'ㅂ']
+			belt.handle_drag_drop(0, 6)
+			print(" -> 0번 타일 'ㅂ'을 6번 위치로 드래그 이동 완료! 현재 벨트: %s" % str(belt.jamo_list))
+			assert(belt.jamo_list[6] == "ㅂ", "Dragged tile 'ㅂ' should be at index 6!")
+
 		4:
 			print("\n[Step 4] 🔍 타워 클릭 시 타워 설명 및 상세 스펙 팝업 테스트")
 			if field.active_towers.size() > 0:
