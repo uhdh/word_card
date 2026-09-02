@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://defense_field_001"]
+[gd_scene format=3 uid="uid://defense_field_001"]
 
 [ext_resource type="Script" path="res://scripts/tower/DefenseField.gd" id="1_field"]
 [ext_resource type="Texture2D" uid="uid://map_spawn_001" path="res://assets/map_ui/map_spawn_portal_32px_pastel.png" id="2_spawn"]
@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_road"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 60, 100, 0, 0, 0, 0, 280, 100, 0, 0, 0, 0, 395, 100, 0, 0, 0, 0, 395, 300, 0, 0, 0, 0, 490, 300, 0, 0, 0, 0, 585, 300, 0, 0, 0, 0, 585, 100, 0, 0, 0, 0, 680, 100, 0, 0, 0, 0, 775, 100, 0, 0, 0, 0, 775, 300, 0, 0, 0, 0, 870, 300, 0, 0, 0, 0, 960, 300, 0, 0, 0, 0, 960, 370, 0, 0, 0, 0, 80, 370)
+"points": PackedVector2Array(0, 0, 0, 0, 60, 100, 0, 0, 0, 0, 395, 100, 0, 0, 0, 0, 395, 300, 0, 0, 0, 0, 585, 300, 0, 0, 0, 0, 585, 100, 0, 0, 0, 0, 775, 100, 0, 0, 0, 0, 775, 300, 0, 0, 0, 0, 960, 300, 0, 0, 0, 0, 960, 100, 0, 0, 0, 0, 975, 100, 0, 0, 0, 0, 975, 370, 0, 0, 0, 0, 80, 370)
 }
-point_count = 14
+point_count = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
 bg_color = Color(0.12, 0.1, 0.18, 0.8)

@@ -91,21 +91,19 @@ class HangulTDApp {
       { x: 870, y: 200, label: "4번 슬롯" }
     ];
 
-    // Winding Path Points
+    // Winding Path Points (Encircling all 4 slots in full S-curve)
     this.pathPoints = [
       { x: 60, y: 100 },
-      { x: 280, y: 100 },
       { x: 395, y: 100 },
       { x: 395, y: 300 },
-      { x: 490, y: 300 },
       { x: 585, y: 300 },
       { x: 585, y: 100 },
-      { x: 680, y: 100 },
       { x: 775, y: 100 },
       { x: 775, y: 300 },
-      { x: 870, y: 300 },
       { x: 960, y: 300 },
-      { x: 960, y: 370 },
+      { x: 960, y: 100 },
+      { x: 975, y: 100 },
+      { x: 975, y: 370 },
       { x: 80, y: 370 }
     ];
 

@@ -1,4 +1,4 @@
-﻿# DefenseField.gd
+# DefenseField.gd
 # 타워 디펜스 맵 필드, 적 이동 경로(Path2D), 타워 슬롯들 및 3막 4웨이브(총 12웨이브) 관리
 class_name DefenseField
 extends Control
@@ -52,8 +52,13 @@ func _ready() -> void:
 		tower_slots.append(child)
 
 	# Setup Road Line from Path2D curve
-	if path_2d and path_2d.curve and road_line:
-		road_line.points = path_2d.curve.get_baked_points()
+	if path_2d and path_2d.curve:
+		var pts = path_2d.curve.get_baked_points()
+		if road_line: road_line.points = pts
+		var road_outer = get_node_or_null("RoadOuter") as Line2D
+		if road_outer: road_outer.points = pts
+		var road_inner = get_node_or_null("RoadInner") as Line2D
+		if road_inner: road_inner.points = pts
 
 func _process(delta: float) -> void:
 	if is_wave_running and not spawn_queue.is_empty():
