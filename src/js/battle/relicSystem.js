@@ -10,7 +10,7 @@ export const RELIC_DATABASE = {
     name: '종성의 무게추',
     tier: 'common',
     desc: '받침(종성)이 있는 단어 발동 시 추가 피해 +5',
-    icon: '⚖️',
+    icon: 'assets/relics/relic_crystal_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.tags && wordData.tags.includes('has_jong') && wordData.damage > 0) {
         context.bonusDamage += 5;
@@ -23,7 +23,7 @@ export const RELIC_DATABASE = {
     name: '거센소리 부싯돌',
     tier: 'rare',
     desc: '거센소리(ㅋ, ㅌ, ㅍ, ㅊ) 단어 공격 시 100% 치명타 (피해량 1.5배)',
-    icon: '🔥',
+    icon: 'assets/relics/relic_ink_stone_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.tags && wordData.tags.includes('rough') && wordData.damage > 0) {
         context.critMultiplier *= 1.5;
@@ -36,7 +36,7 @@ export const RELIC_DATABASE = {
     name: '울림소리 방울',
     tier: 'common',
     desc: '울림소리(ㄴ, ㄹ, ㅁ, ㅇ) 받침 단어 발동 시 HP 2 회복',
-    icon: '🔔',
+    icon: 'assets/relics/relic_bell_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.tags && wordData.tags.includes('rieul_mim')) {
         context.playerHeal += 2;
@@ -49,7 +49,7 @@ export const RELIC_DATABASE = {
     name: '된소리의 벼루',
     tier: 'rare',
     desc: '된소리(ㄲ, ㄸ, ㅃ, ㅆ, ㅉ) 단어 발동 시 방어도 +6 획득',
-    icon: '🪨',
+    icon: 'assets/relics/relic_seal_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.tags && wordData.tags.includes('double_cho')) {
         context.bonusShield += 6;
@@ -58,46 +58,53 @@ export const RELIC_DATABASE = {
     }
   },
 
-  // === 02. 단어 테마 시너지 유물 ===
+  // === 02. 단어 카테고리 시너지 유물 ===
   'relic_whetstone': {
     id: 'relic_whetstone',
     name: '명장의 숫돌',
     tier: 'common',
-    desc: '무기 단어(검, 칼, 창, 활 등) 사용 시 피해량 +3 및 방어도 2 획득',
-    icon: '🗡️',
+    desc: '무기(Weapon) 카테고리 단어의 피해량이 +4 증가',
+    icon: 'assets/relics/relic_brush_32px_pastel.png',
     onWordPlay: (wordData, context) => {
-      if (wordData.category === 'weapon') {
-        context.bonusDamage += 3;
-        context.bonusShield += 2;
-        return '명장의 숫돌 발동! (피해 +3, 방어도 +2)';
+      if (wordData.category === 'weapon' && wordData.damage > 0) {
+        context.bonusDamage += 4;
+        return '명장의 숫돌 발동! (무기 피해 +4)';
       }
     }
   },
   'relic_alchemist_pot': {
     id: 'relic_alchemist_pot',
-    name: '연금술사의 도가니',
-    tier: 'rare',
-    desc: '원소/마법 단어 발동 시 적에게 독 2스택 추가 부여',
-    icon: '🧪',
+    name: '원소 추출기',
+    tier: 'uncommon',
+    desc: '원소(Element) 단어 발동 시 2턴간 화상/빙결 효과 2배 증폭',
+    icon: 'assets/relics/relic_gourd_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.category === 'element') {
-        context.extraPoison += 2;
-        return '연금술사의 도가니 발동! (독 +2)';
+        context.bonusDamage += 5;
+        return '원소 추출기 발동! (원소 위력 증폭 +5)';
       }
     }
   },
   'relic_beast_flute': {
     id: 'relic_beast_flute',
-    name: '야수 조련용 피리',
-    tier: 'common',
-    desc: '생물/소환 단어 발동 시 8의 방어도 추가 획득',
-    icon: '🪈',
+    name: '야수의 피리',
+    tier: 'rare',
+    desc: '생물/소환(Summon) 단어 발동 시 다음 턴 행동력(AP) +1 획득',
+    icon: 'assets/relics/relic_feather_32px_pastel.png',
     onWordPlay: (wordData, context) => {
       if (wordData.category === 'summon') {
-        context.bonusShield += 8;
-        return '야수 조련용 피리 발동! (방어도 +8)';
+        context.bonusAp += 1;
+        return '야수의 피리 발동! (다음 턴 AP +1)';
       }
     }
+  },
+  'relic_sage_scroll': {
+    id: 'relic_sage_scroll',
+    name: '현자의 두루마리',
+    tier: 'rare',
+    desc: '상점 이용 시 모든 단어/자모의 가격이 20% 할인',
+    icon: 'assets/relics/relic_scroll_32px_pastel.png',
+    onWordPlay: () => {}
   },
 
   // === 03. 자모 조작 & 드로우 유물 ===

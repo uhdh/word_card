@@ -1,4 +1,4 @@
-﻿# RelicSystem.gd
+# RelicSystem.gd
 # 유물 시스템 매니저
 class_name RelicManager
 extends RefCounted
@@ -7,57 +7,64 @@ const ALL_RELICS = {
 	"relic_hunmin_lens": {
 		"id": "relic_hunmin_lens",
 		"name": "훈민정음 돋보기",
-		"icon": "🔍",
+		"icon": "res://assets/relics/relic_magnifier_32px_pastel.png",
 		"desc": "매 턴 시작 시, 초성 타일 1장을 추가로 확정 드로우합니다.",
 		"type": "starter"
 	},
 	"relic_jong_weight": {
 		"id": "relic_jong_weight",
 		"name": "종성의 무게추",
-		"icon": "⚖️",
+		"icon": "res://assets/relics/relic_crystal_32px_pastel.png",
 		"desc": "받침(종성)이 포함된 단어 발동 시, 방어도 +3을 추가로 얻습니다.",
 		"type": "common"
 	},
 	"relic_rough_flint": {
 		"id": "relic_rough_flint",
 		"name": "거친 부싯돌",
-		"icon": "🪨",
+		"icon": "res://assets/relics/relic_ink_stone_32px_pastel.png",
 		"desc": "[불] 또는 화염 계열 단어 사용 시 데미지가 25% 증가합니다.",
 		"type": "common"
 	},
 	"relic_vowel_bell": {
 		"id": "relic_vowel_bell",
 		"name": "모음의 풍경",
-		"icon": "🔔",
+		"icon": "res://assets/relics/relic_bell_32px_pastel.png",
 		"desc": "모음 합성(이중모음) 성공 시, 플레이어 HP를 3 회복합니다.",
 		"type": "uncommon"
 	},
 	"relic_ink_stone": {
 		"id": "relic_ink_stone",
 		"name": "흑단 벼루",
-		"icon": "⬛",
+		"icon": "res://assets/relics/relic_seal_32px_pastel.png",
 		"desc": "3글자 이상 완성 시 적 전체에게 독 2를 부여합니다.",
 		"type": "uncommon"
 	},
 	"relic_whetstone": {
 		"id": "relic_whetstone",
 		"name": "명장의 숫돌",
-		"icon": "⚔️",
+		"icon": "res://assets/relics/relic_brush_32px_pastel.png",
 		"desc": "무기(Weapon) 카테고리 단어의 피해량이 +2 증가합니다.",
 		"type": "common"
 	},
 	"relic_alchemist_pot": {
 		"id": "relic_alchemist_pot",
 		"name": "연금술사의 약탕기",
-		"icon": "🧪",
+		"icon": "res://assets/relics/relic_gourd_32px_pastel.png",
 		"desc": "전투 승리 시 HP를 6 회복합니다.",
 		"type": "uncommon"
 	},
 	"relic_beast_flute": {
 		"id": "relic_beast_flute",
 		"name": "야수의 피리",
-		"icon": "🪈",
+		"icon": "res://assets/relics/relic_feather_32px_pastel.png",
 		"desc": "생물/소환(Summon) 단어 발동 시 공격력이 +1 영구 증가합니다.",
+		"type": "rare"
+	},
+	"relic_sage_scroll": {
+		"id": "relic_sage_scroll",
+		"name": "현자의 두루마리",
+		"icon": "res://assets/relics/relic_scroll_32px_pastel.png",
+		"desc": "상점 이용 시 모든 단어/자모의 가격이 20% 할인됩니다.",
 		"type": "rare"
 	},
 	"relic_healing_incense": {

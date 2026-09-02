@@ -1,0 +1,100 @@
+{
+  "player_wizard_1": {
+    "category": "characters",
+    "filename": "player_wizard_1_32px_pastel.png",
+    "godot_path": "res://assets/characters/player_wizard_1_32px_pastel.png",
+    "web_path": "assets/characters/player_wizard_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/ee62f33e-cf3a-401a-bf2c-536d00dfa486.png"
+  },
+  "player_scholar_1": {
+    "category": "characters",
+    "filename": "player_scholar_1_32px_pastel.png",
+    "godot_path": "res://assets/characters/player_scholar_1_32px_pastel.png",
+    "web_path": "assets/characters/player_scholar_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/0aa6798c-f6bf-4557-8750-848338c6a36b.png"
+  },
+  "player_warrior_1": {
+    "category": "characters",
+    "filename": "player_warrior_1_32px_pastel.png",
+    "godot_path": "res://assets/characters/player_warrior_1_32px_pastel.png",
+    "web_path": "assets/characters/player_warrior_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/30439d5d-46cb-4bab-8b64-931f21485ef9.png"
+  },
+  "player_mage_1": {
+    "category": "characters",
+    "filename": "player_mage_1_32px_pastel.png",
+    "godot_path": "res://assets/characters/player_mage_1_32px_pastel.png",
+    "web_path": "assets/characters/player_mage_1_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/382c0338-0659-48f1-ba6d-da7d4476b33f.png"
+  },
+  "relic_magnifier": {
+    "category": "relics",
+    "filename": "relic_magnifier_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_magnifier_32px_pastel.png",
+    "web_path": "assets/relics/relic_magnifier_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/8065d354-fbd1-4032-8051-721a8e0949df.png"
+  },
+  "relic_ink_stone": {
+    "category": "relics",
+    "filename": "relic_ink_stone_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_ink_stone_32px_pastel.png",
+    "web_path": "assets/relics/relic_ink_stone_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/f20f7cb6-57fc-44b4-839b-615656dcc0c5.png"
+  },
+  "relic_gourd": {
+    "category": "relics",
+    "filename": "relic_gourd_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_gourd_32px_pastel.png",
+    "web_path": "assets/relics/relic_gourd_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/e6a58d7f-702c-41d4-98aa-66476c03d7f3.png"
+  },
+  "relic_seal": {
+    "category": "relics",
+    "filename": "relic_seal_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_seal_32px_pastel.png",
+    "web_path": "assets/relics/relic_seal_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/a8f2f0c7-e5b2-4485-83fa-8bf13b0cf477.png"
+  },
+  "relic_brush": {
+    "category": "relics",
+    "filename": "relic_brush_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_brush_32px_pastel.png",
+    "web_path": "assets/relics/relic_brush_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/2b262d02-c1a5-44ea-b7fe-6be77e394bdd.png"
+  },
+  "relic_scroll": {
+    "category": "relics",
+    "filename": "relic_scroll_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_scroll_32px_pastel.png",
+    "web_path": "assets/relics/relic_scroll_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/f7e455a9-b682-4b48-a621-f136283772d4.png"
+  },
+  "relic_crystal": {
+    "category": "relics",
+    "filename": "relic_crystal_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_crystal_32px_pastel.png",
+    "web_path": "assets/relics/relic_crystal_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/9c00efca-3b6b-470d-87bc-c5d0820030d9.png"
+  },
+  "relic_bell": {
+    "category": "relics",
+    "filename": "relic_bell_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_bell_32px_pastel.png",
+    "web_path": "assets/relics/relic_bell_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/b7df4481-c26d-49af-ba4f-27a57966198f.png"
+  },
+  "relic_feather": {
+    "category": "relics",
+    "filename": "relic_feather_32px_pastel.png",
+    "godot_path": "res://assets/relics/relic_feather_32px_pastel.png",
+    "web_path": "assets/relics/relic_feather_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/4bff2344-03c4-4f36-b97d-103e258c7dde.png"
+  },
+  "proj_slash": {
+    "category": "projectiles",
+    "filename": "proj_slash_32px_pastel.png",
+    "godot_path": "res://assets/projectiles/proj_slash_32px_pastel.png",
+    "web_path": "assets/projectiles/proj_slash_32px_pastel.png",
+    "cdn_url": "https://cdn.aetherforgeai.com/assets/76e70801-3b64-4324-9e65-8b362ccb8b97.png"
+  }
+}
