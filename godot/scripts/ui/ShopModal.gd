@@ -1,4 +1,4 @@
-﻿# ShopModal.gd
+# ShopModal.gd
 # 이벤트 방랑 상인 모달: 자모 타일 구매(12~20G), 신비한 유물 구매(25~35G), 자모 타일 영구 제거(덱 압축 15G)
 extends Control
 
@@ -120,12 +120,15 @@ func generate_shop_stock() -> void:
 			pick = HangulEngine.get_weighted_random_jamo()
 		selected.append(pick)
 
-		var is_rare = HangulEngine.is_rare(pick)
-		var cost = 20 if is_rare else 12 # 밸런스: 일반 12G, 희귀 20G
+		var rarity = HangulEngine.get_rarity(pick)
+		var cost = 10 # 일반 10 G
+		if rarity == "super_rare": cost = 25 # 초희귀 (4변환 만능) 25 G
+		elif rarity == "rare": cost = 18    # 희귀 (2변환) 18 G
+
 		shop_stock.append({
 			"char": pick,
 			"cost": cost,
-			"is_rare": is_rare,
+			"rarity": rarity,
 			"sold": false
 		})
 
@@ -162,7 +165,7 @@ func _switch_tab(tab_name: String) -> void:
 	tab_remove_btn.modulate = Color(1, 1, 1, 1) if tab_name == "remove" else Color(0.6, 0.6, 0.6, 1)
 
 	if tab_name == "buy":
-		npc_dialog.text = "“어서오게! 희귀 자모(ㄱ, ㅡ, ㅜ)는 귀하지만 강력한 단어의 열쇠라네.”"
+		npc_dialog.text = "“어서오게! 4변환 만능 모음(ㅏ,ㅓ,ㅗ,ㅜ)과 2변환 자음/모음은 타일 배경색으로 구분된다네.”"
 	elif tab_name == "relic":
 		npc_dialog.text = "“고대 활자술사들이 남긴 신비한 유물이라네. 전투에 영구적인 축복을 내려주지!”"
 	else:
@@ -182,28 +185,33 @@ func update_ui() -> void:
 
 	for idx in range(shop_stock.size()):
 		var item = shop_stock[idx]
+		var char_str = item["char"]
+		var rarity = item.get("rarity", "common")
+
+		var card_style = StyleBoxFlat.new()
+		card_style.bg_color = HangulEngine.get_rarity_bg_color(char_str)
+		card_style.border_color = HangulEngine.get_rarity_border_color(char_str)
+		card_style.set_border_width_all(2)
+		card_style.set_corner_radius_all(8)
+
 		var item_card = PanelContainer.new()
 		item_card.custom_minimum_size = Vector2(110, 120)
+		item_card.add_theme_stylebox_override("panel", card_style)
 
 		var vbox = VBoxContainer.new()
 		vbox.alignment = BoxContainer.ALIGNMENT_CENTER
 		item_card.add_child(vbox)
 
-		var is_rare = item.get("is_rare", false)
 		var lbl_char = Label.new()
-		lbl_char.text = ("🌟 " + item["char"]) if is_rare else item["char"]
+		lbl_char.text = char_str
 		lbl_char.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl_char.add_theme_font_size_override("font_size", 24 if is_rare else 28)
-		if is_rare:
-			lbl_char.add_theme_color_override("font_color", Color(1.0, 0.85, 0.25, 1.0))
+		lbl_char.add_theme_font_size_override("font_size", 30)
 		if item["sold"]:
 			lbl_char.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 0.6))
 		vbox.add_child(lbl_char)
 
 		var btn_buy = Button.new()
-		btn_buy.text = "품절" if item["sold"] else ("%d G 구매" % item["cost"])
-		if is_rare and not item["sold"]:
-			btn_buy.modulate = Color(1.0, 0.9, 0.4)
+		btn_buy.text = "품절" if item["sold"] else ("%d G" % item["cost"])
 		btn_buy.disabled = item["sold"] or (current_gold < item["cost"]) or (current_jamo_list.size() >= 15)
 		btn_buy.pressed.connect(_on_buy_item_pressed.bind(idx))
 		vbox.add_child(btn_buy)

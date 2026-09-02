@@ -1,6 +1,5 @@
-﻿/**
- * hangulEngine.js - Web ES Module (15 Core Jamos)
- * 한글 자모 분해, 합성, 회전, 완성형 음절 조합 및 희귀도(Rarity) 가중치 엔진
+/**
+ * hangulEngine.js - Web ES Module (15 Core Jamos - 3-Tier Rarity System)
  */
 
 export const CHOSUNG = [
@@ -19,9 +18,15 @@ export const JONGSUNG = [
   "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
 ];
 
-export const RARE_TILES = ["ㄱ", "ㅡ", "ㅜ"];
+// 1. 초희귀 (Super Rare - 4방향 회전 만능 타일: ㅏ, ㅓ, ㅗ, ㅜ) -> 가장 낮은 확률 (가중치 10)
+export const SUPER_RARE_TILES = ["ㅏ", "ㅓ", "ㅗ", "ㅜ"];
 
-// 15 Valid Draw Pool (Excluded: ㅑ, ㅕ, ㅛ, ㅠ and ㅋ, ㅌ, ㅊ, ㅍ, ㅎ)
+// 2. 희귀 (Rare - 2방향 회전 타일: ㄱ, ㄴ / ㅡ, ㅣ) -> 중간 확률 (가중치 30)
+export const RARE_TILES = ["ㄱ", "ㄴ", "ㅡ", "ㅣ"];
+
+// 3. 일반 (Common - 비회전 자음: ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ) -> 기본 확률 (가중치 100)
+export const COMMON_TILES = ["ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ"];
+
 export const ALL_DRAW_POOL = [
   "ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ",
   "ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"
@@ -45,8 +50,18 @@ export const VOWEL_COMBINATIONS = {
   "ㅡ+ㅣ": "ㅢ", "ㅏ+ㅣ": "ㅐ", "ㅓ+ㅣ": "ㅔ"
 };
 
+export function getRarity(charStr) {
+  if (SUPER_RARE_TILES.includes(charStr)) return "super_rare";
+  if (RARE_TILES.includes(charStr)) return "rare";
+  return "common";
+}
+
 export function isRare(charStr) {
-  return RARE_TILES.includes(charStr);
+  return RARE_TILES.includes(charStr) || SUPER_RARE_TILES.includes(charStr);
+}
+
+export function isSuperRare(charStr) {
+  return SUPER_RARE_TILES.includes(charStr);
 }
 
 export function getWeightedRandomJamo(customPool = []) {
@@ -55,52 +70,76 @@ export function getWeightedRandomJamo(customPool = []) {
   let totalWeight = 0;
 
   for (const item of pool) {
-    const weight = isRare(item) ? 20 : 100;
+    const r = getRarity(item);
+    let weight = 100;
+    if (r === "super_rare") weight = 10;
+    else if (r === "rare") weight = 30;
+
     weighted.push({ char: item, weight });
     totalWeight += weight;
   }
 
   const roll = Math.floor(Math.random() * totalWeight) + 1;
-  let current = 0;
+  let acc = 0;
   for (const entry of weighted) {
-    current += entry.weight;
-    if (roll <= current) return entry.char;
+    acc += entry.weight;
+    if (roll <= acc) {
+      return entry.char;
+    }
   }
+
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
 export function isRotatable(charStr) {
-  return Object.prototype.hasOwnProperty.call(ROTATABLE_TILES, charStr);
+  return charStr in ROTATABLE_TILES;
 }
 
 export function rotate(charStr) {
   return ROTATABLE_TILES[charStr] || charStr;
 }
 
-export function composeSyllable(cho, jung, jong = "") {
+export function combineJamo(cho, jung, jong = "") {
   const choIdx = CHOSUNG.indexOf(cho);
   const jungIdx = JUNGSUNG.indexOf(jung);
-  const jongIdx = JONGSUNG.indexOf(jong);
+  const jongIdx = jong ? JONGSUNG.indexOf(jong) : 0;
 
-  if (choIdx === -1 || jungIdx === -1) return "";
-  const finalJongIdx = jongIdx === -1 ? 0 : jongIdx;
-  const code = 0xAC00 + (choIdx * 21 * 28) + (jungIdx * 28) + finalJongIdx;
+  if (choIdx === -1 || jungIdx === -1) {
+    return cho + jung + jong;
+  }
+
+  const code = 0xAC00 + (choIdx * 21 * 28) + (jungIdx * 28) + jongIdx;
   return String.fromCharCode(code);
 }
 
-export function decomposeSyllable(syllable) {
-  if (!syllable || syllable.length !== 1) return null;
-  const code = syllable.charCodeAt(0);
-  if (code < 0xAC00 || code > 0xD7A3) return null;
+export function composeSyllable(cho, jung, jong = "") {
+  return combineJamo(cho, jung, jong);
+}
 
-  const offset = code - 0xAC00;
-  const jongIdx = offset % 28;
-  const jungIdx = Math.floor(offset / 28) % 21;
-  const choIdx = Math.floor(offset / (21 * 28));
+export function decomposeSyllable(syllable) {
+  if (!syllable || syllable.length === 0) {
+    return { chosung: "", jungsung: "", jongsung: "" };
+  }
+  const code = syllable.charCodeAt(0);
+  if (code < 0xAC00 || code > 0xD7A3) {
+    return { chosung: syllable, jungsung: "", jongsung: "" };
+  }
+  const sylIdx = code - 0xAC00;
+  const choIdx = Math.floor(sylIdx / (21 * 28));
+  const jungIdx = Math.floor((sylIdx % (21 * 28)) / 28);
+  const jongIdx = sylIdx % 28;
 
   return {
-    chosung: CHOSUNG[choIdx],
-    jungsung: JUNGSUNG[jungIdx],
-    jongsung: JONGSUNG[jongIdx]
+    chosung: CHOSUNG[choIdx] || "",
+    jungsung: JUNGSUNG[jungIdx] || "",
+    jongsung: JONGSUNG[jongIdx] || ""
   };
+}
+
+export function isConsonant(c) {
+  return CHOSUNG.includes(c) || JONGSUNG.includes(c);
+}
+
+export function isVowel(c) {
+  return JUNGSUNG.includes(c) || (c in VOWEL_COMBINATIONS);
 }

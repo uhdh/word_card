@@ -1,4 +1,4 @@
-﻿# WaveRewardModal.gd
+# WaveRewardModal.gd
 # 웨이브 클리어 시 자모 3택 1 보상 팝업 및 🎲 주사위 리롤(새로고침) 모달
 class_name WaveRewardModal
 extends Control
@@ -49,20 +49,27 @@ func generate_choices() -> void:
 	# Render choices with rare tile styling
 	for i in range(choices.size()):
 		var char_str = choices[i]
-		var is_rare = HangulEngine.is_rare(char_str)
+		var rarity = HangulEngine.get_rarity(char_str)
+		var bg_color = HangulEngine.get_rarity_bg_color(char_str)
+		var border_color = HangulEngine.get_rarity_border_color(char_str)
+
+		var style = StyleBoxFlat.new()
+		style.bg_color = bg_color
+		style.border_color = border_color
+		style.set_border_width_all(2)
+		style.set_corner_radius_all(8)
 
 		var btn = Button.new()
-		btn.text = ("🌟\n" + char_str) if is_rare else char_str
+		btn.text = char_str
 		btn.custom_minimum_size = Vector2(90, 110)
-		btn.add_theme_font_size_override("font_size", 28 if is_rare else 32)
-		if is_rare:
-			btn.modulate = Color(1.0, 0.85, 0.25, 1.0) # Golden Rare
-		else:
-			btn.modulate = Color(1.0, 0.9, 0.4)
+		btn.add_theme_font_size_override("font_size", 34)
+		btn.add_theme_stylebox_override("normal", style)
+		btn.add_theme_stylebox_override("hover", style)
+		btn.add_theme_stylebox_override("pressed", style)
 
-		var type_hint = "기본 자음"
-		if is_rare: type_hint = "🌟 희귀 자모"
-		elif HangulEngine.JUNGSUNG.has(char_str): type_hint = "중성 (모음)"
+		var type_hint = "일반 자모"
+		if rarity == "super_rare": type_hint = "🔥 초희귀 (4변환 만능)"
+		elif rarity == "rare": type_hint = "✨ 희귀 (2변환)"
 
 		btn.tooltip_text = "[%s] (%s) 활자 획득\n타일 벨트에 추가됩니다." % [char_str, type_hint]
 		btn.pressed.connect(_on_choice_selected.bind(char_str))

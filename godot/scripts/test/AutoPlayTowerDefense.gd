@@ -54,10 +54,11 @@ func run_step(current_step: int) -> void:
 			assert(main_node.has_relic("relic_essence_power"), "Must own relic_essence_power!")
 			print(" -> 🏺 유물 시스템 검증: [⚔️ 활자의 정수] 구매 및 보유 확인 완료!")
 
-			# Rare Tile System Test
-			assert(HangulEngine.is_rare("ㄱ") and HangulEngine.is_rare("ㅡ") and HangulEngine.is_rare("ㅜ"), "ㄱ, ㅡ, ㅜ must be rare tiles!")
-			assert(not HangulEngine.is_rare("ㅏ") and not HangulEngine.is_rare("ㄴ"), "Other tiles must be common!")
-			print(" -> 🌟 희귀 타일 시스템 검증: [ㄱ, ㅡ, ㅜ] 3종 희귀 타일 지정 완료 (뽑기 확률 1/5 가중치 적용)")
+			# 3-Tier Rarity System Test
+			assert(HangulEngine.get_rarity("ㅏ") == "super_rare" and HangulEngine.get_rarity("ㅜ") == "super_rare", "ㅏ, ㅓ, ㅗ, ㅜ must be super_rare!")
+			assert(HangulEngine.get_rarity("ㄱ") == "rare" and HangulEngine.get_rarity("ㄴ") == "rare", "ㄱ, ㄴ, ㅡ, ㅣ must be rare!")
+			assert(HangulEngine.get_rarity("ㄷ") == "common" and HangulEngine.get_rarity("ㅁ") == "common", "ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ must be common!")
+			print(" -> 🎨 3단계 배경색 등급 시스템 검증: 초희귀(황금 앰버), 희귀(딥 바이올렛), 일반(다크 슬레이트) 확인 완료!")
 
 			# Lexicon Discovery System Test
 			assert(SaveManager.is_word_discovered("불"), "Initial word [불] must be discovered by default!")

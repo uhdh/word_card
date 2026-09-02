@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Hangul Roguelike Tower Defense - Web Main App Controller
  * (Event Merchant, Relic Artifacts, Balanced Economy, Streamlined Jamos)
  */
@@ -252,11 +252,15 @@ class HangulTDApp {
       `🏰 자동 완성 타워: ${previewTexts.join(" ➔ ")}` : "단어 조합 없음";
 
     this.jamoList.forEach((charStr, idx) => {
-      const isRare = HangulEngine.isRare(charStr);
+      const rarity = HangulEngine.getRarity(charStr);
       const isRot = HangulEngine.isRotatable(charStr);
 
+      let rarityClass = "";
+      if (rarity === "super_rare") rarityClass = "super-rare-tile";
+      else if (rarity === "rare") rarityClass = "rare-tile";
+
       const tileBox = document.createElement("div");
-      tileBox.className = `jamo-tile-box ${isRare ? "rare-tile" : ""} ${this.selectedSwapIndex === idx ? "selected-tile" : ""}`;
+      tileBox.className = `jamo-tile-box ${rarityClass} ${this.selectedSwapIndex === idx ? "selected-tile" : ""}`;
       tileBox.draggable = true;
 
       tileBox.addEventListener("dragstart", (e) => {
@@ -279,7 +283,7 @@ class HangulTDApp {
 
       const btnTile = document.createElement("button");
       btnTile.className = "btn-jamo-tile";
-      btnTile.textContent = isRare ? `🌟 ${charStr}` : charStr;
+      btnTile.textContent = charStr;
       btnTile.addEventListener("click", () => {
         if (this.selectedSwapIndex === -1) {
           this.selectedSwapIndex = idx;
@@ -684,11 +688,15 @@ class HangulTDApp {
     const stock = [];
     for (let i = 0; i < 4; i++) {
       const pick = HangulEngine.getWeightedRandomJamo();
-      const isRare = HangulEngine.isRare(pick);
+      const rarity = HangulEngine.getRarity(pick);
+      let cost = 10;
+      if (rarity === "super_rare") cost = 25;
+      else if (rarity === "rare") cost = 18;
+
       stock.push({
         char: pick,
-        isRare,
-        cost: isRare ? 20 : 12
+        rarity,
+        cost
       });
     }
 
@@ -697,10 +705,14 @@ class HangulTDApp {
     const renderShop = () => {
       let stockHtml = "";
       stock.forEach((item, idx) => {
+        let rClass = "";
+        if (item.rarity === "super_rare") rClass = "super-rare-card";
+        else if (item.rarity === "rare") rClass = "rare-card";
+
         stockHtml += `
-          <div class="shop-card ${item.isRare ? 'rare-card' : ''}">
-            <div class="shop-char">${item.isRare ? '🌟 ' + item.char : item.char}</div>
-            <button class="btn-buy-stock" data-idx="${idx}">${item.sold ? '품절' : item.cost + ' G 구매'}</button>
+          <div class="shop-card ${rClass}">
+            <div class="shop-char">${item.char}</div>
+            <button class="btn-buy-stock" data-idx="${idx}">${item.sold ? '품절' : item.cost + ' G'}</button>
           </div>
         `;
       });
@@ -873,11 +885,21 @@ class HangulTDApp {
 
       let choicesHtml = "";
       choices.forEach((ch) => {
-        const isRare = HangulEngine.isRare(ch);
+        const rarity = HangulEngine.getRarity(ch);
+        let rClass = "";
+        let tag = "기본 자모";
+        if (rarity === "super_rare") {
+          rClass = "super-rare-choice";
+          tag = "🔥 초희귀 (4변환)";
+        } else if (rarity === "rare") {
+          rClass = "rare-choice";
+          tag = "✨ 희귀 (2변환)";
+        }
+
         choicesHtml += `
-          <button class="btn-reward-choice ${isRare ? 'rare-choice' : ''}" data-char="${ch}">
-            <div class="reward-char">${isRare ? '🌟\n' + ch : ch}</div>
-            <div class="reward-tag">${isRare ? '🌟 희귀 자모' : '기본 자모'}</div>
+          <button class="btn-reward-choice ${rClass}" data-char="${ch}">
+            <div class="reward-char">${ch}</div>
+            <div class="reward-tag">${tag}</div>
           </button>
         `;
       });

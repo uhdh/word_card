@@ -132,20 +132,33 @@ func render_belt() -> void:
 		vbox.mouse_filter = Control.MOUSE_FILTER_PASS
 		tile_box.add_child(vbox)
 
-		var is_rare = HangulEngine.is_rare(char_str)
+		var rarity = HangulEngine.get_rarity(char_str)
+		var bg_color = HangulEngine.get_rarity_bg_color(char_str)
+		var border_color = HangulEngine.get_rarity_border_color(char_str)
+
+		var style = StyleBoxFlat.new()
+		style.bg_color = bg_color
+		style.border_color = border_color
+		style.set_border_width_all(2)
+		style.set_corner_radius_all(6)
 
 		var btn_tile = Button.new()
-		btn_tile.text = ("🌟 " + char_str) if is_rare else char_str
-		btn_tile.tooltip_text = "[🌟 희귀 타일] " if is_rare else ""
-		btn_tile.tooltip_text += "마우스로 끌어서(드래그) 순서를 바꾸거나, 클릭하여 다른 타일과 교환하세요."
+		btn_tile.text = char_str
+		btn_tile.add_theme_stylebox_override("normal", style)
+		btn_tile.add_theme_stylebox_override("hover", style)
+		btn_tile.add_theme_stylebox_override("pressed", style)
+
+		var rarity_name = "일반"
+		if rarity == "super_rare": rarity_name = "🔥 초희귀 (4변환 만능)"
+		elif rarity == "rare": rarity_name = "✨ 희귀 (2변환)"
+
+		btn_tile.tooltip_text = "[%s 타일: %s]\n마우스로 끌어서(드래그) 순서를 바꾸거나, 클릭하여 다른 타일과 교환하세요." % [rarity_name, char_str]
 		btn_tile.custom_minimum_size = Vector2(58, 66)
-		btn_tile.add_theme_font_size_override("font_size", 20 if is_rare else 22)
+		btn_tile.add_theme_font_size_override("font_size", 24)
 		btn_tile.mouse_filter = Control.MOUSE_FILTER_PASS
 
 		if selected_index_for_swap == idx:
-			btn_tile.modulate = Color(1.0, 0.9, 0.3)
-		elif is_rare:
-			btn_tile.modulate = Color(1.0, 0.85, 0.25, 1.0) # Golden Rare highlight
+			btn_tile.modulate = Color(1.0, 1.0, 0.4)
 		else:
 			btn_tile.modulate = Color(1.0, 1.0, 1.0)
 

@@ -159,14 +159,21 @@ body {
   transform: translateY(-2px);
 }
 
+.jamo-tile-box.super-rare-tile {
+  background: #4a2400;
+  border-color: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
+}
+
 .jamo-tile-box.rare-tile {
-  border-color: #eab308;
-  box-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+  background: #33144d;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
 .jamo-tile-box.selected-tile {
   border-color: #38bdf8;
-  background: #1e3a5f;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 .jamo-tile-box.dragging {
@@ -177,15 +184,10 @@ body {
   background: transparent;
   border: none;
   color: #ffffff;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   height: 52px;
   cursor: pointer;
-}
-
-.rare-tile .btn-jamo-tile {
-  color: #fde047;
-  font-size: 18px;
 }
 
 .btn-rot {
@@ -397,9 +399,28 @@ body {
   box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
 }
 
+.btn-reward-choice.super-rare-choice {
+  background: #4a2400;
+  border-color: #f59e0b;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.45);
+}
+
 .btn-reward-choice.rare-choice {
-  border-color: #eab308;
-  box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+  background: #33144d;
+  border-color: #a855f7;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+}
+
+.shop-card.super-rare-card {
+  background: #4a2400;
+  border-color: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
+}
+
+.shop-card.rare-card {
+  background: #33144d;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
 .btn-reroll-dice {
@@ -418,13 +439,9 @@ body {
 }
 
 .reward-char {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: bold;
   color: #ffffff;
-}
-
-.rare-choice .reward-char {
-  color: #fde047;
 }
 
 .reward-tag {
