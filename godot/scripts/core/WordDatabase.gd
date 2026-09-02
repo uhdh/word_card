@@ -3,6 +3,126 @@
 extends Node
 
 const WORD_DATABASE: Dictionary = {
+	"굿": {
+		"word": "굿",
+		"name": "굿 (퇴마/영력 방출)",
+		"category": "magic",
+		"cost": 1,
+		"damage": 14,
+		"desc": "신성한 방울과 영력을 방출하여 14의 마법 피해 및 주변 적들을 1초간 정화(기절)시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_굿_ritual_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"갓": {
+		"word": "갓",
+		"name": "갓 (선비의 예복/집중)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 10,
+		"desc": "고결한 정신력으로 10의 정신 피해를 입히고 타워의 사거리를 +30px 증가시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_갓_hat_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"붓": {
+		"word": "붓",
+		"name": "붓 (먹물 필살/필력)",
+		"category": "magic",
+		"cost": 1,
+		"damage": 13,
+		"desc": "날카로운 서예 먹물을 발사하여 13 피해를 입히고 적에게 지속 먹물 피해를 남깁니다.",
+		"icon": "res://assets/words_1letter/word_1_붓_brush_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"술": {
+		"word": "술",
+		"name": "술 (취기/혼란)",
+		"category": "magic",
+		"cost": 1,
+		"damage": 12,
+		"desc": "독한 술을 뿌려 12의 화염 피해를 입히고 적중된 적의 이동 방향을 비틀거리게 합니다.",
+		"icon": "res://assets/words_1letter/word_1_술_liquor_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"닭": {
+		"word": "닭",
+		"name": "닭 (새벽의 포효/돌진)",
+		"category": "summon",
+		"cost": 1,
+		"damage": 15,
+		"desc": "새벽을 깨우는 닭이 힘차게 날아올라 15의 물리 피해를 입히고 적을 뒤로 밀쳐냅니다.",
+		"icon": "res://assets/words_1letter/word_1_닭_chicken_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"곱": {
+		"word": "곱",
+		"name": "곱 (증폭/배수 피해)",
+		"category": "magic",
+		"cost": 1,
+		"damage": 16,
+		"desc": "활자의 힘을 2배로 증폭하여 16의 강력한 에너지 폭발 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_곱_multiply_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"밤": {
+		"word": "밤",
+		"name": "밤 (암흑/단단한 밤송이)",
+		"category": "nature",
+		"cost": 1,
+		"damage": 11,
+		"desc": "단단한 가시 밤송이를 굴려 11의 관통 물리 피해 및 가시 출혈을 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_밤_chestnut_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"봄": {
+		"word": "봄",
+		"name": "봄 (소생/꽃바람)",
+		"category": "heal",
+		"cost": 1,
+		"damage": 10,
+		"desc": "따스한 봄바람을 불어 10의 광역 피해를 입히고 기지 체력을 1 회복합니다.",
+		"icon": "res://assets/words_1letter/word_1_봄_spring_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"김": {
+		"word": "김",
+		"name": "김 (증기/화상)",
+		"category": "magic",
+		"cost": 1,
+		"damage": 12,
+		"desc": "뜨거운 고온 증기를 뿜어내어 12의 화염 지속 피해 및 시야를 차단합니다.",
+		"icon": "res://assets/words_1letter/word_1_김_steam_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"금": {
+		"word": "금",
+		"name": "금 (황금/재화 강탈)",
+		"category": "defense",
+		"cost": 1,
+		"damage": 14,
+		"desc": "황금 탄환을 발사하여 14 피해를 입히고 타격할 때마다 1 G를 즉시 강탈합니다.",
+		"icon": "res://assets/words_1letter/word_1_금_gold_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"볼": {
+		"word": "볼",
+		"name": "볼 (구체/바운스)",
+		"category": "weapon",
+		"cost": 1,
+		"damage": 13,
+		"desc": "통통 튀는 고무 볼을 던져 최대 3명의 적에게 연속 바운스 13 피해를 입힙니다.",
+		"icon": "res://assets/words_1letter/word_1_볼_ball_32px_pastel.png",
+		"sound": "play_attack"
+	},
+	"발": {
+		"word": "발",
+		"name": "발 (발차기/강타)",
+		"category": "weapon",
+		"cost": 1,
+		"damage": 12,
+		"desc": "강력한 돌려차기로 12의 물리 피해를 입히고 적을 0.5초간 넉백시킵니다.",
+		"icon": "res://assets/words_1letter/word_1_발_foot_32px_pastel.png",
+		"sound": "play_attack"
+	},
 	"감": {
 		"word": "감",
 		"name": "감 (단감/투척)",
