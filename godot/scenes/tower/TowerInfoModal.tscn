@@ -1,0 +1,107 @@
+﻿[gd_scene format=3 uid="uid://tower_info_modal_001"]
+
+[ext_resource type="Script" path="res://scripts/ui/TowerInfoModal.gd" id="1_info"]
+
+[node name="TowerInfoModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_info")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(440, 290)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -145.0
+offset_right = 220.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="IconContainer" type="CenterContainer" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+
+[node name="IconRect" type="TextureRect" parent="Panel/VBox/Header/IconContainer"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxTitle" type="VBoxContainer" parent="Panel/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox/Header/VBoxTitle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🏛️ 검 타워"
+
+[node name="TierLabel" type="Label" parent="Panel/VBox/Header/VBoxTitle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "⭐ 1글자 기본 타워 (무기/참격)"
+
+[node name="HSeparator1" type="HSeparator" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="StatsContainer" type="PanelContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="StatsLabel" type="Label" parent="Panel/VBox/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+text = "💥 공격력: 10  |  🎯 사거리: 150 px  |  ⏱️ 쿨타임: 0.65초"
+horizontal_alignment = 1
+
+[node name="DescContainer" type="PanelContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescLabel" type="Label" parent="Panel/VBox/DescContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 13
+text = "적에게 10의 강력한 물리 베기 피해를 입힙니다."
+autowrap_mode = 3
+
+[node name="RecipeContainer" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="RecipeLabel" type="Label" parent="Panel/VBox/RecipeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.6, 0.9, 0.6, 1)
+text = "🧩 조합 레시피: [ㄱㅓㅁ]"
+
+[node name="BtnClose" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(120, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "확인 (닫기)"

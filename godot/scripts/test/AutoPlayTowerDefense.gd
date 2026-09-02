@@ -45,7 +45,19 @@ func run_step() -> void:
 			assert(parsed_2[0]["syllable"] == "불꽃", "Should parse into 2-letter word [불꽃]!")
 
 		3:
-			print("\n[Step 3] 🐯 3글자 신화 단어 [호랑이] (ㅎㅗ + ㄹㅏㅇ + ㅇㅣ) 결합 테스트")
+			print("\n[Step 3] 🔍 타워 클릭 시 타워 설명 및 상세 스펙 팝업 테스트")
+			var field = main_node.defense_field
+			if field.active_towers.size() > 0:
+				var first_tower = field.active_towers[0]
+				print(" -> 1번 타워 [%s] 클릭 시뮬레이션!" % first_tower.syllable)
+				first_tower.tower_clicked.emit(first_tower)
+				print(" -> 타워 상세 스펙: 공격력 %s | 사거리 %d px | 쿨타임 %.2f초" % [
+					str(first_tower.word_data.get("damage", 0)), int(first_tower.attack_range), first_tower.attack_interval
+				])
+				print(" -> 특수 효과 설명: %s" % first_tower.word_data.get("desc", ""))
+
+		4:
+			print("\n[Step 4] 🐯 3글자 신화 단어 [호랑이] (ㅎㅗ + ㄹㅏㅇ + ㅇㅣ) 결합 테스트")
 			var belt = main_node.jamo_belt
 			belt.jamo_list.clear()
 			for c in ["ㅎ", "ㅗ", "ㄹ", "ㅏ", "ㅇ", "ㅇ", "ㅣ"]:
@@ -57,8 +69,8 @@ func run_step() -> void:
 			])
 			assert(parsed_3[0]["syllable"] == "호랑이", "Should parse into 3-letter word [호랑이]!")
 
-		4:
-			print("\n[Step 4] 🌊 [호랑이] 타워 배치 상태로 웨이브 스폰 & 전투 테스트")
+		5:
+			print("\n[Step 5] 🌊 [호랑이] 타워 배치 상태로 웨이브 스폰 & 전투 테스트")
 			var field = main_node.defense_field
 			field.start_next_wave()
 			Engine.time_scale = 3.5

@@ -7,6 +7,7 @@ signal base_hp_changed(current: int, max: int)
 signal gold_changed(current: int)
 signal wave_status_changed(wave: int, max_wave: int, is_running: bool)
 signal wave_cleared(wave: int, bonus_gold: int)
+signal tower_info_requested(tower: WordTower)
 signal game_over(is_victory: bool)
 
 @export var max_base_hp: int = 20
@@ -148,6 +149,7 @@ func update_towers_from_parsed_list(parsed_list: Array) -> void:
 		var tower = word_tower_scene.instantiate() as WordTower
 		slot_node.add_child(tower)
 		tower.setup_tower(item["syllable"], item["word_data"], self)
+		tower.tower_clicked.connect(func(t): tower_info_requested.emit(t))
 		active_towers.append(tower)
 
 func get_enemies() -> Array:

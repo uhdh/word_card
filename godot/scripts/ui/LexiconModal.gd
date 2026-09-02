@@ -1,4 +1,4 @@
-﻿# LexiconModal.gd
+# LexiconModal.gd
 # 1/2/3글자 전체 단어 타워 도감 모달, 실시간 검색, 티어 필터 및 자모 조합 공식 가이드
 extends Control
 
@@ -51,7 +51,7 @@ func get_jamo_recipe(word: String) -> String:
 	var syllables = []
 	for i in range(word.length()):
 		var ch = word.substr(i, 1)
-		var decomp = HangulEngine.decompose(ch)
+		var decomp = HangulEngine.decompose_syllable(ch)
 		if decomp.is_empty():
 			syllables.append(ch)
 		else:

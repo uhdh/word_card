@@ -3,6 +3,8 @@
 class_name WordTower
 extends Node2D
 
+signal tower_clicked(tower: WordTower)
+
 var word_data: Dictionary = {}
 var syllable: String = ""
 
@@ -16,9 +18,15 @@ var field_ref: Node = null
 @onready var icon_sprite: TextureRect = $IconContainer/IconSprite
 @onready var label_word: Label = $LabelWord
 @onready var range_circle: Node2D = $RangeCircle
+@onready var btn_select: Button = $BtnSelect
 
 func _ready() -> void:
 	attack_timer = 0.0
+	if btn_select:
+		btn_select.pressed.connect(func():
+			SoundEngine.play_tile_click()
+			tower_clicked.emit(self)
+		)
 
 func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node) -> void:
 	syllable = p_syllable

@@ -36,6 +36,7 @@ func _ready() -> void:
 		defense_field.gold_changed.connect(_on_gold_changed)
 		defense_field.wave_status_changed.connect(_on_wave_status_changed)
 		defense_field.wave_cleared.connect(_on_wave_cleared)
+		defense_field.tower_info_requested.connect(_on_tower_info_requested)
 		defense_field.game_over.connect(_on_game_over)
 
 	if jamo_belt:
@@ -113,6 +114,15 @@ func _on_wave_cleared(wave: int, bonus_gold: int) -> void:
 			jamo_belt.add_jamo(chosen_char)
 			save_game_state()
 		)
+
+func _on_tower_info_requested(tower: WordTower) -> void:
+	if tower == null or tower.word_data.is_empty():
+		return
+	var modal_scene = load("res://scenes/tower/TowerInfoModal.tscn")
+	if modal_scene != null:
+		var modal = modal_scene.instantiate()
+		modal_layer.add_child(modal)
+		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval)
 
 func _on_parsed_towers_updated(parsed_list: Array) -> void:
 	if defense_field:
