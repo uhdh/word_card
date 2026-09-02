@@ -178,6 +178,14 @@ class HangulTDApp {
     this.canvas.width = 1000;
     this.canvas.height = 420;
 
+    this.imgGrass = new Image();
+    this.imgGrass.src = "./assets/map_ui/map_bg_grass.png";
+    this.imgGrass.onload = () => { this.grassPattern = this.ctx.createPattern(this.imgGrass, "repeat"); };
+
+    this.imgRoad = new Image();
+    this.imgRoad.src = "./assets/map_ui/map_road_dirt.png";
+    this.imgRoad.onload = () => { this.roadPattern = this.ctx.createPattern(this.imgRoad, "repeat"); };
+
     this.canvas.addEventListener("click", (e) => {
       const rect = this.canvas.getBoundingClientRect();
       const scaleX = this.canvas.width / rect.width;
@@ -607,12 +615,22 @@ class HangulTDApp {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // 1. Draw Winding Path Road
+    // 0. Draw Grass Texture Background
+    if (this.grassPattern) {
+      ctx.fillStyle = this.grassPattern;
+      ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    } else {
+      ctx.fillStyle = "#1e2e1e";
+      ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    // 1. Draw Winding Dirt Path Road
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
-    ctx.strokeStyle = "#473c60";
-    ctx.lineWidth = 42;
+    // Outer dark dirt border
+    ctx.strokeStyle = "#2b1a0e";
+    ctx.lineWidth = 46;
     ctx.beginPath();
     ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
     for (let i = 1; i < this.pathPoints.length; i++) {
@@ -620,8 +638,9 @@ class HangulTDApp {
     }
     ctx.stroke();
 
-    ctx.strokeStyle = "#251d38";
-    ctx.lineWidth = 36;
+    // Inner textured dirt path
+    ctx.strokeStyle = this.roadPattern || "#b3824f";
+    ctx.lineWidth = 38;
     ctx.beginPath();
     ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
     for (let i = 1; i < this.pathPoints.length; i++) {
