@@ -16,16 +16,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -10.0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = -24.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="Arena" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 theme_override_constants/separation = 40
 
@@ -64,27 +64,30 @@ alignment = 1
 
 [node name="IntentLabel" type="Label" parent="VBox/Arena/EnemyBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1
 
 [node name="SpriteBox" type="CenterContainer" parent="VBox/Arena/EnemyBox"]
 layout_mode = 2
 
 [node name="EnemySprite" type="TextureRect" parent="VBox/Arena/EnemyBox/SpriteBox"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
 [node name="EnemyName" type="Label" parent="VBox/Arena/EnemyBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="VBox/Arena/EnemyBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
 [node name="HpBar" type="ProgressBar" parent="VBox/Arena/EnemyBox"]
-custom_minimum_size = Vector2(180, 20)
+custom_minimum_size = Vector2(180, 18)
 layout_mode = 2
 size_flags_horizontal = 4
 value = 100.0
@@ -97,97 +100,133 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 11
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CraftingArea" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 140)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 24
+theme_override_constants/separation = 20
 
-[node name="SlotsContainer" type="HBoxContainer" parent="VBox/CraftingArea"]
+[node name="SlotsWrapper" type="VBoxContainer" parent="VBox/CraftingArea"]
 layout_mode = 2
-theme_override_constants/separation = 12
+alignment = 1
 
-[node name="SlotCho" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
-custom_minimum_size = Vector2(64, 80)
+[node name="SlotsTitle" type="Label" parent="VBox/CraftingArea/SlotsWrapper"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "조합 슬롯 (초/중/종성)"
+horizontal_alignment = 1
+
+[node name="SlotsContainer" type="HBoxContainer" parent="VBox/CraftingArea/SlotsWrapper"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SlotCho" type="Button" parent="VBox/CraftingArea/SlotsWrapper/SlotsContainer"]
+custom_minimum_size = Vector2(56, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "+"
 
-[node name="SlotJung" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
-custom_minimum_size = Vector2(64, 80)
+[node name="SlotJung" type="Button" parent="VBox/CraftingArea/SlotsWrapper/SlotsContainer"]
+custom_minimum_size = Vector2(56, 68)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "+"
 
-[node name="SlotJong" type="Button" parent="VBox/CraftingArea/SlotsContainer"]
-custom_minimum_size = Vector2(64, 80)
+[node name="SlotJong" type="Button" parent="VBox/CraftingArea/SlotsWrapper/SlotsContainer"]
+custom_minimum_size = Vector2(56, 68)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "+"
 
 [node name="ArrowLabel" type="Label" parent="VBox/CraftingArea"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 24
 text = "➔"
 
 [node name="CardBox" type="PanelContainer" parent="VBox/CraftingArea"]
-custom_minimum_size = Vector2(280, 120)
+custom_minimum_size = Vector2(260, 140)
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="VBox/CraftingArea/CardBox"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="CardTitle" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-
-[node name="CardCost" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
+[node name="HeaderHBox" type="HBoxContainer" parent="VBox/CraftingArea/CardBox/VBox"]
 layout_mode = 2
 
-[node name="CardIcon" type="TextureRect" parent="VBox/CraftingArea/CardBox/VBox"]
-custom_minimum_size = Vector2(32, 32)
+[node name="CardTitle" type="Label" parent="VBox/CraftingArea/CardBox/VBox/HeaderHBox"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+
+[node name="CardCost" type="Label" parent="VBox/CraftingArea/CardBox/VBox/HeaderHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+modulate = Color(1, 0.85, 0.3, 1)
+
+[node name="IconCenter" type="CenterContainer" parent="VBox/CraftingArea/CardBox/VBox"]
+layout_mode = 2
+
+[node name="CardIcon" type="TextureRect" parent="VBox/CraftingArea/CardBox/VBox/IconCenter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
 stretch_mode = 5
 
 [node name="CardDesc" type="Label" parent="VBox/CraftingArea/CardBox/VBox"]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
+theme_override_font_sizes/font_size = 11
 autowrap_mode = 3
 
 [node name="BtnPlay" type="Button" parent="VBox/CraftingArea/CardBox/VBox"]
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "발동 (SPACE)"
 
 [node name="BottomPanel" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 110)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="EnergyBox" type="VBoxContainer" parent="VBox/BottomPanel"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 alignment = 1
 
 [node name="EnergyLabel" type="Label" parent="VBox/BottomPanel/EnergyBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "1 / 1 AP"
+horizontal_alignment = 1
+
+[node name="EnergySub" type="Label" parent="VBox/BottomPanel/EnergyBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "행동력"
 horizontal_alignment = 1
 
 [node name="HandContainer" type="HBoxContainer" parent="VBox/BottomPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="DeckInfo" type="VBoxContainer" parent="VBox/BottomPanel"]
-custom_minimum_size = Vector2(140, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 6
+theme_override_constants/separation = 4
 
 [node name="BtnEndTurn" type="Button" parent="VBox/BottomPanel/DeckInfo"]
-custom_minimum_size = Vector2(0, 44)
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "턴 종료"
 
 [node name="DeckCountLabel" type="Label" parent="VBox/BottomPanel/DeckInfo"]
@@ -197,7 +236,6 @@ text = "뽑을 덱: 0 | 버린 덱: 0"
 horizontal_alignment = 1
 
 [node name="LogScroll" type="ScrollContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -205,5 +243,5 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 11
 autowrap_mode = 3

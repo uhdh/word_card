@@ -1,4 +1,4 @@
-﻿# BattleView.gd
+# BattleView.gd
 # 전투 아레나, 슬롯 장착, 단어 완성 프리뷰 및 턴 제어
 extends Control
 
@@ -17,12 +17,12 @@ var main_controller: Node
 @onready var enemy_sprite: TextureRect = $VBox/Arena/EnemyBox/SpriteBox/EnemySprite
 @onready var enemy_status_label: Label = $VBox/Arena/EnemyBox/StatusLabel
 
-@onready var slots_container: HBoxContainer = $VBox/CraftingArea/SlotsContainer
+@onready var slots_container: HBoxContainer = $VBox/CraftingArea/SlotsWrapper/SlotsContainer
 @onready var card_box: PanelContainer = $VBox/CraftingArea/CardBox
-@onready var card_title: Label = $VBox/CraftingArea/CardBox/VBox/CardTitle
-@onready var card_cost: Label = $VBox/CraftingArea/CardBox/VBox/CardCost
+@onready var card_title: Label = $VBox/CraftingArea/CardBox/VBox/HeaderHBox/CardTitle
+@onready var card_cost: Label = $VBox/CraftingArea/CardBox/VBox/HeaderHBox/CardCost
 @onready var card_desc: Label = $VBox/CraftingArea/CardBox/VBox/CardDesc
-@onready var card_icon: TextureRect = $VBox/CraftingArea/CardBox/VBox/CardIcon
+@onready var card_icon: TextureRect = $VBox/CraftingArea/CardBox/VBox/IconCenter/CardIcon
 @onready var btn_play_card: Button = $VBox/CraftingArea/CardBox/VBox/BtnPlay
 
 @onready var energy_label: Label = $VBox/BottomPanel/EnergyBox/EnergyLabel
