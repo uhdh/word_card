@@ -15,7 +15,9 @@ var attack_timer: float = 0.0
 var projectile_scene = preload("res://scenes/tower/Projectile.tscn")
 var field_ref: Node = null
 
+@onready var icon_container: CenterContainer = $IconContainer
 @onready var icon_sprite: TextureRect = $IconContainer/IconSprite
+@onready var label_big_word: Label = $LabelBigWord
 @onready var label_word: Label = $LabelWord
 @onready var range_circle: Node2D = $RangeCircle
 @onready var btn_select: Button = $BtnSelect
@@ -33,11 +35,23 @@ func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node) -> void:
 	word_data = p_data
 	field_ref = p_field
 
-	if label_word:
-		label_word.text = syllable
+	var has_icon = word_data.get("icon", "") != "" and ResourceLoader.exists(word_data.get("icon", ""))
+	var is_unknown = word_data.get("is_unknown", false) or not has_icon
 
-	if ResourceLoader.exists(word_data.get("icon", "")) and icon_sprite:
-		icon_sprite.texture = load(word_data["icon"])
+	if is_unknown:
+		if icon_container: icon_container.visible = false
+		if label_word: label_word.visible = false
+		if label_big_word:
+			label_big_word.visible = true
+			label_big_word.text = syllable
+	else:
+		if icon_container: icon_container.visible = true
+		if label_word:
+			label_word.visible = true
+			label_word.text = syllable
+		if label_big_word: label_big_word.visible = false
+		if icon_sprite:
+			icon_sprite.texture = load(word_data["icon"])
 
 	# Category-based stats
 	var cat = word_data.get("category", "weapon")

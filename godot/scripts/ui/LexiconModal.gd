@@ -146,7 +146,7 @@ func render_cards() -> void:
 		# Description
 		var desc_lbl = Label.new()
 		desc_lbl.text = w.get("desc", "")
-		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		desc_lbl.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD_SMART
 		desc_lbl.add_theme_font_size_override("font_size", 10)
 		desc_lbl.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		vbox.add_child(desc_lbl)

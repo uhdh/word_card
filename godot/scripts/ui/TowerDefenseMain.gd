@@ -42,9 +42,48 @@ func _ready() -> void:
 	if jamo_belt:
 		jamo_belt.parsed_towers_updated.connect(_on_parsed_towers_updated)
 		jamo_belt.request_buy_jamo.connect(_on_buy_jamo_requested)
+		jamo_belt.jamo_changed.connect(_on_jamo_changed)
+
+	# Setup button tooltips / shortcut hints
+	btn_start_wave.tooltip_text = "단축키: [SPACE]"
+	btn_save.tooltip_text = "단축키: [Ctrl + S] 또는 [S]"
+	btn_load.tooltip_text = "단축키: [L]"
+	btn_speed.tooltip_text = "단축키: [1] / [2]"
+	btn_lexicon.tooltip_text = "단축키: [TAB] 또는 [D]"
+	btn_mute.tooltip_text = "단축키: [M]"
 
 	# Initial sync
 	jamo_belt.render_belt()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+
+	match event.keycode:
+		KEY_SPACE:
+			if not defense_field.is_wave_running:
+				_on_start_wave_pressed()
+		KEY_1:
+			if current_speed_scale != 1.0:
+				_on_speed_pressed()
+		KEY_2:
+			if current_speed_scale != 2.0:
+				_on_speed_pressed()
+		KEY_TAB, KEY_D:
+			_on_lexicon_pressed()
+		KEY_S:
+			_on_save_pressed()
+		KEY_L:
+			_on_load_pressed()
+		KEY_M:
+			_on_mute_pressed()
+		KEY_R:
+			if jamo_belt:
+				jamo_belt.rotate_first_available()
+
+func _on_jamo_changed() -> void:
+	# Automatic background save whenever the player rearranges the belt
+	save_game_state()
 
 func _on_save_pressed() -> void:
 	save_game_state()

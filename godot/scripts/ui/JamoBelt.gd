@@ -5,6 +5,7 @@ extends PanelContainer
 
 signal parsed_towers_updated(parsed_list: Array)
 signal request_buy_jamo()
+signal jamo_changed()
 
 var jamo_list: Array[String] = [
 	"ㅂ", "ㅜ", "ㄹ"  # -> 불 (첫 번째 시작 타워)
@@ -27,6 +28,14 @@ func add_jamo(c: String) -> void:
 		jamo_list.append(c)
 		render_belt()
 
+func rotate_first_available() -> void:
+	for i in range(jamo_list.size()):
+		if HangulEngine.is_rotatable(jamo_list[i]):
+			jamo_list[i] = HangulEngine.rotate(jamo_list[i])
+			SoundEngine.play_tile_rotate()
+			render_belt()
+			break
+
 func render_belt() -> void:
 	for c in tiles_container.get_children():
 		c.queue_free()
@@ -41,8 +50,9 @@ func render_belt() -> void:
 	if parsed_preview_label:
 		parsed_preview_label.text = "🏰 자동 완성 타워: " + (" ➔ ".join(preview_words) if not preview_words.is_empty() else "단어 조합 없음")
 
-	# Emit signal to update top towers!
+	# Emit signals
 	parsed_towers_updated.emit(parsed)
+	jamo_changed.emit()
 
 	# Render tile buttons
 	for idx in range(jamo_list.size()):

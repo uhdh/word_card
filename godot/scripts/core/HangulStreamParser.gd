@@ -1,4 +1,4 @@
-﻿# HangulStreamParser.gd
+# HangulStreamParser.gd
 # 하단 자모 타일 벨트를 분석하여 1글자 / 2글자 / 3글자 복합 단어 타워를 최장 일치(Greedy)로 자동 파싱
 extends Node
 
@@ -101,11 +101,12 @@ func parse_jamo_stream(jamo_list: Array) -> Array:
 			data = {
 				"word": mono_word,
 				"name": mono_word + " (미지의 활자)",
-				"category": "weapon",
+				"category": "basic",
+				"is_unknown": true,
 				"cost": 1,
 				"damage": 4,
-				"desc": "기본 활자 탄환을 발사합니다.",
-				"icon": "res://assets/01_무기_공격/sword_검/sword_1_32px_pastel.png",
+				"desc": "사전에 등록되지 않은 미지의 활자입니다. 기본 활자 탄환을 발사합니다.",
+				"icon": "",
 				"sound": "playAttack"
 			}
 
