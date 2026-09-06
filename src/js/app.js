@@ -303,6 +303,13 @@ class HangulTDApp {
     this.imgSanctuary = new Image();
     this.imgSanctuary.src = ACT_MAPS[this.currentAct] || ACT_MAPS[1];
 
+    this.imgPedestal = new Image();
+    this.imgPedestal.src = "./assets/map_ui/map_tower_pedestal_32px_pastel.png";
+    this.imgPortal = new Image();
+    this.imgPortal.src = "./assets/map_ui/map_spawn_portal_32px_pastel.png";
+    this.imgCrystal = new Image();
+    this.imgCrystal.src = "./assets/map_ui/map_base_crystal_32px_pastel.png";
+
     this.canvas.addEventListener("click", (e) => {
       const rect = this.canvas.getBoundingClientRect();
       const scaleX = this.canvas.width / rect.width;
@@ -772,6 +779,12 @@ class HangulTDApp {
     });
   }
 
+  drawCenteredSprite(img, x, y, width, height) {
+    if (!img || !img.complete || !img.naturalWidth) return false;
+    this.ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
+    return true;
+  }
+
   render() {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -789,18 +802,28 @@ class HangulTDApp {
       ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    // The sanctuary artwork already contains the road, portal and core.
-    // Draw only interactive tower state over its four engraved circles.
+    const spawn = this.pathPoints[0];
+    const core = this.pathPoints[this.pathPoints.length - 1];
+    this.drawCenteredSprite(this.imgPortal, spawn.x, spawn.y, 64, 64);
+    this.drawCenteredSprite(this.imgCrystal, core.x, core.y, 72, 72);
+
     this.slots.forEach((slot, idx) => {
       const tower = this.activeTowers[idx];
-
-      ctx.fillStyle = "#1e1a2e";
-      ctx.strokeStyle = tower ? (tower.tier >= 3 ? "#ec4899" : (tower.tier === 2 ? "#eab308" : "#3b82f6")) : "#554c6d";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.roundRect(slot.x - 34, slot.y - 38, 68, 76, 8);
-      ctx.fill();
-      ctx.stroke();
+      const drewPedestal = this.drawCenteredSprite(this.imgPedestal, slot.x, slot.y, 80, 80);
+      if (!drewPedestal) {
+        ctx.fillStyle = "#1e1a2e";
+        ctx.strokeStyle = tower ? (tower.tier >= 3 ? "#ec4899" : (tower.tier === 2 ? "#eab308" : "#3b82f6")) : "#554c6d";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(slot.x - 34, slot.y - 38, 68, 76, 8);
+        ctx.fill();
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = "rgba(8, 11, 24, 0.5)";
+        ctx.beginPath();
+        ctx.ellipse(slot.x, slot.y + 4, 30, 20, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
       if (tower) {
         ctx.fillStyle = tower.tier >= 3 ? "#f472b6" : (tower.tier === 2 ? "#fde047" : "#67e8f9");
