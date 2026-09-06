@@ -18,6 +18,12 @@ const ACT_NAMES = {
   3: "천공의 연금 성채"
 };
 
+const ACT_MAPS = {
+  1: "./assets/map/map_grand_sanctuary_1024x352.png",
+  2: "./assets/map/map_act2_rock_mine_td_1024x352.png",
+  3: "./assets/map/map_act3_sky_citadel_td_1024x352.png"
+};
+
 const JAMO_RULES = [
   "회전: ㄱ ↔ ㄴ · ㅏ → ㅜ → ㅓ → ㅗ · ㅡ ↔ ㅣ",
   "쌍자음: ㄱ+ㄱ=ㄲ · ㄷ+ㄷ=ㄸ · ㅂ+ㅂ=ㅃ · ㅅ+ㅅ=ㅆ · ㅈ+ㅈ=ㅉ",
@@ -295,7 +301,7 @@ class HangulTDApp {
     this.imgRoad.onload = () => { this.roadPattern = this.ctx.createPattern(this.imgRoad, "repeat"); };
 
     this.imgSanctuary = new Image();
-    this.imgSanctuary.src = "./assets/map/map_grand_sanctuary_1024x352.png";
+    this.imgSanctuary.src = ACT_MAPS[this.currentAct] || ACT_MAPS[1];
 
     this.canvas.addEventListener("click", (e) => {
       const rect = this.canvas.getBoundingClientRect();
@@ -533,6 +539,7 @@ class HangulTDApp {
       if (this.currentAct < this.maxActs) {
         this.currentAct += 1;
         this.currentWave = 1;
+        this.imgSanctuary.src = ACT_MAPS[this.currentAct] || ACT_MAPS[1];
       } else {
         this.handleGameOver(true);
         return;
@@ -878,6 +885,7 @@ class HangulTDApp {
     this.maxBaseHp = data.maxBaseHp || 20;
     this.gold = data.gold !== undefined ? data.gold : 30;
     this.currentAct = data.currentAct || 1;
+    this.imgSanctuary.src = ACT_MAPS[this.currentAct] || ACT_MAPS[1];
     this.currentWave = data.currentWave || 0;
     this.rerollDice = data.rerollDice !== undefined ? data.rerollDice : 3;
     this.ownedRelics = data.relics || [];
@@ -1262,6 +1270,7 @@ class HangulTDApp {
     this.maxBaseHp = 20;
     this.gold = 30;
     this.currentAct = 1;
+    this.imgSanctuary.src = ACT_MAPS[1];
     this.currentWave = 0;
     this.rerollDice = 3;
     this.ownedRelics = [];
