@@ -8,12 +8,22 @@ import * as HangulEngine from './core/hangulEngine.js';
 import { parseJamoStream } from './core/hangulStreamParser.js';
 import { SaveManager } from './core/saveManager.js';
 import { sound } from './core/soundEngine.js';
+import { getInsertionIndex } from './core/dragInsertion.js';
+import { applyTowerSynergies, getInitialHint, getRelicBonuses, getWaveSynergyHealing } from './core/wordSynergy.js';
+import { groupTilesByTowers } from './core/tileGroups.js';
 
 const ACT_NAMES = {
-  1: "초원의 문자",
-  2: "고대 유적의 어둠",
-  3: "차원의 심연"
+  1: "연구소 앞뜰",
+  2: "버려진 바위 광산",
+  3: "천공의 연금 성채"
 };
+
+const JAMO_RULES = [
+  "회전: ㄱ ↔ ㄴ · ㅏ → ㅜ → ㅓ → ㅗ · ㅡ ↔ ㅣ",
+  "쌍자음: ㄱ+ㄱ=ㄲ · ㄷ+ㄷ=ㄸ · ㅂ+ㅂ=ㅃ · ㅅ+ㅅ=ㅆ · ㅈ+ㅈ=ㅉ",
+  "겹모음: ㅗ+ㅏ=ㅘ · ㅗ+ㅣ=ㅚ · ㅜ+ㅓ=ㅝ · ㅜ+ㅣ=ㅟ · ㅡ+ㅣ=ㅢ",
+  "파싱: 3글자 → 2글자 → 1글자 순으로 가장 긴 연성식을 먼저 완성"
+];
 
 const ALL_RELIC_POOL = [
   {
@@ -57,6 +67,74 @@ const ALL_RELIC_POOL = [
     cost: 35,
     desc: "타워 공격 시 25% 확률로 2배 치명타 피해를 입힙니다.",
     icon: "./assets/relics/relic_crit_lens_32px_pastel.png"
+  },
+  {
+    id: "relic_range_rune", name: "천리안의 룬", cost: 30,
+    desc: "모든 타워의 공격 범위 +15%", icon: "./assets/relics/relic_magnifier_32px_pastel.png"
+  },
+  {
+    id: "relic_bounty_coin", name: "현상금 동전", cost: 35,
+    desc: "적 처치 시 골드 +1", icon: "./assets/relics/relic_crystal_32px_pastel.png"
+  },
+  {
+    id: "relic_healing_incense", name: "회복의 향로", cost: 30,
+    desc: "웨이브 종료 시 기지 HP 2 회복", icon: "./assets/relics/relic_gourd_32px_pastel.png"
+  },
+  {
+    id: "relic_first_strike", name: "선봉의 깃털", cost: 35,
+    desc: "각 타워의 첫 공격 피해 2배", icon: "./assets/relics/relic_feather_32px_pastel.png"
+  },
+  {
+    id: "relic_three_syllable_seal", name: "삼문자 인장", cost: 40,
+    desc: "3글자 타워 피해 +25%", icon: "./assets/relics/relic_seal_32px_pastel.png"
+  },
+  {
+    id: "relic_merchant_coupon", name: "상인의 할인패", cost: 25,
+    desc: "상점 자모 가격 20% 할인", icon: "./assets/relics/relic_scroll_32px_pastel.png"
+  },
+  {
+    id: "relic_initial_compass", name: "훈민정음의 나침반", cost: 35,
+    desc: "현재 자모로 만들 수 있는 단어의 초성 힌트", icon: "./assets/relics/relic_magnifier_32px_pastel.png"
+  },
+  {
+    id: "relic_tense_hammer", name: "된소리 망치", cost: 35,
+    desc: "된소리 초성 타워 피해 +25%", icon: "./assets/relics/relic_seal_32px_pastel.png"
+  },
+  {
+    id: "relic_final_weight", name: "종성의 무게추", cost: 30,
+    desc: "받침 있는 타워 피해 +20%", icon: "./assets/relics/relic_crystal_32px_pastel.png"
+  },
+  {
+    id: "relic_open_feather", name: "민소리 깃털", cost: 30,
+    desc: "받침 없는 타워 공격속도 +18%", icon: "./assets/relics/relic_feather_32px_pastel.png"
+  },
+  {
+    id: "relic_cluster_anvil", name: "겹받침 모루", cost: 40,
+    desc: "겹받침 타워 피해 +35%", icon: "./assets/relics/relic_seal_32px_pastel.png"
+  },
+  {
+    id: "relic_vowel_crystal", name: "겹모음 수정", cost: 35,
+    desc: "겹모음 타워 사거리 +20%", icon: "./assets/relics/relic_crystal_32px_pastel.png"
+  },
+  {
+    id: "relic_initial_drum", name: "첫소리 북", cost: 40,
+    desc: "모든 음절의 초성이 같으면 피해 +25%", icon: "./assets/relics/relic_gourd_32px_pastel.png"
+  },
+  {
+    id: "relic_vowel_resonance", name: "모음 공명석", cost: 35,
+    desc: "같은 모음이 반복되면 공격속도 +20%", icon: "./assets/relics/relic_crystal_32px_pastel.png"
+  },
+  {
+    id: "relic_consonant_ring", name: "자음 고리", cost: 40,
+    desc: "받침과 다음 초성이 같으면 치명타 +20%", icon: "./assets/relics/relic_seal_32px_pastel.png"
+  },
+  {
+    id: "relic_balance_ink", name: "균형의 먹", cost: 35,
+    desc: "자음과 모음 수가 같으면 피해 +10%", icon: "./assets/relics/relic_scroll_32px_pastel.png"
+  },
+  {
+    id: "relic_open_chime", name: "무받침 풍경", cost: 35,
+    desc: "받침 없는 타워가 연속 배치되면 양쪽 공격속도 +12%", icon: "./assets/relics/relic_gourd_32px_pastel.png"
   }
 ];
 
@@ -76,6 +154,7 @@ class HangulTDApp {
 
     this.jamoList = ["ㅂ", "ㅜ", "ㄹ"]; // Starting Deck -> [불]
     this.selectedSwapIndex = -1;
+    this.hintIndex = 0;
 
     // Towers & Field
     this.activeTowers = [];
@@ -85,30 +164,19 @@ class HangulTDApp {
 
     // Slot Positions (matching Godot winding curve)
     this.slots = [
-      { x: 300, y: 200, label: "1번 슬롯" },
-      { x: 490, y: 200, label: "2번 슬롯" },
-      { x: 680, y: 200, label: "3번 슬롯" },
-      { x: 870, y: 200, label: "4번 슬롯" }
+      { x: 189, y: 135, label: "1번 슬롯" },
+      { x: 358, y: 135, label: "2번 슬롯" },
+      { x: 528, y: 135, label: "3번 슬롯" },
+      { x: 698, y: 135, label: "4번 슬롯" }
     ];
 
     // Winding Path Points (Forward S-Curve ➔ Turnaround at Slot 4 ➔ Returning S-Curve to Base at y=300)
     this.pathPoints = [
-      { x: 60, y: 100 },
-      { x: 395, y: 100 },
-      { x: 395, y: 300 },
-      { x: 585, y: 300 },
-      { x: 585, y: 100 },
-      { x: 775, y: 100 },
-      { x: 775, y: 300 },
-      { x: 960, y: 300 },
-      { x: 960, y: 100 },
-      { x: 775, y: 100 },
-      { x: 775, y: 300 },
-      { x: 585, y: 300 },
-      { x: 585, y: 100 },
-      { x: 395, y: 100 },
-      { x: 395, y: 300 },
-      { x: 60, y: 300 }
+      { x: 44, y: 54 },
+      { x: 765, y: 54 },
+      { x: 765, y: 198 },
+      { x: 64, y: 198 },
+      { x: 43, y: 219 }
     ];
 
     this.isLoadingState = true;
@@ -117,7 +185,8 @@ class HangulTDApp {
     this.initCanvas();
     this.initShortcuts();
 
-    if (SaveManager.hasSaveFile()) {
+    const hasExistingSave = SaveManager.hasSaveFile();
+    if (hasExistingSave) {
       this.loadGame();
     } else {
       this.renderBelt();
@@ -126,6 +195,7 @@ class HangulTDApp {
 
     this.isLoadingState = false;
     this.startGameLoop();
+    if (!hasExistingSave) setTimeout(() => this.openLoreModal(), 0);
   }
 
   initDOM() {
@@ -140,10 +210,21 @@ class HangulTDApp {
     this.btnLoad = document.getElementById("btn-load");
     this.btnSpeed = document.getElementById("btn-speed");
     this.btnLexicon = document.getElementById("btn-lexicon");
+    this.btnLore = document.getElementById("btn-lore");
     this.btnMute = document.getElementById("btn-mute");
 
     this.beltContainer = document.getElementById("tiles-container");
     this.previewLabel = document.getElementById("preview-label");
+    this.hintButton = document.createElement("button");
+    this.hintButton.textContent = "💡 초성 힌트";
+    this.hintButton.className = "btn-small";
+    this.hintLabel = document.createElement("span");
+    this.previewLabel.after(this.hintLabel);
+    this.previewLabel.after(this.hintButton);
+    this.hintButton.addEventListener("click", () => {
+      const hint = getInitialHint(this.jamoList, getAllWords(), this.hintIndex++);
+      this.hintLabel.textContent = hint ? ` 힌트: ${hint}` : " 만들 수 있는 단어가 없어요";
+    });
     this.modalOverlay = document.getElementById("modal-overlay");
     this.modalContent = document.getElementById("modal-content");
 
@@ -155,16 +236,35 @@ class HangulTDApp {
     this.btnLoad.addEventListener("click", () => this.loadGame());
     this.btnSpeed.addEventListener("click", () => this.toggleSpeed());
     this.btnLexicon.addEventListener("click", () => this.openLexiconModal());
+    this.btnLore.addEventListener("click", () => this.openLoreModal());
     this.btnMute.addEventListener("click", () => this.toggleMute());
 
-    this.beltContainer.addEventListener("dragover", (e) => e.preventDefault());
+    this.beltContainer.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      if (e.target.closest(".jamo-tile-box")) return;
+      const tiles = [...this.beltContainer.querySelectorAll(".jamo-tile-box")];
+      tiles.forEach(tile => tile.classList.remove("drop-left", "drop-right"));
+      const targetIdx = getInsertionIndex(e.clientX, tiles.map(tile => {
+        const rect = tile.getBoundingClientRect();
+        return rect.left + rect.width / 2;
+      }));
+      if (tiles[targetIdx]) tiles[targetIdx].classList.add("drop-left");
+      else tiles.at(-1)?.classList.add("drop-right");
+    });
     this.beltContainer.addEventListener("drop", (e) => {
-      if (e.target === this.beltContainer) {
+      if (!e.target.closest(".jamo-tile-box")) {
         e.preventDefault();
         const fromIdx = parseInt(e.dataTransfer.getData("text/plain"), 10);
         if (!isNaN(fromIdx) && fromIdx >= 0 && fromIdx < this.jamoList.length) {
+          const tiles = [...this.beltContainer.querySelectorAll(".jamo-tile-box")];
+          const visualIdx = getInsertionIndex(e.clientX, tiles.map(tile => {
+            const rect = tile.getBoundingClientRect();
+            return rect.left + rect.width / 2;
+          }));
+          let targetIdx = tiles[visualIdx] ? Number(tiles[visualIdx].dataset.index) : this.jamoList.length;
           const item = this.jamoList.splice(fromIdx, 1)[0];
-          this.jamoList.push(item);
+          if (fromIdx < targetIdx) targetIdx -= 1;
+          this.jamoList.splice(targetIdx, 0, item);
           sound.playTileClick();
           this.renderBelt();
           this.saveGame();
@@ -178,6 +278,9 @@ class HangulTDApp {
 
   initCanvas() {
     this.canvas = document.getElementById("field-canvas");
+    this.relicHud = document.createElement("div");
+    this.relicHud.className = "relic-hud";
+    this.canvas.parentElement.appendChild(this.relicHud);
     this.ctx = this.canvas.getContext("2d");
     this.ctx.imageSmoothingEnabled = false;
     this.canvas.width = 1000;
@@ -190,6 +293,9 @@ class HangulTDApp {
     this.imgRoad = new Image();
     this.imgRoad.src = "./assets/map_ui/map_road_dirt.png";
     this.imgRoad.onload = () => { this.roadPattern = this.ctx.createPattern(this.imgRoad, "repeat"); };
+
+    this.imgSanctuary = new Image();
+    this.imgSanctuary.src = "./assets/map/map_grand_sanctuary_1024x352.png";
 
     this.canvas.addEventListener("click", (e) => {
       const rect = this.canvas.getBoundingClientRect();
@@ -268,22 +374,59 @@ class HangulTDApp {
     return this.ownedRelics.some(r => r.id === rId);
   }
 
+  renderRelicHud() {
+    if (!this.relicHud) return;
+    this.relicHud.innerHTML = `<strong>🎒 보유 유물 ${this.ownedRelics.length}</strong>${this.ownedRelics.map(relic =>
+      `<img src="${relic.icon}" alt="${relic.name}" title="${relic.name}: ${relic.desc}">`
+    ).join("")}`;
+  }
+
   renderBelt() {
+    this.renderRelicHud();
     this.beltContainer.innerHTML = "";
     const parsed = parseJamoStream(this.jamoList);
+    const grouped = groupTilesByTowers(this.jamoList, parsed);
+    const tileHosts = new Map();
+    const addGroup = (title, indices, waiting = false) => {
+      if (!indices.length) return;
+      const tray = document.createElement("section");
+      tray.className = `tile-group-tray${waiting ? " waiting" : ""}`;
+      tray.innerHTML = `<strong>${title}</strong>`;
+      const row = document.createElement("div");
+      row.className = "tile-group-row";
+      tray.appendChild(row);
+      this.beltContainer.appendChild(tray);
+      indices.forEach(index => tileHosts.set(index, row));
+    };
+    grouped.towers.forEach(group => addGroup(`▼ ${group.word} 타워`, group.indices));
+    addGroup("대기 타일", grouped.waiting, true);
 
     const speedBoost = this.hasRelic("relic_haste_compass") ? 0.8 : 1.0;
     const powerBoost = this.hasRelic("relic_essence_power") ? 1.2 : 1.0;
 
-    this.activeTowers = parsed.map(p => ({
-      syllable: p.syllable,
-      tier: p.tier,
-      wordData: p.wordData,
-      attackCooldown: 0,
-      attackInterval: (p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95))) * speedBoost,
-      range: p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150),
-      damage: Math.round((p.wordData.damage || 4) * powerBoost)
-    }));
+    const relicIds = this.ownedRelics.map(r => r.id);
+    this.activeTowers = parsed.map(p => {
+      const bonus = getRelicBonuses(p.syllable, relicIds);
+      return {
+        syllable: p.syllable, tier: p.tier, wordData: p.wordData, attackCooldown: 0,
+        attackInterval: (p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95))) * speedBoost * bonus.intervalMultiplier,
+        range: (p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150)) * (this.hasRelic("relic_range_rune") ? 1.15 : 1) * bonus.rangeMultiplier,
+        damage: Math.round((p.wordData.damage || 4) * powerBoost * (p.tier === 3 && this.hasRelic("relic_three_syllable_seal") ? 1.25 : 1) * bonus.damageMultiplier),
+        critChance: bonus.critChance + (this.hasRelic("relic_range_rune") && p.wordData.category === "weapon" ? 0.1 : 0),
+        attacks: 0, synergies: [
+          ...bonus.labels,
+          ...(this.hasRelic("relic_range_rune") && p.wordData.category === "weapon" ? ["천리안 조준"] : []),
+          ...(this.hasRelic("relic_first_strike") && p.wordData.category === "summon" ? ["소환 선봉"] : []),
+          ...(this.hasRelic("relic_healing_incense") && p.wordData.category === "heal" ? ["치유 증폭"] : [])
+        ]
+      };
+    });
+    applyTowerSynergies(this.activeTowers, relicIds);
+    if (this.hintButton) {
+      this.hintButton.hidden = !this.hasRelic("relic_initial_compass");
+      this.hintLabel.hidden = this.hintButton.hidden;
+      this.hintLabel.textContent = "";
+    }
 
     const previewTexts = [];
     for (const p of parsed) {
@@ -303,6 +446,7 @@ class HangulTDApp {
 
       const tileBox = document.createElement("div");
       tileBox.className = `jamo-tile-box ${rarityClass} ${this.selectedSwapIndex === idx ? "selected-tile" : ""}`;
+      tileBox.dataset.index = idx;
       tileBox.draggable = true;
 
       tileBox.addEventListener("dragstart", (e) => {
@@ -377,7 +521,7 @@ class HangulTDApp {
         tileBox.appendChild(btnRot);
       }
 
-      this.beltContainer.appendChild(tileBox);
+      (tileHosts.get(idx) || this.beltContainer).appendChild(tileBox);
     });
   }
 
@@ -497,10 +641,12 @@ class HangulTDApp {
         if (target) {
           tower.attackCooldown = tower.attackInterval;
           let dmg = tower.damage || 4;
+          if (this.hasRelic("relic_first_strike") && tower.attacks === 0) dmg *= tower.wordData.category === "summon" ? 3 : 2;
+          tower.attacks += 1;
 
           // Crit check
           let isCrit = false;
-          if (this.hasRelic("relic_crit_lens") && Math.random() < 0.25) {
+          if (Math.random() < ((this.hasRelic("relic_crit_lens") ? 0.25 : 0) + tower.critChance)) {
             dmg *= 2;
             isCrit = true;
           }
@@ -530,7 +676,7 @@ class HangulTDApp {
           if (target.hp <= 0) {
             const eIdx = this.enemies.indexOf(target);
             if (eIdx !== -1) {
-              this.gold += target.goldValue;
+              this.gold += target.goldValue + (this.hasRelic("relic_bounty_coin") ? 1 : 0);
               this.enemies.splice(eIdx, 1);
               sound.playHit();
               this.updateTopBar();
@@ -560,6 +706,9 @@ class HangulTDApp {
         baseBonus = Math.round(baseBonus * 1.5);
       }
       this.gold += baseBonus;
+      let healing = getWaveSynergyHealing(this.activeTowers);
+      if (this.hasRelic("relic_healing_incense")) healing += 2 + (this.activeTowers.some(t => t.wordData.category === "heal") ? 1 : 0);
+      if (healing) this.baseHp = Math.min(this.maxBaseHp, this.baseHp + healing);
       sound.playWaveClear();
       this.updateTopBar();
 
@@ -621,7 +770,11 @@ class HangulTDApp {
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // 0. Draw Grass Texture Background
-    if (this.grassPattern) {
+    if (this.imgSanctuary.complete && this.imgSanctuary.naturalWidth) {
+      ctx.drawImage(this.imgSanctuary, 0, 0, this.canvas.width, this.canvas.height);
+      ctx.fillStyle = "rgba(8, 11, 24, 0.22)";
+      ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    } else if (this.grassPattern) {
       ctx.fillStyle = this.grassPattern;
       ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     } else {
@@ -629,48 +782,8 @@ class HangulTDApp {
       ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    // 1. Draw Winding Dirt Path Road
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    // Outer dark dirt border
-    ctx.strokeStyle = "#2b1a0e";
-    ctx.lineWidth = 46;
-    ctx.beginPath();
-    ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
-    for (let i = 1; i < this.pathPoints.length; i++) {
-      ctx.lineTo(this.pathPoints[i].x, this.pathPoints[i].y);
-    }
-    ctx.stroke();
-
-    // Inner textured dirt path
-    ctx.strokeStyle = this.roadPattern || "#b3824f";
-    ctx.lineWidth = 38;
-    ctx.beginPath();
-    ctx.moveTo(this.pathPoints[0].x, this.pathPoints[0].y);
-    for (let i = 1; i < this.pathPoints.length; i++) {
-      ctx.lineTo(this.pathPoints[i].x, this.pathPoints[i].y);
-    }
-    ctx.stroke();
-
-    // 2. Draw Spawn & Base
-    ctx.fillStyle = "#ef4444";
-    ctx.beginPath();
-    ctx.arc(60, 100, 22, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 12px 'NeoDunggeunmo', monospace";
-    ctx.textAlign = "center";
-    ctx.fillText("차원의 문", 60, 140);
-
-    ctx.fillStyle = "#06b6d4";
-    ctx.beginPath();
-    ctx.arc(60, 300, 22, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText("활자 본진", 60, 340);
-
-    // 3. Draw Tower Slots
+    // The sanctuary artwork already contains the road, portal and core.
+    // Draw only interactive tower state over its four engraved circles.
     this.slots.forEach((slot, idx) => {
       const tower = this.activeTowers[idx];
 
@@ -780,11 +893,11 @@ class HangulTDApp {
 
   openModal(contentHtml) {
     this.modalContent.innerHTML = contentHtml;
-    this.modalOverlay.classList.remove("hidden");
+    this.modalOverlay.style.display = "flex";
   }
 
   closeModal() {
-    this.modalOverlay.classList.add("hidden");
+    this.modalOverlay.style.display = "none";
     this.modalContent.innerHTML = "";
   }
 
@@ -792,6 +905,7 @@ class HangulTDApp {
     sound.playTileClick();
     const w = tower.wordData || {};
     const syl = tower.syllable;
+    const synergyHtml = tower.synergies?.length ? `<div class="tower-effect-box">✨ 활성 시너지: ${[...new Set(tower.synergies)].join(", ")}</div>` : "";
     const tierBadge = tower.tier === 3 ? "⭐⭐⭐ 신화 단어" : (tower.tier === 2 ? "⭐⭐ 상위 단어" : "⭐ 기본 활자");
 
     this.openModal(`
@@ -810,6 +924,7 @@ class HangulTDApp {
           <h4>📜 고유 활자 효과</h4>
           <p>${w.desc || "사전에 등록되지 않은 미지의 활자입니다. 기본 활자 탄환을 발사합니다."}</p>
         </div>
+        ${synergyHtml}
       </div>
     `);
 
@@ -827,6 +942,7 @@ class HangulTDApp {
       let cost = 10;
       if (rarity === "super_rare") cost = 25;
       else if (rarity === "rare") cost = 18;
+      if (this.hasRelic("relic_merchant_coupon")) cost = Math.ceil(cost * 0.8);
 
       stock.push({
         char: pick,
@@ -913,7 +1029,7 @@ class HangulTDApp {
         btn.addEventListener("click", (e) => {
           const idx = parseInt(e.currentTarget.getAttribute("data-idx"), 10);
           const item = stock[idx];
-          if (!item.sold && this.gold >= item.cost && this.jamoList.length < 15) {
+          if (!item.sold && this.gold >= item.cost && this.jamoList.length < 30) {
             this.gold -= item.cost;
             item.sold = true;
             this.jamoList.push(item.char);
@@ -969,6 +1085,7 @@ class HangulTDApp {
       this.maxBaseHp += 10;
       this.baseHp = Math.min(this.baseHp + 10, this.maxBaseHp);
     }
+    this.renderBelt();
   }
 
   openLexiconModal() {
@@ -1008,13 +1125,43 @@ class HangulTDApp {
     this.openModal(`
       <div class="modal-box lexicon-modal">
         <div class="modal-header">
-          <h3>📖 활자 대도감 (달성률: ${discovered.length}/${allWords.length} [${rate}%])</h3>
+          <h3>📖 연성 비급 (달성률: ${discovered.length}/${allWords.length} [${rate}%])</h3>
           <button class="btn-modal-close" id="btn-modal-close">✖</button>
         </div>
+        <section class="jamo-rules" aria-label="자모 합성 규칙">
+          <strong>🧩 자모 합성 규칙</strong>
+          ${JAMO_RULES.map(rule => `<span>${rule}</span>`).join("")}
+        </section>
         <div class="lexicon-grid">${cardsHtml}</div>
       </div>
     `);
 
+    document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
+  }
+
+  openLoreModal() {
+    sound.playTileClick();
+    this.openModal(`
+      <article class="modal-box lore-modal">
+        <div class="modal-header">
+          <h3>⚗️ 언어의 연금술사</h3>
+          <button class="btn-modal-close" id="btn-modal-close" aria-label="닫기">✖</button>
+        </div>
+        <p class="lore-lead">소리와 글자를 결합하여 만물을 연성하는 타워 디펜스</p>
+        <div class="lore-scroll">
+          <h4>현자의 핵이 폭주했다</h4>
+          <p>세상의 모든 것은 자음과 모음으로 이루어져 있습니다. 실패한 연금 부산물과 키메라가 핵을 삼키려 몰려오자, 마지막 언어 연성술사는 자모를 엮어 연성 탑을 세웁니다.</p>
+          <h4>연성의 여정</h4>
+          <ol>
+            <li><b>연구소 앞뜰</b> — 물·불·활로 연성의 기초를 익힙니다.</li>
+            <li><b>버려진 바위 광산</b> — 돌·칼·벽으로 단단한 적을 분쇄합니다.</li>
+            <li><b>천공의 연금 성채</b> — 벌·얼음·북으로 복합 방어선을 만듭니다.</li>
+            <li><b>혼돈의 도가니</b> — 누더기 괴물을 쓰러뜨리고 빛과 별을 연성합니다.</li>
+          </ol>
+          <p class="lore-quote">“어려운 말은 필요 없어. 뜨거우면 불이고, 막아서면 벽이지!”</p>
+        </div>
+      </article>
+    `);
     document.getElementById("btn-modal-close").addEventListener("click", () => this.closeModal());
   }
 
@@ -1068,7 +1215,7 @@ class HangulTDApp {
       document.querySelectorAll(".btn-reward-choice").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const charStr = e.currentTarget.getAttribute("data-char");
-          if (charStr && this.jamoList.length < 15) {
+          if (charStr && this.jamoList.length < 30) {
             this.jamoList.push(charStr);
             sound.playWordCrafted();
             this.renderBelt();

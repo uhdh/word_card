@@ -1,0 +1,81 @@
+{
+  "Character": {
+    "total": 7,
+    "assets": [
+      {
+        "id": "fa0a1b10-6516-46ac-ba7b-aae307250686",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/ee62f33e-cf3a-401a-bf2c-536d00dfa486.png"
+      },
+      {
+        "id": "d7589e3e-3a54-40d9-93a7-d4c76071a986",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/0aa6798c-f6bf-4557-8750-848338c6a36b.png"
+      },
+      {
+        "id": "1ad52368-409e-4268-8885-c961f851c7c3",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/30439d5d-46cb-4bab-8b64-931f21485ef9.png"
+      },
+      {
+        "id": "c41a2826-f95e-416e-aab9-4138f3b5d380",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/382c0338-0659-48f1-ba6d-da7d4476b33f.png"
+      },
+      {
+        "id": "a2d38e9f-c967-4f1b-842b-190d6b6b9905",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/659a4f57-e33b-48ea-ba12-43d55cf4765f.png"
+      },
+      {
+        "id": "28e91bfd-e530-4a96-9470-e8d201f76617",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/6798bc17-c3a8-4e47-833d-0c778e15e6b3.png"
+      },
+      {
+        "id": "e4094b43-7111-4f97-80a5-25ca6409b838",
+        "style": "32px_pastel",
+        "category": "Character",
+        "image_url": "assets/a184b38b-0651-4258-98ec-3f1034182891.png"
+      }
+    ]
+  },
+  "Item": {
+    "total": 0,
+    "assets": []
+  },
+  "Magic Item": {
+    "total": 0,
+    "assets": []
+  },
+  "Gem & Jewelry": {
+    "total": 0,
+    "assets": []
+  },
+  "Weapon": {
+    "total": 0,
+    "assets": []
+  },
+  "Armor": {
+    "total": 0,
+    "assets": []
+  },
+  "Skill": {
+    "total": 0,
+    "assets": []
+  },
+  "Food": {
+    "total": 0,
+    "assets": []
+  },
+  "Material": {
+    "total": 0,
+    "assets": []
+  }
+}

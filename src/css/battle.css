@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background: linear-gradient(to bottom, rgba(15, 12, 25, 0.4) 0%, rgba(10, 8, 18, 0.78) 100%),
+              url('../../assets/battle/battle_bg_act1_grove.png') center bottom / cover no-repeat;
 }
 
 /* === ARENA TOP (ENEMIES & INTENT) === */

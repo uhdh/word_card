@@ -4,20 +4,22 @@ extends Control
 
 const SaveManager = preload("res://scripts/core/SaveManager.gd")
 
-@onready var hp_label: Label = $TopBar/Info/HpBox/HpLabel
-@onready var gold_label: Label = $TopBar/Info/GoldBox/GoldLabel
-@onready var wave_label: Label = $TopBar/Info/WaveBox/WaveLabel
+@onready var hp_label: Label = $TopBar/Row/Info/HpBox/HpLabel
+@onready var gold_label: Label = $TopBar/Row/Info/GoldBox/GoldLabel
+@onready var wave_label: Label = $TopBar/Row/Info/WaveBox/WaveLabel
 
-@onready var btn_start_wave: Button = $TopBar/Actions/BtnStartWave
-@onready var btn_reset: Button = $TopBar/Actions/BtnReset
-@onready var btn_save: Button = $TopBar/Actions/BtnSave
-@onready var btn_load: Button = $TopBar/Actions/BtnLoad
-@onready var btn_speed: Button = $TopBar/Actions/BtnSpeed
-@onready var btn_lexicon: Button = $TopBar/Actions/BtnLexicon
-@onready var btn_mute: Button = $TopBar/Actions/BtnMute
+@onready var btn_start_wave: Button = $TopBar/Row/Actions/BtnStartWave
+@onready var btn_reset: Button = $TopBar/Row/Actions/BtnReset
+@onready var btn_save: Button = $TopBar/Row/Actions/BtnSave
+@onready var btn_load: Button = $TopBar/Row/Actions/BtnLoad
+@onready var btn_speed: Button = $TopBar/Row/Actions/BtnSpeed
+@onready var btn_lexicon: Button = $TopBar/Row/Actions/BtnLexicon
+@onready var btn_lore: Button = $TopBar/Row/Actions/BtnLore
+@onready var btn_mute: Button = $TopBar/Row/Actions/BtnMute
 
 @onready var defense_field: DefenseField = $VBox/FieldContainer/DefenseField
 @onready var jamo_belt: JamoBelt = $VBox/JamoBelt
+@onready var relic_items: HBoxContainer = $VBox/RelicBar/Scroll/Items
 @onready var modal_layer: Control = $ModalLayer
 
 var current_speed_scale: float = 1.0
@@ -35,6 +37,7 @@ func _ready() -> void:
 	btn_load.pressed.connect(_on_load_pressed)
 	btn_speed.pressed.connect(_on_speed_pressed)
 	btn_lexicon.pressed.connect(_on_lexicon_pressed)
+	btn_lore.pressed.connect(_on_lore_pressed)
 	btn_mute.pressed.connect(_on_mute_pressed)
 
 	btn_load.disabled = not SaveManager.has_save_file()
@@ -52,6 +55,7 @@ func _ready() -> void:
 	if jamo_belt:
 		jamo_belt.parsed_towers_updated.connect(_on_parsed_towers_updated)
 		jamo_belt.jamo_changed.connect(_on_jamo_changed)
+	_render_relic_bar()
 
 	# Setup button tooltips / shortcut hints
 	btn_start_wave.tooltip_text = "단축키: [SPACE]"
@@ -66,8 +70,26 @@ func _ready() -> void:
 	else:
 		jamo_belt.render_belt()
 		_update_topbar_wave_label(1, 0)
+		call_deferred("_on_lore_pressed")
 
 	_is_loading_state = false
+
+func _render_relic_bar() -> void:
+	if not relic_items: return
+	for child in relic_items.get_children(): child.queue_free()
+	var title = Label.new()
+	title.text = "🎒 보유 유물 %d" % owned_relics.size()
+	title.add_theme_color_override("font_color", Color("f5d98b"))
+	relic_items.add_child(title)
+	for relic in owned_relics:
+		var icon = TextureRect.new()
+		icon.custom_minimum_size = Vector2(28, 28)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.tooltip_text = "%s\n%s" % [relic.get("name", ""), relic.get("desc", "")]
+		var path = relic.get("icon", "")
+		if ResourceLoader.exists(path): icon.texture = load(path)
+		relic_items.add_child(icon)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventKey) or not event.pressed or event.echo:
@@ -138,6 +160,9 @@ func _on_load_pressed() -> void:
 
 	if data.has("relics"):
 		owned_relics = data["relics"].duplicate()
+	defense_field.relic_ids = owned_relics.map(func(r): return r.get("id", ""))
+	jamo_belt.set_relics(defense_field.relic_ids)
+	_render_relic_bar()
 
 	jamo_belt.render_belt()
 	SoundEngine.play_victory()
@@ -172,7 +197,7 @@ func _on_gold_changed(current: int) -> void:
 func _on_wave_status_changed(act: int, max_act: int, wave: int, max_wave: int, is_running: bool) -> void:
 	_update_topbar_wave_label(act, wave)
 	btn_start_wave.disabled = is_running
-	btn_start_wave.text = "⚔️ 웨이브 진행 중..." if is_running else "▶ 다음 웨이브 시작"
+	btn_start_wave.text = "⚔️ 진행 중" if is_running else "▶ 웨이브"
 
 func _on_wave_cleared(act: int, wave: int, bonus_gold: int) -> void:
 	var final_bonus = bonus_gold
@@ -268,6 +293,9 @@ func _trigger_merchant_encounter(wave: int) -> void:
 
 func apply_relic_effect(relic_data: Dictionary) -> void:
 	owned_relics.append(relic_data)
+	defense_field.relic_ids = owned_relics.map(func(r): return r.get("id", ""))
+	jamo_belt.set_relics(defense_field.relic_ids)
+	_render_relic_bar()
 	var r_id = relic_data.get("id", "")
 
 	if r_id == "relic_golden_dice":
@@ -289,7 +317,7 @@ func _on_tower_info_requested(tower: WordTower) -> void:
 	if modal_scene != null:
 		var modal = modal_scene.instantiate()
 		modal_layer.add_child(modal)
-		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval)
+		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval, tower.synergy_labels)
 
 func _on_jamo_changed() -> void:
 	if not _is_loading_state:
@@ -303,7 +331,7 @@ func _on_start_wave_pressed() -> void:
 	if defense_field:
 		defense_field.start_next_wave()
 		btn_start_wave.disabled = true
-		btn_start_wave.text = "⚔️ 웨이브 진행 중..."
+		btn_start_wave.text = "⚔️ 진행 중"
 		SoundEngine.play_wave_start()
 
 func _on_speed_pressed() -> void:
@@ -328,6 +356,38 @@ func _on_lexicon_pressed() -> void:
 	var modal = load("res://scenes/LexiconModal.tscn").instantiate()
 	modal_layer.add_child(modal)
 
+func _on_lore_pressed() -> void:
+	if modal_layer.get_node_or_null("LoreModal"):
+		return
+	SoundEngine.play_tile_click()
+	var modal = PanelContainer.new()
+	modal.name = "LoreModal"
+	modal.custom_minimum_size = Vector2(620, 500)
+	var box = VBoxContainer.new()
+	box.add_theme_constant_override("separation", 12)
+	modal.add_child(box)
+	var title = Label.new()
+	title.text = "⚗️ 언어의 연금술사"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 24)
+	title.add_theme_color_override("font_color", Color("f5d98b"))
+	box.add_child(title)
+	var story = RichTextLabel.new()
+	story.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	story.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	story.text = "소리와 글자를 결합하여 만물을 연성하는 타워 디펜스\n\n현자의 핵이 폭주하면서 실패한 연금 부산물과 키메라가 연구소로 몰려옵니다. 마지막 언어 연성술사는 자모를 엮어 연성 탑을 세우고 세계를 지켜야 합니다.\n\n🌿 1장 연구소 앞뜰 — 물·불·활로 기초 연성\n⛏️ 2장 버려진 바위 광산 — 돌·칼·벽으로 적 분쇄\n🏰 3장 천공의 연금 성채 — 벌·얼음·북의 복합 방어\n🌋 최종장 혼돈의 도가니 — 누더기 괴물을 쓰러뜨리고 빛과 별 연성\n\n“어려운 말은 필요 없어. 뜨거우면 불이고, 막아서면 벽이지!”"
+	story.add_theme_font_size_override("font_size", 15)
+	story.fit_content = false
+	story.scroll_active = true
+	box.add_child(story)
+	var close = Button.new()
+	close.text = "연성을 시작한다"
+	close.custom_minimum_size = Vector2(180, 42)
+	close.pressed.connect(func(): modal.queue_free())
+	box.add_child(close)
+	modal_layer.add_child(modal)
+	modal.position = (get_viewport().get_visible_rect().size - modal.custom_minimum_size) * 0.5
+
 func _on_mute_pressed() -> void:
 	var is_muted = SoundEngine.toggle_mute()
 	btn_mute.text = "🔇" if is_muted else "🔊"
@@ -345,6 +405,7 @@ func start_new_game() -> void:
 		child.queue_free()
 
 	if defense_field:
+		defense_field.first_magic_circle_pending = true
 		defense_field.base_hp = 20
 		defense_field.max_base_hp = 20
 		defense_field.gold = 30
@@ -357,6 +418,9 @@ func start_new_game() -> void:
 
 	reroll_dice = 3
 	owned_relics.clear()
+	defense_field.relic_ids.clear()
+	jamo_belt.set_relics([])
+	_render_relic_bar()
 
 	if jamo_belt:
 		jamo_belt.jamo_list = ["ㅂ", "ㅜ", "ㄹ"]
@@ -364,7 +428,7 @@ func start_new_game() -> void:
 
 	btn_load.disabled = true
 	btn_start_wave.disabled = false
-	btn_start_wave.text = "▶ 다음 웨이브 시작"
+	btn_start_wave.text = "▶ 웨이브"
 
 	SoundEngine.play_word_crafted()
 	_is_loading_state = false

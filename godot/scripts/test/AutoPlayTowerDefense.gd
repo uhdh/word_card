@@ -25,6 +25,8 @@ func run_step(current_step: int) -> void:
 
 	match current_step:
 		1:
+			get_viewport().get_texture().get_image().save_png(OS.get_temp_dir().path_join("word_card_playtest.png"))
+			print(" -> 플레이 화면 캡처: %s" % OS.get_temp_dir().path_join("word_card_playtest.png"))
 			print("[Step 1] 🧩 1글자 스타팅 덱 [ㅂ, ㅜ, ㄹ] ➔ [불] 타워 자동 생성 검증")
 			belt.jamo_list.clear()
 			for c in ["ㅂ", "ㅜ", "ㄹ"]: belt.jamo_list.append(c)

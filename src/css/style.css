@@ -97,6 +97,7 @@ body {
 
 .btn-shop { background: #854d0e; border-color: #ca8a04; color: #fef08a; }
 .btn-lexicon { background: #4c1d95; border-color: #7c3aed; color: #ddd6fe; }
+.btn-lore { background: #164e63; border-color: #d6a84b; color: #fef3c7; }
 
 /* Field Main Canvas */
 .field-section {
@@ -149,6 +150,41 @@ body {
   display: flex;
   gap: 10px;
 }
+
+.tile-group-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px 6px;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  color: #7dd3fc;
+  font-size: 11px;
+  text-align: center;
+}
+
+.tile-group-tray.waiting { color: #94a3b8; border-style: dashed; }
+.tile-group-row { display: flex; gap: 6px; }
+
+.relic-hud {
+  position: absolute;
+  z-index: 5;
+  top: 8px;
+  right: 8px;
+  max-width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 7px;
+  overflow-x: auto;
+  background: rgba(15, 12, 27, 0.88);
+  border: 1px solid #6d5b89;
+  border-radius: 7px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.relic-hud img { width: 28px; height: 28px; image-rendering: pixelated; }
 
 .jamo-tile-box {
   width: 60px;
@@ -282,6 +318,25 @@ body {
   color: #cbd5e1;
   line-height: 1.5;
 }
+
+.jamo-rules {
+  display: grid;
+  gap: 5px;
+  padding: 10px 12px;
+  color: #d5f5ef;
+  background: #102b32;
+  border-left: 3px solid #d6a84b;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.jamo-rules span { display: block; }
+.lore-modal { border-color: #d6a84b; background: #111d2a; }
+.lore-lead { margin: 0; color: #f5d98b; text-align: center; }
+.lore-scroll { overflow-y: auto; line-height: 1.65; color: #dbeafe; }
+.lore-scroll h4 { margin: 14px 0 4px; color: #7dd3c7; }
+.lore-scroll ol { padding-left: 24px; }
+.lore-quote { color: #f5d98b; text-align: center; }
 
 /* Shop Modal */
 .npc-dialog {

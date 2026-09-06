@@ -11,6 +11,9 @@ var jamo_list: Array[String] = [
 ]
 
 var selected_index_for_swap: int = -1
+var relic_ids: Array = []
+var hint_index := 0
+var hint_button: Button
 
 @onready var scroll_container: ScrollContainer = $VBox/Scroll
 @onready var tiles_container: HBoxContainer = $VBox/Scroll/TilesContainer
@@ -72,7 +75,20 @@ class JamoTileBox extends PanelContainer:
 				belt.handle_insert_drag_drop(from_idx, target_insert_idx)
 
 func _ready() -> void:
+	hint_button = Button.new()
+	hint_button.text = "💡 초성 힌트"
+	hint_button.pressed.connect(_show_hint)
+	$VBox/Header.add_child(hint_button)
 	render_belt()
+
+func set_relics(ids: Array) -> void:
+	relic_ids = ids
+	if hint_button: hint_button.visible = "relic_initial_compass" in relic_ids
+
+func _show_hint() -> void:
+	var hint = WordSynergy.initial_hint(jamo_list, WordDatabase.get_all_words(), hint_index)
+	hint_index += 1
+	parsed_preview_label.text = "💡 힌트: %s" % hint if hint != "" else "만들 수 있는 단어가 없어요"
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	return data is Dictionary and data.get("type") == "jamo_tile"
@@ -80,11 +96,23 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if data is Dictionary and data.get("type") == "jamo_tile":
 		var from_idx = data.get("from_index", -1)
-		# 빈 공간이나 맨 끝에 드롭하면 맨 뒤로 이동
-		handle_insert_drag_drop(from_idx, jamo_list.size())
+		var target_idx = jamo_list.size()
+		var drop_x = get_global_mouse_position().x
+		for tile in _tile_boxes(tiles_container):
+			if drop_x < tile.get_global_rect().get_center().x:
+				target_idx = tile.tile_index
+				break
+		handle_insert_drag_drop(from_idx, target_idx)
+
+func _tile_boxes(node: Node) -> Array:
+	var result := []
+	for child in node.get_children():
+		if child is JamoTileBox: result.append(child)
+		else: result.append_array(_tile_boxes(child))
+	return result
 
 func add_jamo(c: String) -> void:
-	if jamo_list.size() < 15:
+	if jamo_list.size() < 30:
 		jamo_list.append(c)
 		render_belt()
 
@@ -118,6 +146,7 @@ func handle_drag_drop(from_idx: int, to_idx: int) -> void:
 	handle_insert_drag_drop(from_idx, to_idx)
 
 func render_belt() -> void:
+	set_relics(relic_ids)
 	for c in tiles_container.get_children():
 		c.queue_free()
 
@@ -137,8 +166,36 @@ func render_belt() -> void:
 	parsed_towers_updated.emit(parsed)
 	jamo_changed.emit()
 
-	# Render tile buttons with Drag & Drop Insertion support
+	var used := {}
+	for p in parsed.slice(0, 4):
+		var indices: Array = p["indices"].duplicate()
+		indices.sort()
+		for idx in indices: used[idx] = true
+		_add_tile_group("▼ %s 타워" % p["syllable"], indices)
+	var waiting := []
 	for idx in range(jamo_list.size()):
+		if not used.has(idx): waiting.append(idx)
+	_add_tile_group("대기 타일", waiting)
+
+func _add_tile_group(title_text: String, indices: Array) -> void:
+	if indices.is_empty(): return
+	var group = VBoxContainer.new()
+	group.add_theme_constant_override("separation", 3)
+	var title = Label.new()
+	title.text = title_text
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 11)
+	title.add_theme_color_override("font_color", Color("7dd3fc") if title_text != "대기 타일" else Color("94a3b8"))
+	group.add_child(title)
+	var row = HBoxContainer.new()
+	row.add_theme_constant_override("separation", 6)
+	group.add_child(row)
+	tiles_container.add_child(group)
+	for idx in indices:
+		row.add_child(_build_tile(idx))
+
+func _build_tile(idx: int) -> JamoTileBox:
+	if idx >= 0 and idx < jamo_list.size():
 		var char_str = jamo_list[idx]
 		var is_rotatable = HangulEngine.is_rotatable(char_str)
 
@@ -195,7 +252,8 @@ func render_belt() -> void:
 			)
 			vbox.add_child(btn_rot)
 
-		tiles_container.add_child(tile_box)
+		return tile_box
+	return null
 
 func _on_tile_clicked(idx: int) -> void:
 	if selected_index_for_swap == -1:

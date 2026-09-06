@@ -2,7 +2,7 @@
 # 15종 기본 유효 자모(ㄱ,ㄴ,ㄷ,ㄹ,ㅁ,ㅂ,ㅅ,ㅇ,ㅈ / ㅏ,ㅓ,ㅗ,ㅜ,ㅡ,ㅣ)로 구성된 전체 단어 타워 DB
 extends Node
 
-const WORD_DATABASE: Dictionary = {
+var WORD_DATABASE: Dictionary = {
 	"굿": {
 		"word": "굿",
 		"name": "굿 (퇴마/영력 방출)",
@@ -1895,13 +1895,26 @@ const WORD_DATABASE: Dictionary = {
 	},
 }
 
-static func get_word_data(word: String) -> Dictionary:
+func _ready() -> void:
+	var file = FileAccess.open("res://assets/data/word_database_265.json", FileAccess.READ)
+	if file == null:
+		push_error("265종 연성 비급 데이터를 열 수 없습니다.")
+		return
+	var parsed = JSON.parse_string(file.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("265종 연성 비급 데이터가 올바르지 않습니다.")
+		return
+	WORD_DATABASE = parsed
+	for data in WORD_DATABASE.values():
+		data["icon"] = str(data.get("icon", "")).replace("./assets/", "res://assets/")
+
+func get_word_data(word: String) -> Dictionary:
 	return WORD_DATABASE.get(word, {})
 
-static func get_all_words() -> Array:
+func get_all_words() -> Array:
 	return WORD_DATABASE.values()
 
-static func get_words_by_category(cat: String) -> Array:
+func get_words_by_category(cat: String) -> Array:
 	var result = []
 	for w in WORD_DATABASE.values():
 		if w.get("category") == cat:

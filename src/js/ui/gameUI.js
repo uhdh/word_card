@@ -111,6 +111,16 @@ export class GameUI {
     const availableNodes = map.getAvailableNextNodes();
     const availableIds = new Set(availableNodes.map(n => n.id));
 
+    const NODE_ICONS = {
+      monster: './assets/map_ui/map_node_battle.png',
+      battle: './assets/map_ui/map_node_battle.png',
+      elite: './assets/map_ui/map_node_elite.png',
+      rest: './assets/map_ui/map_node_rest.png',
+      shop: './assets/map_ui/map_node_shop.png',
+      event: './assets/map_ui/map_node_event.png',
+      boss: './assets/map_ui/map_node_boss.png'
+    };
+
     let floorsHtml = '';
     map.floors.forEach((floor, fIdx) => {
       let nodesHtml = '';
@@ -124,9 +134,11 @@ export class GameUI {
         else if (isAvailable) stateClass = 'available';
         else if (isVisited) stateClass = 'visited';
 
+        const iconSrc = NODE_ICONS[node.type] || './assets/map_ui/map_node_battle.png';
+
         nodesHtml += `
           <div class="map-node ${stateClass}" data-node-id="${node.id}" title="${node.name}">
-            <span>${node.icon}</span>
+            <img class="node-icon-img" src="${iconSrc}" alt="${node.name}">
             <div class="node-tooltip">${node.name}</div>
           </div>
         `;
@@ -430,7 +442,9 @@ export class GameUI {
 
     mainView.innerHTML = `
       <div class="rest-container">
-        <div class="rest-campfire-icon">🔥</div>
+        <div class="rest-campfire-icon">
+          <img src="./assets/map_ui/map_node_rest.png" alt="활자의 모닥불" style="width: 90px; height: 90px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 0 16px rgba(255, 140, 0, 0.7));">
+        </div>
         <div>
           <h2 style="font-family: var(--font-serif); font-size: 24px; color: var(--border-gold);">활자의 모닥불</h2>
           <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">따뜻한 불가에서 숨을 고르며 다음 여정을 준비합니다.</p>
@@ -511,7 +525,8 @@ export class GameUI {
 
     mainView.innerHTML = `
       <div class="shop-container">
-        <div>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <img src="./assets/map_ui/map_node_shop.png" alt="방랑 고서 상인" style="width: 74px; height: 74px; object-fit: contain; image-rendering: pixelated; margin-bottom: 8px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));">
           <h2 style="font-family: var(--font-serif); font-size: 24px; color: var(--border-gold); text-align: center;">방랑 고서 상인</h2>
           <p style="color: var(--text-muted); font-size: 13px; text-align: center; margin-top: 4px;">"귀한 활자와 고대 비전의 서를 찾아오셨소?"</p>
         </div>

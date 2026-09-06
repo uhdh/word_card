@@ -13,12 +13,21 @@ var search_query: String = ""
 var all_words: Array = []
 var discovered_words: Array = []
 
+const JAMO_RULES := "🧩 자모 합성 규칙\n회전: ㄱ ↔ ㄴ · ㅏ → ㅜ → ㅓ → ㅗ · ㅡ ↔ ㅣ\n쌍자음: ㄱ+ㄱ=ㄲ · ㄷ+ㄷ=ㄸ · ㅂ+ㅂ=ㅃ · ㅅ+ㅅ=ㅆ · ㅈ+ㅈ=ㅉ\n겹모음: ㅗ+ㅏ=ㅘ · ㅗ+ㅣ=ㅚ · ㅜ+ㅓ=ㅝ · ㅜ+ㅣ=ㅟ · ㅡ+ㅣ=ㅢ\n파싱: 3글자 → 2글자 → 1글자 순으로 가장 긴 연성식 우선"
+
 func _ready() -> void:
 	all_words = WordDatabase.get_all_words()
 	discovered_words = SaveManager.get_discovered_words()
 
 	btn_close.pressed.connect(func(): queue_free())
 	search_edit.text_changed.connect(_on_search_changed)
+	var rules = Label.new()
+	rules.text = JAMO_RULES
+	rules.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	rules.add_theme_font_size_override("font_size", 11)
+	rules.add_theme_color_override("font_color", Color("d5f5ef"))
+	$Panel/VBox.add_child(rules)
+	$Panel/VBox.move_child(rules, tabs_container.get_index())
 
 	var filters = [
 		{"id": "all", "name": "전체 (%d/%d)" % [discovered_words.size(), all_words.size()]},

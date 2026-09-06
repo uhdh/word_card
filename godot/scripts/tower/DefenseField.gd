@@ -35,6 +35,19 @@ var word_tower_scene = preload("res://scenes/tower/WordTower.tscn")
 
 var tower_slots: Array[Node2D] = []
 var active_towers: Array[WordTower] = []
+var first_magic_circle_pending := true
+var relic_ids: Array = []
+
+func has_relic(id: String) -> bool:
+	return id in relic_ids
+
+const MAP_PATH_POINTS: Array[Vector2] = [
+	Vector2(46, 49), Vector2(784, 49), Vector2(784, 176),
+	Vector2(46, 176), Vector2(46, 178)
+]
+const MAP_SLOT_POINTS: Array[Vector2] = [
+	Vector2(193, 122), Vector2(385, 122), Vector2(545, 122), Vector2(705, 122)
+]
 
 const ACT_NAMES = {
 	1: "초원의 문자",
@@ -51,7 +64,18 @@ func _ready() -> void:
 	for child in tower_slots_container.get_children():
 		tower_slots.append(child)
 
-	# Setup Road Line from Path2D curve
+	resized.connect(_layout_sanctuary)
+	_layout_sanctuary()
+
+func _layout_sanctuary() -> void:
+	var map_scale := Vector2(size.x / 1024.0, size.y / 352.0)
+	var curve := Curve2D.new()
+	for point in MAP_PATH_POINTS:
+		curve.add_point(point * map_scale)
+	path_2d.curve = curve
+	for i in range(mini(tower_slots.size(), MAP_SLOT_POINTS.size())):
+		tower_slots[i].position = MAP_SLOT_POINTS[i] * map_scale
+
 	if path_2d and path_2d.curve:
 		var pts = path_2d.curve.get_baked_points()
 		if road_line: road_line.points = pts
@@ -167,7 +191,7 @@ func _spawn_enemy(enemy_data: Dictionary) -> void:
 	enemy.reached_base.connect(_on_enemy_reached_base)
 
 func _on_enemy_died(enemy: EnemyUnit) -> void:
-	gold += enemy.gold_reward
+	gold += enemy.gold_reward + (1 if has_relic("relic_bounty_coin") else 0)
 	gold_changed.emit(gold)
 	SoundEngine.play_coin()
 
@@ -185,6 +209,16 @@ func _on_wave_cleared() -> void:
 	var is_act_final = (current_wave >= MAX_WAVES_PER_ACT)
 	var bonus_gold = 30 if is_act_final else 15
 	gold += bonus_gold
+	if has_relic("relic_healing_incense"):
+		var extra = 1 if active_towers.any(func(t): return t.word_data.get("category") == "heal") else 0
+		base_hp = mini(max_base_hp, base_hp + 2 + extra)
+		base_hp_changed.emit(base_hp, max_base_hp)
+	for i in range(active_towers.size() - 1):
+		var pair = [active_towers[i].word_data.get("category"), active_towers[i + 1].word_data.get("category")]
+		if "defense" in pair and "heal" in pair:
+			base_hp = mini(max_base_hp, base_hp + 1)
+			base_hp_changed.emit(base_hp, max_base_hp)
+			break
 	gold_changed.emit(gold)
 	SoundEngine.play_victory()
 
@@ -214,9 +248,32 @@ func update_towers_from_parsed_list(parsed_list: Array) -> void:
 		
 		var tower = word_tower_scene.instantiate() as WordTower
 		slot_node.add_child(tower)
-		tower.setup_tower(item["syllable"], item["word_data"], self)
+		tower.setup_tower(item["syllable"], item["word_data"], self, first_magic_circle_pending)
+		if has_relic("relic_range_rune"):
+			tower.attack_range *= 1.15
+		first_magic_circle_pending = false
 		tower.tower_clicked.connect(func(t): tower_info_requested.emit(t))
 		active_towers.append(tower)
+	_apply_tower_synergies()
+
+func _apply_tower_synergies() -> void:
+	for i in range(active_towers.size() - 1):
+		var left = active_towers[i]
+		var right = active_towers[i + 1]
+		var a = left.word_data.get("category", "")
+		var b = right.word_data.get("category", "")
+		if a == "element" and b == "element":
+			left.damage_multiplier *= 1.15; right.damage_multiplier *= 1.15
+			left.synergy_labels.append("원소 공명"); right.synergy_labels.append("원소 공명")
+		if a == "weapon" and b in ["skill", "buff"]:
+			left.attack_interval *= 0.85; left.synergy_labels.append("전술 연계")
+		if b == "weapon" and a in ["skill", "buff"]:
+			right.attack_interval *= 0.85; right.synergy_labels.append("전술 연계")
+		if "defense" in [a, b] and "heal" in [a, b]:
+			left.synergy_labels.append("수호의 순환"); right.synergy_labels.append("수호의 순환")
+		if has_relic("relic_open_chime") and not WordSynergy.analyze(left.syllable)["has_final"] and not WordSynergy.analyze(right.syllable)["has_final"]:
+			left.attack_interval *= 0.88; right.attack_interval *= 0.88
+			left.synergy_labels.append("무받침 풍경"); right.synergy_labels.append("무받침 풍경")
 
 func get_enemies() -> Array:
 	var list = []

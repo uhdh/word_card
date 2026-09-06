@@ -62,7 +62,42 @@ const ALL_RELIC_POOL = [
 		"cost": 35,
 		"desc": "타워 공격 시 25% 확률로 2배 치명타",
 		"icon": "res://assets/relics/relic_crit_lens_32px_pastel.png"
-	}
+	},
+	{
+		"id": "relic_range_rune", "name": "천리안의 룬", "cost": 30,
+		"desc": "모든 타워의 공격 범위 +15%", "icon": "res://assets/relics/relic_magnifier_32px_pastel.png"
+	},
+	{
+		"id": "relic_bounty_coin", "name": "현상금 동전", "cost": 35,
+		"desc": "적 처치 시 골드 +1", "icon": "res://assets/relics/relic_crystal_32px_pastel.png"
+	},
+	{
+		"id": "relic_healing_incense", "name": "회복의 향로", "cost": 30,
+		"desc": "웨이브 종료 시 기지 HP 2 회복", "icon": "res://assets/relics/relic_gourd_32px_pastel.png"
+	},
+	{
+		"id": "relic_first_strike", "name": "선봉의 깃털", "cost": 35,
+		"desc": "각 타워의 첫 공격 피해 2배", "icon": "res://assets/relics/relic_feather_32px_pastel.png"
+	},
+	{
+		"id": "relic_three_syllable_seal", "name": "삼문자 인장", "cost": 40,
+		"desc": "3글자 타워 피해 +25%", "icon": "res://assets/relics/relic_seal_32px_pastel.png"
+	},
+	{
+		"id": "relic_merchant_coupon", "name": "상인의 할인패", "cost": 25,
+		"desc": "상점 자모 가격 20% 할인", "icon": "res://assets/relics/relic_scroll_32px_pastel.png"
+	},
+	{"id":"relic_initial_compass","name":"훈민정음의 나침반","cost":35,"desc":"현재 자모로 만들 수 있는 단어의 초성 힌트","icon":"res://assets/relics/relic_magnifier_32px_pastel.png"},
+	{"id":"relic_tense_hammer","name":"된소리 망치","cost":35,"desc":"된소리 초성 타워 피해 +25%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
+	{"id":"relic_final_weight","name":"종성의 무게추","cost":30,"desc":"받침 있는 타워 피해 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
+	{"id":"relic_open_feather","name":"민소리 깃털","cost":30,"desc":"받침 없는 타워 공격속도 +18%","icon":"res://assets/relics/relic_feather_32px_pastel.png"},
+	{"id":"relic_cluster_anvil","name":"겹받침 모루","cost":40,"desc":"겹받침 타워 피해 +35%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
+	{"id":"relic_vowel_crystal","name":"겹모음 수정","cost":35,"desc":"겹모음 타워 사거리 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
+	{"id":"relic_initial_drum","name":"첫소리 북","cost":40,"desc":"모든 음절의 초성이 같으면 피해 +25%","icon":"res://assets/relics/relic_gourd_32px_pastel.png"},
+	{"id":"relic_vowel_resonance","name":"모음 공명석","cost":35,"desc":"같은 모음이 반복되면 공격속도 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
+	{"id":"relic_consonant_ring","name":"자음 고리","cost":40,"desc":"받침과 다음 초성이 같으면 치명타 +20%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
+	{"id":"relic_balance_ink","name":"균형의 먹","cost":35,"desc":"자음과 모음 수가 같으면 피해·사거리 +10%","icon":"res://assets/relics/relic_scroll_32px_pastel.png"},
+	{"id":"relic_open_chime","name":"무받침 풍경","cost":35,"desc":"무받침 타워가 연속 배치되면 양쪽 공격속도 +12%","icon":"res://assets/relics/relic_gourd_32px_pastel.png"}
 ]
 
 func setup(p_gold: int, p_jamo_list: Array, p_owned_relics: Array) -> void:
@@ -84,6 +119,10 @@ func _generate_stock() -> void:
 		var cost = 10
 		if r == "super_rare": cost = 25
 		elif r == "rare": cost = 18
+		for relic in owned_relics:
+			if relic.get("id") == "relic_merchant_coupon":
+				cost = ceili(cost * 0.8)
+				break
 
 		shop_stock.append({
 			"char": pick,
@@ -144,7 +183,7 @@ func _update_ui() -> void:
 
 		var btn_buy = Button.new()
 		btn_buy.text = "품절" if item["sold"] else ("%d G" % item["cost"])
-		btn_buy.disabled = item["sold"] or (current_gold < item["cost"]) or (current_jamo_list.size() >= 15)
+		btn_buy.disabled = item["sold"] or (current_gold < item["cost"]) or (current_jamo_list.size() >= 30)
 		btn_buy.pressed.connect(_on_buy_item_pressed.bind(idx))
 		vbox.add_child(btn_buy)
 
@@ -223,7 +262,7 @@ func _update_ui() -> void:
 
 func _on_buy_item_pressed(idx: int) -> void:
 	var item = shop_stock[idx]
-	if not item["sold"] and current_gold >= item["cost"] and current_jamo_list.size() < 15:
+	if not item["sold"] and current_gold >= item["cost"] and current_jamo_list.size() < 30:
 		current_gold -= item["cost"]
 		item["sold"] = true
 		current_jamo_list.append(item["char"])

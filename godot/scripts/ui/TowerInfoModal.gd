@@ -22,7 +22,7 @@ func _ready() -> void:
 		)
 	SoundEngine.play_tile_click()
 
-func setup(data: Dictionary, word_str: String, p_range: float, p_interval: float) -> void:
+func setup(data: Dictionary, word_str: String, p_range: float, p_interval: float, synergies: Array = []) -> void:
 	var word_len = word_str.length()
 	var tier_name = "⭐ 1글자 기본 타워"
 	if word_len == 2: tier_name = "⭐⭐ 2글자 상위 타워"
@@ -52,6 +52,9 @@ func setup(data: Dictionary, word_str: String, p_range: float, p_interval: float
 
 	# Description
 	desc_label.text = data.get("desc", "기본 활자 탄환을 발사합니다.")
+
+	if not synergies.is_empty():
+		desc_label.text += "\n\n✨ 활성 시너지: " + ", ".join(synergies)
 
 	# Recipe
 	var recipe_str = get_jamo_recipe(word_str)
