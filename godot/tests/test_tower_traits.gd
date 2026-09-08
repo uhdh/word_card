@@ -18,6 +18,7 @@ func _ready() -> void:
 	_test_damage_over_time_applications_stack()
 	_test_projectile_types_use_image_assets()
 	_test_belt_separates_tower_tiles_and_shows_hint()
+	_test_initial_hint_only_cycles_longest_buildable_words()
 	_test_each_tower_slot_parses_only_its_tiles()
 	_test_tower_hover_shows_range_and_description()
 	if failures == 0:
@@ -135,6 +136,13 @@ func _test_belt_separates_tower_tiles_and_shows_hint() -> void:
 	check(trays.size() == 5, "Four tower trays and one waiting tray must be separate")
 	check(belt.hint_button.visible, "Initial hint must be available without a relic")
 	belt.free()
+
+
+func _test_initial_hint_only_cycles_longest_buildable_words() -> void:
+	var words = [{"word": "가"}, {"word": "가나"}]
+	var belt = ["ㄱ", "ㅏ", "ㄴ", "ㅏ"]
+	check(WordSynergy.initial_hint(belt, words, 0) == "ㄱㄴ", "Hint must reveal the longest buildable word")
+	check(WordSynergy.initial_hint(belt, words, 1) == "ㄱㄴ", "Hint cycling must not reveal a shorter word")
 
 
 func _test_each_tower_slot_parses_only_its_tiles() -> void:

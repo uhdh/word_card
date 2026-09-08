@@ -17,6 +17,13 @@ test('initial hint only reveals initials of a word buildable from the belt', () 
   assert.equal(getInitialHint(['ㅂ', 'ㅜ'], words), null);
 });
 
+test('initial hint only cycles through the longest buildable words', () => {
+  const words = [{ word: '가' }, { word: '가나' }];
+  const belt = ['ㄱ', 'ㅏ', 'ㄴ', 'ㅏ'];
+  assert.equal(getInitialHint(belt, words, 0), 'ㄱㄴ');
+  assert.equal(getInitialHint(belt, words, 1), 'ㄱㄴ');
+});
+
 test('jamo relics combine their conditional tower bonuses', () => {
   const bonus = getRelicBonuses('딱', ['relic_tense_hammer', 'relic_final_weight']);
   assert.equal(bonus.damageMultiplier, 1.5);

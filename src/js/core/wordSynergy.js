@@ -58,7 +58,8 @@ export function canBuildWord(word, belt) {
 export function getInitialHint(belt, words, offset = 0) {
   const candidates = words.filter(({ word }) => canBuildWord(word, belt)).sort((a, b) => b.word.length - a.word.length);
   if (!candidates.length) return null;
-  return [...candidates[offset % candidates.length].word].map(char => decomposeSyllable(char).chosung).join('');
+  const longest = candidates.filter(({ word }) => word.length === candidates[0].word.length);
+  return [...longest[offset % longest.length].word].map(char => decomposeSyllable(char).chosung).join('');
 }
 
 const RELICS = [

@@ -80,6 +80,7 @@ static func initial_hint(belt: Array, words: Array, offset: int) -> String:
 		if buildable: candidates.append(word)
 	if candidates.is_empty(): return ""
 	candidates.sort_custom(func(a, b): return a.length() > b.length())
+	candidates = candidates.filter(func(word): return word.length() == candidates[0].length())
 	var result := ""
 	for c in candidates[offset % candidates.size()]: result += HangulEngine.decompose_syllable(c)["chosung"]
 	return result
