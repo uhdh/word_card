@@ -8,6 +8,8 @@ signal reached_base(enemy: EnemyUnit, damage: int)
 
 @export var max_hp: float = 20.0
 var hp: float = 20.0
+var shield: float = 0.0
+var max_shield: float = 0.0
 @export var speed: float = 80.0
 @export var gold_reward: int = 5
 @export var enemy_name: String = "낱자 슬라임"
@@ -15,8 +17,7 @@ var hp: float = 20.0
 
 var slow_factor: float = 1.0
 var slow_timer: float = 0.0
-var burn_dps: float = 0.0
-var burn_timer: float = 0.0
+var burn_effects: Array[Dictionary] = []
 var is_dead: bool = false
 
 @onready var sprite: TextureRect = $Sprite
@@ -30,14 +31,19 @@ func _ready() -> void:
 		hp_bar.max_value = max_hp
 		hp_bar.value = hp
 
-func init_enemy(p_name: String, p_hp: float, p_speed: float, p_gold: int, icon_path: String) -> void:
+func init_enemy(p_name: String, p_hp: float, p_speed: float, p_gold: int, icon_path: String, p_shield: float = 0.0) -> void:
 	enemy_name = p_name
 	max_hp = p_hp
 	hp = p_hp
 	speed = p_speed
 	gold_reward = p_gold
+	shield = p_shield
+	max_shield = p_shield
 	if ResourceLoader.exists(icon_path) and sprite != null:
 		sprite.texture = load(icon_path)
+	if hp_bar:
+		hp_bar.max_value = max_hp + max_shield
+		hp_bar.value = hp + shield
 
 func _process(delta: float) -> void:
 	if is_dead:
@@ -49,12 +55,9 @@ func _process(delta: float) -> void:
 		if slow_timer <= 0.0:
 			slow_factor = 1.0
 
-	# Handle Burn DoT
-	if burn_timer > 0.0:
-		burn_timer -= delta
-		take_damage(burn_dps * delta, false)
-		if is_dead:
-			return
+	_tick_burn(delta)
+	if is_dead:
+		return
 
 	# Move along path
 	var current_speed = speed * slow_factor
@@ -70,9 +73,11 @@ func take_damage(amount: float, show_hit_sound: bool = true) -> void:
 	if is_dead:
 		return
 
-	hp -= amount
+	var absorbed = minf(shield, amount)
+	shield -= absorbed
+	hp -= amount - absorbed
 	if hp_bar:
-		hp_bar.value = hp
+		hp_bar.value = hp + shield
 
 	if show_hit_sound:
 		SoundEngine.play_hit()
@@ -93,5 +98,14 @@ func apply_slow(factor: float, duration: float) -> void:
 	slow_timer = maxf(slow_timer, duration)
 
 func apply_burn(dps: float, duration: float) -> void:
-	burn_dps = maxf(burn_dps, dps)
-	burn_timer = maxf(burn_timer, duration)
+	burn_effects.append({"dps": dps, "remaining": duration})
+
+
+func _tick_burn(delta: float) -> void:
+	for i in range(burn_effects.size() - 1, -1, -1):
+		var effect := burn_effects[i]
+		var active_time := minf(delta, effect["remaining"])
+		take_damage(effect["dps"] * active_time, false)
+		effect["remaining"] -= delta
+		if effect["remaining"] <= 0.0:
+			burn_effects.remove_at(i)

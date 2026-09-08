@@ -14,39 +14,45 @@ var slow_duration: float = 0.0
 var burn_dps: float = 0.0
 var burn_duration: float = 0.0
 
-@onready var sprite: Label = $Sprite
+const TEXTURES = {
+	"slash": "res://assets/projectiles/proj_slash_32px_pastel.png",
+	"fire": "res://assets/projectiles/proj_fire_32px_pastel.png",
+	"ice": "res://assets/projectiles/proj_ice_32px_pastel.png",
+	"arrow": "res://assets/projectiles/proj_arrow_32px_pastel.png",
+	"lightning": "res://assets/projectiles/proj_lightning_32px_pastel.png",
+	"bullet": "res://assets/projectiles/proj_magic_32px_pastel.png"
+}
+
+@onready var sprite: Sprite2D = $Sprite
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
-func setup(p_target: EnemyUnit, p_damage: float, p_type: String = "bullet") -> void:
+func setup(p_target: EnemyUnit, p_damage: float, p_type: String = "bullet", p_trait: String = "balanced") -> void:
 	target = p_target
 	damage = p_damage
 	if target != null:
 		target_pos = target.global_position
+	sprite.texture = load(TEXTURES.get(p_type, TEXTURES["bullet"]))
 
 	match p_type:
 		"slash":
-			sprite.text = "🗡️"
 			speed = 450.0
-		"fire":
-			sprite.text = "🔥"
-			is_aoe = true
-			aoe_radius = 70.0
-			burn_dps = damage * 0.4
-			burn_duration = 2.0
 		"ice":
-			sprite.text = "❄️"
 			slow_factor = 0.5
 			slow_duration = 2.5
 		"arrow":
-			sprite.text = "🏹"
 			speed = 500.0
 		"lightning":
-			sprite.text = "⚡"
 			speed = 600.0
-		_:
-			sprite.text = "✨"
+
+	if p_trait == "damage_over_time":
+		damage = p_damage * 0.25
+		burn_duration = 3.0
+		burn_dps = p_damage * 0.75 / burn_duration
+	elif p_trait == "control":
+		slow_factor = 0.8
+		slow_duration = 1.5
 
 func _process(delta: float) -> void:
 	if is_instance_valid(target) and not target.is_dead:

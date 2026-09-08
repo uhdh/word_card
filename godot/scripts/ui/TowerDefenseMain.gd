@@ -153,6 +153,12 @@ func _on_load_pressed() -> void:
 	if data.has("current_wave"):
 		defense_field.current_wave = int(data["current_wave"])
 
+	if data.has("unlocked_slots"):
+		defense_field.unlocked_slot_count = int(data["unlocked_slots"])
+		defense_field._update_slot_lock_visuals()
+	jamo_belt.set_unlocked_slot_count(defense_field.unlocked_slot_count)
+	jamo_belt.restore_assignments(data.get("slot_assignments", []))
+
 	_update_topbar_wave_label(defense_field.current_act, defense_field.current_wave)
 
 	if data.has("reroll_dice"):
@@ -184,7 +190,9 @@ func save_game_state() -> void:
 		defense_field.current_wave,
 		reroll_dice,
 		owned_relics,
-		defense_field.current_act
+		defense_field.current_act,
+		defense_field.unlocked_slot_count,
+		jamo_belt.slot_assignments
 	)
 	btn_load.disabled = false
 
@@ -200,6 +208,8 @@ func _on_wave_status_changed(act: int, max_act: int, wave: int, max_wave: int, i
 	btn_start_wave.text = "⚔️ 진행 중" if is_running else "▶ 웨이브"
 
 func _on_wave_cleared(act: int, wave: int, bonus_gold: int) -> void:
+	jamo_belt.set_unlocked_slot_count(defense_field.unlocked_slot_count)
+	jamo_belt.render_belt()
 	var final_bonus = bonus_gold
 	if has_relic("relic_merchant_pouch"):
 		final_bonus = int(bonus_gold * 1.5)
@@ -278,9 +288,7 @@ func _trigger_merchant_encounter(wave: int) -> void:
 		modal.jamo_removed.connect(func(idx: int, cost: int):
 			defense_field.gold -= cost
 			defense_field.gold_changed.emit(defense_field.gold)
-			if idx >= 0 and idx < jamo_belt.jamo_list.size():
-				jamo_belt.jamo_list.remove_at(idx)
-				jamo_belt.render_belt()
+			jamo_belt.remove_jamo(idx)
 			save_game_state()
 		)
 
@@ -412,6 +420,8 @@ func start_new_game() -> void:
 		defense_field.current_act = 1
 		defense_field.current_wave = 0
 		defense_field.is_wave_running = false
+		defense_field.unlocked_slot_count = 3
+		defense_field._update_slot_lock_visuals()
 		defense_field.base_hp_changed.emit(20, 20)
 		defense_field.gold_changed.emit(30)
 		_update_topbar_wave_label(1, 0)
@@ -424,6 +434,8 @@ func start_new_game() -> void:
 
 	if jamo_belt:
 		jamo_belt.jamo_list = ["ㅂ", "ㅜ", "ㄹ"]
+		jamo_belt.slot_assignments.clear()
+		jamo_belt.set_unlocked_slot_count(3)
 		jamo_belt.render_belt()
 
 	btn_load.disabled = true

@@ -38,9 +38,11 @@ text = "자동 완성 타워: -"
 layout_mode = 2
 size_flags_vertical = 3
 vertical_scroll_mode = 0
+mouse_filter = 1
 
 [node name="TilesContainer" type="HBoxContainer" parent="VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 theme_override_constants/separation = 10
+mouse_filter = 2

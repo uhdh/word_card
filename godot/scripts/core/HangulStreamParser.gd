@@ -98,74 +98,49 @@ static func parse_jamo_stream(jamo_list: Array) -> Array:
 				"indices": all_indices
 			})
 
-	# 2단계: 추출된 음절들을 바탕으로 3글자 ➔ 2글자 ➔ 1글자 복합 단어 탐색 (Greedy Matching)
+	# 2단계: 남은 음절을 앞에서부터 최대 3글자씩 그리디하게 묶어 타워 하나로 구성.
+	# 사전에 있는 조합이면 실제 단어 데이터를, 없으면 글자 수에 비례한 "미지의 활자" 데이터를 사용.
 	var final_towers = []
 	var s_idx = 0
 	var total_s = raw_syllables.size()
 
 	while s_idx < total_s:
-		# 3글자 결합 확인
-		if s_idx + 2 < total_s:
-			var tri_word = raw_syllables[s_idx]["syllable"] + raw_syllables[s_idx + 1]["syllable"] + raw_syllables[s_idx + 2]["syllable"]
-			if WordDatabase.WORD_DATABASE.has(tri_word):
-				var data = WordDatabase.get_word_data(tri_word)
-				var combined_indices = []
-				combined_indices.append_array(raw_syllables[s_idx]["indices"])
-				combined_indices.append_array(raw_syllables[s_idx + 1]["indices"])
-				combined_indices.append_array(raw_syllables[s_idx + 2]["indices"])
+		var take = mini(3, total_s - s_idx)
+		var combo = ""
+		var combined_indices = []
+		for k in range(take):
+			combo += raw_syllables[s_idx + k]["syllable"]
+			combined_indices.append_array(raw_syllables[s_idx + k]["indices"])
 
-				final_towers.append({
-					"syllable": tri_word,
-					"word_data": data,
-					"indices": combined_indices,
-					"tier": 3
-				})
-				s_idx += 3
-				continue
-
-		# 2글자 결합 확인
-		if s_idx + 1 < total_s:
-			var bi_word = raw_syllables[s_idx]["syllable"] + raw_syllables[s_idx + 1]["syllable"]
-			if WordDatabase.WORD_DATABASE.has(bi_word):
-				var data = WordDatabase.get_word_data(bi_word)
-				var combined_indices = []
-				combined_indices.append_array(raw_syllables[s_idx]["indices"])
-				combined_indices.append_array(raw_syllables[s_idx + 1]["indices"])
-
-				final_towers.append({
-					"syllable": bi_word,
-					"word_data": data,
-					"indices": combined_indices,
-					"tier": 2
-				})
-				s_idx += 2
-				continue
-
-		# 1글자 단어
-		var mono_word = raw_syllables[s_idx]["syllable"]
-		var data = WordDatabase.get_word_data(mono_word)
+		var data = WordDatabase.get_word_data(combo)
 		if data.is_empty():
-			data = {
-				"word": mono_word,
-				"name": mono_word + " (미지의 활자)",
-				"category": "basic",
-				"is_unknown": true,
-				"cost": 1,
-				"damage": 4,
-				"desc": "사전에 등록되지 않은 미지의 활자입니다. 기본 활자 탄환을 발사합니다.",
-				"icon": "",
-				"sound": "playAttack"
-			}
+			data = make_unknown_word_data(combo, take)
 
 		final_towers.append({
-			"syllable": mono_word,
+			"syllable": combo,
 			"word_data": data,
-			"indices": raw_syllables[s_idx]["indices"],
-			"tier": 1
+			"indices": combined_indices,
+			"tier": take
 		})
-		s_idx += 1
+		s_idx += take
 
 	return final_towers
+
+# 사전에 없는 조합의 "미지의 활자" 데이터 생성. 실제 사전 단어 평균 데미지(1글자 11, 2글자 26, 3글자 39)보다
+# 낮게, 그리고 한 단계 아래 글자 수의 사전 단어보다는 높게 잡아 글자 수를 늘릴 유인은 남기되 사전 단어보다 약하게 함.
+static func make_unknown_word_data(combo: String, length: int) -> Dictionary:
+	var damage_by_length = {1: 4, 2: 15, 3: 28}
+	return {
+		"word": combo,
+		"name": combo + " (미지의 활자)",
+		"category": "basic",
+		"is_unknown": true,
+		"cost": length,
+		"damage": damage_by_length.get(length, 4),
+		"desc": "사전에 등록되지 않은 미지의 활자 조합입니다. 같은 글자 수의 사전 단어보다는 약한 기본 탄환을 발사합니다.",
+		"icon": "",
+		"sound": "playAttack"
+	}
 
 static func can_be_next_syllable_start(jamo_list: Array, idx: int) -> bool:
 	var n = jamo_list.size()

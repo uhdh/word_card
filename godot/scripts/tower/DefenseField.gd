@@ -19,7 +19,8 @@ var current_act: int = 1
 const MAX_ACTS: int = 3
 
 var current_wave: int = 0
-const MAX_WAVES_PER_ACT: int = 4
+const MAX_WAVES_PER_ACT: int = 6
+const SPAWN_INTERVAL := 0.65
 
 var is_wave_running: bool = false
 var spawn_queue: Array = []
@@ -38,15 +39,20 @@ var active_towers: Array[WordTower] = []
 var first_magic_circle_pending := true
 var relic_ids: Array = []
 
+const MAX_UNLOCKED_SLOTS: int = 4
+var unlocked_slot_count: int = 3
+
 func has_relic(id: String) -> bool:
 	return id in relic_ids
 
 const MAP_PATH_POINTS: Array[Vector2] = [
-	Vector2(46, 49), Vector2(784, 49), Vector2(784, 176),
-	Vector2(46, 176), Vector2(46, 178)
+	Vector2(0, 76), Vector2(256, 81), Vector2(320, 145), Vector2(344, 191),
+	Vector2(400, 279), Vector2(472, 265), Vector2(512, 172), Vector2(560, 88),
+	Vector2(656, 112), Vector2(696, 288), Vector2(784, 300), Vector2(840, 217),
+	Vector2(872, 165), Vector2(960, 110)
 ]
 const MAP_SLOT_POINTS: Array[Vector2] = [
-	Vector2(193, 122), Vector2(385, 122), Vector2(545, 122), Vector2(705, 122)
+	Vector2(255, 140), Vector2(405, 137), Vector2(575, 218), Vector2(760, 190)
 ]
 
 const ACT_NAMES = {
@@ -66,6 +72,15 @@ func _ready() -> void:
 
 	resized.connect(_layout_sanctuary)
 	_layout_sanctuary()
+	_update_slot_lock_visuals()
+
+func _update_slot_lock_visuals() -> void:
+	for i in range(tower_slots.size()):
+		var is_unlocked = i < unlocked_slot_count
+		tower_slots[i].modulate = Color(1, 1, 1, 1.0) if is_unlocked else Color(1, 1, 1, 0.35)
+		var lbl = tower_slots[i].get_node_or_null("SlotBg/SlotLabel")
+		if lbl:
+			lbl.text = ("%d번 슬롯" % (i + 1)) if is_unlocked else "🔒 잠김"
 
 func _layout_sanctuary() -> void:
 	var map_scale := Vector2(size.x / 1024.0, size.y / 352.0)
@@ -87,7 +102,7 @@ func _layout_sanctuary() -> void:
 func _process(delta: float) -> void:
 	if is_wave_running and not spawn_queue.is_empty():
 		spawn_timer += delta
-		if spawn_timer >= 1.1:
+		if spawn_timer >= SPAWN_INTERVAL:
 			spawn_timer = 0.0
 			var next_enemy_data = spawn_queue.pop_front()
 			_spawn_enemy(next_enemy_data)
@@ -122,71 +137,32 @@ func start_next_wave() -> void:
 	SoundEngine.play_summon()
 
 func _build_wave_monsters(act: int, wave: int) -> void:
-	match act:
-		1: # 제 1막: 초원의 문자
-			match wave:
-				1:
-					for i in range(5):
-						spawn_queue.append({"name": "낱자 슬라임", "hp": 16.0, "speed": 85.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_1_32px_pastel.png"})
-				2:
-					for i in range(3):
-						spawn_queue.append({"name": "낱자 슬라임", "hp": 18.0, "speed": 90.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_2_32px_pastel.png"})
-					for i in range(2):
-						spawn_queue.append({"name": "사나운 멧돼지", "hp": 30.0, "speed": 65.0, "gold": 8, "icon": "res://assets/monsters/monster_boar_1_32px_pastel.png"})
-				3:
-					for i in range(3):
-						spawn_queue.append({"name": "가시 넝쿨", "hp": 25.0, "speed": 75.0, "gold": 6, "icon": "res://assets/monsters/monster_vine_1_32px_pastel.png"})
-					for i in range(3):
-						spawn_queue.append({"name": "사나운 멧돼지", "hp": 35.0, "speed": 70.0, "gold": 8, "icon": "res://assets/monsters/monster_boar_2_32px_pastel.png"})
-				4: # 1막 보스
-					spawn_queue.append({"name": "서예 골렘 (1막 BOSS)", "hp": 150.0, "speed": 45.0, "gold": 35, "icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png"})
-					for i in range(4):
-						spawn_queue.append({"name": "낱자 슬라임", "hp": 20.0, "speed": 95.0, "gold": 4, "icon": "res://assets/monsters/monster_slime_1_32px_pastel.png"})
-
-		2: # 제 2막: 고대 유적의 어둠
-			match wave:
-				1:
-					for i in range(4):
-						spawn_queue.append({"name": "먹물 악령", "hp": 45.0, "speed": 65.0, "gold": 10, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-				2:
-					for i in range(3):
-						spawn_queue.append({"name": "유적 가고일", "hp": 55.0, "speed": 75.0, "gold": 12, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-					for i in range(2):
-						spawn_queue.append({"name": "먹물 악령", "hp": 50.0, "speed": 70.0, "gold": 10, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-				3:
-					for i in range(4):
-						spawn_queue.append({"name": "유적 가고일", "hp": 65.0, "speed": 80.0, "gold": 14, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-					for i in range(2):
-						spawn_queue.append({"name": "사나운 멧돼지", "hp": 60.0, "speed": 70.0, "gold": 10, "icon": "res://assets/monsters/monster_boar_2_32px_pastel.png"})
-				4: # 2막 보스
-					spawn_queue.append({"name": "활자 사서 리치 (2막 BOSS)", "hp": 260.0, "speed": 42.0, "gold": 50, "icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png"})
-					for i in range(4):
-						spawn_queue.append({"name": "먹물 악령", "hp": 40.0, "speed": 80.0, "gold": 8, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-
-		3: # 제 3막: 차원의 심연 (최종막)
-			match wave:
-				1:
-					for i in range(5):
-						spawn_queue.append({"name": "차원 공허 괴수", "hp": 80.0, "speed": 75.0, "gold": 15, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-				2:
-					for i in range(4):
-						spawn_queue.append({"name": "심연의 드래곤", "hp": 105.0, "speed": 70.0, "gold": 18, "icon": "res://assets/monsters/monster_boar_2_32px_pastel.png"})
-					for i in range(2):
-						spawn_queue.append({"name": "차원 공허 괴수", "hp": 90.0, "speed": 80.0, "gold": 15, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-				3:
-					for i in range(5):
-						spawn_queue.append({"name": "종말의 파괴수", "hp": 125.0, "speed": 65.0, "gold": 20, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
-				4: # 최종 보스
-					spawn_queue.append({"name": "언어의 파괴자: 보이드 드래곤 (FINAL BOSS)", "hp": 450.0, "speed": 38.0, "gold": 100, "icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png"})
-					for i in range(5):
-						spawn_queue.append({"name": "차원 공허 괴수", "hp": 70.0, "speed": 90.0, "gold": 12, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"})
+	var hp = [[8.0, 6.0, 12.0, 8.0, 5.0], [30.0, 20.0, 40.0, 30.0, 15.0], [45.0, 30.0, 55.0, 40.0, 22.0]][act - 1]
+	var normal = {"name": "%d막 침략자" % act, "type": "normal", "hp": hp[0], "speed": 75.0 + act * 5.0, "gold": 1, "icon": "res://assets/monsters/monster_spirit_1_32px_pastel.png"}
+	var fast = {"name": "%d막 질풍병" % act, "type": "fast", "hp": hp[1], "speed": 145.0 + act * 10.0, "gold": 1, "icon": "res://assets/monsters/monster_slime_2_32px_pastel.png"}
+	var armored = {"name": "%d막 중갑병" % act, "type": "armored", "hp": hp[2], "shield": hp[3], "speed": 55.0 + act * 3.0, "gold": 2, "icon": "res://assets/monsters/monster_boar_2_32px_pastel.png"}
+	var swarm = {"name": "%d막 군집 잡몹" % act, "type": "swarm", "hp": hp[4], "speed": 95.0 + act * 5.0, "gold": 1, "icon": "res://assets/monsters/monster_slime_1_32px_pastel.png"}
+	var wave_counts = [
+		[[6, 0, 1], [6, 2, 2], [13, 0, 0], [8, 4, 4], [18, 0, 0], [8, 3, 3]],
+		[[8, 2, 2], [10, 3, 3], [20, 0, 0], [12, 6, 6], [28, 0, 0], [10, 5, 4]],
+		[[10, 3, 3], [12, 4, 4], [24, 0, 0], [14, 7, 7], [32, 0, 0], [12, 6, 5]]
+	]
+	var counts = wave_counts[act - 1][wave - 1]
+	if wave in [3, 5]:
+		for i in range(counts[0]): spawn_queue.append(swarm.duplicate())
+		return
+	if wave == MAX_WAVES_PER_ACT:
+		spawn_queue.append({"name": "%d막 우두머리" % act, "type": "boss", "hp": [150.0, 260.0, 450.0][act - 1], "speed": 40.0, "gold": [15, 22, 30][act - 1], "icon": "res://assets/monsters/monster_golem_boss_1_32px_pastel.png"})
+	for i in range(counts[0]): spawn_queue.append(normal.duplicate())
+	for i in range(counts[1]): spawn_queue.append(fast.duplicate())
+	for i in range(counts[2]): spawn_queue.append(armored.duplicate())
 
 func _spawn_enemy(enemy_data: Dictionary) -> void:
 	if enemy_unit_scene == null or path_2d == null:
 		return
 	var enemy = enemy_unit_scene.instantiate() as EnemyUnit
 	path_2d.add_child(enemy)
-	enemy.init_enemy(enemy_data["name"], enemy_data["hp"], enemy_data["speed"], enemy_data["gold"], enemy_data["icon"])
+	enemy.init_enemy(enemy_data["name"], enemy_data["hp"], enemy_data["speed"], enemy_data["gold"], enemy_data["icon"], enemy_data.get("shield", 0.0))
 	enemy.died.connect(_on_enemy_died)
 	enemy.reached_base.connect(_on_enemy_reached_base)
 
@@ -202,12 +178,19 @@ func _on_enemy_reached_base(enemy: EnemyUnit, dmg: int) -> void:
 	if base_hp <= 0:
 		game_over.emit(false)
 
+func _wave_clear_bonus() -> int:
+	return 20 if current_wave >= MAX_WAVES_PER_ACT else 10
+
 func _on_wave_cleared() -> void:
 	is_wave_running = false
 	wave_status_changed.emit(current_act, MAX_ACTS, current_wave, MAX_WAVES_PER_ACT, false)
-	
+
+	if unlocked_slot_count < mini(MAX_UNLOCKED_SLOTS, tower_slots.size()):
+		unlocked_slot_count += 1
+		_update_slot_lock_visuals()
+
 	var is_act_final = (current_wave >= MAX_WAVES_PER_ACT)
-	var bonus_gold = 30 if is_act_final else 15
+	var bonus_gold = _wave_clear_bonus()
 	gold += bonus_gold
 	if has_relic("relic_healing_incense"):
 		var extra = 1 if active_towers.any(func(t): return t.word_data.get("category") == "heal") else 0
@@ -240,8 +223,9 @@ func update_towers_from_parsed_list(parsed_list: Array) -> void:
 		var lbl = slot_node.get_node_or_null("SlotBg/SlotLabel")
 		if lbl: lbl.visible = true
 
-	for i in range(mini(parsed_list.size(), tower_slots.size())):
+	for i in range(mini(parsed_list.size(), unlocked_slot_count)):
 		var item = parsed_list[i]
+		if item.is_empty(): continue
 		var slot_node = tower_slots[i]
 		var lbl = slot_node.get_node_or_null("SlotBg/SlotLabel")
 		if lbl: lbl.visible = false

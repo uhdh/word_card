@@ -19,6 +19,13 @@ var attack_count := 0
 var damage_multiplier := 1.0
 var crit_chance := 0.0
 var synergy_labels: Array = []
+var base_damage := 4.0
+var trait_id := "balanced"
+var is_hovered := false
+const TRAIT_NAMES := {
+	"balanced": "균형", "sniper": "저격", "damage_over_time": "지속 피해",
+	"splash": "폭발", "rapid": "연사", "pierce": "관통", "control": "제어", "chain": "연쇄"
+}
 
 @onready var icon_container: CenterContainer = $IconContainer
 @onready var icon_sprite: TextureRect = $IconContainer/IconSprite
@@ -34,6 +41,14 @@ func _ready() -> void:
 			SoundEngine.play_tile_click()
 			tower_clicked.emit(self)
 		)
+		btn_select.mouse_entered.connect(_set_hovered.bind(true))
+		btn_select.mouse_exited.connect(_set_hovered.bind(false))
+
+func _set_hovered(value: bool) -> void:
+	is_hovered = value
+	if value:
+		btn_select.tooltip_text = "%s\n%s\n공격력 %.1f | 사거리 %d | 공격 간격 %.2f초" % [syllable, word_data.get("desc", ""), damage_per_attack() * damage_multiplier, int(attack_range), attack_interval]
+	queue_redraw()
 
 func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node, show_magic_circle := false) -> void:
 	syllable = p_syllable
@@ -59,42 +74,35 @@ func setup_tower(p_syllable: String, p_data: Dictionary, p_field: Node, show_mag
 		if icon_sprite:
 			icon_sprite.texture = load(word_data["icon"])
 
-	# Category-based stats
+	attack_range = 150.0
+	attack_interval = 0.8
+	base_damage = [4.0, 15.0, 28.0][clampi(syllable.length(), 1, 3) - 1]
+	if not word_data.get("is_unknown", false):
+		base_damage *= 1.25
+
+	# Category traits keep the same long-term damage budget.
 	var cat = word_data.get("category", "weapon")
 	match cat:
 		"weapon":
-			attack_range = 150.0
-			attack_interval = 0.65
-		"element":
-			attack_range = 160.0
-			attack_interval = 0.9
-		"summon":
-			attack_range = 140.0
-			attack_interval = 1.0
+			trait_id = "sniper"
+			attack_range = 240.0
+			attack_interval = 1.2
+		"element", "nature":
+			trait_id = "damage_over_time"
+		"magic":
+			trait_id = "splash"
+		"summon", "buff":
+			trait_id = "rapid"
+			attack_interval = 0.4
 		"defense":
-			attack_range = 130.0
-			attack_interval = 0.95
+			trait_id = "pierce"
 		"heal":
-			attack_range = 145.0
-			attack_interval = 0.85
+			trait_id = "control"
 		"skill":
-			attack_range = 150.0
-			attack_interval = 0.8
-
-	# Specific word mechanics
-	if word_data.get("rapid_fire", false):
-		attack_interval = 0.25
-	if word_data.has("range_bonus"):
-		attack_range += float(word_data["range_bonus"])
-
-	# Multi-syllable Tier Bonus
-	var word_len = syllable.length()
-	if word_len == 2:
-		attack_range += 30.0
-		attack_interval *= 0.85
-	elif word_len >= 3:
-		attack_range += 60.0
-		attack_interval *= 0.7
+			trait_id = "chain"
+		_:
+			trait_id = "balanced"
+	synergy_labels.append("특성: %s" % TRAIT_NAMES[trait_id])
 
 	var bonus = WordSynergy.bonuses(syllable, field_ref.relic_ids)
 	damage_multiplier *= bonus["damage"]
@@ -144,10 +152,7 @@ func find_target() -> EnemyUnit:
 	return best_target
 
 func attack_target(target: EnemyUnit) -> void:
-	var damage = word_data.get("damage", 4)
-	if damage <= 0:
-		damage = 4
-	damage *= damage_multiplier
+	var damage = damage_per_attack() * damage_multiplier
 	if field_ref.has_relic("relic_three_syllable_seal") and syllable.length() >= 3:
 		damage *= 1.25
 	if field_ref.has_relic("relic_first_strike") and attack_count == 0:
@@ -176,12 +181,55 @@ func attack_target(target: EnemyUnit) -> void:
 		SoundEngine.play_attack()
 
 	if projectile_scene != null and field_ref != null:
-		var proj = projectile_scene.instantiate() as Projectile
-		proj.global_position = global_position
-		field_ref.add_projectile(proj)
-		proj.setup(target, float(damage), proj_type)
+		var targets := _trait_targets(target)
+		var shares := damage_shares(targets.size(), damage)
+		for i in targets.size():
+			_fire_projectile(targets[i], shares[i], proj_type)
+
+
+func damage_per_attack() -> float:
+	match trait_id:
+		"sniper": return base_damage * 1.5
+		"rapid": return base_damage * 0.5
+		_: return base_damage
+
+
+func damage_shares(target_count: int, total_damage := -1.0) -> Array:
+	var count := clampi(target_count, 1, 3)
+	var share := (damage_per_attack() if total_damage < 0.0 else total_damage) / count
+	var result: Array = []
+	for i in count:
+		result.append(share)
+	return result
+
+
+func damage_over_time_parts() -> Array:
+	return [damage_per_attack() * 0.25, damage_per_attack() * 0.75]
+
+
+func _trait_targets(primary: EnemyUnit) -> Array[EnemyUnit]:
+	var result: Array[EnemyUnit] = [primary]
+	if trait_id not in ["splash", "pierce", "chain"]:
+		return result
+	for enemy in field_ref.get_enemies():
+		if result.size() >= 3:
+			break
+		if enemy == primary or not is_instance_valid(enemy) or enemy.is_dead:
+			continue
+		if global_position.distance_to(enemy.global_position) <= attack_range:
+			result.append(enemy)
+	return result
+
+
+func _fire_projectile(target: EnemyUnit, damage: float, proj_type: String) -> void:
+	var proj = projectile_scene.instantiate() as Projectile
+	proj.global_position = global_position
+	field_ref.add_projectile(proj)
+	proj.setup(target, damage, proj_type, trait_id)
 
 func _draw() -> void:
+	if is_hovered:
+		draw_arc(Vector2.ZERO, attack_range, 0, TAU, 48, Color(0.35, 0.9, 1.0, 0.8), 2.0)
 	# 사거리 원 시각화 (반투명 청록색)
 	if magic_circle_time_left > 0.0:
 		draw_arc(Vector2.ZERO, attack_range, 0, TAU, 32, Color(0.3, 0.8, 1.0, 0.35), 2.0)

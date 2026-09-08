@@ -12,7 +12,7 @@ static var _is_discovered_loaded: bool = false
 static func has_save_file() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
 
-static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = [], current_act: int = 1) -> bool:
+static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = [], current_act: int = 1, unlocked_slots: int = 3, slot_assignments: Array = []) -> bool:
 	var save_dict = {
 		"jamo_list": jamo_list,
 		"base_hp": base_hp,
@@ -22,6 +22,8 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 		"current_wave": current_wave,
 		"reroll_dice": reroll_dice,
 		"relics": relics,
+		"unlocked_slots": unlocked_slots,
+		"slot_assignments": slot_assignments,
 		"saved_at": Time.get_datetime_string_from_system()
 	}
 

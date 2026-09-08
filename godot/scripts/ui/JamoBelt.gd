@@ -14,6 +14,8 @@ var selected_index_for_swap: int = -1
 var relic_ids: Array = []
 var hint_index := 0
 var hint_button: Button
+var slot_assignments: Array[int] = []
+var unlocked_slot_count := 3
 
 @onready var scroll_container: ScrollContainer = $VBox/Scroll
 @onready var tiles_container: HBoxContainer = $VBox/Scroll/TilesContainer
@@ -72,7 +74,23 @@ class JamoTileBox extends PanelContainer:
 			var is_right_half = at_position.x > (size.x * 0.5)
 			var target_insert_idx = tile_index + (1 if is_right_half else 0)
 			if is_instance_valid(belt):
-				belt.handle_insert_drag_drop(from_idx, target_insert_idx)
+				belt.handle_insert_drag_drop(from_idx, target_insert_idx, belt.slot_assignments[tile_index])
+
+class JamoTray extends PanelContainer:
+	var belt: JamoBelt
+	var slot_index: int
+
+	func _init(p_belt: JamoBelt, p_slot_index: int) -> void:
+		belt = p_belt
+		slot_index = p_slot_index
+		mouse_filter = Control.MOUSE_FILTER_STOP
+		custom_minimum_size = Vector2(150, 112)
+
+	func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+		return data is Dictionary and data.get("type") == "jamo_tile" and (slot_index < 0 or slot_index < belt.unlocked_slot_count)
+
+	func _drop_data(_at_position: Vector2, data: Variant) -> void:
+		belt.move_jamo_to_slot(data.get("from_index", -1), slot_index)
 
 func _ready() -> void:
 	hint_button = Button.new()
@@ -83,7 +101,7 @@ func _ready() -> void:
 
 func set_relics(ids: Array) -> void:
 	relic_ids = ids
-	if hint_button: hint_button.visible = "relic_initial_compass" in relic_ids
+	if hint_button: hint_button.visible = true
 
 func _show_hint() -> void:
 	var hint = WordSynergy.initial_hint(jamo_list, WordDatabase.get_all_words(), hint_index)
@@ -95,14 +113,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if data is Dictionary and data.get("type") == "jamo_tile":
-		var from_idx = data.get("from_index", -1)
-		var target_idx = jamo_list.size()
-		var drop_x = get_global_mouse_position().x
-		for tile in _tile_boxes(tiles_container):
-			if drop_x < tile.get_global_rect().get_center().x:
-				target_idx = tile.tile_index
-				break
-		handle_insert_drag_drop(from_idx, target_idx)
+		move_jamo_to_slot(data.get("from_index", -1), -1)
 
 func _tile_boxes(node: Node) -> Array:
 	var result := []
@@ -114,7 +125,31 @@ func _tile_boxes(node: Node) -> Array:
 func add_jamo(c: String) -> void:
 	if jamo_list.size() < 30:
 		jamo_list.append(c)
+		slot_assignments.append(-1)
 		render_belt()
+
+func remove_jamo(index: int) -> void:
+	_normalize_assignments()
+	if index < 0 or index >= jamo_list.size(): return
+	jamo_list.remove_at(index)
+	slot_assignments.remove_at(index)
+	render_belt()
+
+func set_unlocked_slot_count(count: int) -> void:
+	unlocked_slot_count = clampi(count, 0, 4)
+	_normalize_assignments()
+	for i in range(slot_assignments.size()):
+		if slot_assignments[i] >= unlocked_slot_count: slot_assignments[i] = -1
+
+func restore_assignments(saved: Array) -> void:
+	slot_assignments.clear()
+	for value in saved: slot_assignments.append(int(value))
+	_normalize_assignments()
+	set_unlocked_slot_count(unlocked_slot_count)
+
+func _normalize_assignments() -> void:
+	while slot_assignments.size() < jamo_list.size(): slot_assignments.append(-1)
+	while slot_assignments.size() > jamo_list.size(): slot_assignments.pop_back()
 
 func rotate_first_available() -> void:
 	for i in range(jamo_list.size()):
@@ -124,12 +159,16 @@ func rotate_first_available() -> void:
 			render_belt()
 			break
 
-func handle_insert_drag_drop(from_idx: int, target_insert_idx: int) -> void:
+func handle_insert_drag_drop(from_idx: int, target_insert_idx: int, target_slot_override := -2) -> void:
+	_normalize_assignments()
 	if from_idx < 0 or from_idx >= jamo_list.size():
 		return
 
+	var target_slot = target_slot_override if target_slot_override != -2 else (slot_assignments[target_insert_idx] if target_insert_idx < slot_assignments.size() else -1)
 	var item = jamo_list[from_idx]
+	var assignment = slot_assignments[from_idx]
 	jamo_list.remove_at(from_idx)
+	slot_assignments.remove_at(from_idx)
 
 	# If moving from left to right, adjust index after removal
 	var final_insert_idx = target_insert_idx
@@ -138,6 +177,13 @@ func handle_insert_drag_drop(from_idx: int, target_insert_idx: int) -> void:
 
 	final_insert_idx = clampi(final_insert_idx, 0, jamo_list.size())
 	jamo_list.insert(final_insert_idx, item)
+	slot_assignments.insert(final_insert_idx, target_slot)
+	if target_slot >= 0 and not _slot_is_valid(target_slot):
+		jamo_list.remove_at(final_insert_idx)
+		slot_assignments.remove_at(final_insert_idx)
+		jamo_list.insert(from_idx, item)
+		slot_assignments.insert(from_idx, assignment)
+		return
 
 	SoundEngine.play_tile_click()
 	render_belt()
@@ -145,17 +191,56 @@ func handle_insert_drag_drop(from_idx: int, target_insert_idx: int) -> void:
 func handle_drag_drop(from_idx: int, to_idx: int) -> void:
 	handle_insert_drag_drop(from_idx, to_idx)
 
+func move_jamo_to_slot(from_idx: int, slot_index: int) -> bool:
+	_normalize_assignments()
+	if from_idx < 0 or from_idx >= jamo_list.size() or slot_index >= unlocked_slot_count: return false
+	var previous = slot_assignments[from_idx]
+	slot_assignments[from_idx] = slot_index
+	if slot_index >= 0 and not _slot_is_valid(slot_index):
+		slot_assignments[from_idx] = previous
+		return false
+	render_belt()
+	return true
+
+func _slot_indices(slot_index: int) -> Array:
+	var result := []
+	for i in range(slot_assignments.size()):
+		if slot_assignments[i] == slot_index: result.append(i)
+	return result
+
+func _slot_parse(slot_index: int) -> Array:
+	var chars := []
+	for index in _slot_indices(slot_index): chars.append(jamo_list[index])
+	return HangulStreamParser.parse_jamo_stream(chars)
+
+func _slot_is_valid(slot_index: int) -> bool:
+	var parsed = _slot_parse(slot_index)
+	if parsed.is_empty(): return true
+	if parsed.size() > 1: return false
+	return parsed[0]["indices"].size() == _slot_indices(slot_index).size()
+
+func parsed_slots() -> Array:
+	var parsed: Array = [{}, {}, {}, {}]
+	for slot_index in range(unlocked_slot_count):
+		var slot_parsed = _slot_parse(slot_index)
+		if slot_parsed.size() == 1 and slot_parsed[0]["indices"].size() == _slot_indices(slot_index).size():
+			var item = slot_parsed[0].duplicate(true)
+			item["indices"] = _slot_indices(slot_index)
+			parsed[slot_index] = item
+	return parsed
+
 func render_belt() -> void:
+	_normalize_assignments()
 	set_relics(relic_ids)
 	for c in tiles_container.get_children():
-		c.queue_free()
+		c.free()
 
-	# Parse current stream (with automatic sequence combination: ㄱ+ㄱ->ㄲ, ㅗ+ㅏ->ㅘ, etc.)
-	var parsed = HangulStreamParser.parse_jamo_stream(jamo_list)
+	var parsed = parsed_slots()
 
 	# Build preview text & discover newly formed words
 	var preview_words = []
 	for p in parsed:
+		if p.is_empty(): continue
 		var syl = p["syllable"]
 		preview_words.append("[%s 타워]" % syl)
 		SaveManager.discover_word(syl)
@@ -166,21 +251,23 @@ func render_belt() -> void:
 	parsed_towers_updated.emit(parsed)
 	jamo_changed.emit()
 
-	var used := {}
-	for p in parsed.slice(0, 4):
-		var indices: Array = p["indices"].duplicate()
-		indices.sort()
-		for idx in indices: used[idx] = true
-		_add_tile_group("▼ %s 타워" % p["syllable"], indices)
-	var waiting := []
-	for idx in range(jamo_list.size()):
-		if not used.has(idx): waiting.append(idx)
-	_add_tile_group("대기 타일", waiting)
+	for slot_index in range(4):
+		_add_tile_group("%d번 슬롯%s" % [slot_index + 1, " (잠김)" if slot_index >= unlocked_slot_count else ""], _slot_indices(slot_index), slot_index, slot_index >= unlocked_slot_count)
+	_add_tile_group("대기 타일", _slot_indices(-1), -1)
 
-func _add_tile_group(title_text: String, indices: Array) -> void:
-	if indices.is_empty(): return
+func _add_tile_group(title_text: String, indices: Array, slot_index := -1, locked := false) -> void:
+	var tray = JamoTray.new(self, slot_index)
+	tray.modulate = Color(1, 1, 1, 0.4) if locked else Color.WHITE
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color("182238")
+	style.border_color = Color("475569")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(6)
+	tray.add_theme_stylebox_override("panel", style)
 	var group = VBoxContainer.new()
+	group.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	group.add_theme_constant_override("separation", 3)
+	tray.add_child(group)
 	var title = Label.new()
 	title.text = title_text
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -188,9 +275,10 @@ func _add_tile_group(title_text: String, indices: Array) -> void:
 	title.add_theme_color_override("font_color", Color("7dd3fc") if title_text != "대기 타일" else Color("94a3b8"))
 	group.add_child(title)
 	var row = HBoxContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_theme_constant_override("separation", 6)
 	group.add_child(row)
-	tiles_container.add_child(group)
+	tiles_container.add_child(tray)
 	for idx in indices:
 		row.add_child(_build_tile(idx))
 

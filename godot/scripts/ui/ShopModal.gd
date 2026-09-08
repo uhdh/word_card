@@ -87,17 +87,17 @@ const ALL_RELIC_POOL = [
 		"id": "relic_merchant_coupon", "name": "상인의 할인패", "cost": 25,
 		"desc": "상점 자모 가격 20% 할인", "icon": "res://assets/relics/relic_scroll_32px_pastel.png"
 	},
-	{"id":"relic_initial_compass","name":"훈민정음의 나침반","cost":35,"desc":"현재 자모로 만들 수 있는 단어의 초성 힌트","icon":"res://assets/relics/relic_magnifier_32px_pastel.png"},
-	{"id":"relic_tense_hammer","name":"된소리 망치","cost":35,"desc":"된소리 초성 타워 피해 +25%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
-	{"id":"relic_final_weight","name":"종성의 무게추","cost":30,"desc":"받침 있는 타워 피해 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
-	{"id":"relic_open_feather","name":"민소리 깃털","cost":30,"desc":"받침 없는 타워 공격속도 +18%","icon":"res://assets/relics/relic_feather_32px_pastel.png"},
-	{"id":"relic_cluster_anvil","name":"겹받침 모루","cost":40,"desc":"겹받침 타워 피해 +35%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
-	{"id":"relic_vowel_crystal","name":"겹모음 수정","cost":35,"desc":"겹모음 타워 사거리 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
-	{"id":"relic_initial_drum","name":"첫소리 북","cost":40,"desc":"모든 음절의 초성이 같으면 피해 +25%","icon":"res://assets/relics/relic_gourd_32px_pastel.png"},
-	{"id":"relic_vowel_resonance","name":"모음 공명석","cost":35,"desc":"같은 모음이 반복되면 공격속도 +20%","icon":"res://assets/relics/relic_crystal_32px_pastel.png"},
-	{"id":"relic_consonant_ring","name":"자음 고리","cost":40,"desc":"받침과 다음 초성이 같으면 치명타 +20%","icon":"res://assets/relics/relic_seal_32px_pastel.png"},
-	{"id":"relic_balance_ink","name":"균형의 먹","cost":35,"desc":"자음과 모음 수가 같으면 피해·사거리 +10%","icon":"res://assets/relics/relic_scroll_32px_pastel.png"},
-	{"id":"relic_open_chime","name":"무받침 풍경","cost":35,"desc":"무받침 타워가 연속 배치되면 양쪽 공격속도 +12%","icon":"res://assets/relics/relic_gourd_32px_pastel.png"}
+	{"id":"relic_initial_compass","name":"훈민정음의 나침반","cost":35,"desc":"현재 자모로 만들 수 있는 단어의 초성 힌트","icon":"res://assets/relics/relic_initial_compass_32px_pastel.png"},
+	{"id":"relic_tense_hammer","name":"된소리 망치","cost":35,"desc":"된소리 초성 타워 피해 +25%","icon":"res://assets/relics/relic_tense_hammer_32px_pastel.png"},
+	{"id":"relic_final_weight","name":"종성의 무게추","cost":30,"desc":"받침 있는 타워 피해 +20%","icon":"res://assets/relics/relic_final_weight_32px_pastel.png"},
+	{"id":"relic_open_feather","name":"민소리 깃털","cost":30,"desc":"받침 없는 타워 공격속도 +18%","icon":"res://assets/relics/relic_open_feather_32px_pastel.png"},
+	{"id":"relic_cluster_anvil","name":"겹받침 모루","cost":40,"desc":"겹받침 타워 피해 +35%","icon":"res://assets/relics/relic_cluster_anvil_32px_pastel.png"},
+	{"id":"relic_vowel_crystal","name":"겹모음 수정","cost":35,"desc":"겹모음 타워 사거리 +20%","icon":"res://assets/relics/relic_vowel_crystal_32px_pastel.png"},
+	{"id":"relic_initial_drum","name":"첫소리 북","cost":40,"desc":"모든 음절의 초성이 같으면 피해 +25%","icon":"res://assets/relics/relic_initial_drum_32px_pastel.png"},
+	{"id":"relic_vowel_resonance","name":"모음 공명석","cost":35,"desc":"같은 모음이 반복되면 공격속도 +20%","icon":"res://assets/relics/relic_vowel_resonance_32px_pastel.png"},
+	{"id":"relic_consonant_ring","name":"자음 고리","cost":40,"desc":"받침과 다음 초성이 같으면 치명타 +20%","icon":"res://assets/relics/relic_consonant_ring_32px_pastel.png"},
+	{"id":"relic_balance_ink","name":"균형의 먹","cost":35,"desc":"자음과 모음 수가 같으면 피해·사거리 +10%","icon":"res://assets/relics/relic_balance_ink_32px_pastel.png"},
+	{"id":"relic_open_chime","name":"무받침 풍경","cost":35,"desc":"무받침 타워가 연속 배치되면 양쪽 공격속도 +12%","icon":"res://assets/relics/relic_open_chime_32px_pastel.png"}
 ]
 
 func setup(p_gold: int, p_jamo_list: Array, p_owned_relics: Array) -> void:

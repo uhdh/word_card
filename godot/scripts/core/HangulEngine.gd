@@ -92,11 +92,11 @@ static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 	for item in pool:
 		var ch = str(item)
 		var r = get_rarity(ch)
-		var weight = 75
+		var weight = 100
 		if r == "super_rare":
-			weight = 50 # 4변환 모음 충분히 등장
+			weight = 10 # 4방향 회전 만능이라 그룹 총합이 커지므로 개별 가중치는 가장 낮게
 		elif r == "rare":
-			weight = 65 # 2변환 자음/모음
+			weight = 30 # 2방향 회전, 초희귀보다 그룹 인원이 적어 개별 가중치를 더 높게
 		weighted_entries.append({"char": ch, "weight": weight})
 		total_weight += weight
 
