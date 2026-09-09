@@ -65,27 +65,27 @@ const ALL_RELIC_POOL = [
 	},
 	{
 		"id": "relic_range_rune", "name": "천리안의 룬", "cost": 30,
-		"desc": "모든 타워의 공격 범위 +15%", "icon": "res://assets/relics/relic_magnifier_32px_pastel.png"
+		"desc": "모든 타워의 공격 범위 +15%", "icon": "res://assets/relics/relic_range_rune_32px_pastel.png"
 	},
 	{
 		"id": "relic_bounty_coin", "name": "현상금 동전", "cost": 35,
-		"desc": "적 처치 시 골드 +1", "icon": "res://assets/relics/relic_crystal_32px_pastel.png"
+		"desc": "적 처치 시 골드 +1", "icon": "res://assets/relics/relic_bounty_coin_32px_pastel.png"
 	},
 	{
 		"id": "relic_healing_incense", "name": "회복의 향로", "cost": 30,
-		"desc": "웨이브 종료 시 기지 HP 2 회복", "icon": "res://assets/relics/relic_gourd_32px_pastel.png"
+		"desc": "웨이브 종료 시 기지 HP 2 회복", "icon": "res://assets/relics/relic_healing_incense_32px_pastel.png"
 	},
 	{
 		"id": "relic_first_strike", "name": "선봉의 깃털", "cost": 35,
-		"desc": "각 타워의 첫 공격 피해 2배", "icon": "res://assets/relics/relic_feather_32px_pastel.png"
+		"desc": "각 타워의 첫 공격 피해 2배", "icon": "res://assets/relics/relic_first_strike_32px_pastel.png"
 	},
 	{
 		"id": "relic_three_syllable_seal", "name": "삼문자 인장", "cost": 40,
-		"desc": "3글자 타워 피해 +25%", "icon": "res://assets/relics/relic_seal_32px_pastel.png"
+		"desc": "3글자 타워 피해 +25%", "icon": "res://assets/relics/relic_three_syllable_seal_32px_pastel.png"
 	},
 	{
 		"id": "relic_merchant_coupon", "name": "상인의 할인패", "cost": 25,
-		"desc": "상점 자모 가격 20% 할인", "icon": "res://assets/relics/relic_scroll_32px_pastel.png"
+		"desc": "상점 자모 가격 20% 할인", "icon": "res://assets/relics/relic_merchant_coupon_32px_pastel.png"
 	},
 	{"id":"relic_initial_compass","name":"훈민정음의 나침반","cost":35,"desc":"현재 자모로 만들 수 있는 단어의 초성 힌트","icon":"res://assets/relics/relic_initial_compass_32px_pastel.png"},
 	{"id":"relic_tense_hammer","name":"된소리 망치","cost":35,"desc":"된소리 초성 타워 피해 +25%","icon":"res://assets/relics/relic_tense_hammer_32px_pastel.png"},
