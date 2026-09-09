@@ -8,6 +8,7 @@ reproducible.
 from __future__ import annotations
 
 import argparse
+from collections import deque
 import json
 from pathlib import Path
 
@@ -20,9 +21,9 @@ STAGING = ROOT / "generated_word_symbols"
 COMPLETED = {
     5, 15, 19, 44, 45, 64, 70, 89, 139, 148, 151, 158, 166, 172, 174,
     239, 241, 242, 245, 260,
-    1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12,
+    1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13,
 }
-GENERATED = {1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12}
+GENERATED = {1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13}
 PALETTE = {
     "magic": "deep violet and cyan energy with warm gold highlights",
     "defense": "steel blue, slate, and warm gold defensive accents",
@@ -58,6 +59,24 @@ def entries() -> list[dict]:
 
 def stem(x: dict) -> str:
     return f"word_{x['no']:03d}_{x['length']}글자_{x['word']}"
+
+
+def key_white_background(image: Image.Image) -> Image.Image:
+    image = image.convert("RGBA")
+    pixels = image.load()
+    seen = set()
+    queue = deque(((0, 0), (image.width - 1, 0), (0, image.height - 1), (image.width - 1, image.height - 1)))
+    while queue:
+        x, y = queue.popleft()
+        if (x, y) in seen:
+            continue
+        seen.add((x, y))
+        r, g, b, _ = pixels[x, y]
+        if min(r, g, b) < 232:
+            continue
+        pixels[x, y] = (255, 255, 255, 0)
+        queue.extend((p for p in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)) if 0 <= p[0] < image.width and 0 <= p[1] < image.height))
+    return image
 
 
 def build_manifest() -> list[dict]:
@@ -99,7 +118,7 @@ def process_staging() -> int:
             continue
         assert no in db
         x = db[no]
-        image = Image.open(source).convert("RGBA")
+        image = key_white_background(Image.open(source))
         alpha = image.getchannel("A").point(lambda p: p if p >= 16 else 0)
         image.putalpha(alpha)
         bbox = alpha.getbbox()
@@ -128,9 +147,9 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, default=ROOT / "word_symbols_next_batch_manifest.json")
     parser.add_argument("--process", action="store_true")
     args = parser.parse_args()
-    assert len(COMPLETED) == 31
+    assert len(COMPLETED) == 32
     assert len(entries()) == 265
-    assert len(entries()) - len(COMPLETED) == 234
+    assert len(entries()) - len(COMPLETED) == 233
     if args.process:
         print(f"processed={process_staging()}")
     queue = build_manifest()

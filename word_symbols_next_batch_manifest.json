@@ -1,17 +1,5 @@
 [
   {
-    "no": 13,
-    "word": "감",
-    "name": "감 (단감/투척)",
-    "category": "heal",
-    "length": 1,
-    "staging": "generated_word_symbols/013.png",
-    "output_256": "assets/words_symbol_256px/word_013_1글자_감_256px.png",
-    "output_32": "assets/words_symbol_32px/word_013_1글자_감.png",
-    "output_godot": "godot/assets/words_symbol_32px/word_013_1글자_감.png",
-    "prompt": "Use case: stylized-concept\nAsset type: transparent raster game word-symbol icon, 256x256 square\nPrimary request: one distinct centered pixel-art symbol for the Korean word \"감\", concept \"감 (단감/투척)\". Render the concrete object or effect named by the concept, not typography.\nScene/backdrop: none, genuinely transparent background\nSubject: a single unmistakable 감 (단감/투척) symbol; one main object or tightly unified effect\nStyle/medium: crisp 16-bit SNES-inspired pixel art matching the existing Korean word-card icon set; hard pixel edges, chunky pixel clusters, limited palette, no anti-aliasing\nComposition/framing: centered compact silhouette, generous transparent padding, readable at 32px\nLighting/mood: polished game icon lighting with a subtle luminous rim\nColor palette: fresh green, aqua, and warm gold\nMaterials/textures: simple readable forms, no gradients, no micro-detail\nText (verbatim): none\nConstraints: genuinely transparent background with preserved alpha; one distinct asset only; no Korean letters, no text, no border, no card frame, no watermark; subject must remain recognizable after nearest-neighbor downscaling to 32px\nAvoid: photorealism, smooth vector art, multiple unrelated objects, scenery, background shadows"
-  },
-  {
     "no": 14,
     "word": "갑",
     "name": "갑 (철갑/가시파편)",
