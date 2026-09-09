@@ -1,8 +1,9 @@
 # TowerDefenseMain.gd
-# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (3막 4웨이브 구성 완벽 연동)
+# 한글 자모 결합 타워 디펜스 메인 컨트롤러 (3막 6웨이브 구성)
 extends Control
 
 const SaveManager = preload("res://scripts/core/SaveManager.gd")
+const INTRO_SCENE = preload("res://scenes/IntroOverlay.tscn")
 
 @onready var hp_label: Label = $TopBar/Row/Info/HpBox/HpLabel
 @onready var gold_label: Label = $TopBar/Row/Info/GoldBox/GoldLabel
@@ -19,13 +20,14 @@ const SaveManager = preload("res://scripts/core/SaveManager.gd")
 
 @onready var defense_field: DefenseField = $VBox/FieldContainer/DefenseField
 @onready var jamo_belt: JamoBelt = $VBox/JamoBelt
-@onready var relic_items: HBoxContainer = $VBox/RelicBar/Scroll/Items
+@onready var relic_items: HBoxContainer = get_node_or_null("VBox/RelicBar/Scroll/Items")
 @onready var modal_layer: Control = $ModalLayer
 
 var current_speed_scale: float = 1.0
 var reroll_dice: int = 3
 var owned_relics: Array = []
 var _is_loading_state: bool = true
+var intro_overlay: IntroOverlay
 
 func _ready() -> void:
 	_is_loading_state = true
@@ -71,8 +73,16 @@ func _ready() -> void:
 		jamo_belt.render_belt()
 		_update_topbar_wave_label(1, 0)
 		call_deferred("_on_lore_pressed")
+		call_deferred("_show_intro")
 
 	_is_loading_state = false
+
+func _show_intro() -> void:
+	if not is_inside_tree() or SaveManager.has_save_file() or intro_overlay != null:
+		return
+	intro_overlay = INTRO_SCENE.instantiate() as IntroOverlay
+	add_child(intro_overlay)
+	intro_overlay.finished.connect(func(): intro_overlay = null)
 
 func _render_relic_bar() -> void:
 	if not relic_items: return

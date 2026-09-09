@@ -19,6 +19,7 @@ var slow_factor: float = 1.0
 var slow_timer: float = 0.0
 var burn_effects: Array[Dictionary] = []
 var is_dead: bool = false
+var _bob_time := 0.0
 
 @onready var sprite: TextureRect = $Sprite
 @onready var hp_bar: ProgressBar = $HpBar
@@ -58,6 +59,9 @@ func _process(delta: float) -> void:
 	_tick_burn(delta)
 	if is_dead:
 		return
+	_bob_time += delta
+	if sprite:
+		sprite.position.y = sin(_bob_time * 7.0) * 1.5
 
 	# Move along path
 	var current_speed = speed * slow_factor

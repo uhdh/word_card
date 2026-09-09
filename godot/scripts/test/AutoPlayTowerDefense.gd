@@ -25,15 +25,13 @@ func run_step(current_step: int) -> void:
 
 	match current_step:
 		1:
-			get_viewport().get_texture().get_image().save_png(OS.get_temp_dir().path_join("word_card_playtest.png"))
-			print(" -> 플레이 화면 캡처: %s" % OS.get_temp_dir().path_join("word_card_playtest.png"))
+			_save_playtest_screenshot()
 			print("[Step 1] 🧩 1글자 스타팅 덱 [ㅂ, ㅜ, ㄹ] ➔ [불] 타워 자동 생성 검증")
-			belt.jamo_list.clear()
-			for c in ["ㅂ", "ㅜ", "ㄹ"]: belt.jamo_list.append(c)
-			belt.render_belt()
+			_assign_slot_jamo(belt, ["ㅂ", "ㅜ", "ㄹ"], 0)
 			var parsed = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 파싱 결과: %s (1글자 단어, 데미지: %d)" % [parsed[0]["syllable"], parsed[0]["word_data"]["damage"]])
 			assert(parsed[0]["syllable"] == "불", "First tower must be [불]!")
+			assert(belt.parsed_slots()[0].get("syllable") == "불", "Slot 1 tray must build [불]!")
 
 		2:
 			print("\n[Step 2] 📖 도감(LexiconModal) 및 🧙‍♂️ 방랑 상인(ShopModal) 이벤트/유물 테스트")
@@ -43,11 +41,12 @@ func run_step(current_step: int) -> void:
 			# Event Shop Modal & Relic Test
 			main_node._trigger_merchant_encounter(2)
 			print(" -> 방랑 상인 모달(ShopModal) 정상 생성 및 NPC/유물 탭 로드 확인!")
-			# Simulate buying 'ㄱ'
+			# Simulate buying 'ㄱ' into the waiting tray, then remove it cleanly
 			var initial_count = belt.jamo_list.size()
 			belt.add_jamo("ㄱ")
 			print(" -> 상점에서 자모 [ㄱ] 구매 시뮬레이션 완료! (자모 수: %d ➔ %d)" % [initial_count, belt.jamo_list.size()])
-			belt.jamo_list.remove_at(belt.jamo_list.size() - 1)
+			assert(belt.slot_assignments[belt.slot_assignments.size() - 1] == -1, "Purchased jamo must enter waiting")
+			belt.remove_jamo(belt.jamo_list.size() - 1)
 
 			# Relic purchase test
 			main_node.apply_relic_effect({
@@ -78,17 +77,13 @@ func run_step(current_step: int) -> void:
 
 		3:
 			print("\n[Step 3] ⚡ 연속 자모 자동 합성 테스트: [ㄱ, ㄱ, ㅏ] ➔ [까] 자동 인식")
-			belt.jamo_list.clear()
-			for c in ["ㄱ", "ㄱ", "ㅏ"]: belt.jamo_list.append(c)
-			belt.render_belt()
+			_assign_slot_jamo(belt, ["ㄱ", "ㄱ", "ㅏ"], 0)
 			var parsed_kka = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 파싱 결과: [%s] (기본 자모 [ㄱ, ㄱ, ㅏ] ➔ 쌍자음 [까] 자동 합성)" % parsed_kka[0]["syllable"])
 			assert(parsed_kka[0]["syllable"] == "까", "Should automatically combine [ㄱ, ㄱ, ㅏ] into [까]!")
 
 			print("\n -> 2글자 자동 합성 테스트: [ㅂ, ㅓ, ㄴ, ㄱ, ㅐ] ➔ [번개] 자동 결합")
-			belt.jamo_list.clear()
-			for c in ["ㅂ", "ㅓ", "ㄴ", "ㄱ", "ㅐ"]: belt.jamo_list.append(c)
-			belt.render_belt()
+			_assign_slot_jamo(belt, ["ㅂ", "ㅓ", "ㄴ", "ㄱ", "ㅐ"], 0)
 			var parsed_lightning = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 파싱 결과: [%s 타워] (티어: %d, 공격력: %s)" % [
 				parsed_lightning[0]["syllable"], parsed_lightning[0].get("tier", 1), str(parsed_lightning[0]["word_data"].get("damage", 0))
@@ -114,10 +109,7 @@ func run_step(current_step: int) -> void:
 
 		5:
 			print("\n[Step 5] 💎 3글자 신화 단어 [금강석] (ㄱㅡㅁ + ㄱㅏㅇ + ㅅㅓㄱ) 결합 테스트")
-			belt.jamo_list.clear()
-			for c in ["ㄱ", "ㅡ", "ㅁ", "ㄱ", "ㅏ", "ㅇ", "ㅅ", "ㅓ", "ㄱ"]:
-				belt.jamo_list.append(c)
-			belt.render_belt()
+			_assign_slot_jamo(belt, ["ㄱ", "ㅡ", "ㅁ", "ㄱ", "ㅏ", "ㅇ", "ㅅ", "ㅓ", "ㄱ"], 0)
 			var parsed_3 = HangulStreamParser.parse_jamo_stream(belt.jamo_list)
 			print(" -> 3글자 파싱 결과: [%s 타워] (티어: %d, 공격력: %s)" % [
 				parsed_3[0]["syllable"], parsed_3[0].get("tier", 1), str(parsed_3[0]["word_data"].get("damage", 0))
@@ -131,8 +123,8 @@ func run_step(current_step: int) -> void:
 		7:
 			print("\n[Step 7] 💥 [금강석] 신화 타워의 강력 피해로 웨이브 압살 완료!")
 			print(" -> 기지 상태: HP %d/%d, 골드: %d G, 현재 막: 제 %d막 / 총 %d막" % [field.base_hp, field.max_base_hp, field.gold, field.current_act, field.MAX_ACTS])
-			assert(field.MAX_ACTS == 3 and field.MAX_WAVES_PER_ACT == 4, "Game must have 3 Acts with 4 Waves per Act!")
-			print(" -> 🚩 [3막 4웨이브] 로그라이크 스테이지 구성 검증 완료!")
+			assert(field.MAX_ACTS == 3 and field.MAX_WAVES_PER_ACT == 6, "Game must have 3 Acts with 6 Waves per Act!")
+			print(" -> 🚩 [3막 6웨이브] 로그라이크 스테이지 구성 검증 완료!")
 
 		14:
 			print("\n[Step 8] 💾 게임 영구 저장 (Save Game) 테스트")
@@ -143,6 +135,7 @@ func run_step(current_step: int) -> void:
 			# 강제로 상태 변조 (테스트용)
 			field.gold = 0
 			belt.jamo_list.clear()
+			belt.slot_assignments.clear()
 			print(" -> 상태 임의 변조: 골드 0, 자모 벨트 비움")
 
 		16:
@@ -159,3 +152,31 @@ func run_step(current_step: int) -> void:
 			print("=======================================================\n")
 			Engine.time_scale = 1.0
 			get_tree().quit(0)
+
+
+func _save_playtest_screenshot() -> void:
+	if DisplayServer.get_name() == "headless":
+		print(" -> headless viewport: screenshot skipped")
+		return
+	var viewport_texture := get_viewport().get_texture()
+	if viewport_texture == null:
+		print(" -> headless viewport: screenshot skipped")
+		return
+	var image := viewport_texture.get_image()
+	if image == null or image.is_empty():
+		print(" -> headless viewport: screenshot skipped")
+		return
+	var path := OS.get_temp_dir().path_join("word_card_playtest.png")
+	var error := image.save_png(path)
+	if error == OK:
+		print(" -> playtest screenshot: %s" % path)
+	else:
+		print(" -> screenshot skipped (error %s)" % error)
+
+func _assign_slot_jamo(belt, chars: Array, slot: int) -> void:
+	belt.jamo_list.clear()
+	belt.slot_assignments.clear()
+	for c in chars:
+		belt.jamo_list.append(c)
+		belt.slot_assignments.append(slot)
+	belt.render_belt()

@@ -5,12 +5,27 @@ extends RefCounted
 
 const SAVE_PATH: String = "user://tower_defense_save.json"
 const DISCOVERED_PATH: String = "user://discovered_lexicon.json"
+const TEST_SAVE_PATH: String = "user://tower_defense_save_test.json"
+const TEST_DISCOVERED_PATH: String = "user://discovered_lexicon_test.json"
 
 static var _cached_discovered: Array = []
 static var _is_discovered_loaded: bool = false
 
+static func _is_test_run() -> bool:
+	for arg in OS.get_cmdline_args():
+		var a := arg.replace("\\", "/")
+		if a.contains("/tests/") or a.contains("AutoPlayTDTest") or a.contains("AutoPlayTest"):
+			return true
+	return false
+
+static func _save_path() -> String:
+	return TEST_SAVE_PATH if _is_test_run() else SAVE_PATH
+
+static func _lexicon_path() -> String:
+	return TEST_DISCOVERED_PATH if _is_test_run() else DISCOVERED_PATH
+
 static func has_save_file() -> bool:
-	return FileAccess.file_exists(SAVE_PATH)
+	return FileAccess.file_exists(_save_path())
 
 static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: int, current_wave: int, reroll_dice: int = 3, relics: Array = [], current_act: int = 1, unlocked_slots: int = 3, slot_assignments: Array = []) -> bool:
 	var save_dict = {
@@ -28,9 +43,9 @@ static func save_game(jamo_list: Array, base_hp: int, max_base_hp: int, gold: in
 	}
 
 	var json_str = JSON.stringify(save_dict, "\t")
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var file = FileAccess.open(_save_path(), FileAccess.WRITE)
 	if file == null:
-		push_error("Failed to open save file for write: %s" % SAVE_PATH)
+		push_error("Failed to open save file for write: %s" % _save_path())
 		return false
 
 	file.store_string(json_str)
@@ -44,9 +59,9 @@ static func load_game() -> Dictionary:
 	if not has_save_file():
 		return {}
 
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var file = FileAccess.open(_save_path(), FileAccess.READ)
 	if file == null:
-		push_error("Failed to open save file for read: %s" % SAVE_PATH)
+		push_error("Failed to open save file for read: %s" % _save_path())
 		return {}
 
 	var content = file.get_as_text()
@@ -63,8 +78,8 @@ static func load_game() -> Dictionary:
 	return parse_result
 
 static func delete_save_file() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(SAVE_PATH)
+	if FileAccess.file_exists(_save_path()):
+		DirAccess.remove_absolute(_save_path())
 		print("🗑️ [SaveManager] Save file deleted successfully.")
 
 # ==============================================================================
@@ -76,8 +91,8 @@ static func get_discovered_words() -> Array:
 
 	_cached_discovered = ["불"] # Starting word is unlocked by default
 
-	if FileAccess.file_exists(DISCOVERED_PATH):
-		var file = FileAccess.open(DISCOVERED_PATH, FileAccess.READ)
+	if FileAccess.file_exists(_lexicon_path()):
+		var file = FileAccess.open(_lexicon_path(), FileAccess.READ)
 		if file != null:
 			var content = file.get_as_text()
 			file.close()
@@ -108,7 +123,7 @@ static func discover_word(word_str: String) -> bool:
 
 static func _save_discovered_words() -> void:
 	var json_str = JSON.stringify(_cached_discovered, "\t")
-	var file = FileAccess.open(DISCOVERED_PATH, FileAccess.WRITE)
+	var file = FileAccess.open(_lexicon_path(), FileAccess.WRITE)
 	if file != null:
 		file.store_string(json_str)
 		file.close()
