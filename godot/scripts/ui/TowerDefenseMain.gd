@@ -280,7 +280,7 @@ func _run_coachmark(steps: Array, index: int) -> void:
 
 	var btn_next := Button.new()
 	btn_next.theme_type_variation = "PrimaryButton"
-	btn_next.text = "다음" if index < steps.size() - 1 else "시작하기"
+	btn_next.text = "다음" if index < steps.size() - 1 else "알겠습니다"
 	btn_next.custom_minimum_size = Vector2(120, 40)
 	btn_next.pressed.connect(func():
 		modal.queue_free()

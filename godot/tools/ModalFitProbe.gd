@@ -186,7 +186,7 @@ func _free_modals(main: Node) -> void:
 		await get_tree().process_frame
 
 
-## 트리 안에서 글자가 `texts` 중 하나인 버튼을 찾는다(코치마크의 `다음`/`시작하기`).
+## 트리 안에서 글자가 `texts` 중 하나인 버튼을 찾는다(코치마크의 `다음`/`알겠습니다`).
 func _find_button(root: Node, texts: Array) -> Button:
 	var stack: Array = [root]
 	while stack.size() > 0:
@@ -376,7 +376,7 @@ func _ready() -> void:
 			if float(mc["worst"]) > 0.5:
 				bad += 1
 			clipped_total += int(mc["clipped"])
-		var nxt: Button = _find_button(main.modal_layer, ["다음", "시작하기"])
+		var nxt: Button = _find_button(main.modal_layer, ["다음", "알겠습니다"])
 		if nxt == null:
 			check(false, "코치마크 %d단계에서 '다음' 버튼을 못 찾았다" % (step_i + 1))
 			break

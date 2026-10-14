@@ -3,7 +3,8 @@
 #   - 대부분은 --headless 로 돈다.
 #   - test_belt_drag_drop 은 GUI 히트테스트가 필요해 창을 띄워야 한다.
 #     (--headless 로 돌리면 스스로 SKIP 한다)
-#   - 판정형 프로브 39개(tools/)도 함께 돈다 → 전체 ≈4분(실측 4분01초 · 프로브 등록 전에는 ≈43초).
+#   - 판정형 프로브 52개(tools/)도 함께 돈다. 2026-10-14에 §2.27~§2.45 후보 13개를 추가했고,
+#     추가 전에는 39개로 ≈4분이었다(실측 4분01초 · 프로브 등록 전에는 ≈43초).
 #     36개로 4회 연속 실행해 36/36 통과·실패 0 을 확인했다(2026-10-03). 37·38번째는 같은 날
 #     추가해 **각각 주입으로 반증**한 뒤 등록했다 — `TowerRebuildProbe`(가드 제거 RC=3 · 팝 제거 RC=2),
 #     `ControlSplashProbe`(반경 블록 제거 RC=2 · 둔화 가드 제거 RC=1). 38개 등록 후 1회 `REAL_RC=0`.
@@ -161,6 +162,9 @@ RerollSoundProbe RewardFlightProbe SaveSchemaProbe SfxStackProbe ShakeCoherenceP
 ShieldSignalProbe ShopReasonProbe SwapNoOpProbe TelegraphOptionMeasure TelegraphTextWidth
 TilePressProbe TooltipAuthorProbe TooltipTruthProbe TowerRebuildProbe TraitBlastProbe
 TraitCounterTruthProbe WordShapeProbe
+TargetingTieBreakProbe NextWaveIconProbe RelicTraitIconProbe StageDescFitProbe ModalFitProbe
+TooltipWrapProbe TooltipReachProbe SynergySurfaceProbe RuntimeTextFitProbe AbilityReachProbe
+RewardTriggerProbe HiddenHealSynergyProbe HiddenStartButtonProbe
 "
 for p in $PROBES; do
   TEST_TIMEOUT=120 run "$p" --headless --path . "res://tools/$p.tscn" || FAILED=1
