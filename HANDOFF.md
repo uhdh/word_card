@@ -92,7 +92,7 @@ cd godot && bash tests/run_all.sh          # → RC=0, ≈4분(프로브 39개 �
 
 | 파일 | 크기 | 앵커 |
 |---|---|---|
-| `godot/scripts/tower/WordTower.gd` | 53,744 B · 38,089자 | **sha256 `c5ca7cb211fa350b…`** · ⚠️ **2026-10-05 동결 해제**(§2.25 흰 사각형 고침 · 직전 `c19b82111d52d7be…`) |
+| `godot/scripts/tower/WordTower.gd` | 54,412 B | **sha256 `55a8f8f9fe901f78…`** · ⚠️ **2026-10-14 동결 해제**(§4.2 splash 착탄점 기준 · 직전 `c5ca7cb211fa350b…`) |
 | `godot/scripts/ui/TowerDefenseMain.gd` | 98,889 B · 74,410자 | **sha256 `ec8144e3ff61b1df…`** · ⚠️ **2026-10-06 2차 동결 해제**(§2.44 보상 드래프트 가드 제거 + `process_mode` 정지/재개 + `tree_exited` 보험 · §2.27 숨은 버튼 노드·대입 제거 · 직전 `42366feeaaf8d7de…` · **CRLF 1,824**) |
 | `godot/tools/AttackProbe.gd` | 4,418 B · 3,564자 | rc=1 영구 → **수리됨** |
 | `godot/tools/TraitBlastProbe.gd` | 11,654 B · 9,020자 | **실패 가능하게** 고침(`quit(_failures)`) |
@@ -234,7 +234,15 @@ V6 은 60/60 을 보장하지만 3막에서 항목 7개 중 4개를 버린다. �
 (**정보 손실 0**). 실측 **바 문구 0/60 잘림 · 최장 475 px**(`tools/TelegraphTextWidth` 가
 `label.text` 를 재고 `over == 0` 을 **단언**한다). ⚠️ **B·C 는 안 했다**(B 는 필드 높이 −22 px).
 
-### 4.2 §2.7 (B) — `splash` 설명 vs 로직 (**`control` 은 해당 없음** — 2026-10-03 정정)
+### 4.2 ✅ 완료 (2026-10-14) — `splash` 설명 vs 로직 (**`control` 은 해당 없음** — 2026-10-03 정정)
+
+> **감독 결정: 착탄점 기준(A·B 의 중간).** `WordTower._in_reach()` — splash 의 추가 대상은 주 대상
+> 주변 `SPLASH_RADIUS`(48px, control 과 같음) 안에서만 고른다. 대상 상한(3+bonus)·총피해 분배는 그대로,
+> 2음절 이상은 반경 밖 발이 주 대상에게 간다. 설명은 *"착탄 지점 주변의 적들에게 폭발 피해를 입힙니다"*.
+> `TraitBlastProbe` 가 이제 판정한다(주입: 옛 로직 → RC=1).
+> 게이트 runs=5 (seed 20260923~27, buffer=0): **변경 전 중앙값 92%**(72·92·92·96·98) →
+> **변경 후 100%**(52·94·100·104·108). 시드별 흔들림 범위 안이지만 쉬워지는 쪽.
+> ⚠️ **변경 전에도 게이트가 4/5 위반이었다** — 05 평가 §7 의 *"8회 중 7회 통과"* 는 지금 코드에서 재현되지 않는다.
 
 - 현재 로직: `_trait_targets()` 는 **타워 사거리 안**의 적을 **스폰 순서**로 최대 `3 + bonus_targets` 고르고
   총 피해를 나눠 갖는다(`WordTower.gd:875`).

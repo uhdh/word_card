@@ -689,7 +689,7 @@ func _volley_targets(primary: EnemyUnit, count: int) -> Array[EnemyUnit]:
 	for enemy in field_ref.get_enemies():
 		if not is_instance_valid(enemy) or enemy.is_dead or enemy == primary:
 			continue
-		if global_position.distance_to(enemy.global_position) <= attack_range:
+		if _in_reach(primary, enemy):
 			rest.append(enemy)
 	rest.sort_custom(func(a, b): return a.progress > b.progress)
 	for enemy in rest:
@@ -883,9 +883,21 @@ func _trait_targets(primary: EnemyUnit) -> Array[EnemyUnit]:
 			break
 		if enemy == primary or not is_instance_valid(enemy) or enemy.is_dead:
 			continue
-		if global_position.distance_to(enemy.global_position) <= attack_range:
+		if _in_reach(primary, enemy):
 			result.append(enemy)
 	return result
+
+
+## splash 의 '착탄 지점 주변' 반경. `control` 의 실제 스플래쉬(`Projectile.hit_target` 48px)와 같다.
+const SPLASH_RADIUS := 48.0
+
+## 추가 대상이 될 수 있는가. splash 는 **주 대상(착탄점) 주변**, 나머지는 타워 사거리 안.
+## (2026-10-14 §4.2: 예전엔 splash 도 사거리 안을 스폰 순서로 골라 설명과 어긋났다.
+##  대상 수 상한과 총피해 분배는 그대로다 — 2음절 이상은 반경 밖 발이 주 대상에게 간다.)
+func _in_reach(primary: EnemyUnit, enemy: EnemyUnit) -> bool:
+	if trait_id == "splash":
+		return primary.global_position.distance_to(enemy.global_position) <= SPLASH_RADIUS
+	return global_position.distance_to(enemy.global_position) <= attack_range
 
 
 ## is_crit 은 **이 한 발이 치명타로 굴렸는가** 다. 피해에는 이미 `CRIT_DAMAGE_MULT` 가

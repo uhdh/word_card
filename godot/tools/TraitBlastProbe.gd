@@ -20,8 +20,8 @@
 # ⚠️ **판정 정책 (2026-10-03).** 이 프로브는 이제 **실패할 수 있다** — `quit(실패 수)`.
 #    세는 것: ① 측정 시나리오가 안 만들어짐(특성이 안 맞음) ② 툴팁의 동시 타격 수가
 #    실제 대상 수와 다름(§2.7 (A) 계약).
-#    **세지 않는 것**: splash·control 의 *위치* 불일치 — 설명(착탄 지점 주변)과 로직
-#    (스폰 순서)이 어긋나는 §2.7 의 **미결 항목**이라 기대값이 아직 없다. 표시만 한다.
+#    ③ splash 의 추가 대상이 착탄점(주 타깃) `SPLASH_RADIUS` 밖에 있음(2026-10-14 §4.2 결정).
+#    **세지 않는 것**: control 의 목록 위치 — 반경 피해는 `Projectile` 이 따로 맡는다.
 #    (그 전에는 `quit()` 인자 없이 늘 0 이라, 어긋남을 찍어도 **초록**이었다.)
 extends Node2D
 
@@ -145,12 +145,20 @@ func _measure(case: Dictionary) -> void:
 	#    `if slow_duration > 0.0:` 블록). 그래서 `control` 의 `near_impact == 0` 은 **정상**이고,
 	#    이 줄이 둘 다 *"미결"* 로 찍으면 감독이 **잘못된 크기의 결정**을 내린다.
 	#    실측은 `tools/ControlSplashProbe` 에 있다.
-	if near_impact == 0 and tower.trait_id in ["splash", "control"]:
-		if tower.trait_id == "splash":
-			print("   ⚠️ 미결 §2.7 — 설명은 '착탄 지점 주변' 인데 로직은 스폰 순서다(감독 결정 대기 · 판정 아님)")
-		else:
-			print("   참고 — 목록은 스폰 순서지만 `control` 은 **착탄점 48px 반경 피해를 따로 갖는다**")
-			print("          (`tools/ControlSplashProbe` 실측: 반경 안 3/3 피해+둔화 · 밖 0) → §2.7 (B) 는 **splash 만**의 문제다")
+	# ✅ **splash 는 2026-10-14 계약이 됐다**(§4.2 감독 결정: 착탄점 기준). 추가 대상은
+	#    전부 주 타깃 `SPLASH_RADIUS` 안이어야 하고, 밀집이 넉넉하니 상한(3+bonus)까지 채워야 한다.
+	if tower.trait_id == "splash":
+		var outside := 0
+		for t in targets:
+			if t != primary and primary.global_position.distance_to(t.global_position) > tower.SPLASH_RADIUS:
+				outside += 1
+		var cap: int = 3 + tower.bonus_targets
+		if outside > 0 or targets.size() != cap:
+			print("   !! 계약 위반 — 착탄점 밖 %d마리 · 선택 %d/%d" % [outside, targets.size(), cap])
+			_failures += 1
+	elif near_impact == 0 and tower.trait_id == "control":
+		print("   참고 — 목록은 스폰 순서지만 `control` 은 **착탄점 48px 반경 피해를 따로 갖는다**")
+		print("          (`tools/ControlSplashProbe` 실측: 반경 안 3/3 피해+둔화 · 밖 0)")
 
 	tower.free()
 	field.free()
