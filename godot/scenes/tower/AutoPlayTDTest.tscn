@@ -1,174 +1,272 @@
-[gd_scene format=3 uid="uid://td_auto_test_001"]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/TowerDefenseMain.gd" id="1_td_main"]
-[ext_resource type="PackedScene" uid="uid://defense_field_001" path="res://scenes/tower/DefenseField.tscn" id="2_field"]
-[ext_resource type="PackedScene" uid="uid://jamo_belt_001" path="res://scenes/tower/JamoBelt.tscn" id="3_belt"]
-[ext_resource type="Script" path="res://scripts/test/AutoPlayTowerDefense.gd" id="4_bot"]
-[ext_resource type="Texture2D" uid="uid://ui_heart_001" path="res://assets/map_ui/ui_heart_pixel_32px_pastel.png" id="5_heart"]
-[ext_resource type="Texture2D" uid="uid://ui_gold_001" path="res://assets/map_ui/ui_gold_pixel_32px_pastel.png" id="6_gold"]
-[ext_resource type="Texture2D" uid="uid://ui_wave_001" path="res://assets/map_ui/ui_wave_flag_32px_pastel.png" id="7_wave"]
+[ext_resource type="Script" path="res://scripts/ui/TowerDefenseMain.gd" id="1_nndxy"]
+[ext_resource type="Script" path="res://scripts/ui/WrappingTooltipButton.gd" id="2_sskq3"]
+[ext_resource type="PackedScene" path="res://scenes/tower/DefenseField.tscn" id="3_lwtfy"]
+[ext_resource type="Script" path="res://scripts/tower/DefenseField.gd" id="4_hflx8"]
+[ext_resource type="Script" path="res://scripts/ui/NextWaveIcons.gd" id="5_l8hac"]
+[ext_resource type="PackedScene" path="res://scenes/tower/JamoBelt.tscn" id="6_rui3g"]
+[ext_resource type="Script" path="res://scripts/ui/JamoBelt.gd" id="7_kbl4s"]
+[ext_resource type="Script" path="res://scripts/test/AutoPlayTowerDefense.gd" id="8_3bx6d"]
 
-[node name="TowerDefenseMain" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_relic"]
+
+[node name="TowerDefenseMain" type="Control" unique_id=324861541]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_td_main")
+script = ExtResource("1_nndxy")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=770362312]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.07, 0.06, 0.12, 1)
+color = Color(0.043, 0.039, 0.063, 1)
 
-[node name="TopBar" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(0, 52)
+[node name="TopBar" type="PanelContainer" parent="." unique_id=1992668514]
+z_index = 10
+custom_minimum_size = Vector2(0, 58)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 20.0
 grow_horizontal = 2
+theme_type_variation = &"TopBarPanel"
 
-[node name="Row" type="HBoxContainer" parent="TopBar"]
+[node name="VBoxTop" type="VBoxContainer" parent="TopBar" unique_id=929550498]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 2
 
-[node name="Info" type="HBoxContainer" parent="TopBar/Row"]
+[node name="Row" type="HBoxContainer" parent="TopBar/VBoxTop" unique_id=1719040862]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Info" type="HBoxContainer" parent="TopBar/VBoxTop/Row" unique_id=622790508]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 14
 
-[node name="HpBox" type="HBoxContainer" parent="TopBar/Row/Info"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="HpIcon" type="TextureRect" parent="TopBar/Row/Info/HpBox"]
-custom_minimum_size = Vector2(24, 24)
+[node name="WaveBox" type="HBoxContainer" parent="TopBar/VBoxTop/Row/Info" unique_id=553964012]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("5_heart")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="HpLabel" type="Label" parent="TopBar/Row/Info/HpBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "기지 HP: 20 / 20"
-
-[node name="GoldBox" type="HBoxContainer" parent="TopBar/Row/Info"]
-layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="GoldIcon" type="TextureRect" parent="TopBar/Row/Info/GoldBox"]
-custom_minimum_size = Vector2(24, 24)
+[node name="WaveLabel" type="Label" parent="TopBar/VBoxTop/Row/Info/WaveBox" unique_id=433812555]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "제 1막"
+
+[node name="BtnStage" type="Button" parent="TopBar/VBoxTop/Row/Info/WaveBox" unique_id=1258105099]
+custom_minimum_size = Vector2(110, 26)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("6_gold")
-expand_mode = 1
-stretch_mode = 5
+theme_override_font_sizes/font_size = 12
+text = "스테이지 1 / 20"
+script = ExtResource("2_sskq3")
 
-[node name="GoldLabel" type="Label" parent="TopBar/Row/Info/GoldBox"]
+[node name="HpBox" type="HBoxContainer" parent="TopBar/VBoxTop/Row/Info" unique_id=710159671]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "40 G"
-
-[node name="WaveBox" type="HBoxContainer" parent="TopBar/Row/Info"]
-layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 6
 
-[node name="WaveIcon" type="TextureRect" parent="TopBar/Row/Info/WaveBox"]
-custom_minimum_size = Vector2(24, 24)
+[node name="HpIcon" type="TextureRect" parent="TopBar/VBoxTop/Row/Info/HpBox" unique_id=904756582]
+visible = false
 layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("7_wave")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="WaveLabel" type="Label" parent="TopBar/Row/Info/WaveBox"]
+[node name="HpLabel" type="Label" parent="TopBar/VBoxTop/Row/Info/HpBox" unique_id=618348685]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "0 / 5 웨이브"
+text = "침입 0 / 50"
 
-[node name="Actions" type="HBoxContainer" parent="TopBar/Row"]
+[node name="BaseHpBar" type="ProgressBar" parent="TopBar/VBoxTop/Row/Info/HpBox" unique_id=30832597]
+custom_minimum_size = Vector2(104, 14)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 50.0
+show_percentage = false
+
+[node name="EnemyBox" type="HBoxContainer" parent="TopBar/VBoxTop/Row/Info" unique_id=1469042373]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="EnemyLabel" type="Label" parent="TopBar/VBoxTop/Row/Info/EnemyBox" unique_id=886664521]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.78, 0.68, 0.88, 1)
+text = "적 0"
+
+[node name="GoldBox" type="HBoxContainer" parent="TopBar/VBoxTop/Row/Info" unique_id=335128176]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="GoldIcon" type="TextureRect" parent="TopBar/VBoxTop/Row/Info/GoldBox" unique_id=1231635782]
+visible = false
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="TopBar/VBoxTop/Row/Info/GoldBox" unique_id=1694551391]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.96, 0.77, 0.32, 1)
+text = "🪙 40 G"
+
+[node name="Actions" type="HBoxContainer" parent="TopBar/VBoxTop/Row" unique_id=906785981]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_constants/separation = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 6
 
-[node name="BtnStartWave" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(110, 36)
+[node name="BtnReset" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=950982205]
 layout_mode = 2
-text = "▶ 웨이브"
+tooltip_text = "처음부터 새 게임을 시작합니다"
+theme_type_variation = &"GhostButton"
+text = "새 게임"
 
-[node name="BtnReset" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(72, 36)
+[node name="BtnSave" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=228242342]
 layout_mode = 2
-text = "🔄 새 게임"
+theme_type_variation = &"GhostButton"
+text = "저장"
 
-[node name="BtnSave" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(64, 36)
+[node name="BtnLoad" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=629051115]
 layout_mode = 2
-text = "💾 저장"
+theme_type_variation = &"GhostButton"
+text = "이어하기"
 
-[node name="BtnLoad" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(78, 36)
+[node name="BtnSpeed" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=848461154]
+custom_minimum_size = Vector2(104, 28)
 layout_mode = 2
-text = "📂 이어하기"
+theme_type_variation = &"GhostButton"
+text = "1x 배속"
 
-[node name="BtnSpeed" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(70, 36)
+[node name="BtnLexicon" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=466905581]
 layout_mode = 2
-text = "▶ 1x 배속"
+theme_type_variation = &"GhostButton"
+text = "단어 도감"
 
-[node name="BtnLexicon" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(92, 36)
+[node name="BtnLore" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=1236539041]
 layout_mode = 2
-text = "📖 단어 도감"
+tooltip_text = "세계관과 각 막의 이야기를 봅니다"
+theme_type_variation = &"GhostButton"
+text = "세계관"
 
-[node name="BtnLore" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(74, 36)
+[node name="BtnSettings" type="MenuButton" parent="TopBar/VBoxTop/Row/Actions" unique_id=1616602689]
+custom_minimum_size = Vector2(72, 28)
 layout_mode = 2
-text = "⚗️ 세계관"
+tooltip_text = "설정 및 단축키"
+theme_type_variation = &"GhostButton"
+text = "설정 ▾"
 
-[node name="BtnMute" type="Button" parent="TopBar/Row/Actions"]
-custom_minimum_size = Vector2(40, 36)
+[node name="BtnMute" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=1063383510]
 layout_mode = 2
+theme_type_variation = &"GhostButton"
 text = "🔊"
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="MonsterColumn" type="HBoxContainer" parent="TopBar/VBoxTop" unique_id=971441717]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BtnRelicShop" type="Button" parent="TopBar/VBoxTop/MonsterColumn" unique_id=1724761340]
+custom_minimum_size = Vector2(96, 24)
+layout_mode = 2
+tooltip_text = "방랑 상인 모로크에게서 자모와 유물을 구매합니다"
+theme_type_variation = &"ChipButton"
+text = "상인 모로크"
+
+[node name="RelicBar" type="PanelContainer" parent="TopBar/VBoxTop/MonsterColumn" unique_id=645684398]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_relic")
+
+[node name="Scroll" type="ScrollContainer" parent="TopBar/VBoxTop/MonsterColumn/RelicBar" unique_id=190542718]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="Items" type="HBoxContainer" parent="TopBar/VBoxTop/MonsterColumn/RelicBar/Scroll" unique_id=993602923]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BtnAbility" type="Button" parent="TopBar/VBoxTop/MonsterColumn" unique_id=1234787276]
+custom_minimum_size = Vector2(96, 24)
+layout_mode = 2
+tooltip_text = "자모 타일 1장을 영구히 소모해 경로 위의 모든 적을 뒤로 밀어냅니다"
+theme_type_variation = &"GhostButton"
+text = "밀어내기"
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=558507841]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 58.0
+offset_top = 64.0
 offset_right = -16.0
-offset_bottom = -16.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
-[node name="FieldContainer" type="PanelContainer" parent="VBox"]
+[node name="FieldContainer" type="PanelContainer" parent="VBox" unique_id=583174613]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DefenseField" parent="VBox/FieldContainer" instance=ExtResource("2_field")]
+[node name="DefenseField" type="Control" parent="VBox/FieldContainer" unique_id=3760075 instance=ExtResource("3_lwtfy")]
+custom_minimum_size = Vector2(960, 300)
 layout_mode = 2
+script = ExtResource("4_hflx8")
 
-[node name="JamoBelt" parent="VBox" instance=ExtResource("3_belt")]
+[node name="TelegraphBar" type="PanelContainer" parent="VBox" unique_id=24514796]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+theme_type_variation = &"TelegraphPanel"
 
-[node name="ModalLayer" type="Control" parent="."]
+[node name="Row" type="HBoxContainer" parent="VBox/TelegraphBar" unique_id=50000616]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NextWaveIcons" type="HBoxContainer" parent="VBox/TelegraphBar/Row" unique_id=1999844834]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+script = ExtResource("5_l8hac")
+
+[node name="TelegraphLabel" type="Label" parent="VBox/TelegraphBar/Row" unique_id=1162452520]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.83, 0.76, 0.95, 1)
+text = "다음 라운드 정보를 불러오는 중…"
+clip_text = true
+
+[node name="TelegraphTimer" type="Label" parent="VBox/TelegraphBar/Row" unique_id=437779226]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.49, 0.83, 0.99, 1)
+text = "대기 중"
+
+[node name="JamoBelt" type="PanelContainer" parent="VBox" unique_id=1658481310 instance=ExtResource("6_rui3g")]
+custom_minimum_size = Vector2(0, 210)
+layout_mode = 2
+theme_type_variation = &"BeltPanel"
+script = ExtResource("7_kbl4s")
+
+[node name="ModalLayer" type="Control" parent="." unique_id=243241558]
+z_index = 200
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="AutoPlayBot" type="Node" parent="."]
-script = ExtResource("4_bot")
+[node name="AutoPlayBot" type="Node" parent="." unique_id=1107081519]
+script = ExtResource("8_3bx6d")

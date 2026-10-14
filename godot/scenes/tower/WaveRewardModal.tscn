@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 script = ExtResource("1_modal")
 
 [node name="Dim" type="ColorRect" parent="."]
@@ -18,53 +19,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.75)
+color = Color(0.043, 0.039, 0.063, 0.82)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(480, 340)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 360)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -170.0
-offset_right = 240.0
-offset_bottom = 170.0
+offset_left = -260.0
+offset_top = -180.0
+offset_right = 260.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"ModalPanel"
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="TitleLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-text = "🏆 제 1 웨이브 클리어!"
+theme_type_variation = &"TitleLabel"
+text = "제 1 웨이브 클리어"
 horizontal_alignment = 1
 
 [node name="GoldLabel" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
-text = "🪙 클리어 보너스: +15 G"
+theme_type_variation = &"StatLabel"
+text = "클리어 보너스  +15 G"
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
-text = "다음 웨이브를 대비하여 자모 활자 1개를 선택하세요:"
+theme_type_variation = &"MutedLabel"
+text = "다음 웨이브를 대비해 활자 1개를 고르세요"
 horizontal_alignment = 1
 
 [node name="ChoicesContainer" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
-theme_override_constants/separation = 16
+theme_override_constants/separation = 18
 
 [node name="RerollRow" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -72,23 +72,24 @@ alignment = 1
 theme_override_constants/separation = 12
 
 [node name="BtnReroll" type="Button" parent="Panel/VBox/RerollRow"]
-custom_minimum_size = Vector2(160, 36)
+custom_minimum_size = Vector2(168, 36)
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-text = "🎲 보상 새로고침"
+theme_type_variation = &"GhostButton"
+text = "보상 새로고침"
+tooltip_text = "남은 주사위를 소모해 보상 3개를 다시 뽑습니다"
 
 [node name="DiceLabel" type="Label" parent="Panel/VBox/RerollRow"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
-text = "남은 주사위: 3개"
+theme_type_variation = &"StatLabel"
+text = "남은 주사위 3개"
 
 [node name="SkipRow" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
 alignment = 1
 
 [node name="BtnSkip" type="Button" parent="Panel/VBox/SkipRow"]
-custom_minimum_size = Vector2(140, 32)
+custom_minimum_size = Vector2(148, 32)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "⏩ 보상 건너뛰기"
+theme_type_variation = &"GhostButton"
+text = "보상 건너뛰기"
+tooltip_text = "이번 보상을 받지 않고 다음 웨이브로 진행합니다"

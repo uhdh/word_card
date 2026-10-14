@@ -12,6 +12,8 @@ from collections import deque
 import json
 from pathlib import Path
 
+import cv2
+import numpy as np
 from PIL import Image
 
 
@@ -19,11 +21,26 @@ ROOT = Path(__file__).parent
 DB = ROOT / "assets/word_database_265.json"
 STAGING = ROOT / "generated_word_symbols"
 COMPLETED = {
-    5, 15, 19, 44, 45, 64, 70, 89, 139, 148, 151, 158, 166, 172, 174,
-    239, 241, 242, 245, 260,
-    1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+    46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+    61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
+    76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
+    91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105,
+    106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120,
+    121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135,
+    136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150,
+    151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165,
+    166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180,
+    181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195,
+    196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210,
+    211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225,
+    226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240,
+    241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255,
+    256, 257, 258, 259, 260, 261, 262, 263, 264, 265,
 }
-GENERATED = {1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13}
+GENERATED = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265}
 PALETTE = {
     "magic": "deep violet and cyan energy with warm gold highlights",
     "defense": "steel blue, slate, and warm gold defensive accents",
@@ -63,6 +80,20 @@ def stem(x: dict) -> str:
 
 def key_white_background(image: Image.Image) -> Image.Image:
     image = image.convert("RGBA")
+    if image.getchannel("A").getextrema() == (255, 255):
+        rgb = np.array(image.convert("RGB"))
+        hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+        mask = np.where((hsv[:, :, 1] > 45) | (hsv[:, :, 2] < 115), 255, 0).astype(np.uint8)
+        count, labels, stats, _ = cv2.connectedComponentsWithStats(mask)
+        assert count > 1, "no foreground found"
+        foreground = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+        mask = np.where(labels == foreground, 255, 0).astype(np.uint8)
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        mask.fill(0)
+        cv2.drawContours(mask, contours, -1, 255, cv2.FILLED)
+        mask = cv2.dilate(mask, np.ones((5, 5), np.uint8))
+        image.putalpha(Image.fromarray(mask))
+        return image
     pixels = image.load()
     seen = set()
     queue = deque(((0, 0), (image.width - 1, 0), (0, image.height - 1), (image.width - 1, image.height - 1)))
@@ -100,7 +131,7 @@ def build_manifest() -> list[dict]:
     return pending
 
 
-def process_staging() -> int:
+def process_staging(godot_only: bool = False) -> int:
     db = {x["no"]: x for x in entries()}
     outputs = (
         ROOT / "assets/words_symbol_256px",
@@ -133,9 +164,14 @@ def process_staging() -> int:
         output.paste(image, ((256 - size[0]) // 2, (256 - size[1]) // 2), image)
         output_32 = output.resize((32, 32), Image.Resampling.NEAREST)
         s = stem(x)
-        output.save(outputs[0] / f"{s}_256px.png", "PNG")
-        output_32.save(outputs[1] / f"{s}.png", "PNG")
-        output_32.save(outputs[2] / f"{s}.png", "PNG")
+        if godot_only:
+            targets = list(outputs[2].glob(f"word_{no:03d}_*.png"))
+            assert len(targets) == 1, f"Godot target not unique for {no}: {targets}"
+            output_32.save(targets[0], "PNG")
+        else:
+            output.save(outputs[0] / f"{s}_256px.png", "PNG")
+            output_32.save(outputs[1] / f"{s}.png", "PNG")
+            output_32.save(outputs[2] / f"{s}.png", "PNG")
         assert output.size == (256, 256) and output.mode == "RGBA"
         assert output_32.size == (32, 32) and output_32.getchannel("A").getbbox()
         count += 1
@@ -146,12 +182,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, default=ROOT / "word_symbols_next_batch_manifest.json")
     parser.add_argument("--process", action="store_true")
+    parser.add_argument("--godot-only", action="store_true")
     args = parser.parse_args()
-    assert len(COMPLETED) == 32
+    assert len(COMPLETED) == 265
     assert len(entries()) == 265
-    assert len(entries()) - len(COMPLETED) == 233
+    assert len(entries()) - len(COMPLETED) == 0
     if args.process:
-        print(f"processed={process_staging()}")
+        print(f"processed={process_staging(args.godot_only)}")
     queue = build_manifest()
     args.manifest.write_text(json.dumps(queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"pending={len(queue)} manifest={args.manifest}")

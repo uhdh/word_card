@@ -1,7 +1,7 @@
 ﻿[gd_scene format=3 uid="uid://shop_modal_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/ShopModal.gd" id="1_shop"]
-[ext_resource type="Texture2D" uid="uid://npc_merchant_001" path="res://assets/npc/npc_merchant_1_32px_pastel.png" id="2_npc"]
+[ext_resource type="Texture2D" uid="uid://kyd63ajpo757" path="res://assets/npc/npc_merchant_1_32px_pastel.png" id="2_npc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.08, 0.16, 0.96)
@@ -36,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_shop")
 
 [node name="Overlay" type="ColorRect" parent="."]
@@ -46,9 +47,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7)
+mouse_filter = 2
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(740, 560)
+custom_minimum_size = Vector2(740, 340)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,6 +99,11 @@ theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 text = "🪙 30 G"
 
+[node name="BtnRefresh" type="Button" parent="Panel/VBox/Header"]
+custom_minimum_size = Vector2(82, 30)
+layout_mode = 2
+text = "🔄 갱신"
+
 [node name="BtnClose" type="Button" parent="Panel/VBox/Header"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -112,21 +119,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 14
 
-[node name="SectionJamo" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="JamoTitleLabel" type="Label" parent="Panel/VBox/Scroll/AllContentVBox/SectionJamo"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.9, 0.8, 0.3, 1)
-text = "🔤 자모 활자 진열대 (일반 10G / 희귀 18G / 초희귀 25G)"
-
-[node name="ShopItemsGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionJamo"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 12
-
 [node name="SectionRelics" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
 layout_mode = 2
 theme_override_constants/separation = 6
@@ -141,18 +133,3 @@ text = "🏺 신비한 에테르 유물 (고유 패시브 아티팩트)"
 layout_mode = 2
 alignment = 1
 theme_override_constants/separation = 12
-
-[node name="SectionRemove" type="VBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="RemoveTitleLabel" type="Label" parent="Panel/VBox/Scroll/AllContentVBox/SectionRemove"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
-text = "✂️ 덱 압축 (선택한 타일 영구 제거 - 15 G)"
-
-[node name="RemoveTilesGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionRemove"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 8

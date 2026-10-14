@@ -1,5 +1,16 @@
 # AutoPlayTowerDefense.gd
-# 타워 디펜스 전체 기능(조합 없는 단어 큰 텍스트, 도감, 타워 클릭 팝업, 자동 저장, 세이브/로드) 자동 검증 봇
+# 타워 디펜스 기능 자동 검증 봇 — **이 파일이 실제로 단언하는 것만** 적는다(§2.16).
+#
+# 단언하는 것: 조합 없는 1글자 단어 · 자모 자동 합성(쌍자음/2글자/3글자) · 등급 **이름** ·
+#              도감 해금 · 유물 보유 · 타워 클릭 팝업 · 자동 저장 · 세이브/로드 왕복 ·
+#              무대 구성(3막 20라운드) · 드래그 이동
+#
+# ⚠️ 단언하지 **않는** 것 — 아래를 이 머리말에 다시 넣지 말 것:
+#      · "큰 텍스트"(폰트 크기) — 이 파일에 폰트 검사가 0건이다.
+#      · 키 입력(단축키) — `InputEventKey`·`keycode` 가 0건이다. 그쪽은
+#        `tools/TooltipTruthProbe` 가 맡는다(2026-10-03 부터 `tests/run_all.sh` 에 등록).
+#      · 툴팁 문구 — `tools/TooltipAuthorProbe` 담당.
+#   문구가 검사보다 넓으면, 검사를 지워도 아무도 모른다 — §2.16 이 정확히 그랬다.
 extends Node
 
 @onready var main_node = get_parent()
@@ -62,7 +73,12 @@ func run_step(current_step: int) -> void:
 			assert(HangulEngine.get_rarity("ㅏ") == "super_rare" and HangulEngine.get_rarity("ㅜ") == "super_rare", "ㅏ, ㅓ, ㅗ, ㅜ must be super_rare!")
 			assert(HangulEngine.get_rarity("ㄱ") == "rare" and HangulEngine.get_rarity("ㄴ") == "rare", "ㄱ, ㄴ, ㅡ, ㅣ must be rare!")
 			assert(HangulEngine.get_rarity("ㄷ") == "common" and HangulEngine.get_rarity("ㅁ") == "common", "ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ must be common!")
-			print(" -> 🎨 3단계 배경색 등급 시스템 검증: 초희귀(황금 앰버), 희귀(딥 바이올렛), 일반(다크 슬레이트) 확인 완료!")
+			# ⚠️ 바로 위 세 줄은 `get_rarity()` 가 돌려주는 **등급 이름**만 잰다. **배경색은 재지
+			# 않는다.** `get_rarity_bg_color()` 는 등급과 무관하게 **한 색**을 돌려준다
+			# (`HangulEngine.gd:70-71` — 배경색·테두리 통일 경위는 같은 파일 주석에 있다).
+			# 예전 문구는 세 가지 색 이름(황금 앰버·딥 바이올렛·다크 슬레이트)을 나열해
+			# **색까지 검증한 것처럼** 읽혔지만 거짓이었다(§2.16).
+			print(" -> 🎨 등급 판정 검증: 초희귀·희귀·일반 등급 **이름** 확인 완료! (배경색은 등급과 무관하게 한 색)")
 
 			# Lexicon Discovery System Test
 			assert(SaveManager.is_word_discovered("불"), "Initial word [불] must be discovered by default!")
@@ -98,14 +114,32 @@ func run_step(current_step: int) -> void:
 
 		4:
 			print("\n[Step 4] 🔍 타워 클릭 시 타워 설명 및 상세 스펙 팝업 테스트")
-			if field.active_towers.size() > 0:
-				var first_tower = field.active_towers[0]
-				print(" -> 1번 타워 [%s] 클릭 시뮬레이션!" % first_tower.syllable)
-				first_tower.tower_clicked.emit(first_tower)
-				print(" -> 타워 상세 스펙: 공격력 %s | 사거리 %d px | 쿨타임 %.2f초" % [
-					str(first_tower.word_data.get("damage", 0)), int(first_tower.attack_range), first_tower.attack_interval
-				])
-				print(" -> 특수 효과 설명: %s" % first_tower.word_data.get("desc", ""))
+			# ⚠️ **검사할 대상을 먼저 세운다.** Step 3 의 드래그 테스트가 일부러 단어를
+			# 깨뜨려서(`ㅓㄴㄱㅐㅂ`) 여기 도착할 때 타워가 **0개**였다. 예전 코드는
+			# `if active_towers.size() > 0:` 로 그 상황을 조용히 건너뛰었고, 머리말은
+			# 그걸 "타워 클릭 팝업 검증" 이라고 적어 두었다 — **주장은 있었지만 그 절은
+			# 한 번도 실행된 적이 없었다**(§2.16, 2차 정정에서 실측).
+			# 검사 대상이 없는 것은 통과가 아니므로, 여기서 [번개]를 다시 세운다.
+			_assign_slot_jamo(belt, ["ㅂ", "ㅓ", "ㄴ", "ㄱ", "ㅐ"], 0)
+			assert(field.active_towers.size() > 0, "Step 4 전제: [번개] 를 세웠는데 타워가 하나도 없다")
+			var first_tower = field.active_towers[0]
+			print(" -> 1번 타워 [%s] 클릭 시뮬레이션!" % first_tower.syllable)
+			first_tower.tower_clicked.emit(first_tower)
+			# 신호를 쏘는 것과 팝업이 뜨는 것은 **다른 사건**이다. 예전에는 신호만 쏘고
+			# 스펙을 print 했을 뿐, 팝업이 생겼는지는 본 적이 없었다.
+			# 경로: `tower_clicked` → `DefenseField.tower_info_requested`
+			#       → `TowerDefenseMain._on_tower_info_requested` → `modal_layer` 에 추가
+			var info_modal = main_node.modal_layer.get_node_or_null("TowerInfoModal")
+			assert(info_modal != null, "타워를 클릭했는데 TowerInfoModal 이 뜨지 않았다")
+			assert(info_modal.is_visible_in_tree(), "TowerInfoModal 이 떴지만 보이지 않는다")
+			print(" -> 타워 상세 스펙: 공격력 %s | 사거리 %d px | 쿨타임 %.2f초" % [
+				str(first_tower.word_data.get("damage", 0)), int(first_tower.attack_range), first_tower.attack_interval
+			])
+			print(" -> 특수 효과 설명: %s" % first_tower.word_data.get("desc", ""))
+			# 다음 절이 같은 자리에서 벨트를 다시 짜므로 팝업은 닫고 간다.
+			# (`queue_free()` 는 지연이라 이 프레임에는 아직 살아 있다 — 그래도 다음
+			#  절은 0.5초 뒤라 문제되지 않는다.)
+			info_modal.queue_free()
 
 		5:
 			print("\n[Step 5] 💎 3글자 신화 단어 [금강석] (ㄱㅡㅁ + ㄱㅏㅇ + ㅅㅓㄱ) 결합 테스트")
@@ -123,14 +157,21 @@ func run_step(current_step: int) -> void:
 		7:
 			print("\n[Step 7] 💥 [금강석] 신화 타워의 강력 피해로 웨이브 압살 완료!")
 			print(" -> 기지 상태: HP %d/%d, 골드: %d G, 현재 막: 제 %d막 / 총 %d막" % [field.base_hp, field.max_base_hp, field.gold, field.current_act, field.MAX_ACTS])
-			assert(field.MAX_ACTS == 3 and field.MAX_WAVES_PER_ACT == 6, "Game must have 3 Acts with 6 Waves per Act!")
-			print(" -> 🚩 [3막 6웨이브] 로그라이크 스테이지 구성 검증 완료!")
+			assert(field.MAX_ACTS == 3 and field.MAX_WAVES_PER_ACT == 20, "Game must have 3 Acts with 20 rounds per Act!")
+			print(" -> 🚩 [3막 20라운드] 로그라이크 스테이지 구성 검증 완료!")
 
 		14:
 			print("\n[Step 8] 💾 게임 영구 저장 (Save Game) 테스트")
-			main_node.save_game_state()
-			var sm = get_node_or_null("/root/SaveManager")
-			print(" -> 세이브 파일 저장 확인 완료!")
+			# '자동 저장' 을 **실제로** 잰다 — 명시적으로 저장을 부르지 **않고** 파일이
+			# 생기는지 본다. 먼저 지워야 한다: 파일이 이미 있으면 이 절은 아무것도
+			# 증명하지 못한다(예전 코드는 `save_game_state()` 를 직접 부르고 print 만 했다).
+			SaveManager.delete_save_file()
+			assert(not SaveManager.has_save_file(), "지우고 시작해야 자동 저장을 잴 수 있다")
+			# 타워 배치 변경은 `TowerDefenseMain._ready()` 에서 `save_game_state` 에 연결돼
+			# 있다 — 플레이어가 저장을 누르지 않아도 저장되는 경로가 바로 이것이다.
+			field.tower_positions_changed.emit()
+			assert(SaveManager.has_save_file(), "타워 배치가 바뀌었는데 자동 저장이 일어나지 않았다")
+			print(" -> 자동 저장 확인: 명시적 저장 호출 **없이** 세이브 파일이 생겼다")
 
 			# 강제로 상태 변조 (테스트용)
 			field.gold = 0
@@ -148,7 +189,31 @@ func run_step(current_step: int) -> void:
 
 		18:
 			print("\n=======================================================")
-			print("🎉 [ALL TESTS PASSED] 도감, 조합 없는 단어 큰 텍스트, 단축키, 세이브/로드 완벽 검증 성공!")
+			# ⚠️ 이 문구는 **합격 도장**이다 — `tests/run_all.sh` 의 `RESULT_RE` 가 이 문자열에
+			# 걸려서 이 테스트를 통과로 센다. 그러므로 **주장과 실제 검사가 일치해야 한다.**
+			#
+			# 2026-09-24 1차 정정(§2.16): 예전 문구는 "도감, 조합 없는 단어 큰 텍스트, 단축키,
+			# 세이브/로드 **완벽** 검증 성공" 이었는데 `InputEventKey`·`keycode` 가 0건, 폰트
+			# 검사도 0건이었다 — 주장 4개 중 2개가 허위였다. 그래서 검사가 있는 것만 남기고
+			# `완벽` 도 뺐다.
+			#
+			# 2026-09-24 2차 정정(§2.16 잔여): **머리말**이 아직 `타워 클릭 팝업`·`자동 저장`·
+			# `큰 텍스트` 를 주장하고 있었다. 앞의 둘은 **검사를 새로 넣어 주장을 참으로 만들고**
+			# (Step 4 는 팝업 노드의 존재·가시성을, Step 8 은 명시적 저장 호출 **없이** 파일이
+			# 생기는지를 잰다), `큰 텍스트` 는 **문구에서 뺐다**(검사할 것이 없다).
+			#
+			# ⚠️ 여기에 **행 번호를 적지 않는다.** 예전에는 `도감 = :68·:70` 처럼 적었는데,
+			#    위에 한 줄만 끼워 넣어도 전부 낡는다(이 프로젝트가 감사 문서에서 반복해 밟았다).
+			#    대신 **절 이름**으로 적는다 — 이름은 안 움직인다.
+			#   도감 해금 = Step 2 · 단어 조합 = Step 1·3·5 · 유물 = Step 2 ·
+			#   타워 클릭 팝업 = Step 4 · 자동 저장 = Step 8 · 세이브/로드 왕복 = Step 8·9
+			#
+			# ⚠️ **키 입력·툴팁은 이 스위트가 검사하지 않는다.** 그쪽은
+			# `tools/TooltipTruthProbe`(배속 키를 문구에서 읽어 실제로 눌러 본다) 와
+			# `tools/TooltipAuthorProbe` 가 맡는다 — 다만 `run_all.sh` 에는 **아직 등록되지
+			# 않았다**(스위트 등록은 감독 결정 사항). 그 사실을 여기 적어 두는 이유는,
+			# 문구에서 `단축키` 를 빼는 순간 **그 공백이 보이지 않게** 되기 때문이다.
+			print("🎉 [ALL TESTS PASSED] 도감, 단어 조합, 유물, 타워 클릭 팝업, 자동 저장, 세이브/로드 검증 성공!")
 			print("=======================================================\n")
 			Engine.time_scale = 1.0
 			get_tree().quit(0)

@@ -11,6 +11,7 @@ import { sound } from './core/soundEngine.js';
 import { getInsertionIndex } from './core/dragInsertion.js';
 import { applyTowerSynergies, getInitialHint, getRelicBonuses, getWaveSynergyHealing } from './core/wordSynergy.js';
 import { groupTilesByTowers } from './core/tileGroups.js';
+import { styleFor } from './core/attackStyle.js';
 
 const ACT_NAMES = {
   1: "연구소 앞뜰",
@@ -141,6 +142,26 @@ const ALL_RELIC_POOL = [
   {
     id: "relic_open_chime", name: "무받침 풍경", cost: 35,
     desc: "받침 없는 타워가 연속 배치되면 양쪽 공격속도 +12%", icon: "./assets/relics/relic_gourd_32px_pastel.png"
+  },
+  {
+    id: "relic_blast_charge", name: "폭발의 뇌관", cost: 35,
+    desc: "폭발 타워 피해 +25%, 함께 맞는 대상 +1", icon: "./assets/relics/relic_gourd_32px_pastel.png"
+  },
+  {
+    id: "relic_chain_loom", name: "연쇄의 베틀", cost: 35,
+    desc: "연쇄 타워 피해 +15%, 튀는 대상 +1", icon: "./assets/relics/relic_bell_32px_pastel.png"
+  },
+  {
+    id: "relic_orbit_gear", name: "선회의 톱니", cost: 40,
+    desc: "선회 타워의 궤도 오브 +1개", icon: "./assets/relics/relic_crystal_32px_pastel.png"
+  },
+  {
+    id: "relic_pierce_auger", name: "관통 송곳", cost: 30,
+    desc: "관통 타워 사거리 +10%, 꿰뚫는 대상 +1", icon: "./assets/relics/relic_magnifier_32px_pastel.png"
+  },
+  {
+    id: "relic_burn_oil", name: "발화 기름", cost: 30,
+    desc: "지속 피해 타워의 화상 지속시간 +50%", icon: "./assets/relics/relic_ink_stone_32px_pastel.png"
   }
 ];
 
@@ -310,6 +331,25 @@ class HangulTDApp {
     this.imgCrystal = new Image();
     this.imgCrystal.src = "./assets/map_ui/map_base_crystal_32px_pastel.png";
 
+    this.projImgs = {};
+    const projKeys = ["bullet", "slash", "fire", "ice", "arrow", "lightning", "dot", "pierce", "bounce"];
+    const projFiles = {
+      bullet: "proj_magic_32px_pastel.png",
+      slash: "proj_slash_32px_pastel.png",
+      fire: "proj_fire_32px_pastel.png",
+      ice: "proj_ice_32px_pastel.png",
+      arrow: "proj_arrow_32px_pastel.png",
+      lightning: "proj_lightning_32px_pastel.png",
+      dot: "proj_dot_32px_pastel.png",
+      pierce: "proj_pierce_32px_pastel.png",
+      bounce: "proj_bounce_32px_pastel.png"
+    };
+    for (const [k, f] of Object.entries(projFiles)) {
+      const img = new Image();
+      img.src = `./assets/projectiles/${f}`;
+      this.projImgs[k] = img;
+    }
+
     this.canvas.addEventListener("click", (e) => {
       const rect = this.canvas.getBoundingClientRect();
       const scaleX = this.canvas.width / rect.width;
@@ -420,8 +460,10 @@ class HangulTDApp {
     const relicIds = this.ownedRelics.map(r => r.id);
     this.activeTowers = parsed.map(p => {
       const bonus = getRelicBonuses(p.syllable, relicIds);
+      const style = styleFor(p.syllable, p.wordData || {});
       return {
         syllable: p.syllable, tier: p.tier, wordData: p.wordData, attackCooldown: 0,
+        style: style,
         attackInterval: (p.wordData.rapid_fire ? 0.25 : (p.tier === 3 ? 0.7 : (p.tier === 2 ? 0.85 : 0.95))) * speedBoost * bonus.intervalMultiplier,
         range: (p.tier === 3 ? 200 : (p.tier === 2 ? 180 : 150)) * (this.hasRelic("relic_range_rune") ? 1.15 : 1) * bonus.rangeMultiplier,
         damage: Math.round((p.wordData.damage || 4) * powerBoost * (p.tier === 3 && this.hasRelic("relic_three_syllable_seal") ? 1.25 : 1) * bonus.damageMultiplier),
@@ -554,6 +596,7 @@ class HangulTDApp {
     }
 
     this.isWaveRunning = true;
+    this.waveSpawnDone = false;
     this.updateTopBar();
     sound.playWaveStart();
 
@@ -564,9 +607,10 @@ class HangulTDApp {
     const speed = 65 + (this.currentAct - 1) * 8;
 
     let spawned = 0;
-    const spawnTimer = setInterval(() => {
+    const spawnOne = () => {
       if (spawned >= count) {
-        clearInterval(spawnTimer);
+        this.waveSpawnDone = true;
+        if (this.spawnTimer) clearInterval(this.spawnTimer);
         return;
       }
       const isBoss = (spawned === count - 1 && this.currentWave === 4);
@@ -582,7 +626,14 @@ class HangulTDApp {
         goldValue: isBoss ? (25 + this.currentAct * 10) : (2 + totalStage)
       });
       spawned += 1;
-    }, 900 / this.speedScale);
+      if (spawned >= count) {
+        this.waveSpawnDone = true;
+        if (this.spawnTimer) clearInterval(this.spawnTimer);
+      }
+    };
+    spawnOne();
+    if (this.spawnTimer) clearInterval(this.spawnTimer);
+    this.spawnTimer = setInterval(spawnOne, 900 / this.speedScale);
   }
 
   startGameLoop() {
@@ -673,7 +724,10 @@ class HangulTDApp {
             targetRef: target,
             damage: dmg,
             tier: tower.tier,
-            life: 0.15
+            projType: (tower.style && tower.style.proj) || "bullet",
+            traitId: (tower.style && tower.style.trait) || "balanced",
+            life: 0.22,
+            maxLife: 0.22
           });
 
           target.hp -= dmg;
@@ -712,7 +766,7 @@ class HangulTDApp {
     }
 
     // Check Wave Clear
-    if (this.isWaveRunning && this.enemies.length === 0) {
+    if (this.isWaveRunning && this.waveSpawnDone && this.enemies.length === 0) {
       this.isWaveRunning = false;
       const isActFinal = (this.currentWave >= this.maxWavesPerAct);
       let baseBonus = isActFinal ? (25 + this.currentAct * 10) : (10 + this.currentWave * 4);
@@ -847,12 +901,30 @@ class HangulTDApp {
 
     // 4. Draw Projectiles
     this.projectiles.forEach((proj) => {
-      ctx.strokeStyle = proj.tier >= 3 ? "#f43f5e" : (proj.tier === 2 ? "#eab308" : "#38bdf8");
-      ctx.lineWidth = proj.tier >= 3 ? 4 : (proj.tier === 2 ? 3 : 2);
-      ctx.beginPath();
-      ctx.moveTo(proj.startX, proj.startY);
-      ctx.lineTo(proj.targetX, proj.targetY);
-      ctx.stroke();
+      const progress = Math.min(1.0, Math.max(0.0, 1.0 - (proj.life / proj.maxLife)));
+      const currX = proj.startX + (proj.targetX - proj.startX) * progress;
+      const currY = proj.startY + (proj.targetY - proj.startY) * progress;
+      const img = this.projImgs && this.projImgs[proj.projType];
+      if (img && img.complete && img.naturalWidth) {
+        ctx.save();
+        ctx.translate(currX, currY);
+        const angle = Math.atan2(proj.targetY - proj.startY, proj.targetX - proj.startX);
+        if (proj.projType === "bounce") {
+          ctx.rotate(progress * 18);
+        } else {
+          ctx.rotate(angle);
+        }
+        const size = (proj.tier >= 3 ? 32 : (proj.tier === 2 ? 26 : 22));
+        ctx.drawImage(img, -size / 2, -size / 2, size, size);
+        ctx.restore();
+      } else {
+        ctx.strokeStyle = proj.tier >= 3 ? "#f43f5e" : (proj.tier === 2 ? "#eab308" : "#38bdf8");
+        ctx.lineWidth = proj.tier >= 3 ? 4 : (proj.tier === 2 ? 3 : 2);
+        ctx.beginPath();
+        ctx.moveTo(proj.startX, proj.startY);
+        ctx.lineTo(currX, currY);
+        ctx.stroke();
+      }
     });
 
     // 5. Draw Enemies

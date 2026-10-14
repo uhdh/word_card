@@ -329,6 +329,18 @@ class SoundEngine {
       osc.stop(t + i * 0.1 + 0.36);
     });
   }
+
+  playWaveStart() {
+    this.playBuff();
+  }
+
+  playWaveClear() {
+    this.playVictory();
+  }
+
+  playHurt() {
+    this.playHit();
+  }
 }
 
 export const sound = new SoundEngine();

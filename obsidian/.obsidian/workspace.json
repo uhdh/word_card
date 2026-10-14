@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "372097c94222faea",
+        "id": "96e72ece01869f16",
         "type": "tabs",
         "children": [
           {
-            "id": "4fb1c1fe396a11eb",
+            "id": "e13fbf70f9c2935f",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -95,6 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "단어/쥐.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "단어/쥐.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -155,6 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "단어/쥐.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -181,10 +184,16 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "4fb1c1fe396a11eb",
+  "active": "e13fbf70f9c2935f",
   "lastOpenFiles": [
+    "단어/곱.md",
+    "단어/살무사.md",
+    "현재 단어 조합 그래프.md",
+    "단어/쥐.md",
+    "단어/대지진.md",
+    "단어/독벌.md",
+    "단어/굿.md",
     "단어/소.md",
-    "단어/괴물.md",
-    "현재 단어 조합 그래프.md"
+    "단어/괴물.md"
   ]
 }

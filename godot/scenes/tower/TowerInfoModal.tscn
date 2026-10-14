@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://tower_info_modal_001"]
+[gd_scene format=3 uid="uid://tower_info_modal_001"]
 
 [ext_resource type="Script" path="res://scripts/ui/TowerInfoModal.gd" id="1_info"]
 
@@ -21,23 +21,24 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(440, 290)
+custom_minimum_size = Vector2(520, 300)
+theme_type_variation = &"ModalPanel"
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -145.0
-offset_right = 220.0
-offset_bottom = 145.0
+offset_left = -260.0
+offset_top = -150.0
+offset_right = 260.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="Header" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -70,6 +71,20 @@ text = "⭐ 1글자 기본 타워 (무기/참격)"
 [node name="HSeparator1" type="HSeparator" parent="Panel/VBox"]
 layout_mode = 2
 
+[node name="DescContainer" type="PanelContainer" parent="Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescLabel" type="RichTextLabel" parent="Panel/VBox/DescContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+theme_override_font_sizes/normal_font_size = 13
+text = "적에게 10의 강력한 물리 베기 피해를 입힙니다."
+
 [node name="StatsContainer" type="PanelContainer" parent="Panel/VBox"]
 layout_mode = 2
 
@@ -77,28 +92,15 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
-text = "💥 공격력: 10  |  🎯 사거리: 150 px  |  ⏱️ 쿨타임: 0.65초"
+text = "⚔ 10.0 (DPS 15.4)   🎯 150px   ⏱ 0.65초"
 horizontal_alignment = 1
 
-[node name="DescContainer" type="PanelContainer" parent="Panel/VBox"]
+[node name="SynergyRow" type="HFlowContainer" parent="Panel/VBox"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="DescLabel" type="Label" parent="Panel/VBox/DescContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 13
-text = "적에게 10의 강력한 물리 베기 피해를 입힙니다."
-autowrap_mode = 3
-
-[node name="RecipeContainer" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="RecipeLabel" type="Label" parent="Panel/VBox/RecipeContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-theme_override_colors/font_color = Color(0.6, 0.9, 0.6, 1)
-text = "🧩 조합 레시피: [ㄱㅓㅁ]"
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+alignment = 1
 
 [node name="BtnClose" type="Button" parent="Panel/VBox"]
 custom_minimum_size = Vector2(120, 34)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sync_test_scene_001"]
+
+[ext_resource type="Script" path="res://tools/SyncTestScene.gd" id="1_sync"]
+
+[node name="SyncTestScene" type="Node"]
+script = ExtResource("1_sync")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bprobehintpick1"]
+
+[ext_resource type="Script" path="res://tools/HintPickProbe.gd" id="1"]
+
+[node name="HintPickProbe" type="Node"]
+script = ExtResource("1")

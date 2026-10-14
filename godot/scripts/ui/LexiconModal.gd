@@ -35,8 +35,8 @@ func _ready() -> void:
 		{"id": "tier1", "name": "⭐ 1글자"},
 		{"id": "tier2", "name": "⭐⭐ 2글자 상위"},
 		{"id": "tier3", "name": "⭐⭐⭐ 3글자 신화"},
-		{"id": "weapon", "name": "⚔️ 무기"},
-		{"id": "element", "name": "🔮 원소"},
+		{"id": "weapon", "name": "무기"},
+		{"id": "element", "name": "원소"},
 		{"id": "defense", "name": "🛡️ 방어"},
 		{"id": "summon", "name": "🐾 생물"},
 		{"id": "heal", "name": "💖 회복"}
@@ -53,7 +53,8 @@ func _ready() -> void:
 		)
 		tabs_container.add_child(btn)
 
-	SoundEngine.play_word_crafted()
+	# 도감을 여는 것은 '단어 완성' 이 아니다 — 일반 UI 열기음으로 되돌린다.
+	SoundEngine.play_tile_click()
 	render_cards()
 
 func _on_search_changed(new_text: String) -> void:
@@ -173,7 +174,19 @@ func render_cards() -> void:
 			else:
 				name_lbl.add_theme_color_override("font_color", Color(0.5, 0.9, 1.0))
 
-			dmg_lbl.text = "💥 %d" % w.get("damage", 4)
+			# 도감의 숫자는 **실제 타워가 내는 값** 이어야 한다.
+			#
+			# 예전에는 DB 의 `damage` 필드를 그대로 찍었다. 그 필드는 게임이 읽지 않아서
+			# 도감이 거짓말을 했다: 가루 44 · 바늘 22 로 보여 주지만 실제 타워는
+			# 가루 9.5 DPS · 바늘 45.4 DPS 다 — 도감이 **4.8배 약한 쪽을 1위**로 보여 주고
+			# 있었고, 디렉터가 바로 그 숫자를 믿고 "힌트가 더 약한 단어를 목표로 세운다" 를
+			# 잡았다. 이제 힌트와 같은 식(WordTower.preview_stats)을 쓴다.
+			#
+			# 두 줄로 나눈 이유: 발당 피해만 보면 '빠른 대신 약한' 특성(질풍)이
+			# 손해로 보이고, DPS 만 보면 '한 방 센' 특성(유성)이 손해로 보인다.
+			# 카드 폭(250px)이 좁아 한 줄에 둘 다 넣으면 이름이 잘린다.
+			var stats: Dictionary = WordTower.preview_stats(word_str, w)
+			dmg_lbl.text = "💥 %.1f\nDPS %.1f" % [stats["per_hit"], stats["dps"]]
 			dmg_lbl.add_theme_color_override("font_color", Color(1.0, 0.6, 0.4))
 
 			var recipe_str = get_jamo_recipe(word_str)

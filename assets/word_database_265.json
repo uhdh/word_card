@@ -11,7 +11,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅜ + ㅅ",
     "structure": "\\[ㄱㅜㅅ\\]",
-    "desc": "신성한 방울과 영력을 방출하여 14의 마법 피해 및 주변 적들을 1초간 정화(기절)시킵니다.",
+    "desc": "신성한 방울과 영력을 방출하여 마법 피해 및 주변 적들을 1초간 정화(기절)시킵니다.",
     "icon": "./assets/words_symbol_32px/word_001_1글자_굿.png",
     "sound": "play_attack"
   },
@@ -27,7 +27,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅏ + ㅅ",
     "structure": "\\[ㄱㅏㅅ\\]",
-    "desc": "고결한 정신력으로 10의 정신 피해를 입히고 타워의 사거리를 +30px 증가시킵니다.",
+    "desc": "고결한 정신력으로 정신 피해를 입히고 타워의 사거리를 +30px 증가시킵니다.",
     "icon": "./assets/words_symbol_32px/word_002_1글자_갓.png",
     "sound": "play_attack"
   },
@@ -43,7 +43,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅜ + ㅅ",
     "structure": "\\[ㅂㅜㅅ\\]",
-    "desc": "날카로운 서예 먹물을 발사하여 13 피해를 입히고 적에게 지속 먹물 피해를 남깁니다.",
+    "desc": "날카로운 서예 먹물을 발사하여 피해를 입히고 적에게 지속 먹물 피해를 남깁니다.",
     "icon": "./assets/words_symbol_32px/word_003_1글자_붓.png",
     "sound": "play_attack"
   },
@@ -59,7 +59,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅜ + ㄹ",
     "structure": "\\[ㅅㅜㄹ\\]",
-    "desc": "독한 술을 뿌려 12의 화염 피해를 입히고 적중된 적의 이동 방향을 비틀거리게 합니다.",
+    "desc": "독한 술을 뿌려 화염 피해를 입히고 적중된 적의 이동 방향을 비틀거리게 합니다.",
     "icon": "./assets/words_symbol_32px/word_004_1글자_술.png",
     "sound": "play_attack"
   },
@@ -75,7 +75,7 @@
     "jamo_count": 4,
     "formula": "ㄷ + ㅏ + ㄹ + ㄱ",
     "structure": "\\[ㄷㅏㄺ\\]",
-    "desc": "새벽을 깨우는 닭이 힘차게 날아올라 15의 물리 피해를 입히고 적을 뒤로 밀쳐냅니다.",
+    "desc": "새벽을 깨우는 닭이 힘차게 날아올라 물리 피해를 입히고 적을 뒤로 밀쳐냅니다.",
     "icon": "./assets/words_symbol_32px/word_005_1글자_닭.png",
     "sound": "play_attack"
   },
@@ -91,7 +91,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅗ + ㅂ",
     "structure": "\\[ㄱㅗㅂ\\]",
-    "desc": "활자의 힘을 2배로 증폭하여 16의 강력한 에너지 폭발 피해를 입힙니다.",
+    "desc": "활자의 힘을 2배로 증폭하여 강력한 에너지 폭발 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_006_1글자_곱.png",
     "sound": "play_attack"
   },
@@ -107,7 +107,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅏ + ㅁ",
     "structure": "\\[ㅂㅏㅁ\\]",
-    "desc": "단단한 가시 밤송이를 굴려 11의 관통 물리 피해 및 가시 출혈을 입힙니다.",
+    "desc": "단단한 가시 밤송이를 굴려 관통 물리 피해 및 가시 출혈을 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_007_1글자_밤.png",
     "sound": "play_attack"
   },
@@ -123,7 +123,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅗ + ㅁ",
     "structure": "\\[ㅂㅗㅁ\\]",
-    "desc": "따스한 봄바람을 불어 10의 광역 피해를 입히고 기지 체력을 1 회복합니다.",
+    "desc": "따스한 봄바람을 불어 광역 피해를 입히고 기지 체력을 1 회복합니다.",
     "icon": "./assets/words_symbol_32px/word_008_1글자_봄.png",
     "sound": "play_attack"
   },
@@ -139,7 +139,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅣ + ㅁ",
     "structure": "\\[ㄱㅣㅁ\\]",
-    "desc": "뜨거운 고온 증기를 뿜어내어 12의 화염 지속 피해 및 시야를 차단합니다.",
+    "desc": "뜨거운 고온 증기를 뿜어내어 화염 지속 피해 및 시야를 차단합니다.",
     "icon": "./assets/words_symbol_32px/word_009_1글자_김.png",
     "sound": "play_attack"
   },
@@ -155,7 +155,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅡ + ㅁ",
     "structure": "\\[ㄱㅡㅁ\\]",
-    "desc": "황금 탄환을 발사하여 14 피해를 입히고 타격할 때마다 1 G를 즉시 강탈합니다.",
+    "desc": "황금 탄환을 발사하여 피해를 입히고 타격할 때마다 1 G를 즉시 강탈합니다.",
     "icon": "./assets/words_symbol_32px/word_010_1글자_금.png",
     "sound": "play_attack"
   },
@@ -171,7 +171,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅗ + ㄹ",
     "structure": "\\[ㅂㅗㄹ\\]",
-    "desc": "통통 튀는 고무 볼을 던져 최대 3명의 적에게 연속 바운스 13 피해를 입힙니다.",
+    "desc": "통통 튀는 고무 볼을 던져 최대 3명의 적에게 연속 바운스 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_011_1글자_볼.png",
     "sound": "play_attack"
   },
@@ -187,7 +187,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅏ + ㄹ",
     "structure": "\\[ㅂㅏㄹ\\]",
-    "desc": "강력한 돌려차기로 12의 물리 피해를 입히고 적을 0.5초간 넉백시킵니다.",
+    "desc": "강력한 돌려차기로 물리 피해를 입히고 적을 0.5초간 넉백시킵니다.",
     "icon": "./assets/words_symbol_32px/word_012_1글자_발.png",
     "sound": "play_attack"
   },
@@ -203,7 +203,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅏ + ㅁ",
     "structure": "\\[ㄱㅏㅁ\\]",
-    "desc": "단단한 감 열매를 고속 투척하여 11 피해 및 30% 둔화를 줍니다.",
+    "desc": "단단한 감 열매를 고속 투척하여 피해 및 30% 둔화를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_013_1글자_감.png",
     "sound": "play_attack"
   },
@@ -235,7 +235,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅏ + ㅣ",
     "structure": "\\[ㄱㅐ\\]",
-    "desc": "사냥개를 풀어 9 피해 및 1초간 적을 물고 늘어집니다.",
+    "desc": "사냥개를 풀어 피해 및 1초간 적을 물고 늘어집니다.",
     "icon": "./assets/words_symbol_32px/word_015_1글자_개.png",
     "sound": "play_attack"
   },
@@ -251,7 +251,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㄱㅓㅁ\\]",
-    "desc": "기본 활자 검을 휘둘러 6의 물리 피해를 입힙니다.",
+    "desc": "기본 활자 검을 휘둘러 물리 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_016_1글자_검.png",
     "sound": "play_attack"
   },
@@ -267,7 +267,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅗ + ㄱ",
     "structure": "\\[ㄱㅗㄱ\\]",
-    "desc": "곡괭이로 적을 찍어 9 피해를 입히고 추가 골드를 획득합니다.",
+    "desc": "곡괭이로 적을 찍어 피해를 입히고 추가 골드를 획득합니다.",
     "icon": "./assets/words_symbol_32px/word_017_1글자_곡.png",
     "sound": "play_attack"
   },
@@ -315,7 +315,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅜ + ㅇ",
     "structure": "\\[ㄱㅜㅇ\\]",
-    "desc": "긴 사거리의 활 화살을 발사하여 5의 피해를 입힙니다.",
+    "desc": "긴 사거리의 활 화살을 발사하여 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_020_1글자_궁.png",
     "sound": "play_attack"
   },
@@ -347,7 +347,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅡ + ㄱ",
     "structure": "\\[ㄱㅡㄱ\\]",
-    "desc": "세 갈래 창날로 13의 날카로운 찌르기 피해를 가합니다.",
+    "desc": "세 갈래 창날로 날카로운 찌르기 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_022_1글자_극.png",
     "sound": "play_attack"
   },
@@ -379,7 +379,7 @@
     "jamo_count": 3,
     "formula": "ㄴ + ㅏ + ㄹ",
     "structure": "\\[ㄴㅏㄹ\\]",
-    "desc": "예리한 칼날로 베어 9 피해 및 30% 취약 표식을 부여합니다.",
+    "desc": "예리한 칼날로 베어 피해 및 30% 취약 표식을 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_024_1글자_날.png",
     "sound": "play_attack"
   },
@@ -411,7 +411,7 @@
     "jamo_count": 3,
     "formula": "ㄴ + ㅏ + ㅈ",
     "structure": "\\[ㄴㅏㅈ\\]",
-    "desc": "낮의 햇살 에너지로 6의 피해를 입힙니다.",
+    "desc": "낮의 햇살 에너지로 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_026_1글자_낮.png",
     "sound": "play_attack"
   },
@@ -427,7 +427,7 @@
     "jamo_count": 4,
     "formula": "ㄴ + ㅏ + ㅣ + ㅇ",
     "structure": "\\[ㄴㅐㅇ\\]",
-    "desc": "서늘한 냉기를 뿜어 7 피해와 함께 적의 공속을 깎습니다.",
+    "desc": "서늘한 냉기를 뿜어 피해와 함께 적의 공속을 깎습니다.",
     "icon": "./assets/words_symbol_32px/word_027_1글자_냉.png",
     "sound": "play_attack"
   },
@@ -443,7 +443,7 @@
     "jamo_count": 3,
     "formula": "ㄴ + ㅗ + ㅣ",
     "structure": "\\[ㄴㅚ\\]",
-    "desc": "번갯불을 내리쳐 11 피해 및 2체의 적에게 연쇄 감전을 일으킵니다.",
+    "desc": "번갯불을 내리쳐 피해 및 2체의 적에게 연쇄 감전을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_028_1글자_뇌.png",
     "sound": "play_attack"
   },
@@ -491,7 +491,7 @@
     "jamo_count": 2,
     "formula": "ㄷ + ㅗ",
     "structure": "\\[ㄷㅗ\\]",
-    "desc": "직도로 적을 베어 6의 물리 피해를 입힙니다.",
+    "desc": "직도로 적을 베어 물리 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_031_1글자_도.png",
     "sound": "play_attack"
   },
@@ -507,7 +507,7 @@
     "jamo_count": 3,
     "formula": "ㄷ + ㅗ + ㄱ",
     "structure": "\\[ㄷㅗㄱ\\]",
-    "desc": "치명적인 독액을 뱉어 6 피해 및 초당 4의 지속 독 피해를 줍니다.",
+    "desc": "치명적인 독액을 뱉어 피해 및 지속 독 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_032_1글자_독.png",
     "sound": "play_attack"
   },
@@ -523,7 +523,7 @@
     "jamo_count": 3,
     "formula": "ㄷ + ㅗ + ㄹ",
     "structure": "\\[ㄷㅗㄹ\\]",
-    "desc": "무거운 돌을 던져 5의 피해를 입힙니다.",
+    "desc": "무거운 돌을 던져 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_033_1글자_돌.png",
     "sound": "play_attack"
   },
@@ -539,7 +539,7 @@
     "jamo_count": 2,
     "formula": "ㅁ + ㅏ",
     "structure": "\\[ㅁㅏ\\]",
-    "desc": "적의 급소에 마비 침을 발사하여 12 피해 및 1초간 마비(스턴)를 줍니다.",
+    "desc": "적의 급소에 마비 침을 발사하여 피해 및 1초간 마비(스턴)를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_034_1글자_마.png",
     "sound": "play_attack"
   },
@@ -571,7 +571,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅏ + ㄹ",
     "structure": "\\[ㅁㅏㄹ\\]",
-    "desc": "강력한 말발굽으로 짓밟아 11 피해를 입힙니다.",
+    "desc": "강력한 말발굽으로 짓밟아 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_036_1글자_말.png",
     "sound": "play_attack"
   },
@@ -587,7 +587,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅏ + ㅇ",
     "structure": "\\[ㅁㅏㅇ\\]",
-    "desc": "올가미 그물을 투척하여 14 피해 및 적들을 1.2초간 속박합니다.",
+    "desc": "올가미 그물을 투척하여 피해 및 적들을 1.2초간 속박합니다.",
     "icon": "./assets/words_symbol_32px/word_037_1글자_망.png",
     "sound": "play_attack"
   },
@@ -603,7 +603,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅗ + ㅅ",
     "structure": "\\[ㅁㅗㅅ\\]",
-    "desc": "날카로운 대못을 박아 7 피해 및 초당 3 출혈 피해를 줍니다.",
+    "desc": "날카로운 대못을 박아 피해 및 지속 출혈 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_038_1글자_못.png",
     "sound": "play_attack"
   },
@@ -635,7 +635,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅜ + ㄱ",
     "structure": "\\[ㅁㅜㄱ\\]",
-    "desc": "끈적한 도토리묵을 뿜어 10 피해 및 적 이동속도를 60% 감속시킵니다.",
+    "desc": "끈적한 도토리묵을 뿜어 피해 및 적 이동속도를 60% 감속시킵니다.",
     "icon": "./assets/words_symbol_32px/word_040_1글자_묵.png",
     "sound": "play_attack"
   },
@@ -651,7 +651,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅜ + ㄴ",
     "structure": "\\[ㅁㅜㄴ\\]",
-    "desc": "적의 경로 위에 거대한 철문을 내리찍어 14 피해 및 1.5초 기절을 줍니다.",
+    "desc": "적의 경로 위에 거대한 철문을 내리찍어 피해 및 1.5초 기절을 줍니다.",
     "icon": "./assets/words_symbol_32px/word_041_1글자_문.png",
     "sound": "play_attack"
   },
@@ -667,7 +667,7 @@
     "jamo_count": 3,
     "formula": "ㅁ + ㅜ + ㄹ",
     "structure": "\\[ㅁㅜㄹ\\]",
-    "desc": "차가운 물줄기를 발사하여 6 피해 및 적을 20% 둔화시킵니다.",
+    "desc": "차가운 물줄기를 발사하여 피해 및 적을 20% 둔화시킵니다.",
     "icon": "./assets/words_symbol_32px/word_042_1글자_물.png",
     "sound": "play_attack"
   },
@@ -699,7 +699,7 @@
     "jamo_count": 4,
     "formula": "ㅂ + ㅏ + ㅣ + ㅁ",
     "structure": "\\[ㅂㅐㅁ\\]",
-    "desc": "독사를 소환하여 8 피해 및 초당 3의 중독 피해를 부여합니다.",
+    "desc": "독사를 소환하여 피해 및 지속 중독 피해를 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_044_1글자_뱀.png",
     "sound": "play_attack"
   },
@@ -763,7 +763,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅜ + ㄹ",
     "structure": "\\[ㅂㅜㄹ\\]",
-    "desc": "적에게 7 피해를 주고 초당 3의 화상 피해를 남깁니다.",
+    "desc": "적에게 피해를 주고 지속 화상 피해를 남깁니다.",
     "icon": "./assets/words_symbol_32px/word_048_1글자_불.png",
     "sound": "play_attack"
   },
@@ -795,7 +795,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅣ + ㅇ",
     "structure": "\\[ㅂㅣㅇ\\]",
-    "desc": "날카로운 얼음 조각을 쏘아 8 피해 및 40% 둔화를 겁니다.",
+    "desc": "날카로운 얼음 조각을 쏘아 피해 및 40% 둔화를 겁니다.",
     "icon": "./assets/words_symbol_32px/word_050_1글자_빙.png",
     "sound": "play_attack"
   },
@@ -811,7 +811,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅏ + ㄱ",
     "structure": "\\[ㅅㅏㄱ\\]",
-    "desc": "매서운 삭풍을 휘둘러 10 피해를 입힙니다.",
+    "desc": "매서운 삭풍을 휘둘러 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_051_1글자_삭.png",
     "sound": "play_attack"
   },
@@ -843,7 +843,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅏ + ㅣ",
     "structure": "\\[ㅅㅐ\\]",
-    "desc": "영리한 새를 날려 7의 빠른 쪼기 피해를 연속으로 가합니다.",
+    "desc": "영리한 새를 날려 빠른 쪼기 피해를 연속으로 가합니다.",
     "icon": "./assets/words_symbol_32px/word_053_1글자_새.png",
     "sound": "play_attack"
   },
@@ -859,7 +859,7 @@
     "jamo_count": 4,
     "formula": "ㅅ + ㅏ + ㅣ + ㅁ",
     "structure": "\\[ㅅㅐㅁ\\]",
-    "desc": "바닥에서 솟구치는 거대한 물기둥으로 12 피해 및 0.5초 에어본을 가합니다.",
+    "desc": "바닥에서 솟구치는 거대한 물기둥으로 피해 및 0.5초 에어본을 가합니다.",
     "icon": "./assets/words_symbol_32px/word_054_1글자_샘.png",
     "sound": "play_attack"
   },
@@ -891,7 +891,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅓ + ㅇ",
     "structure": "\\[ㅅㅓㅇ\\]",
-    "desc": "요새의 육중한 성채 방어포를 발사하여 18의 광역 포격 피해를 줍니다.",
+    "desc": "요새의 육중한 성채 방어포를 발사하여 광역 포격 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_056_1글자_성.png",
     "sound": "play_attack"
   },
@@ -939,7 +939,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅜ + ㅁ",
     "structure": "\\[ㅅㅜㅁ\\]",
-    "desc": "전방 부채꼴 범위로 16의 거대한 영기 숨결을 뿜어냅니다.",
+    "desc": "전방 부채꼴 범위로 거대한 영기 숨결을 뿜어냅니다.",
     "icon": "./assets/words_symbol_32px/word_059_1글자_숨.png",
     "sound": "play_attack"
   },
@@ -1003,7 +1003,7 @@
     "jamo_count": 3,
     "formula": "ㅇ + ㅣ + ㄹ",
     "structure": "\\[ㅇㅣㄹ\\]",
-    "desc": "혼신의 일격을 날려 15의 치명적인 단일 물리 피해를 입힙니다.",
+    "desc": "혼신의 일격을 날려 치명적인 단일 물리 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_063_1글자_일.png",
     "sound": "play_attack"
   },
@@ -1019,7 +1019,7 @@
     "jamo_count": 3,
     "formula": "ㅈ + ㅜ + ㅣ",
     "structure": "\\[ㅈㅟ\\]",
-    "desc": "재빠른 역병 쥐를 풀어 6 피해 및 이동속도 20% 둔화를 겁니다.",
+    "desc": "재빠른 역병 쥐를 풀어 피해 및 이동속도 20% 둔화를 겁니다.",
     "icon": "./assets/words_symbol_32px/word_064_1글자_쥐.png",
     "sound": "play_attack"
   },
@@ -1035,7 +1035,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅏ + ㅅ + ㅗ + ㄱ",
     "structure": "\\[ㄱㅏ\\] + \\[ㅅㅗㄱ\\]",
-    "desc": "\\[2글자 상위 타워\\] 20 피해를 입히며 주변 아군 타워 공격속도를 +50% 폭발적으로 증가시킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 피해를 입히며 주변 아군 타워 공격속도를 +50% 폭발적으로 증가시킵니다.",
     "icon": "./assets/words_symbol_32px/word_065_2글자_가속.png",
     "sound": "play_attack"
   },
@@ -1051,7 +1051,7 @@
     "jamo_count": 4,
     "formula": "ㄱ + ㅏ + ㅅ + ㅣ",
     "structure": "\\[ㄱㅏ\\] + \\[ㅅㅣ\\]",
-    "desc": "가시를 사방으로 뿜어내 18의 광역 피해를 입힙니다.",
+    "desc": "가시를 사방으로 뿜어내 광역 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_066_2글자_가시.png",
     "sound": "play_attack"
   },
@@ -1067,7 +1067,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅏ + ㅂ + ㅇ + ㅗ + ㅅ",
     "structure": "\\[ㄱㅏㅂ\\] + \\[ㅇㅗㅅ\\]",
-    "desc": "\\[2글자 상위 타워\\] 23의 중갑 파편을 난사하여 사방의 적들에게 물리 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 중갑 파편을 난사하여 사방의 적들에게 물리 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_067_2글자_갑옷.png",
     "sound": "play_attack"
   },
@@ -1099,7 +1099,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅓ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㄱㅓ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 육중한 거검으로 땅을 내리쳐 32의 파괴적인 충격파를 발생시킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 육중한 거검으로 땅을 내리쳐 파괴적인 충격파를 발생시킵니다.",
     "icon": "./assets/words_symbol_32px/word_069_2글자_거검.png",
     "sound": "play_attack"
   },
@@ -1115,7 +1115,7 @@
     "jamo_count": 4,
     "formula": "ㄱ + ㅓ + ㅁ + ㅣ",
     "structure": "\\[ㄱㅓ\\] + \\[ㅁㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 끈끈한 거미줄과 맹독을 뿜어 20 피해 및 60% 슬로우를 겁니다.",
+    "desc": "\\[2글자 상위 타워\\] 끈끈한 거미줄과 맹독을 뿜어 피해 및 60% 슬로우를 겁니다.",
     "icon": "./assets/words_symbol_32px/word_070_2글자_거미.png",
     "sound": "play_attack"
   },
@@ -1131,7 +1131,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅓ + ㅁ + ㅅ + ㅜ + ㄹ",
     "structure": "\\[ㄱㅓㅁ\\] + \\[ㅅㅜㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 화려한 2연속 참격을 펼쳐 적들에게 26의 물리 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 화려한 2연속 참격을 펼쳐 적들에게 물리 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_071_2글자_검술.png",
     "sound": "play_attack"
   },
@@ -1163,7 +1163,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅗ + ㅏ + ㄴ + ㅁ + ㅜ + ㄴ",
     "structure": "\\[ㄱㅘㄴ\\] + \\[ㅁㅜㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 육중한 관문 철문을 떨어뜨려 25 피해 및 범위 기절을 일으킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 육중한 관문 철문을 떨어뜨려 피해 및 범위 기절을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_073_2글자_관문.png",
     "sound": "play_attack"
   },
@@ -1179,7 +1179,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅗ + ㅏ + ㅇ + ㅅ + ㅓ + ㄴ",
     "structure": "\\[ㄱㅘㅇ\\] + \\[ㅅㅓㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 고에너지 마력 광선을 집중 조사하여 28의 지속 관통 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 고에너지 마력 광선을 집중 조사하여 지속 관통 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_074_2글자_광선.png",
     "sound": "play_attack"
   },
@@ -1211,7 +1211,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅗ + ㅣ + ㅅ + ㅜ",
     "structure": "\\[ㄱㅚ\\] + \\[ㅅㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 거대 괴수의 포효로 전방의 모든 적에게 31의 혼돈 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 거대 괴수의 포효로 전방의 모든 적에게 혼돈 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_076_2글자_괴수.png",
     "sound": "play_attack"
   },
@@ -1227,7 +1227,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅜ + ㄴ + ㄷ + ㅏ + ㄴ",
     "structure": "\\[ㄱㅜㄴ\\] + \\[ㄷㅏㄴ\\]",
-    "desc": "군단의 일제 사격으로 32 피해를 빠르게 연사합니다.",
+    "desc": "군단의 일제 사격으로 피해를 빠르게 연사합니다.",
     "icon": "./assets/words_symbol_32px/word_077_2글자_군단.png",
     "sound": "play_attack"
   },
@@ -1243,7 +1243,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅜ + ㅣ + ㅅ + ㅣ + ㄴ",
     "structure": "\\[ㄱㅟ\\] + \\[ㅅㅣㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 원혼의 저주를 내려 24 피해 및 적 공격력을 40% 약화시킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 원혼의 저주를 내려 피해 및 적 공격력을 40% 약화시킵니다.",
     "icon": "./assets/words_symbol_32px/word_078_2글자_귀신.png",
     "sound": "play_attack"
   },
@@ -1259,7 +1259,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅡ + ㅁ + ㄱ + ㅏ + ㅇ",
     "structure": "\\[ㄱㅡㅁ\\] + \\[ㄱㅏㅇ\\]",
-    "desc": "\\[2글자 상위 타워\\] 다이아몬드처럼 단단한 금강 탄환으로 30의 파괴 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 다이아몬드처럼 단단한 금강 탄환으로 파괴 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_079_2글자_금강.png",
     "sound": "play_attack"
   },
@@ -1275,14 +1275,14 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅣ + ㅅ + ㅡ + ㅂ",
     "structure": "\\[ㄱㅣ\\] + \\[ㅅㅡㅂ\\]",
-    "desc": "예상치 못한 각도에서 23의 피해를 입힙니다.",
+    "desc": "예상치 못한 각도에서 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_080_2글자_기습.png",
     "sound": "play_attack"
   },
   "기운": {
     "word": "기운",
     "no": 81,
-    "name": "기운 (영기/기공폭발)",
+    "name": "기운 (영기/기공파)",
     "category": "skill",
     "tier": 2,
     "length": 2,
@@ -1291,7 +1291,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅣ + ㅇ + ㅜ + ㄴ",
     "structure": "\\[ㄱㅣ\\] + \\[ㅇㅜㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 응축된 기운을 폭발시켜 27의 강력한 영기 충격파를 발생시킵니다.",
+    "desc": "응축된 영기를 방출하여 일직선상의 적들을 관통하는 강력한 기공 충격파를 쏩니다.",
     "icon": "./assets/words_symbol_32px/word_081_2글자_기운.png",
     "sound": "play_attack"
   },
@@ -1307,7 +1307,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅣ + ㅈ + ㅓ + ㄱ",
     "structure": "\\[ㄱㅣ\\] + \\[ㅈㅓㄱ\\]",
-    "desc": "\\[2글자 상위 타워\\] 기적의 빛을 쏟아부어 30의 강력한 신성 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 기적의 빛을 쏟아부어 강력한 신성 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_082_2글자_기적.png",
     "sound": "play_attack"
   },
@@ -1323,7 +1323,7 @@
     "jamo_count": 4,
     "formula": "ㄴ + ㅏ + ㅁ + ㅜ",
     "structure": "\\[ㄴㅏ\\] + \\[ㅁㅜ\\]",
-    "desc": "단단한 줄기로 후려쳐 19 피해와 속박을 겁니다.",
+    "desc": "단단한 줄기로 후려쳐 피해와 속박을 겁니다.",
     "icon": "./assets/words_symbol_32px/word_083_2글자_나무.png",
     "sound": "play_attack"
   },
@@ -1339,7 +1339,7 @@
     "jamo_count": 6,
     "formula": "ㄴ + ㅏ + ㄱ + ㄹ + ㅗ + ㅣ",
     "structure": "\\[ㄴㅏㄱ\\] + \\[ㄹㅚ\\]",
-    "desc": "\\[2글자 상위 타워\\] 하늘을 가르는 벼락으로 32 피해 및 감전 쇼크를 일으킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 하늘을 가르는 벼락으로 피해 및 감전 쇼크를 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_084_2글자_낙뢰.png",
     "sound": "play_attack"
   },
@@ -1371,7 +1371,7 @@
     "jamo_count": 6,
     "formula": "ㄴ + ㅏ + ㅣ + ㅇ + ㄱ + ㅣ",
     "structure": "\\[ㄴㅐㅇ\\] + \\[ㄱㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 극저온 냉기를 뿜어 23 피해 및 광역 50% 둔화를 겁니다.",
+    "desc": "\\[2글자 상위 타워\\] 극저온 냉기를 뿜어 피해 및 광역 50% 둔화를 겁니다.",
     "icon": "./assets/words_symbol_32px/word_086_2글자_냉기.png",
     "sound": "play_attack"
   },
@@ -1387,7 +1387,7 @@
     "jamo_count": 6,
     "formula": "ㄴ + ㅗ + ㅣ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㄴㅚ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "번개가 감도는 검으로 28의 감전 피해를 입힙니다.",
+    "desc": "번개가 감도는 검으로 감전 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_087_2글자_뇌검.png",
     "sound": "play_attack"
   },
@@ -1403,7 +1403,7 @@
     "jamo_count": 5,
     "formula": "ㄴ + ㅗ + ㅣ + ㅇ + ㅜ",
     "structure": "\\[ㄴㅚ\\] + \\[ㅇㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 번개를 동반한 뇌우를 내려쳐 31의 광역 감전 피해를 줍니다.",
+    "desc": "\\[2글자 상위 타워\\] 번개를 동반한 뇌우를 내려쳐 광역 감전 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_088_2글자_뇌우.png",
     "sound": "play_attack"
   },
@@ -1419,7 +1419,7 @@
     "jamo_count": 6,
     "formula": "ㄴ + ㅡ + ㄱ + ㄷ + ㅏ + ㅣ",
     "structure": "\\[ㄴㅡㄱ\\] + \\[ㄷㅐ\\]",
-    "desc": "날카로운 이빨로 물어뜯어 21의 출혈 피해를 입힙니다.",
+    "desc": "날카로운 이빨로 물어뜯어 출혈 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_089_2글자_늑대.png",
     "sound": "play_attack"
   },
@@ -1435,7 +1435,7 @@
     "jamo_count": 6,
     "formula": "ㄷ + ㅏ + ㄴ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㄷㅏㄴ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 적의 약점을 찔러 24의 치명적인 암살 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 적의 약점을 찔러 치명적인 암살 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_090_2글자_단검.png",
     "sound": "play_attack"
   },
@@ -1467,7 +1467,7 @@
     "jamo_count": 5,
     "formula": "ㅁ + ㅏ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅁㅏ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "저주의 검기로 29 피해와 방어력 감소를 부여합니다.",
+    "desc": "저주의 검기로 피해와 방어력 감소를 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_092_2글자_마검.png",
     "sound": "play_attack"
   },
@@ -1483,7 +1483,7 @@
     "jamo_count": 5,
     "formula": "ㅁ + ㅏ + ㅂ + ㅓ + ㅂ",
     "structure": "\\[ㅁㅏ\\] + \\[ㅂㅓㅂ\\]",
-    "desc": "\\[2글자 상위 타워\\] 적을 추적하는 3개의 마력 유도탄을 발사하여 25의 강력한 비전 피해를 줍니다.",
+    "desc": "\\[2글자 상위 타워\\] 적을 추적하는 3개의 마력 유도탄을 발사하여 강력한 비전 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_093_2글자_마법.png",
     "sound": "play_attack"
   },
@@ -1499,7 +1499,7 @@
     "jamo_count": 4,
     "formula": "ㅁ + ㅏ + ㅅ + ㅜ",
     "structure": "\\[ㅁㅏ\\] + \\[ㅅㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 포악한 마수를 불러내어 27의 어둠 발톱 공격을 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 포악한 마수를 불러내어 어둠 발톱 공격을 가합니다.",
     "icon": "./assets/words_symbol_32px/word_094_2글자_마수.png",
     "sound": "play_attack"
   },
@@ -1515,7 +1515,7 @@
     "jamo_count": 5,
     "formula": "ㅁ + ㅏ + ㅇ + ㄹ + ㅜ",
     "structure": "\\[ㅁㅏㅇ\\] + \\[ㄹㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 높은 망루 위에서 27의 원거리 저격 화살을 쏩니다.",
+    "desc": "\\[2글자 상위 타워\\] 높은 망루 위에서 원거리 저격 화살을 쏩니다.",
     "icon": "./assets/words_symbol_32px/word_095_2글자_망루.png",
     "sound": "play_attack"
   },
@@ -1531,7 +1531,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅏ + ㅣ + ㅇ + ㄱ + ㅗ + ㅇ",
     "structure": "\\[ㅁㅐㅇ\\] + \\[ㄱㅗㅇ\\]",
-    "desc": "\\[2글자 상위 타워\\] 노도와 같은 맹공으로 적들을 쉴 새 없이 몰아붙여 30 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 노도와 같은 맹공으로 적들을 쉴 새 없이 몰아붙여 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_096_2글자_맹공.png",
     "sound": "play_attack"
   },
@@ -1547,7 +1547,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅏ + ㅣ + ㅇ + ㄷ + ㅗ + ㄱ",
     "structure": "\\[ㅁㅐㅇ\\] + \\[ㄷㅗㄱ\\]",
-    "desc": "치명적인 맹독을 주입하여 20 피해와 지속 중독을 부여합니다.",
+    "desc": "치명적인 맹독을 주입하여 피해와 지속 중독을 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_097_2글자_맹독.png",
     "sound": "play_attack"
   },
@@ -1579,7 +1579,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅏ + ㅇ + ㅜ + ㅣ",
     "structure": "\\[ㅂㅏ\\] + \\[ㅇㅟ\\]",
-    "desc": "단단한 바위를 투척하여 22 피해와 짧은 기절을 입힙니다.",
+    "desc": "단단한 바위를 투척하여 피해와 짧은 기절을 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_099_2글자_바위.png",
     "sound": "play_attack"
   },
@@ -1595,7 +1595,7 @@
     "jamo_count": 7,
     "formula": "ㅂ + ㅏ + ㅣ + ㄱ + ㄱ + ㅡ + ㅁ",
     "structure": "\\[ㅂㅐㄱ\\] + \\[ㄱㅡㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 귀한 백금 방벽을 세워 29 피해 및 적의 접근을 차단합니다.",
+    "desc": "\\[2글자 상위 타워\\] 귀한 백금 방벽을 세워 피해 및 적의 접근을 차단합니다.",
     "icon": "./assets/words_symbol_32px/word_100_2글자_백금.png",
     "sound": "play_attack"
   },
@@ -1611,7 +1611,7 @@
     "jamo_count": 7,
     "formula": "ㅂ + ㅏ + ㅣ + ㄱ + ㅂ + ㅏ + ㄹ",
     "structure": "\\[ㅂㅐㄱ\\] + \\[ㅂㅏㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 백발백중의 신궁 사격으로 28의 치명적 관통탄을 쏩니다.",
+    "desc": "\\[2글자 상위 타워\\] 백발백중의 신궁 사격으로 치명적 관통탄을 쏩니다.",
     "icon": "./assets/words_symbol_32px/word_101_2글자_백발.png",
     "sound": "play_attack"
   },
@@ -1627,7 +1627,7 @@
     "jamo_count": 6,
     "formula": "ㅂ + ㅓ + ㄴ + ㄱ + ㅏ + ㅣ",
     "structure": "\\[ㅂㅓㄴ\\] + \\[ㄱㅐ\\]",
-    "desc": "적들에게 26의 연쇄 번개 피해를 입힙니다.",
+    "desc": "적들에게 연쇄 번개 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_102_2글자_번개.png",
     "sound": "play_attack"
   },
@@ -1643,7 +1643,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅗ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅂㅗ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 보석이 박힌 보검으로 30 피해 및 추가 골드를 획득합니다.",
+    "desc": "\\[2글자 상위 타워\\] 보석이 박힌 보검으로 피해 및 추가 골드를 획득합니다.",
     "icon": "./assets/words_symbol_32px/word_103_2글자_보검.png",
     "sound": "play_attack"
   },
@@ -1659,7 +1659,7 @@
     "jamo_count": 4,
     "formula": "ㅂ + ㅗ + ㄹ + ㅜ",
     "structure": "\\[ㅂㅗ\\] + \\[ㄹㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 최후의 보루에서 일제 사격을 퍼부어 27의 집중 포화를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 최후의 보루에서 일제 사격을 퍼부어 집중 포화를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_104_2글자_보루.png",
     "sound": "play_attack"
   },
@@ -1675,7 +1675,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅗ + ㅁ + ㅜ + ㄹ",
     "structure": "\\[ㅂㅗ\\] + \\[ㅁㅜㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 18의 황금 코인 탄환을 발사하며 이 타워가 적을 처치하면 2배의 골드를 획득합니다.",
+    "desc": "\\[2글자 상위 타워\\] 황금 코인 탄환을 발사하며 이 타워가 적을 처치하면 2배의 골드를 획득합니다.",
     "icon": "./assets/words_symbol_32px/word_105_2글자_보물.png",
     "sound": "play_attack"
   },
@@ -1691,7 +1691,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅗ + ㅅ + ㅓ + ㄱ",
     "structure": "\\[ㅂㅗ\\] + \\[ㅅㅓㄱ\\]",
-    "desc": "마나 광선을 발사하여 25의 순수 마법 피해를 입힙니다.",
+    "desc": "마나 광선을 발사하여 순수 마법 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_106_2글자_보석.png",
     "sound": "play_attack"
   },
@@ -1707,7 +1707,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅜ + ㄴ + ㄴ + ㅗ",
     "structure": "\\[ㅂㅜㄴ\\] + \\[ㄴㅗ\\]",
-    "desc": "\\[2글자 상위 타워\\] 타오르는 분노로 공격력이 극대화된 32의 격노탄을 발사합니다.",
+    "desc": "\\[2글자 상위 타워\\] 타오르는 분노로 공격력이 극대화된 격노탄을 발사합니다.",
     "icon": "./assets/words_symbol_32px/word_107_2글자_분노.png",
     "sound": "play_attack"
   },
@@ -1723,7 +1723,7 @@
     "jamo_count": 7,
     "formula": "ㅂ + ㅜ + ㄴ + ㅅ + ㅗ + ㅏ + ㅣ",
     "structure": "\\[ㅂㅜㄴ\\] + \\[ㅅㅙ\\]",
-    "desc": "\\[2글자 상위 타워\\] 적의 방어구를 박살내며 29의 묵직한 분쇄 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 적의 방어구를 박살내며 묵직한 분쇄 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_108_2글자_분쇄.png",
     "sound": "play_attack"
   },
@@ -1739,7 +1739,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅣ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅂㅣ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 공중을 가르는 비검을 날려 원거리의 적을 27 피해로 관통합니다.",
+    "desc": "\\[2글자 상위 타워\\] 공중을 가르는 비검을 날려 원거리의 적을 피해로 관통합니다.",
     "icon": "./assets/words_symbol_32px/word_109_2글자_비검.png",
     "sound": "play_attack"
   },
@@ -1755,7 +1755,7 @@
     "jamo_count": 4,
     "formula": "ㅂ + ㅣ + ㄱ + ㅣ",
     "structure": "\\[ㅂㅣ\\] + \\[ㄱㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 숨겨진 비기를 발동하여 32의 강력한 마력 폭풍을 일으킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 숨겨진 비기를 발동하여 강력한 마력 폭풍을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_110_2글자_비기.png",
     "sound": "play_attack"
   },
@@ -1787,7 +1787,7 @@
     "jamo_count": 6,
     "formula": "ㅂ + ㅣ + ㅇ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅂㅣㅇ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "혹한의 칼날로 27 피해와 동결을 유발합니다.",
+    "desc": "혹한의 칼날로 피해와 동결을 유발합니다.",
     "icon": "./assets/words_symbol_32px/word_112_2글자_빙검.png",
     "sound": "play_attack"
   },
@@ -1835,7 +1835,7 @@
     "jamo_count": 4,
     "formula": "ㅅ + ㅏ + ㅈ + ㅏ",
     "structure": "\\[ㅅㅏ\\] + \\[ㅈㅏ\\]",
-    "desc": "위압적인 포효로 적들을 위축시키며 28 피해를 입힙니다.",
+    "desc": "위압적인 포효로 적들을 위축시키며 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_115_2글자_사자.png",
     "sound": "play_attack"
   },
@@ -1851,7 +1851,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅏ + ㄴ + ㅅ + ㅓ + ㅇ",
     "structure": "\\[ㅅㅏㄴ\\] + \\[ㅅㅓㅇ\\]",
-    "desc": "\\[2글자 상위 타워\\] 부식성 산성액을 뿜어 적의 방어력을 0으로 만들며 23 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 부식성 산성액을 뿜어 적의 방어력을 0으로 만들며 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_116_2글자_산성.png",
     "sound": "play_attack"
   },
@@ -1883,7 +1883,7 @@
     "jamo_count": 4,
     "formula": "ㅅ + ㅓ + ㄹ + ㅣ",
     "structure": "\\[ㅅㅓ\\] + \\[ㄹㅣ\\]",
-    "desc": "서리 서린 칼바람으로 20 피해를 입히고 이동을 방해합니다.",
+    "desc": "서리 서린 칼바람으로 피해를 입히고 이동을 방해합니다.",
     "icon": "./assets/words_symbol_32px/word_118_2글자_서리.png",
     "sound": "play_attack"
   },
@@ -1899,7 +1899,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅓ + ㅁ + ㄱ + ㅗ + ㅏ + ㅇ",
     "structure": "\\[ㅅㅓㅁ\\] + \\[ㄱㅘㅇ\\]",
-    "desc": "눈부신 섬광으로 26의 광역 마법 피해를 입힙니다.",
+    "desc": "눈부신 섬광으로 광역 마법 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_119_2글자_섬광.png",
     "sound": "play_attack"
   },
@@ -1915,7 +1915,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅓ + ㅇ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅅㅓㅇ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "신성한 칼날로 30의 강력한 언데드/마수 특효 피해를 입힙니다.",
+    "desc": "신성한 칼날로 강력한 언데드/마수 특효 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_120_2글자_성검.png",
     "sound": "play_attack"
   },
@@ -1931,7 +1931,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅓ + ㅇ + ㅁ + ㅜ + ㄴ",
     "structure": "\\[ㅅㅓㅇ\\] + \\[ㅁㅜㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 거대한 성문을 쾅 내리찍어 28 피해 및 광역 기절을 줍니다.",
+    "desc": "\\[2글자 상위 타워\\] 거대한 성문을 쾅 내리찍어 피해 및 광역 기절을 줍니다.",
     "icon": "./assets/words_symbol_32px/word_121_2글자_성문.png",
     "sound": "play_attack"
   },
@@ -1947,7 +1947,7 @@
     "jamo_count": 5,
     "formula": "ㅅ + ㅓ + ㅇ + ㅅ + ㅜ",
     "structure": "\\[ㅅㅓㅇ\\] + \\[ㅅㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 성수를 뿌려 26의 강력한 언데드/마수 퇴치 피해를 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 성수를 뿌려 강력한 언데드/마수 퇴치 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_122_2글자_성수.png",
     "sound": "play_attack"
   },
@@ -1979,7 +1979,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅣ + ㄴ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅅㅣㄴ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "신성한 검기를 날려 30의 강력한 신성 피해를 입힙니다.",
+    "desc": "신성한 검기를 날려 강력한 신성 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_124_2글자_신검.png",
     "sound": "play_attack"
   },
@@ -1995,7 +1995,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅣ + ㄴ + ㅅ + ㅗ + ㄱ",
     "structure": "\\[ㅅㅣㄴ\\] + \\[ㅅㅗㄱ\\]",
-    "desc": "\\[2글자 상위 타워\\] 공격 쿨타임 0.20초로 초당 5회 이상의 광속 탄환을 난사합니다.",
+    "desc": "\\[2글자 상위 타워\\] 공격 쿨타임 0.20초로 지속 회 이상의 광속 탄환을 난사합니다.",
     "icon": "./assets/words_symbol_32px/word_125_2글자_신속.png",
     "sound": "play_attack"
   },
@@ -2011,7 +2011,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅅ + ㅏ + ㅇ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅆㅏㅇ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 두 자루의 검으로 초당 3회 이상의 연속 참격을 퍼붓습니다.",
+    "desc": "\\[2글자 상위 타워\\] 두 자루의 검으로 지속 회 이상의 연속 참격을 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_126_2글자_쌍검.png",
     "sound": "play_attack"
   },
@@ -2027,7 +2027,7 @@
     "jamo_count": 5,
     "formula": "ㅇ + ㅏ + ㄱ + ㅇ + ㅓ",
     "structure": "\\[ㅇㅏㄱ\\] + \\[ㅇㅓ\\]",
-    "desc": "\\[2글자 상위 타워\\] 거대한 악어의 턱으로 적을 물고 회전하여 28 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 거대한 악어의 턱으로 적을 물고 회전하여 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_127_2글자_악어.png",
     "sound": "play_attack"
   },
@@ -2043,7 +2043,7 @@
     "jamo_count": 6,
     "formula": "ㅇ + ㅏ + ㄴ + ㄱ + ㅏ + ㅣ",
     "structure": "\\[ㅇㅏㄴ\\] + \\[ㄱㅐ\\]",
-    "desc": "짙은 안개로 적의 시야를 가리고 16 피해를 입힙니다.",
+    "desc": "짙은 안개로 적의 시야를 가리고 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_128_2글자_안개.png",
     "sound": "play_attack"
   },
@@ -2059,7 +2059,7 @@
     "jamo_count": 5,
     "formula": "ㅇ + ㅏ + ㅁ + ㄱ + ㅣ",
     "structure": "\\[ㅇㅏㅁ\\] + \\[ㄱㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 독이 묻은 은침을 연사하여 20 피해 및 중독(초당 6 피해)을 겁니다.",
+    "desc": "\\[2글자 상위 타워\\] 독이 묻은 은침을 연사하여 피해 및 중독(지속 피해)을 겁니다.",
     "icon": "./assets/words_symbol_32px/word_129_2글자_암기.png",
     "sound": "play_attack"
   },
@@ -2075,7 +2075,7 @@
     "jamo_count": 6,
     "formula": "ㅇ + ㅏ + ㅁ + ㅅ + ㅏ + ㄹ",
     "structure": "\\[ㅇㅏㅁ\\] + \\[ㅅㅏㄹ\\]",
-    "desc": "보스 및 강력한 몬스터를 우선 저격하여 27 피해를 입힙니다.",
+    "desc": "보스 및 강력한 몬스터를 우선 저격하여 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_130_2글자_암살.png",
     "sound": "play_attack"
   },
@@ -2107,7 +2107,7 @@
     "jamo_count": 6,
     "formula": "ㅇ + ㅏ + ㅂ + ㅅ + ㅏ + ㄹ",
     "structure": "\\[ㅇㅏㅂ\\] + \\[ㅅㅏㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 적을 바닥으로 짓눌러 32의 파괴적인 압살 피해를 줍니다.",
+    "desc": "\\[2글자 상위 타워\\] 적을 바닥으로 짓눌러 파괴적인 압살 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_132_2글자_압살.png",
     "sound": "play_attack"
   },
@@ -2123,7 +2123,7 @@
     "jamo_count": 5,
     "formula": "ㅇ + ㅓ + ㄷ + ㅜ + ㅁ",
     "structure": "\\[ㅇㅓ\\] + \\[ㄷㅜㅁ\\]",
-    "desc": "어둠의 심연 탄환으로 25의 치명적인 암흑 피해를 입힙니다.",
+    "desc": "어둠의 심연 탄환으로 치명적인 암흑 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_133_2글자_어둠.png",
     "sound": "play_attack"
   },
@@ -2139,7 +2139,7 @@
     "jamo_count": 6,
     "formula": "ㅇ + ㅓ + ㄹ + ㅇ + ㅡ + ㅁ",
     "structure": "\\[ㅇㅓㄹ\\] + \\[ㅇㅡㅁ\\]",
-    "desc": "차가운 얼음 결정을 발사하여 18 피해와 30% 감속을 부여합니다.",
+    "desc": "차가운 얼음 결정을 발사하여 피해와 30% 감속을 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_134_2글자_얼음.png",
     "sound": "play_attack"
   },
@@ -2155,7 +2155,7 @@
     "jamo_count": 5,
     "formula": "ㅇ + ㅗ + ㅇ + ㅡ + ㅣ",
     "structure": "\\[ㅇㅗ\\] + \\[ㅇㅢ\\]",
-    "desc": "\\[2글자 상위 타워\\] 비전 오의를 개방하여 34의 화려한 연환계를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 비전 오의를 개방하여 화려한 연환계를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_135_2글자_오의.png",
     "sound": "play_attack"
   },
@@ -2171,7 +2171,7 @@
     "jamo_count": 6,
     "formula": "ㅇ + ㅜ + ㄴ + ㅅ + ㅓ + ㄱ",
     "structure": "\\[ㅇㅜㄴ\\] + \\[ㅅㅓㄱ\\]",
-    "desc": "\\[2글자 상위 타워\\] 하늘에서 불타는 소형 운석을 떨어뜨려 34의 파괴적인 충격을 줍니다.",
+    "desc": "\\[2글자 상위 타워\\] 하늘에서 불타는 소형 운석을 떨어뜨려 파괴적인 충격을 줍니다.",
     "icon": "./assets/words_symbol_32px/word_136_2글자_운석.png",
     "sound": "play_attack"
   },
@@ -2187,7 +2187,7 @@
     "jamo_count": 6,
     "formula": "ㅈ + ㅏ + ㅇ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅈㅏㅇ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[2글자 상위 타워\\] 긴 칼날을 크게 휘둘러 주변 적들에게 25의 광역 베기 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 긴 칼날을 크게 휘둘러 주변 적들에게 광역 베기 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_137_2글자_장검.png",
     "sound": "play_attack"
   },
@@ -2203,7 +2203,7 @@
     "jamo_count": 7,
     "formula": "ㅈ + ㅏ + ㅣ + ㅅ + ㅏ + ㅣ + ㅇ",
     "structure": "\\[ㅈㅐ\\] + \\[ㅅㅐㅇ\\]",
-    "desc": "18 피해를 입히고 본진 기지를 지속 수리합니다.",
+    "desc": "피해를 입히고 본진 기지를 지속 수리합니다.",
     "icon": "./assets/words_symbol_32px/word_138_2글자_재생.png",
     "sound": "play_attack"
   },
@@ -2219,7 +2219,7 @@
     "jamo_count": 6,
     "formula": "ㅈ + ㅓ + ㄴ + ㄱ + ㅏ + ㄹ",
     "structure": "\\[ㅈㅓㄴ\\] + \\[ㄱㅏㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 날카로운 전갈 꼬리로 24 피해 및 초당 7의 치명상을 입힙니다.",
+    "desc": "\\[2글자 상위 타워\\] 날카로운 전갈 꼬리로 피해 및 지속 치명상을 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_139_2글자_전갈.png",
     "sound": "play_attack"
   },
@@ -2251,7 +2251,7 @@
     "jamo_count": 6,
     "formula": "ㅈ + ㅓ + ㄹ + ㄷ + ㅏ + ㄴ",
     "structure": "\\[ㅈㅓㄹ\\] + \\[ㄷㅏㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 극상의 예리함으로 적의 신체를 29 피해로 단숨에 절단합니다.",
+    "desc": "\\[2글자 상위 타워\\] 극상의 예리함으로 적의 신체를 피해로 단숨에 절단합니다.",
     "icon": "./assets/words_symbol_32px/word_141_2글자_절단.png",
     "sound": "play_attack"
   },
@@ -2267,7 +2267,7 @@
     "jamo_count": 6,
     "formula": "ㅈ + ㅓ + ㅣ + ㅇ + ㅏ + ㅂ",
     "structure": "\\[ㅈㅔ\\] + \\[ㅇㅏㅂ\\]",
-    "desc": "강력한 중력장으로 적을 제압하며 21 피해를 줍니다.",
+    "desc": "강력한 중력장으로 적을 제압하며 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_142_2글자_제압.png",
     "sound": "play_attack"
   },
@@ -2283,7 +2283,7 @@
     "jamo_count": 5,
     "formula": "ㅈ + ㅜ + ㅁ + ㅜ + ㄴ",
     "structure": "\\[ㅈㅜ\\] + \\[ㅁㅜㄴ\\]",
-    "desc": "\\[2글자 상위 타워\\] 고대 활자 주문을 영창하여 26의 마법 광역 폭격을 퍼붓습니다.",
+    "desc": "\\[2글자 상위 타워\\] 고대 활자 주문을 영창하여 마법 광역 폭격을 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_143_2글자_주문.png",
     "sound": "play_attack"
   },
@@ -2315,7 +2315,7 @@
     "jamo_count": 5,
     "formula": "ㅈ + ㅣ + ㄴ + ㅈ + ㅣ",
     "structure": "\\[ㅈㅣㄴ\\] + \\[ㅈㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 단단한 화력 진지에서 29의 집중 사격을 쏟아냅니다.",
+    "desc": "\\[2글자 상위 타워\\] 단단한 화력 진지에서 집중 사격을 쏟아냅니다.",
     "icon": "./assets/words_symbol_32px/word_145_2글자_진지.png",
     "sound": "play_attack"
   },
@@ -2347,7 +2347,7 @@
     "jamo_count": 6,
     "formula": "ㅈ + ㅣ + ㅇ + ㅂ + ㅓ + ㄹ",
     "structure": "\\[ㅈㅣㅇ\\] + \\[ㅂㅓㄹ\\]",
-    "desc": "\\[2글자 상위 타워\\] 신의 징벌 철퇴를 내리쳐 31의 압도적인 단일 파쇄 피해를 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 신의 징벌 철퇴를 내리쳐 압도적인 단일 파쇄 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_147_2글자_징벌.png",
     "sound": "play_attack"
   },
@@ -2363,7 +2363,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅏ + ㅣ + ㄱ + ㅜ + ㄹ + ㅣ",
     "structure": "\\[ㄱㅐ\\] + \\[ㄱㅜ\\] + \\[ㄹㅣ\\]",
-    "desc": "긴 혀로 적을 끌어당기며 32 피해를 입힙니다.",
+    "desc": "긴 혀로 적을 끌어당기며 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_148_3글자_개구리.png",
     "sound": "play_attack"
   },
@@ -2379,7 +2379,7 @@
     "jamo_count": 9,
     "formula": "ㄱ + ㅗ + ㅏ + ㅇ + ㅈ + ㅓ + ㄴ + ㅅ + ㅏ",
     "structure": "\\[ㄱㅘㅇ\\] + \\[ㅈㅓㄴ\\] + \\[ㅅㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 체력이 낮아질수록 공속이 2배 빨라지며 58의 광란 도끼질을 퍼붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 체력이 낮아질수록 공속이 2배 빨라지며 광란 도끼질을 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_149_3글자_광전사.png",
     "sound": "play_attack"
   },
@@ -2395,7 +2395,7 @@
     "jamo_count": 10,
     "formula": "ㄱ + ㅗ + ㅏ + ㅇ + ㅈ + ㅓ + ㄴ + ㅅ + ㅣ + ㄴ",
     "structure": "\\[ㄱㅘㅇ\\] + \\[ㅈㅓㄴ\\] + \\[ㅅㅣㄴ\\]",
-    "desc": "\\[3글자 신화 타워\\] 전쟁의 신이 강림하여 65의 무자비한 도끼 난타를 퍼붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 전쟁의 신이 강림하여 무자비한 도끼 난타를 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_150_3글자_광전신.png",
     "sound": "play_attack"
   },
@@ -2411,7 +2411,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅜ + ㄹ + ㅓ + ㅇ + ㅇ + ㅣ",
     "structure": "\\[ㄱㅜ\\] + \\[ㄹㅓㅇ\\] + \\[ㅇㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 거대한 구렁이로 적을 휘감아 25 피해 및 1.5초간 행동 불능으로 만듭니다.",
+    "desc": "\\[2글자 상위 타워\\] 거대한 구렁이로 적을 휘감아 피해 및 1.5초간 행동 불능으로 만듭니다.",
     "icon": "./assets/words_symbol_32px/word_151_3글자_구렁이.png",
     "sound": "play_attack"
   },
@@ -2427,7 +2427,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㅜ + ㅇ + ㄱ + ㅡ + ㄱ + ㄱ + ㅣ",
     "structure": "\\[ㄱㅜㅇ\\] + \\[ㄱㅡㄱ\\] + \\[ㄱㅣ\\]",
-    "desc": "\\[3글자 신화 타워\\] 궁극의 활자 오의를 개방하여 66의 전 화면 정화 폭격을 가합니다.",
+    "desc": "\\[3글자 신화 타워\\] 궁극의 활자 오의를 개방하여 전 화면 정화 폭격을 가합니다.",
     "icon": "./assets/words_symbol_32px/word_152_3글자_궁극기.png",
     "sound": "play_attack"
   },
@@ -2443,7 +2443,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㅜ + ㅇ + ㅅ + ㅜ + ㄹ + ㅅ + ㅏ",
     "structure": "\\[ㄱㅜㅇ\\] + \\[ㅅㅜㄹ\\] + \\[ㅅㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 사거리 260px에서 46의 마법 유도 화살 5발을 일제 사격합니다.",
+    "desc": "\\[3글자 신화 타워\\] 사거리 260px에서 마법 유도 화살 5발을 일제 사격합니다.",
     "icon": "./assets/words_symbol_32px/word_153_3글자_궁술사.png",
     "sound": "play_attack"
   },
@@ -2459,7 +2459,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅡ + ㄹ + ㅣ + ㅁ + ㅈ + ㅏ",
     "structure": "\\[ㄱㅡ\\] + \\[ㄹㅣㅁ\\] + \\[ㅈㅏ\\]",
-    "desc": "그림자 속에서 나타나 36의 막대한 치명타 피해를 입힙니다.",
+    "desc": "그림자 속에서 나타나 막대한 치명타 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_154_3글자_그림자.png",
     "sound": "play_attack"
   },
@@ -2475,7 +2475,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㅡ + ㄱ + ㅁ + ㅏ + ㅂ + ㅓ + ㅂ",
     "structure": "\\[ㄱㅡㄱ\\] + \\[ㅁㅏ\\] + \\[ㅂㅓㅂ\\]",
-    "desc": "\\[3글자 신화 타워\\] 5대 원소를 융합한 궁극의 비전 마법으로 65의 원소 폭격을 퍼붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 5대 원소를 융합한 궁극의 비전 마법으로 원소 폭격을 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_155_3글자_극마법.png",
     "sound": "play_attack"
   },
@@ -2491,7 +2491,7 @@
     "jamo_count": 9,
     "formula": "ㄱ + ㅡ + ㅁ + ㄱ + ㅏ + ㅇ + ㅅ + ㅓ + ㄱ",
     "structure": "\\[ㄱㅡㅁ\\] + \\[ㄱㅏㅇ\\] + \\[ㅅㅓㄱ\\]",
-    "desc": "단단한 다이아몬드 레이저로 55의 파괴적인 관통 피해를 입힙니다.",
+    "desc": "단단한 다이아몬드 레이저로 파괴적인 관통 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_156_3글자_금강석.png",
     "sound": "play_attack"
   },
@@ -2507,7 +2507,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅣ + ㅈ + ㅓ + ㄱ + ㅅ + ㅜ",
     "structure": "\\[ㄱㅣ\\] + \\[ㅈㅓㄱ\\] + \\[ㅅㅜ\\]",
-    "desc": "\\[3글자 신화 타워\\] 기적의 성역을 펼쳐 46 피해 및 아군 전 타워를 완벽 강화합니다.",
+    "desc": "\\[3글자 신화 타워\\] 기적의 성역을 펼쳐 피해 및 아군 전 타워를 완벽 강화합니다.",
     "icon": "./assets/words_symbol_32px/word_157_3글자_기적수.png",
     "sound": "play_attack"
   },
@@ -2523,7 +2523,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㄱ + ㅏ + ㅁ + ㅏ + ㄱ + ㅜ + ㅣ",
     "structure": "\\[ㄲㅏ\\] + \\[ㅁㅏ\\] + \\[ㄱㅟ\\]",
-    "desc": "검은 날갯짓으로 34의 마법 피해와 디버프를 가합니다.",
+    "desc": "검은 날갯짓으로 마법 피해와 디버프를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_158_3글자_까마귀.png",
     "sound": "play_attack"
   },
@@ -2539,7 +2539,7 @@
     "jamo_count": 7,
     "formula": "ㄴ + ㅜ + ㄴ + ㅂ + ㅗ + ㄹ + ㅏ",
     "structure": "\\[ㄴㅜㄴ\\] + \\[ㅂㅗ\\] + \\[ㄹㅏ\\]",
-    "desc": "\\[2글자 상위 타워\\] 살을 에는 눈보라를 뿜어 25 피해 및 적들의 공속/이속을 60% 깎습니다.",
+    "desc": "\\[2글자 상위 타워\\] 살을 에는 눈보라를 뿜어 피해 및 적들의 공속/이속을 60% 깎습니다.",
     "icon": "./assets/words_symbol_32px/word_159_3글자_눈보라.png",
     "sound": "play_attack"
   },
@@ -2555,7 +2555,7 @@
     "jamo_count": 9,
     "formula": "ㄷ + ㅏ + ㅣ + ㄱ + ㅓ + ㅁ + ㅅ + ㅜ + ㄹ",
     "structure": "\\[ㄷㅐ\\] + \\[ㄱㅓㅁ\\] + \\[ㅅㅜㄹ\\]",
-    "desc": "\\[3글자 신화 타워\\] 경로 위의 모든 적을 가르는 초대형 청색 검기로 55 피해를 입힙니다.",
+    "desc": "\\[3글자 신화 타워\\] 경로 위의 모든 적을 가르는 초대형 청색 검기로 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_160_3글자_대검술.png",
     "sound": "play_attack"
   },
@@ -2571,7 +2571,7 @@
     "jamo_count": 9,
     "formula": "ㄷ + ㅏ + ㅣ + ㅅ + ㅓ + ㅇ + ㄷ + ㅏ + ㅇ",
     "structure": "\\[ㄷㅐ\\] + \\[ㅅㅓㅇ\\] + \\[ㄷㅏㅇ\\]",
-    "desc": "성스러운 빛줄기로 50 피해를 주며 기지를 치유합니다.",
+    "desc": "성스러운 빛줄기로 피해를 주며 기지를 치유합니다.",
     "icon": "./assets/words_symbol_32px/word_161_3글자_대성당.png",
     "sound": "play_attack"
   },
@@ -2587,7 +2587,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅏ + ㅣ + ㅈ + ㅣ + ㅈ + ㅣ + ㄴ",
     "structure": "\\[ㄷㅐ\\] + \\[ㅈㅣ\\] + \\[ㅈㅣㄴ\\]",
-    "desc": "\\[3글자 신화 타워\\] 지각을 붕괴시키는 60의 파괴적 지진파로 모든 적을 넘어뜨립니다.",
+    "desc": "\\[3글자 신화 타워\\] 지각을 붕괴시키는 파괴적 지진파로 모든 적을 넘어뜨립니다.",
     "icon": "./assets/words_symbol_32px/word_162_3글자_대지진.png",
     "sound": "play_attack"
   },
@@ -2603,7 +2603,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅗ + ㄱ + ㄱ + ㅏ + ㅣ + ㅂ + ㅣ",
     "structure": "\\[ㄷㅗ\\] + \\[ㄲㅐ\\] + \\[ㅂㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 도깨비방망이로 내려쳐 28 피해 및 금은보화(추가 골드)를 드롭시킵니다.",
+    "desc": "\\[2글자 상위 타워\\] 도깨비방망이로 내려쳐 피해 및 금은보화(추가 골드)를 드롭시킵니다.",
     "icon": "./assets/words_symbol_32px/word_163_3글자_도깨비.png",
     "sound": "play_attack"
   },
@@ -2619,7 +2619,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅗ + ㅅ + ㅜ + ㄹ + ㅅ + ㅏ",
     "structure": "\\[ㄷㅗ\\] + \\[ㅅㅜㄹ\\] + \\[ㅅㅏ\\]",
-    "desc": "신비한 도술 부적으로 50의 원소 폭풍을 일으킵니다.",
+    "desc": "신비한 도술 부적으로 원소 폭풍을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_164_3글자_도술사.png",
     "sound": "play_attack"
   },
@@ -2635,7 +2635,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅗ + ㅈ + ㅓ + ㄱ + ㄷ + ㅏ + ㄴ",
     "structure": "\\[ㄷㅗ\\] + \\[ㅈㅓㄱ\\] + \\[ㄷㅏㄴ\\]",
-    "desc": "도적들의 연속 공격으로 47의 피해를 입힙니다.",
+    "desc": "도적들의 연속 공격으로 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_165_3글자_도적단.png",
     "sound": "play_attack"
   },
@@ -2651,7 +2651,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅗ + ㄱ + ㅅ + ㅜ + ㄹ + ㅣ",
     "structure": "\\[ㄷㅗㄱ\\] + \\[ㅅㅜ\\] + \\[ㄹㅣ\\]",
-    "desc": "\\[2글자 상위 타워\\] 하늘에서 급강하하여 25의 강력한 발톱 낚아채기 공격을 가합니다.",
+    "desc": "\\[2글자 상위 타워\\] 하늘에서 급강하하여 강력한 발톱 낚아채기 공격을 가합니다.",
     "icon": "./assets/words_symbol_32px/word_166_3글자_독수리.png",
     "sound": "play_attack"
   },
@@ -2667,7 +2667,7 @@
     "jamo_count": 9,
     "formula": "ㄷ + ㅗ + ㄱ + ㅇ + ㅏ + ㄴ + ㄱ + ㅏ + ㅣ",
     "structure": "\\[ㄷㅗㄱ\\] + \\[ㅇㅏㄴ\\] + \\[ㄱㅐ\\]",
-    "desc": "\\[3글자 신화 타워\\] 전장 전체를 뒤덮는 맹독 안개로 모든 적에게 초당 12 피해를 입힙니다.",
+    "desc": "\\[3글자 신화 타워\\] 전장 전체를 뒤덮는 맹독 안개로 모든 적에게 지속 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_167_3글자_독안개.png",
     "sound": "play_attack"
   },
@@ -2699,7 +2699,7 @@
     "jamo_count": 6,
     "formula": "ㅁ + ㅏ + ㄷ + ㅗ + ㅅ + ㅏ",
     "structure": "\\[ㅁㅏ\\] + \\[ㄷㅗ\\] + \\[ㅅㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 대마도사의 룬 영창으로 62의 연속 비전 번개를 쏟아붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 대마도사의 룬 영창으로 연속 비전 번개를 쏟아붓습니다.",
     "icon": "./assets/words_symbol_32px/word_169_3글자_마도사.png",
     "sound": "play_attack"
   },
@@ -2715,7 +2715,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅏ + ㅅ + ㅜ + ㄹ + ㅅ + ㅏ",
     "structure": "\\[ㅁㅏ\\] + \\[ㅅㅜㄹ\\] + \\[ㅅㅏ\\]",
-    "desc": "환영 비둘기와 카드로 46의 빠른 연속 마법 피해를 가합니다.",
+    "desc": "환영 비둘기와 카드로 빠른 연속 마법 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_170_3글자_마술사.png",
     "sound": "play_attack"
   },
@@ -2731,7 +2731,7 @@
     "jamo_count": 8,
     "formula": "ㅁ + ㅏ + ㅅ + ㅣ + ㄴ + ㄱ + ㅓ + ㅁ",
     "structure": "\\[ㅁㅏ\\] + \\[ㅅㅣㄴ\\] + \\[ㄱㅓㅁ\\]",
-    "desc": "\\[3글자 신화 타워\\] 마신의 저주가 서린 참격으로 66의 암흑 화염 피해를 가합니다.",
+    "desc": "\\[3글자 신화 타워\\] 마신의 저주가 서린 참격으로 암흑 화염 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_171_3글자_마신검.png",
     "sound": "play_attack"
   },
@@ -2747,7 +2747,7 @@
     "jamo_count": 7,
     "formula": "ㅂ + ㅜ + ㄹ + ㅅ + ㅏ + ㅈ + ㅗ",
     "structure": "\\[ㅂㅜㄹ\\] + \\[ㅅㅏ\\] + \\[ㅈㅗ\\]",
-    "desc": "\\[3글자 신화 타워\\] 불사조를 소환하여 58의 영원히 꺼지지 않는 성스러운 화염을 쏟아붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 불사조를 소환하여 영원히 꺼지지 않는 성스러운 화염을 쏟아붓습니다.",
     "icon": "./assets/words_symbol_32px/word_172_3글자_불사조.png",
     "sound": "play_attack"
   },
@@ -2763,7 +2763,7 @@
     "jamo_count": 8,
     "formula": "ㅅ + ㅏ + ㅅ + ㅣ + ㄴ + ㄴ + ㅏ + ㅅ",
     "structure": "\\[ㅅㅏ\\] + \\[ㅅㅣㄴ\\] + \\[ㄴㅏㅅ\\]",
-    "desc": "\\[3글자 신화 타워\\] 사신의 거대한 대낫으로 60의 즉사급 암흑 영혼 피해를 입힙니다.",
+    "desc": "\\[3글자 신화 타워\\] 사신의 거대한 대낫으로 즉사급 암흑 영혼 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_173_3글자_사신낫.png",
     "sound": "play_attack"
   },
@@ -2779,7 +2779,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅏ + ㄹ + ㅁ + ㅜ + ㅅ + ㅏ",
     "structure": "\\[ㅅㅏㄹ\\] + \\[ㅁㅜ\\] + \\[ㅅㅏ\\]",
-    "desc": "\\[2글자 상위 타워\\] 살무사의 독액을 뿜어내어 23 피해 및 광역 부식 독을 퍼뜨립니다.",
+    "desc": "\\[2글자 상위 타워\\] 살무사의 독액을 뿜어내어 피해 및 광역 부식 독을 퍼뜨립니다.",
     "icon": "./assets/words_symbol_32px/word_174_3글자_살무사.png",
     "sound": "play_attack"
   },
@@ -2795,7 +2795,7 @@
     "jamo_count": 9,
     "formula": "ㅅ + ㅏ + ㅇ + ㅇ + ㅣ + ㄴ + ㄷ + ㅏ + ㄴ",
     "structure": "\\[ㅅㅏㅇ\\] + \\[ㅇㅣㄴ\\] + \\[ㄷㅏㄴ\\]",
-    "desc": "황금 주화를 던져 44 피해를 입히고 추가 골드를 획득합니다.",
+    "desc": "황금 주화를 던져 피해를 입히고 추가 골드를 획득합니다.",
     "icon": "./assets/words_symbol_32px/word_175_3글자_상인단.png",
     "sound": "play_attack"
   },
@@ -2811,7 +2811,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅓ + ㅇ + ㄱ + ㅣ + ㅅ + ㅏ",
     "structure": "\\[ㅅㅓㅇ\\] + \\[ㄱㅣ\\] + \\[ㅅㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 50의 신성 철퇴 강타와 함께 전 타워에 피해 감소 보호막을 부여합니다.",
+    "desc": "\\[3글자 신화 타워\\] 신성 철퇴 강타와 함께 전 타워에 피해 감소 보호막을 부여합니다.",
     "icon": "./assets/words_symbol_32px/word_176_3글자_성기사.png",
     "sound": "play_attack"
   },
@@ -2827,7 +2827,7 @@
     "jamo_count": 8,
     "formula": "ㅅ + ㅗ + ㅣ + ㄱ + ㅜ + ㅅ + ㅡ + ㄹ",
     "structure": "\\[ㅅㅚ\\] + \\[ㄱㅜ\\] + \\[ㅅㅡㄹ\\]",
-    "desc": "쇠구슬 탄환을 쏟아부어 46의 광역 산탄 피해를 입힙니다.",
+    "desc": "쇠구슬 탄환을 쏟아부어 광역 산탄 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_177_3글자_쇠구슬.png",
     "sound": "play_attack"
   },
@@ -2843,7 +2843,7 @@
     "jamo_count": 8,
     "formula": "ㅅ + ㅗ + ㅣ + ㅅ + ㅏ + ㅅ + ㅡ + ㄹ",
     "structure": "\\[ㅅㅚ\\] + \\[ㅅㅏ\\] + \\[ㅅㅡㄹ\\]",
-    "desc": "묵직한 쇠사슬을 휘둘러 45 피해와 적 이동 차단을 유발합니다.",
+    "desc": "묵직한 쇠사슬을 휘둘러 피해와 적 이동 차단을 유발합니다.",
     "icon": "./assets/words_symbol_32px/word_178_3글자_쇠사슬.png",
     "sound": "play_attack"
   },
@@ -2875,7 +2875,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅣ + ㄴ + ㄱ + ㅣ + ㄹ + ㅜ",
     "structure": "\\[ㅅㅣㄴ\\] + \\[ㄱㅣ\\] + \\[ㄹㅜ\\]",
-    "desc": "\\[2글자 상위 타워\\] 아지랑이 신기루 속에서 27의 기습 마법탄을 쏟아붓습니다.",
+    "desc": "\\[2글자 상위 타워\\] 아지랑이 신기루 속에서 기습 마법탄을 쏟아붓습니다.",
     "icon": "./assets/words_symbol_32px/word_180_3글자_신기루.png",
     "sound": "play_attack"
   },
@@ -2891,7 +2891,7 @@
     "jamo_count": 10,
     "formula": "ㅅ + ㅅ + ㅏ + ㅇ + ㄱ + ㅓ + ㅁ + ㅅ + ㅜ + ㄹ",
     "structure": "\\[ㅆㅏㅇ\\] + \\[ㄱㅓㅁ\\] + \\[ㅅㅜㄹ\\]",
-    "desc": "\\[3글자 신화 타워\\] 눈에 보이지 않는 속도로 48의 6연속 극의 참격을 난사합니다.",
+    "desc": "\\[3글자 신화 타워\\] 눈에 보이지 않는 속도로 6연속 극의 참격을 난사합니다.",
     "icon": "./assets/words_symbol_32px/word_181_3글자_쌍검술.png",
     "sound": "play_attack"
   },
@@ -2907,7 +2907,7 @@
     "jamo_count": 8,
     "formula": "ㅇ + ㅏ + ㅁ + ㅅ + ㅏ + ㄹ + ㅈ + ㅏ",
     "structure": "\\[ㅇㅏㅁ\\] + \\[ㅅㅏㄹ\\] + \\[ㅈㅏ\\]",
-    "desc": "그림자 속에서 단검을 찔러 52의 치명타 피해를 입힙니다.",
+    "desc": "그림자 속에서 단검을 찔러 치명타 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_182_3글자_암살자.png",
     "sound": "play_attack"
   },
@@ -2939,7 +2939,7 @@
     "jamo_count": 8,
     "formula": "ㅈ + ㅓ + ㄹ + ㄷ + ㅏ + ㅣ + ㅈ + ㅏ",
     "structure": "\\[ㅈㅓㄹ\\] + \\[ㄷㅐ\\] + \\[ㅈㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 절대자의 권능으로 58 피해 및 전장에 무적 보호막을 펼칩니다.",
+    "desc": "\\[3글자 신화 타워\\] 절대자의 권능으로 피해 및 전장에 무적 보호막을 펼칩니다.",
     "icon": "./assets/words_symbol_32px/word_184_3글자_절대자.png",
     "sound": "play_attack"
   },
@@ -2955,7 +2955,7 @@
     "jamo_count": 7,
     "formula": "ㅈ + ㅜ + ㅅ + ㅜ + ㄹ + ㅅ + ㅏ",
     "structure": "\\[ㅈㅜ\\] + \\[ㅅㅜㄹ\\] + \\[ㅅㅏ\\]",
-    "desc": "토템의 저주로 48 피해와 지속 데미지를 입힙니다.",
+    "desc": "토템의 저주로 피해와 지속 데미지를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_185_3글자_주술사.png",
     "sound": "play_attack"
   },
@@ -2971,7 +2971,7 @@
     "jamo_count": 8,
     "formula": "ㅈ + ㅜ + ㅈ + ㅏ + ㄱ + ㄴ + ㅏ + ㄹ",
     "structure": "\\[ㅈㅜ\\] + \\[ㅈㅏㄱ\\] + \\[ㄴㅏㄹ\\]",
-    "desc": "\\[3글자 신화 타워\\] 주작의 붉은 날갯짓으로 전장에 56의 화염 폭풍을 휘몰아칩니다.",
+    "desc": "\\[3글자 신화 타워\\] 주작의 붉은 날갯짓으로 전장에 화염 폭풍을 휘몰아칩니다.",
     "icon": "./assets/words_symbol_32px/word_186_3글자_주작날.png",
     "sound": "play_attack"
   },
@@ -2987,7 +2987,7 @@
     "jamo_count": 8,
     "formula": "ㅈ + ㅣ + ㅇ + ㅗ + ㄱ + ㅂ + ㅜ + ㄹ",
     "structure": "\\[ㅈㅣ\\] + \\[ㅇㅗㄱ\\] + \\[ㅂㅜㄹ\\]",
-    "desc": "\\[3글자 신화 타워\\] 꺼지지 않는 지옥의 화염으로 66의 암흑 화염 피해를 퍼붓습니다.",
+    "desc": "\\[3글자 신화 타워\\] 꺼지지 않는 지옥의 화염으로 암흑 화염 피해를 퍼붓습니다.",
     "icon": "./assets/words_symbol_32px/word_187_3글자_지옥불.png",
     "sound": "play_attack"
   },
@@ -3019,7 +3019,7 @@
     "jamo_count": 7,
     "formula": "ㅈ + ㅣ + ㄹ + ㅈ + ㅜ + ㅁ + ㅏ",
     "structure": "\\[ㅈㅣㄹ\\] + \\[ㅈㅜ\\] + \\[ㅁㅏ\\]",
-    "desc": "\\[3글자 신화 타워\\] 날개 달린 천마가 전장을 질주하며 53 피해 및 적들을 짓밟습니다.",
+    "desc": "\\[3글자 신화 타워\\] 날개 달린 천마가 전장을 질주하며 피해 및 적들을 짓밟습니다.",
     "icon": "./assets/words_symbol_32px/word_189_3글자_질주마.png",
     "sound": "play_attack"
   },
@@ -3035,7 +3035,7 @@
     "jamo_count": 4,
     "formula": "ㄷ + ㄷ + ㅓ + ㄱ",
     "structure": "[ㄸㅓㄱ]",
-    "desc": "끈적한 찰떡을 던져 12 피해 및 적의 이동속도를 50% 둔화시킵니다.",
+    "desc": "끈적한 찰떡을 던져 피해 및 적의 이동속도를 50% 둔화시킵니다.",
     "icon": "./assets/words_symbol_32px/word_190_1글자_떡.png",
     "sound": "play_attack"
   },
@@ -3051,7 +3051,7 @@
     "jamo_count": 4,
     "formula": "ㄱ + ㄱ + ㅡ + ㄴ",
     "structure": "[ㄲㅡㄴ]",
-    "desc": "질긴 마력 끈을 발사해 11 피해를 입히고 적 2체를 1.5초간 서로 묶어 정지시킵니다.",
+    "desc": "질긴 마력 끈을 발사해 피해를 입히고 적 2체를 1.5초간 서로 묶어 정지시킵니다.",
     "icon": "./assets/words_symbol_32px/word_191_1글자_끈.png",
     "sound": "play_attack"
   },
@@ -3067,7 +3067,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅣ + ㅅ",
     "structure": "[ㄱㅣㅅ]",
-    "desc": "깃털처럼 가볍고 빠른 바람깃을 날려 14의 원거리 관통 물리 피해를 입힙니다.",
+    "desc": "깃털처럼 가볍고 빠른 바람깃을 날려 원거리 관통 물리 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_192_1글자_깃.png",
     "sound": "play_attack"
   },
@@ -3083,7 +3083,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅣ + ㄹ",
     "structure": "[ㄱㅣㄹ]",
-    "desc": "길목의 지맥을 조율하여 8 피해를 입히고 주변 모든 타워의 사거리를 +20px 확장합니다.",
+    "desc": "길목의 지맥을 조율하여 피해를 입히고 주변 모든 타워의 사거리를 +20px 확장합니다.",
     "icon": "./assets/words_symbol_32px/word_193_1글자_길.png",
     "sound": "play_attack"
   },
@@ -3099,7 +3099,7 @@
     "jamo_count": 3,
     "formula": "ㅈ + ㅏ + ㅁ",
     "structure": "[ㅈㅏㅁ]",
-    "desc": "달콤한 수면 포자를 뿜어 10 피해 및 범위 내 적들을 1.2초간 잠재워(수면 기절) 멈춥니다.",
+    "desc": "달콤한 수면 포자를 뿜어 피해 및 범위 내 적들을 1.2초간 잠재워(수면 기절) 멈춥니다.",
     "icon": "./assets/words_symbol_32px/word_194_1글자_잠.png",
     "sound": "play_attack"
   },
@@ -3115,7 +3115,7 @@
     "jamo_count": 3,
     "formula": "ㅈ + ㅓ + ㅁ",
     "structure": "[ㅈㅓㅁ]",
-    "desc": "적의 약점 한 점만을 노려 16의 치명타 관통 피해를 입히고 30% 방어력 감소를 줍니다.",
+    "desc": "적의 약점 한 점만을 노려 치명타 관통 피해를 입히고 30% 방어력 감소를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_195_1글자_점.png",
     "sound": "play_attack"
   },
@@ -3131,7 +3131,7 @@
     "jamo_count": 4,
     "formula": "ㅈ + ㅈ + ㅏ + ㄱ",
     "structure": "[ㅉㅏㄱ]",
-    "desc": "연속된 쌍둥이 탄환을 동시에 날려 13의 2연타(총 26) 물리 피해를 가합니다.",
+    "desc": "연속된 쌍둥이 탄환을 동시에 날려 2연타(총 26) 물리 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_196_1글자_짝.png",
     "sound": "play_attack"
   },
@@ -3147,7 +3147,7 @@
     "jamo_count": 3,
     "formula": "ㅅ + ㅅ + ㅣ",
     "structure": "[ㅆㅣ]",
-    "desc": "바닥에 생명의 씨앗을 심어 9 피해 및 밟은 적을 옭아매는 덩굴을 자라나게 합니다.",
+    "desc": "바닥에 생명의 씨앗을 심어 피해 및 밟은 적을 옭아매는 덩굴을 자라나게 합니다.",
     "icon": "./assets/words_symbol_32px/word_197_1글자_씨.png",
     "sound": "play_attack"
   },
@@ -3163,7 +3163,7 @@
     "jamo_count": 3,
     "formula": "ㅇ + ㅏ + ㄹ",
     "structure": "[ㅇㅏㄹ]",
-    "desc": "신비로운 영수의 알을 깨워 11 피해 및 작은 아기 영수를 소환해 길목을 순찰시킵니다.",
+    "desc": "신비로운 영수의 알을 깨워 피해 및 작은 아기 영수를 소환해 길목을 순찰시킵니다.",
     "icon": "./assets/words_symbol_32px/word_198_1글자_알.png",
     "sound": "play_attack"
   },
@@ -3179,7 +3179,7 @@
     "jamo_count": 3,
     "formula": "ㅈ + ㅣ + ㅁ",
     "structure": "[ㅈㅣㅁ]",
-    "desc": "적의 어깨 위에 무거운 중력 짐을 얹어 15 피해 및 이동속도를 40% 영구 감속시킵니다.",
+    "desc": "적의 어깨 위에 무거운 중력 짐을 얹어 피해 및 이동속도를 40% 영구 감속시킵니다.",
     "icon": "./assets/words_symbol_32px/word_199_1글자_짐.png",
     "sound": "play_attack"
   },
@@ -3195,7 +3195,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅜ + ㅣ",
     "structure": "[ㄱㅟ]",
-    "desc": "예리한 초음파를 방출하여 12 피해 및 맵 전체 투명/은신 몬스터를 3초간 강제 탐지합니다.",
+    "desc": "예리한 초음파를 방출하여 피해 및 맵 전체 투명/은신 몬스터를 3초간 강제 탐지합니다.",
     "icon": "./assets/words_symbol_32px/word_200_1글자_귀.png",
     "sound": "play_attack"
   },
@@ -3211,7 +3211,7 @@
     "jamo_count": 3,
     "formula": "ㄱ + ㅜ + ㄹ",
     "structure": "[ㄱㅜㄹ]",
-    "desc": "동굴 천장의 바위를 무너뜨려 14의 광역 물리 피해 및 0.8초 기절을 유발합니다.",
+    "desc": "동굴 천장의 바위를 무너뜨려 광역 물리 피해 및 0.8초 기절을 유발합니다.",
     "icon": "./assets/words_symbol_32px/word_201_1글자_굴.png",
     "sound": "play_attack"
   },
@@ -3227,7 +3227,7 @@
     "jamo_count": 3,
     "formula": "ㅂ + ㅏ + ㅣ",
     "structure": "[ㅂㅐ]",
-    "desc": "거대한 함포를 발사하여 착탄 지점에 17의 강력한 광역 포격 폭발을 일으킵니다.",
+    "desc": "거대한 함포를 발사하여 착탄 지점에 강력한 광역 포격 폭발을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_202_1글자_배.png",
     "sound": "play_attack"
   },
@@ -3243,7 +3243,7 @@
     "jamo_count": 4,
     "formula": "ㅈ + ㅈ + ㅗ + ㄱ",
     "structure": "[ㅉㅗㄱ]",
-    "desc": "날카로운 파편 쪽을 사방으로 튀겨 11의 방사형 파편 피해를 줍니다.",
+    "desc": "날카로운 파편 쪽을 사방으로 튀겨 방사형 파편 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_203_1글자_쪽.png",
     "sound": "play_attack"
   },
@@ -3259,7 +3259,7 @@
     "jamo_count": 3,
     "formula": "ㅈ + ㅜ + ㄹ",
     "structure": "[ㅈㅜㄹ]",
-    "desc": "마력 줄을 던져 지나가는 적 10 피해 및 1초간 이동을 정지시킵니다.",
+    "desc": "마력 줄을 던져 지나가는 적 피해 및 1초간 이동을 정지시킵니다.",
     "icon": "./assets/words_symbol_32px/word_204_1글자_줄.png",
     "sound": "play_attack"
   },
@@ -3291,7 +3291,7 @@
     "jamo_count": 7,
     "formula": "ㅂ + ㅜ + ㄹ + ㅂ + ㅏ + ㄷ + ㅏ",
     "structure": "[ㅂㅜㄹ] + [ㅂㅏ] + [ㄷㅏ]",
-    "desc": "전방 광범위한 대지를 불바다로 뒤덮어 초당 15의 극심한 화염 피해를 줍니다.",
+    "desc": "전방 광범위한 대지를 불바다로 뒤덮어 지속 극심한 화염 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_206_3글자_불바다.png",
     "sound": "play_attack"
   },
@@ -3307,7 +3307,7 @@
     "jamo_count": 6,
     "formula": "ㅁ + ㅜ + ㄹ + ㅅ + ㅏ + ㄹ",
     "structure": "[ㅁㅜㄹ] + [ㅅㅏㄹ]",
-    "desc": "거센 급류를 분사하여 21의 수류 피해 및 적들을 3칸 뒤로 밀어냅니다.",
+    "desc": "거센 급류를 분사하여 수류 피해 및 적들을 3칸 뒤로 밀어냅니다.",
     "icon": "./assets/words_symbol_32px/word_207_2글자_물살.png",
     "sound": "play_attack"
   },
@@ -3323,7 +3323,7 @@
     "jamo_count": 6,
     "formula": "ㅂ + ㅜ + ㄹ + ㅅ + ㅏ + ㅣ",
     "structure": "[ㅂㅜㄹ] + [ㅅㅐ]",
-    "desc": "불타는 새를 소환하여 34의 화염 폭격을 가하며 지상의 적을 불태웁니다.",
+    "desc": "불타는 새를 소환하여 화염 폭격을 가하며 지상의 적을 불태웁니다.",
     "icon": "./assets/words_symbol_32px/word_208_2글자_불새.png",
     "sound": "play_attack"
   },
@@ -3339,7 +3339,7 @@
     "jamo_count": 6,
     "formula": "ㄷ + ㅗ + ㄹ + ㅁ + ㅜ + ㄴ",
     "structure": "[ㄷㅗㄹ] + [ㅁㅜㄴ]",
-    "desc": "육중한 석문을 닫아걸어 28 피해 및 범위 내 적들을 1.5초간 기절시킵니다.",
+    "desc": "육중한 석문을 닫아걸어 피해 및 범위 내 적들을 1.5초간 기절시킵니다.",
     "icon": "./assets/words_symbol_32px/word_209_2글자_돌문.png",
     "sound": "play_attack"
   },
@@ -3355,7 +3355,7 @@
     "jamo_count": 8,
     "formula": "ㅅ + ㅓ + ㄹ + ㅣ + ㅅ + ㅂ + ㅏ + ㄹ",
     "structure": "[ㅅㅓ] + [ㄹㅣㅅ] + [ㅂㅏㄹ]",
-    "desc": "날카로운 서릿발을 지면에 솟구쳐 35 피해 및 주변 적들을 1초간 동결시킵니다.",
+    "desc": "날카로운 서릿발을 지면에 솟구쳐 피해 및 주변 적들을 1초간 동결시킵니다.",
     "icon": "./assets/words_symbol_32px/word_210_3글자_서릿발.png",
     "sound": "play_attack"
   },
@@ -3371,7 +3371,7 @@
     "jamo_count": 8,
     "formula": "ㅂ + ㅣ + ㅅ + ㅈ + ㅜ + ㄹ + ㄱ + ㅣ",
     "structure": "[ㅂㅣㅅ] + [ㅈㅜㄹ] + [ㄱㅣ]",
-    "desc": "폭우 같은 물줄기 탄환을 초고속으로 난사하여 22의 다단히트 피해를 입힙니다.",
+    "desc": "폭우 같은 물줄기 탄환을 초고속으로 난사하여 다단히트 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_211_3글자_빗줄기.png",
     "sound": "play_attack"
   },
@@ -3387,7 +3387,7 @@
     "jamo_count": 6,
     "formula": "ㄷ + ㅗ + ㄱ + ㅂ + ㅓ + ㄹ",
     "structure": "[ㄷㅗㄱ] + [ㅂㅓㄹ]",
-    "desc": "맹독을 품은 독벌 떼를 날려보내 25 피해 및 방어력 무시 중독을 겁니다.",
+    "desc": "맹독을 품은 독벌 떼를 날려보내 피해 및 방어력 무시 중독을 겁니다.",
     "icon": "./assets/words_symbol_32px/word_212_2글자_독벌.png",
     "sound": "play_attack"
   },
@@ -3403,7 +3403,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅗ + ㄱ + ㄱ + ㅏ + ㅅ + ㅣ",
     "structure": "[ㄷㅗㄱ] + [ㄱㅏ] + [ㅅㅣ]",
-    "desc": "독이 스며든 가시탄을 난사하여 27 피해 및 3초간 매초 6의 독 피해를 입힙니다.",
+    "desc": "독이 스며든 가시탄을 난사하여 피해 및 3초간 지속 독 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_213_3글자_독가시.png",
     "sound": "play_attack"
   },
@@ -3419,7 +3419,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅗ + ㄱ + ㅅ + ㅏ + ㅣ + ㅁ",
     "structure": "[ㄷㅗㄱ] + [ㅅㅐㅁ]",
-    "desc": "부식성 독 웅덩이를 형성하여 밟은 적들의 방어력을 40% 깎고 29 피해를 줍니다.",
+    "desc": "부식성 독 웅덩이를 형성하여 밟은 적들의 방어력을 40% 깎고 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_214_2글자_독샘.png",
     "sound": "play_attack"
   },
@@ -3435,7 +3435,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅗ + ㄱ + ㄱ + ㅜ + ㄹ + ㅡ + ㅁ",
     "structure": "[ㄷㅗㄱ] + [ㄱㅜ] + [ㄹㅡㅁ]",
-    "desc": "지속되는 독구름을 뿜어내어 지나가는 모든 적에게 33의 중첩 독 피해를 가합니다.",
+    "desc": "지속되는 독구름을 뿜어내어 지나가는 모든 적에게 중첩 독 피해를 가합니다.",
     "icon": "./assets/words_symbol_32px/word_215_3글자_독구름.png",
     "sound": "play_attack"
   },
@@ -3451,7 +3451,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㅡ + ㅁ + ㅜ + ㄹ + ㅁ + ㅏ + ㅇ",
     "structure": "[ㄱㅡ] + [ㅁㅜㄹ] + [ㅁㅏㅇ]",
-    "desc": "거대한 그물망을 쳐서 공중 유닛을 묶어 떨어뜨리고 24 피해를 입힙니다.",
+    "desc": "거대한 그물망을 쳐서 공중 유닛을 묶어 떨어뜨리고 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_216_3글자_그물망.png",
     "sound": "play_attack"
   },
@@ -3467,7 +3467,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅗ + ㅣ + ㅈ + ㅜ + ㄹ",
     "structure": "[ㅅㅚ] + [ㅈㅜㄹ]",
-    "desc": "단단한 강철 줄을 뿜어 적의 발을 묶어 25 피해 및 2초간 결속시킵니다.",
+    "desc": "단단한 강철 줄을 뿜어 적의 발을 묶어 피해 및 2초간 결속시킵니다.",
     "icon": "./assets/words_symbol_32px/word_217_2글자_쇠줄.png",
     "sound": "play_attack"
   },
@@ -3483,7 +3483,7 @@
     "jamo_count": 10,
     "formula": "ㅅ + ㅗ + ㅣ + ㅁ + ㅏ + ㄹ + ㄷ + ㄷ + ㅜ + ㄱ",
     "structure": "[ㅅㅚ] + [ㅁㅏㄹ] + [ㄸㅜㄱ]",
-    "desc": "거대한 강철 말뚝을 박아 31 피해 및 통과하는 대형 보스를 1초간 정지시킵니다.",
+    "desc": "거대한 강철 말뚝을 박아 피해 및 통과하는 대형 보스를 1초간 정지시킵니다.",
     "icon": "./assets/words_symbol_32px/word_218_3글자_쇠말뚝.png",
     "sound": "play_attack"
   },
@@ -3515,7 +3515,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅓ + ㅁ + ㅅ + ㅏ",
     "structure": "[ㄱㅓㅁ] + [ㅅㅏ]",
-    "desc": "검사를 소환하여 접근하는 적들을 향해 25의 빠른 연속 검격을 날립니다.",
+    "desc": "검사를 소환하여 접근하는 적들을 향해 빠른 연속 검격을 날립니다.",
     "icon": "./assets/words_symbol_32px/word_220_2글자_검사.png",
     "sound": "play_attack"
   },
@@ -3531,7 +3531,7 @@
     "jamo_count": 5,
     "formula": "ㄱ + ㅜ + ㅇ + ㅅ + ㅜ",
     "structure": "[ㄱㅜㅇ] + [ㅅㅜ]",
-    "desc": "날렵한 궁수가 긴 사거리에서 26 피해의 화살을 분당 45회 고속 연사합니다.",
+    "desc": "날렵한 궁수가 긴 사거리에서 피해의 화살을 분당 45회 고속 연사합니다.",
     "icon": "./assets/words_symbol_32px/word_221_2글자_궁수.png",
     "sound": "play_attack"
   },
@@ -3547,7 +3547,7 @@
     "jamo_count": 4,
     "formula": "ㄱ + ㅣ + ㅅ + ㅏ",
     "structure": "[ㄱㅣ] + [ㅅㅏ]",
-    "desc": "방패를 든 굳건한 기사가 30 피해를 흡수하며 전선을 유지합니다.",
+    "desc": "방패를 든 굳건한 기사가 피해를 흡수하며 전선을 유지합니다.",
     "icon": "./assets/words_symbol_32px/word_222_2글자_기사.png",
     "sound": "play_attack"
   },
@@ -3563,7 +3563,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅏ + ㅂ + ㅓ + ㅂ + ㅅ + ㅏ",
     "structure": "[ㅁㅏ] + [ㅂㅓㅂ] + [ㅅㅏ]",
-    "desc": "비전 마법의 화구를 날려 착탄 지점에 35의 마법 폭발을 일으킵니다.",
+    "desc": "비전 마법의 화구를 날려 착탄 지점에 마법 폭발을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_223_3글자_마법사.png",
     "sound": "play_attack"
   },
@@ -3579,7 +3579,7 @@
     "jamo_count": 4,
     "formula": "ㄷ + ㅗ + ㅅ + ㅏ",
     "structure": "[ㄷㅗ] + [ㅅㅏ]",
-    "desc": "부채를 부쳐 도술 바람을 일으켜 28 피해 및 적들을 1.2초간 공중에 띄웁니다.",
+    "desc": "부채를 부쳐 도술 바람을 일으켜 피해 및 적들을 1.2초간 공중에 띄웁니다.",
     "icon": "./assets/words_symbol_32px/word_224_2글자_도사.png",
     "sound": "play_attack"
   },
@@ -3595,7 +3595,7 @@
     "jamo_count": 5,
     "formula": "ㅅ + ㅓ + ㄴ + ㅂ + ㅣ",
     "structure": "[ㅅㅓㄴ] + [ㅂㅣ]",
-    "desc": "고결한 선비의 글 읽는 소리로 22 피해 및 주변 아군 타워의 쿨다운을 15% 가속합니다.",
+    "desc": "고결한 선비의 글 읽는 소리로 맑은 영기 파동을 일으켜 적들에게 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_225_2글자_선비.png",
     "sound": "play_attack"
   },
@@ -3611,7 +3611,7 @@
     "jamo_count": 7,
     "formula": "ㅅ + ㅗ + ㅁ + ㅗ + ㄹ + ㅇ + ㅣ",
     "structure": "[ㅅㅗ] + [ㅁㅗㄹ] + [ㅇㅣ]",
-    "desc": "성난 황소 떼를 몰아 전방 일직선상의 모든 적을 34 피해로 쓸어버립니다.",
+    "desc": "성난 황소 떼를 몰아 전방 일직선상의 모든 적을 피해로 쓸어버립니다.",
     "icon": "./assets/words_symbol_32px/word_226_3글자_소몰이.png",
     "sound": "play_attack"
   },
@@ -3627,7 +3627,7 @@
     "jamo_count": 9,
     "formula": "ㅁ + ㅏ + ㄹ + ㅂ + ㅏ + ㄹ + ㄱ + ㅜ + ㅂ",
     "structure": "[ㅁㅏㄹ] + [ㅂㅏㄹ] + [ㄱㅜㅂ]",
-    "desc": "천둥 같은 말발굽 소리와 함께 28의 광역 스턴 충격파를 발생시킵니다.",
+    "desc": "천둥 같은 말발굽 소리와 함께 광역 스턴 충격파를 발생시킵니다.",
     "icon": "./assets/words_symbol_32px/word_227_3글자_말발굽.png",
     "sound": "play_attack"
   },
@@ -3643,7 +3643,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅗ + ㄹ + ㅜ + ㄷ + ㅗ + ㄹ",
     "structure": "[ㅁㅗ] + [ㄹㅜ] + [ㄷㅗㄹ]",
-    "desc": "단단한 모루돌을 내리쳐 30 물리 피해 및 주변 아군 타워의 공격력을 +20% 강화합니다.",
+    "desc": "단단한 모루돌을 내리쳐 지면에 묵직한 분쇄 충격파 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_228_3글자_모루돌.png",
     "sound": "play_attack"
   },
@@ -3659,7 +3659,7 @@
     "jamo_count": 5,
     "formula": "ㅈ + ㅜ + ㅁ + ㅓ + ㄱ",
     "structure": "[ㅈㅜ] + [ㅁㅓㄱ]",
-    "desc": "단단한 쇠주먹으로 내리쳐 18 피해 및 0.4초간 경직을 줍니다.",
+    "desc": "단단한 쇠주먹으로 내리쳐 피해 및 0.4초간 경직을 줍니다.",
     "icon": "./assets/words_symbol_32px/word_229_2글자_주먹.png",
     "sound": "play_attack"
   },
@@ -3675,7 +3675,7 @@
     "jamo_count": 8,
     "formula": "ㅂ + ㅜ + ㄹ + ㅈ + ㅜ + ㅁ + ㅓ + ㄱ",
     "structure": "[ㅂㅜㄹ] + [ㅈㅜ] + [ㅁㅓㄱ]",
-    "desc": "불타는 주먹을 연타로 날려 32의 화염 타격 피해 및 화상을 입힙니다.",
+    "desc": "불타는 주먹을 연타로 날려 화염 타격 피해 및 화상을 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_230_3글자_불주먹.png",
     "sound": "play_attack"
   },
@@ -3691,7 +3691,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅗ + ㄹ + ㅈ + ㅜ + ㅁ + ㅓ + ㄱ",
     "structure": "[ㄷㅗㄹ] + [ㅈㅜ] + [ㅁㅓㄱ]",
-    "desc": "바위로 덮인 거대한 주먹으로 33의 묵직한 분쇄 피해를 입힙니다.",
+    "desc": "바위로 덮인 거대한 주먹으로 묵직한 분쇄 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_231_3글자_돌주먹.png",
     "sound": "play_attack"
   },
@@ -3707,7 +3707,7 @@
     "jamo_count": 8,
     "formula": "ㅅ + ㅗ + ㅣ + ㄷ + ㅗ + ㄱ + ㄱ + ㅣ",
     "structure": "[ㅅㅚ] + [ㄷㅗ] + [ㄲㅣ]",
-    "desc": "묵직한 쇠도끼로 내리찍어 29 피해 및 적의 방어구를 25% 쪼개버립니다.",
+    "desc": "묵직한 쇠도끼로 내리찍어 피해 및 적의 방어구를 25% 쪼개버립니다.",
     "icon": "./assets/words_symbol_32px/word_232_3글자_쇠도끼.png",
     "sound": "play_attack"
   },
@@ -3739,7 +3739,7 @@
     "jamo_count": 9,
     "formula": "ㅇ + ㅓ + ㄹ + ㅇ + ㅡ + ㅁ + ㅅ + ㅏ + ㄹ",
     "structure": "[ㅇㅓㄹ] + [ㅇㅡㅁ] + [ㅅㅏㄹ]",
-    "desc": "냉기가 서린 화살로 29 피해를 입히고 타깃을 1초간 결빙시킵니다.",
+    "desc": "냉기가 서린 화살로 피해를 입히고 타깃을 1초간 결빙시킵니다.",
     "icon": "./assets/words_symbol_32px/word_234_3글자_얼음살.png",
     "sound": "play_attack"
   },
@@ -3755,7 +3755,7 @@
     "jamo_count": 9,
     "formula": "ㅁ + ㅜ + ㄹ + ㅂ + ㅏ + ㅇ + ㅇ + ㅜ + ㄹ",
     "structure": "[ㅁㅜㄹ] + [ㅂㅏㅇ] + [ㅇㅜㄹ]",
-    "desc": "커다란 물방울을 날려 적을 21 피해와 함께 1.5초간 가두어 무력화합니다.",
+    "desc": "커다란 물방울을 날려 적을 피해와 함께 1.5초간 가두어 무력화합니다.",
     "icon": "./assets/words_symbol_32px/word_235_3글자_물방울.png",
     "sound": "play_attack"
   },
@@ -3771,7 +3771,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅗ + ㄹ + ㅅ + ㅏ + ㅈ + ㅏ",
     "structure": "[ㄷㅗㄹ] + [ㅅㅏ] + [ㅈㅏ]",
-    "desc": "영험한 돌사자 석상을 세워 35 피해 및 주변 몬스터의 공격력을 25% 약화시킵니다.",
+    "desc": "영험한 돌사자 석상을 세워 피해 및 주변 몬스터의 공격력을 25% 약화시킵니다.",
     "icon": "./assets/words_symbol_32px/word_236_3글자_돌사자.png",
     "sound": "play_attack"
   },
@@ -3787,7 +3787,7 @@
     "jamo_count": 10,
     "formula": "ㄷ + ㄷ + ㅏ + ㅇ + ㅇ + ㅜ + ㄹ + ㄹ + ㅣ + ㅁ",
     "structure": "[ㄸㅏㅇ] + [ㅇㅜㄹ] + [ㄹㅣㅁ]",
-    "desc": "쿠르릉 울리는 땅울림으로 36의 지진 피해 및 적들을 1칸 뒤로 넉백시킵니다.",
+    "desc": "쿠르릉 울리는 땅울림으로 지진 피해 및 적들을 1칸 뒤로 넉백시킵니다.",
     "icon": "./assets/words_symbol_32px/word_237_3글자_땅울림.png",
     "sound": "play_attack"
   },
@@ -3803,7 +3803,7 @@
     "jamo_count": 5,
     "formula": "ㅈ + ㅜ + ㅈ + ㅏ + ㄱ",
     "structure": "[ㅈㅜ] + [ㅈㅏㄱ]",
-    "desc": "남방의 신조 주작이 날아올라 52의 광역 화염 폭풍을 전장 전체에 내리칩니다.",
+    "desc": "남방의 신조 주작이 날아올라 광역 화염 폭풍을 전장 전체에 내리칩니다.",
     "icon": "./assets/words_symbol_32px/word_238_2글자_주작.png",
     "sound": "play_attack"
   },
@@ -3819,7 +3819,7 @@
     "jamo_count": 7,
     "formula": "ㄱ + ㅓ + ㅂ + ㅜ + ㄱ + ㅇ + ㅣ",
     "structure": "[ㄱㅓ] + [ㅂㅜㄱ] + [ㅇㅣ]",
-    "desc": "느리지만 튼튼한 거북이가 길목을 막아 28 피해 및 적의 투사체를 대신 받아냅니다.",
+    "desc": "느리지만 튼튼한 거북이가 길목을 막아 피해 및 적의 투사체를 대신 받아냅니다.",
     "icon": "./assets/words_symbol_32px/word_239_3글자_거북이.png",
     "sound": "play_attack"
   },
@@ -3835,7 +3835,7 @@
     "jamo_count": 4,
     "formula": "ㅇ + ㅗ + ㄹ + ㅣ",
     "structure": "[ㅇㅗ] + [ㄹㅣ]",
-    "desc": "물오리 떼가 헤엄치며 18 피해 및 길목의 적들을 양옆으로 밀쳐냅니다.",
+    "desc": "물오리 떼가 헤엄치며 피해 및 길목의 적들을 양옆으로 밀쳐냅니다.",
     "icon": "./assets/words_symbol_32px/word_240_2글자_오리.png",
     "sound": "play_attack"
   },
@@ -3851,7 +3851,7 @@
     "jamo_count": 5,
     "formula": "ㅁ + ㅏ + ㅣ + ㅁ + ㅣ",
     "structure": "[ㅁㅐ] + [ㅁㅣ]",
-    "desc": "귀를 찢는 매미 소리로 22 피해 및 주변 몬스터들을 1초간 침묵 상태로 만듭니다.",
+    "desc": "귀를 찢는 매미 소리로 피해 및 주변 몬스터들을 1초간 침묵 상태로 만듭니다.",
     "icon": "./assets/words_symbol_32px/word_241_2글자_매미.png",
     "sound": "play_attack"
   },
@@ -3867,7 +3867,7 @@
     "jamo_count": 4,
     "formula": "ㄴ + ㅏ + ㅂ + ㅣ",
     "structure": "[ㄴㅏ] + [ㅂㅣ]",
-    "desc": "빛나는 나비 떼가 날아다니며 21 피해 및 적의 이동 경로를 무작위로 방황하게 합니다.",
+    "desc": "빛나는 나비 떼가 날아다니며 피해 및 적의 이동 경로를 무작위로 방황하게 합니다.",
     "icon": "./assets/words_symbol_32px/word_242_2글자_나비.png",
     "sound": "play_attack"
   },
@@ -3899,7 +3899,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅏ + ㄹ + ㄱ + ㅜ + ㅈ + ㅣ",
     "structure": "[ㄷㅏㄹ] + [ㄱㅜ] + [ㅈㅣ]",
-    "desc": "소달구지가 지나가며 15 피해를 주고 매 라운드 종료 시 보너스 2골드를 적립합니다.",
+    "desc": "소달구지가 지나가며 피해를 주고 매 라운드 종료 시 보너스 2골드를 적립합니다.",
     "icon": "./assets/words_symbol_32px/word_244_3글자_달구지.png",
     "sound": "play_attack"
   },
@@ -3915,7 +3915,7 @@
     "jamo_count": 5,
     "formula": "ㅈ + ㅣ + ㄴ + ㅓ + ㅣ",
     "structure": "[ㅈㅣ] + [ㄴㅔ]",
-    "desc": "거대한 지네가 기어가며 29 피해 및 적에게 방어력 무시 극독을 중첩시킵니다.",
+    "desc": "거대한 지네가 기어가며 피해 및 적에게 방어력 무시 극독을 중첩시킵니다.",
     "icon": "./assets/words_symbol_32px/word_245_2글자_지네.png",
     "sound": "play_attack"
   },
@@ -3931,7 +3931,7 @@
     "jamo_count": 5,
     "formula": "ㄷ + ㅗ + ㄱ + ㄱ + ㅣ",
     "structure": "[ㄷㅗ] + [ㄲㅣ]",
-    "desc": "회전하는 도끼를 던져 24 피해 및 단단한 갑옷을 입은 몬스터에게 1.5배 피해를 줍니다.",
+    "desc": "회전하는 도끼를 던져 피해 및 단단한 갑옷을 입은 몬스터에게 1.5배 피해를 줍니다.",
     "icon": "./assets/words_symbol_32px/word_246_2글자_도끼.png",
     "sound": "play_attack"
   },
@@ -3947,7 +3947,7 @@
     "jamo_count": 4,
     "formula": "ㅅ + ㅗ + ㄹ + ㅣ",
     "structure": "[ㅅㅗ] + [ㄹㅣ]",
-    "desc": "공기를 울리는 음파 파동을 쏘아 20 피해 및 좁은 범위의 적들을 뒤로 밀쳐냅니다.",
+    "desc": "공기를 울리는 음파 파동을 쏘아 피해 및 좁은 범위의 적들을 뒤로 밀쳐냅니다.",
     "icon": "./assets/words_symbol_32px/word_247_2글자_소리.png",
     "sound": "play_attack"
   },
@@ -3963,7 +3963,7 @@
     "jamo_count": 6,
     "formula": "ㅂ + ㅏ + ㅇ + ㅇ + ㅜ + ㄹ",
     "structure": "[ㅂㅏㅇ] + [ㅇㅜㄹ]",
-    "desc": "신비로운 방울을 흔들어 18 피해를 입히고 주변 아군 타워의 공격력을 15% 상승시킵니다.",
+    "desc": "청아한 방울 소리를 울려 퍼뜨려 주변 적들에게 도탄 공명 음파 피해를 입힙니다.",
     "icon": "./assets/words_symbol_32px/word_248_2글자_방울.png",
     "sound": "play_attack"
   },
@@ -3979,7 +3979,7 @@
     "jamo_count": 5,
     "formula": "ㅁ + ㅗ + ㄹ + ㅏ + ㅣ",
     "structure": "[ㅁㅗ] + [ㄹㅐ]",
-    "desc": "길목에 고운 모래를 깔아 16 피해 및 통과하는 적의 이동 속도를 35% 지속 감속시킵니다.",
+    "desc": "길목에 고운 모래를 깔아 피해 및 통과하는 적의 이동 속도를 35% 지속 감속시킵니다.",
     "icon": "./assets/words_symbol_32px/word_249_2글자_모래.png",
     "sound": "play_attack"
   },
@@ -4011,7 +4011,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅏ + ㄴ + ㅡ + ㄹ",
     "structure": "[ㅂㅏ] + [ㄴㅡㄹ]",
-    "desc": "극도로 예리한 마력 바늘을 발사해 22 피해 및 적의 방어 버프를 관통 무효화합니다.",
+    "desc": "극도로 예리한 마력 바늘을 발사해 피해 및 적의 방어 버프를 관통 무효화합니다.",
     "icon": "./assets/words_symbol_32px/word_251_2글자_바늘.png",
     "sound": "play_attack"
   },
@@ -4059,7 +4059,7 @@
     "jamo_count": 5,
     "formula": "ㅂ + ㅣ + ㄷ + ㅏ + ㄴ",
     "structure": "[ㅂㅣ] + [ㄷㅏㄴ]",
-    "desc": "부드럽고 질긴 비단 장막을 펼쳐 24 피해 및 통과하는 몬스터의 공격력을 30% 감소시킵니다.",
+    "desc": "부드럽고 질긴 비단 장막을 펼쳐 피해 및 통과하는 몬스터의 공격력을 30% 감소시킵니다.",
     "icon": "./assets/words_symbol_32px/word_254_2글자_비단.png",
     "sound": "play_attack"
   },
@@ -4075,7 +4075,7 @@
     "jamo_count": 7,
     "formula": "ㅁ + ㅜ + ㅈ + ㅣ + ㄱ + ㅏ + ㅣ",
     "structure": "[ㅁㅜ] + [ㅈㅣ] + [ㄱㅐ]",
-    "desc": "영롱한 7색 무지개 광선을 쏘아 35의 혼합 원소 피해 및 무작위 속성 디버프를 겁니다.",
+    "desc": "영롱한 7색 무지개 광선을 쏘아 혼합 원소 피해 및 무작위 속성 디버프를 겁니다.",
     "icon": "./assets/words_symbol_32px/word_255_3글자_무지개.png",
     "sound": "play_attack"
   },
@@ -4091,7 +4091,7 @@
     "jamo_count": 8,
     "formula": "ㄱ + ㅗ + ㄹ + ㅈ + ㅈ + ㅏ + ㄱ + ㅣ",
     "structure": "[ㄱㅗㄹ] + [ㅉㅏ] + [ㄱㅣ]",
-    "desc": "깊은 골짜기 바람을 일으켜 38 피해 및 적들을 협곡 중앙으로 빨아들입니다.",
+    "desc": "깊은 골짜기 바람을 일으켜 피해 및 적들을 협곡 중앙으로 빨아들입니다.",
     "icon": "./assets/words_symbol_32px/word_256_3글자_골짜기.png",
     "sound": "play_attack"
   },
@@ -4107,14 +4107,14 @@
     "jamo_count": 9,
     "formula": "ㅅ + ㅏ + ㄴ + ㄷ + ㄷ + ㅏ + ㄹ + ㄱ + ㅣ",
     "structure": "[ㅅㅏㄴ] + [ㄸㅏㄹ] + [ㄱㅣ]",
-    "desc": "새콤달콤한 산딸기를 생산하여 20 피해 및 3웨이브마다 기지 HP를 3 회복시킵니다.",
+    "desc": "새콤달콤한 산딸기를 생산하여 피해 및 3웨이브마다 기지 HP를 3 회복시킵니다.",
     "icon": "./assets/words_symbol_32px/word_257_3글자_산딸기.png",
     "sound": "play_attack"
   },
   "소나무": {
     "word": "소나무",
     "no": 258,
-    "name": "소나무 (상록 방풍림)",
+    "name": "소나무 (솔잎 관통/상록수)",
     "category": "defense",
     "tier": 3,
     "length": 3,
@@ -4123,7 +4123,7 @@
     "jamo_count": 6,
     "formula": "ㅅ + ㅗ + ㄴ + ㅏ + ㅁ + ㅜ",
     "structure": "[ㅅㅗ] + [ㄴㅏ] + [ㅁㅜ]",
-    "desc": "사계절 푸른 소나무를 세워 27 피해 및 주변 아군 타워의 상태이상 저항을 부여합니다.",
+    "desc": "사계절 푸르고 예리한 솔잎 침을 일제히 발사하여 경로 상의 적들을 일직선으로 관통합니다.",
     "icon": "./assets/words_symbol_32px/word_258_3글자_소나무.png",
     "sound": "play_attack"
   },
@@ -4139,7 +4139,7 @@
     "jamo_count": 7,
     "formula": "ㄷ + ㅏ + ㅣ + ㄴ + ㅏ + ㅁ + ㅜ",
     "structure": "[ㄷㅐ] + [ㄴㅏ] + [ㅁㅜ]",
-    "desc": "휘어지는 대나무의 탄성을 이용해 25의 빠른 찌르기 물리 피해를 연사합니다.",
+    "desc": "휘어지는 대나무의 탄성을 이용해 빠른 찌르기 물리 피해를 연사합니다.",
     "icon": "./assets/words_symbol_32px/word_259_3글자_대나무.png",
     "sound": "play_attack"
   },
@@ -4155,7 +4155,7 @@
     "jamo_count": 6,
     "formula": "ㄴ + ㅓ + ㄱ + ㅜ + ㄹ + ㅣ",
     "structure": "[ㄴㅓ] + [ㄱㅜ] + [ㄹㅣ]",
-    "desc": "둔갑술을 부리는 너구리가 23 피해를 입히고 적 몬스터 하나를 2초간 허수아비로 변신시킵니다.",
+    "desc": "둔갑술을 부리는 너구리가 피해를 입히고 적 몬스터 하나를 2초간 허수아비로 변신시킵니다.",
     "icon": "./assets/words_symbol_32px/word_260_3글자_너구리.png",
     "sound": "play_attack"
   },
@@ -4171,7 +4171,7 @@
     "jamo_count": 8,
     "formula": "ㄷ + ㅗ + ㅁ + ㅏ + ㅂ + ㅏ + ㅣ + ㅁ",
     "structure": "[ㄷㅗ] + [ㅁㅏ] + [ㅂㅐㅁ]",
-    "desc": "재빠른 도마뱀이 24 피해를 입히고 공격받을 때 분신을 남겨 적의 타깃팅을 흐립니다.",
+    "desc": "재빠른 도마뱀이 피해를 입히고 공격받을 때 분신을 남겨 적의 타깃팅을 흐립니다.",
     "icon": "./assets/words_symbol_32px/word_261_3글자_도마뱀.png",
     "sound": "play_attack"
   },
@@ -4187,7 +4187,7 @@
     "jamo_count": 6,
     "formula": "ㄱ + ㅣ + ㄹ + ㅓ + ㄱ + ㅣ",
     "structure": "[ㄱㅣ] + [ㄹㅓ] + [ㄱㅣ]",
-    "desc": "V자 편대를 이룬 기러기 무리가 지나가며 30의 공중 융단 폭격을 가합니다.",
+    "desc": "V자 편대를 이룬 기러기 무리가 지나가며 공중 융단 폭격을 가합니다.",
     "icon": "./assets/words_symbol_32px/word_262_3글자_기러기.png",
     "sound": "play_attack"
   },
@@ -4203,7 +4203,7 @@
     "jamo_count": 6,
     "formula": "ㅁ + ㅜ + ㄹ + ㄱ + ㅏ + ㅣ",
     "structure": "[ㅁㅜㄹ] + [ㄱㅐ]",
-    "desc": "미끄러지듯 돌진하는 물개가 26 피해 및 경로 상의 적들을 좌우로 흩어놓습니다.",
+    "desc": "미끄러지듯 돌진하는 물개가 피해 및 경로 상의 적들을 좌우로 흩어놓습니다.",
     "icon": "./assets/words_symbol_32px/word_263_2글자_물개.png",
     "sound": "play_attack"
   },
@@ -4235,7 +4235,7 @@
     "jamo_count": 8,
     "formula": "ㅂ + ㅜ + ㄹ + ㄴ + ㅏ + ㅂ + ㅏ + ㅇ",
     "structure": "[ㅂㅜㄹ] + [ㄴㅏ] + [ㅂㅏㅇ]",
-    "desc": "불타는 나방 떼가 적진으로 돌진 자폭하여 35의 넓은 화염 폭발을 일으킵니다.",
+    "desc": "불타는 나방 떼가 적진으로 돌진 자폭하여 넓은 화염 폭발을 일으킵니다.",
     "icon": "./assets/words_symbol_32px/word_265_3글자_불나방.png",
     "sound": "play_attack"
   }

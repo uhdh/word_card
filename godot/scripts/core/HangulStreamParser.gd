@@ -33,25 +33,17 @@ static func parse_jamo_stream(jamo_list: Array) -> Array:
 				continue
 
 		# 2. 중성 (Jungsung) 결정 (이중모음 자동 합성: ㅗ+ㅏ -> ㅘ, ㅡ+ㅣ -> ㅢ, ㅏ+ㅣ -> ㅐ, ㅓ+ㅣ -> ㅔ 등)
+		# 규칙은 _compose_jung_at 하나만 갖는다 — 아래 종성 판단도 같은 함수를 쓴다.
 		var jung = ""
 		var jung_indices = []
 
 		if i < n:
-			if i + 1 < n:
-				var double_v_key = jamo_list[i] + "+" + jamo_list[i + 1]
-				if HangulEngine.VOWEL_COMBINATIONS.has(double_v_key):
-					var combined_v = HangulEngine.VOWEL_COMBINATIONS[double_v_key]
-					if HangulEngine.JUNGSUNG.has(combined_v):
-						jung = combined_v
-						jung_indices = [i, i + 1]
-						i += 2
-
-			if jung == "":
-				var single_v = jamo_list[i]
-				if HangulEngine.JUNGSUNG.has(single_v):
-					jung = single_v
-					jung_indices = [i]
-					i += 1
+			var vowel := _compose_jung_at(jamo_list, i)
+			jung = str(vowel.get("vowel", ""))
+			var used := int(vowel.get("used", 0))
+			if used > 0:
+				for k in range(used): jung_indices.append(i + k)
+				i += used
 
 		# 초성은 있는데 모음(중성)이 없으면 음절 불성립
 		if jung == "":
@@ -63,7 +55,7 @@ static func parse_jamo_stream(jamo_list: Array) -> Array:
 
 		if i < n:
 			# 현재 자음(jamo_list[i])이 다음 음절의 시작이 아닌 경우에만 종성 후보가 됨
-			if not can_be_next_syllable_start(jamo_list, i):
+			if _prefer_registered_jong_split(raw_syllables, cho, jung, jamo_list, i) or not can_be_next_syllable_start(jamo_list, i):
 				# 겹받침 확인 (예: ㄹ + ㄱ)
 				var try_double_jong = false
 				if i + 1 < n:
@@ -125,6 +117,47 @@ static func parse_jamo_stream(jamo_list: Array) -> Array:
 		s_idx += take
 
 	return final_towers
+
+## index 위치에서 시작하는 중성을 합성한다. 반환 {"vowel": String, "used": int}.
+## 삼중(ㅗ+ㅏ+ㅣ → ㅙ) → 이중(ㅏ+ㅣ → ㅐ) → 단일(ㅏ) 순서로 시도하고, 못 만들면 {"", 0}.
+##
+## **파서 안에서 중성을 읽는 곳이 두 군데다**: 음절을 실제로 조립할 때와(위 2단계),
+## 종성을 붙일지 말지 저울질할 때(_prefer_registered_jong_split). 두 곳이 다른 규칙을
+## 쓰면 '도깨비' 처럼 두 번째 음절의 모음이 두 장인 단어가 영원히 다른 단어로 굳는다.
+## 그래서 규칙은 여기 하나만 둔다.
+static func _compose_jung_at(jamo_list: Array, index: int) -> Dictionary:
+	var n = jamo_list.size()
+	if index >= n: return {"vowel": "", "used": 0}
+	if index + 2 < n:
+		var triple_key = jamo_list[index] + "+" + jamo_list[index + 1] + "+" + jamo_list[index + 2]
+		if HangulEngine.VOWEL_COMBINATIONS.has(triple_key):
+			return {"vowel": HangulEngine.VOWEL_COMBINATIONS[triple_key], "used": 3}
+	if index + 1 < n:
+		var double_key = jamo_list[index] + "+" + jamo_list[index + 1]
+		if HangulEngine.VOWEL_COMBINATIONS.has(double_key):
+			var combined = HangulEngine.VOWEL_COMBINATIONS[double_key]
+			if HangulEngine.JUNGSUNG.has(combined):
+				return {"vowel": combined, "used": 2}
+	if HangulEngine.JUNGSUNG.has(jamo_list[index]):
+		return {"vowel": jamo_list[index], "used": 1}
+	return {"vowel": "", "used": 0}
+
+static func _prefer_registered_jong_split(previous: Array, cho: String, jung: String, jamo_list: Array, index: int) -> bool:
+	if index + 2 >= jamo_list.size() or not HangulEngine.JONGSUNG.has(jamo_list[index]): return false
+	var double_cho = HangulEngine.CONSONANT_COMBINATIONS.get(jamo_list[index] + "+" + jamo_list[index + 1], "")
+	if not HangulEngine.CHOSUNG.has(double_cho): return false
+	# 다음 음절의 중성도 **합성해서** 봐야 한다. 예전에는 jamo_list[index+2] 한 장만
+	# 중성으로 봤기 때문에 '도깨비'(도 + 깨 + 비, 깨 = ㄲ + ㅐ = ㄱㄱㅏㅣ)의 두 번째
+	# 음절을 '까' 로 계산했다. '도까' 로 시작하는 단어는 없으니 등록된 '독' 쪽을 택했고,
+	# 그 순간 열이 독개비로 굳어 도깨비 타워가 영원히 서지 않았다.
+	var next_jung := str(_compose_jung_at(jamo_list, index + 2).get("vowel", ""))
+	if next_jung == "": return false
+	var prefix := ""
+	for item in previous: prefix += item.syllable
+	var split_prefix = prefix + HangulEngine.compose_syllable(cho, jung, jamo_list[index])
+	var double_prefix = prefix + HangulEngine.compose_syllable(cho, jung) + HangulEngine.compose_syllable(double_cho, next_jung)
+	var words = WordDatabase.get_all_words()
+	return words.any(func(data): return str(data.word).begins_with(split_prefix)) and not words.any(func(data): return str(data.word).begins_with(double_prefix))
 
 # 사전에 없는 조합의 "미지의 활자" 데이터 생성. 실제 사전 단어 평균 데미지(1글자 11, 2글자 26, 3글자 39)보다
 # 낮게, 그리고 한 단계 아래 글자 수의 사전 단어보다는 높게 잡아 글자 수를 늘릴 유인은 남기되 사전 단어보다 약하게 함.

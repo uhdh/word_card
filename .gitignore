@@ -7,3 +7,33 @@ dist-ssr
 .idea
 .vscode
 .godot/
+tools/mapgen/_scratch/
+# FrameStrip 캡처 출력. 검증 한 번에 수백 장이 쌓이는데 전부 일회성이다.
+# (남길 만한 증거는 docs/design/screenshots/ 로 옮겨서 커밋한다)
+_strip*/
+# Godot 실행 환경에 APPDATA 가 비어 있으면(이 저장소의 bash/CI 셸이 그렇다) Godot 는
+# `user://` 와 편집기 데이터를 프로젝트 안쪽 `./Godot/` 으로 떨어뜨린다. 거기에 로컬
+# 세이브·도감·스크린샷이 쌓인다 — 2026-09-23 기준 `godot/Godot/` 아래에 6.4MB 가 있었고
+# (그중 6.3MB 가 app_userdata), git 에는 untracked 로 보여서 `git add -A` 한 번에
+# 통째로 커밋될 수 있었다.
+#
+# ⚠️ `**/Godot/` 으로 통째로 무시하면 **안 된다.** 이 저장소는 core.ignoreCase=true 라
+# 대소문자를 구분하지 않으므로 그 패턴이 게임 본체 `godot/` 까지 삼킨다.
+# 그래서 산출물 항목만 하나씩 적는다(게임 쪽에 같은 이름의 경로는 없다).
+**/Godot/app_userdata/
+**/Godot/export_templates/
+**/Godot/editor_settings-*.tres
+__pycache__/
+*.pyc
+# 일회성 산출물 (스크린샷·추출 프레임·생성 시험·빌드)
+/_*.png
+/_verify_crop/
+/_backup_unused_assets/
+/tmp/
+/scratchpad_zoom/
+/.playwright-mcp/
+/.orca-worktree-trash/
+/web_build/
+/main/
+tools/_grok_*/
+NVIDIA Corporation/

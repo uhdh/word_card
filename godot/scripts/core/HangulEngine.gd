@@ -41,11 +41,13 @@ const ROTATABLE_TILES = {
 
 const CONSONANT_COMBINATIONS = {
 	"ㄱ+ㄱ": "ㄲ", "ㄷ+ㄷ": "ㄸ", "ㅂ+ㅂ": "ㅃ", "ㅅ+ㅅ": "ㅆ", "ㅈ+ㅈ": "ㅉ",
-	"ㄱ+ㅅ": "ㄳ", "ㄴ+ㅈ": "ㄵ", "ㄹ+ㄱ": "ㄺ", "ㄹ+ㅁ": "ㄻ",
-	"ㄹ+ㅂ": "ㄼ", "ㄹ+ㅅ": "ㄽ", "ㅂ+ㅅ": "ㅄ"
+	"ㄱ+ㅅ": "ㄳ", "ㄴ+ㅈ": "ㄵ", "ㄴ+ㅎ": "ㄶ", "ㄹ+ㄱ": "ㄺ", "ㄹ+ㅁ": "ㄻ",
+	"ㄹ+ㅂ": "ㄼ", "ㄹ+ㅅ": "ㄽ", "ㄹ+ㅌ": "ㄾ", "ㄹ+ㅍ": "ㄿ", "ㄹ+ㅎ": "ㅀ", "ㅂ+ㅅ": "ㅄ"
 }
 
 const VOWEL_COMBINATIONS = {
+	"ㅗ+ㅏ+ㅣ": "ㅙ",
+	"ㅜ+ㅓ+ㅣ": "ㅞ",
 	"ㅗ+ㅏ": "ㅘ", "ㅗ+ㅣ": "ㅚ",
 	"ㅜ+ㅓ": "ㅝ", "ㅜ+ㅣ": "ㅟ",
 	"ㅡ+ㅣ": "ㅢ", "ㅏ+ㅣ": "ㅐ", "ㅓ+ㅣ": "ㅔ"
@@ -64,21 +66,25 @@ static func is_rare(char_str: String) -> bool:
 static func is_super_rare(char_str: String) -> bool:
 	return SUPER_RARE_TILES.has(char_str)
 
-# 등급별 배경 색상 (별 모양 텍스트 대신 배경색으로 분류)
-static func get_rarity_bg_color(char_str: String) -> Color:
-	var r = get_rarity(char_str)
-	if r == "super_rare":
-		return Color(0.38, 0.22, 0.05, 0.95) # 찬란한 골드 앰버 (Super Rare)
-	elif r == "rare":
-		return Color(0.24, 0.12, 0.42, 0.95) # 신비로운 딥 바이올렛 (Rare)
-	return Color(0.14, 0.12, 0.20, 0.95)     # 다크 슬레이트 (Common)
+# 카드 배경은 등급과 관계없이 통일한다.
+static func get_rarity_bg_color(_char_str: String) -> Color:
+	return Color(0.14, 0.12, 0.20, 0.95)
 
-static func get_rarity_border_color(char_str: String) -> Color:
-	var r = get_rarity(char_str)
-	if r == "super_rare":
-		return Color(0.96, 0.65, 0.10, 1.0) # 황금빛 테두리
-	elif r == "rare":
-		return Color(0.68, 0.35, 0.98, 1.0) # 보랏빛 테두리
+## 카드 테두리도 등급과 관계없이 한 색으로 통일한다.
+##
+## 사실 확인: 예전 테두리 색은 '회전 가능' 이 아니라 **등급** 을 인코딩했다 —
+## 초희귀=금색(0.96, 0.65, 0.10), 희귀=보라(0.68, 0.35, 0.98), 일반=슬레이트.
+## 다만 이 게임에서 등급과 회전 가능 여부는 **같은 집합** 이다
+## (ROTATABLE_TILES 의 키 == RARE_TILES ∪ SUPER_RARE_TILES, 실측 확인).
+## 그래서 "보라 = 회전 가능" 처럼 읽혀도 결과는 같았고, ↻ 배지와 색이 항상 같이 움직였다.
+##
+## 이 변경의 실제 결과는 "같은 정보를 두 번 말하던 것을 정리" 가 아니라
+## **벨트에서 등급을 알 수 있는 시각 채널이 사라진 것** 이다. 배경색이 먼저 통일됐고
+## 테두리까지 통일됐으므로, 남은 등급 표시는 타일 툴팁 텍스트뿐이다
+## (JamoBelt._build_tile 의 rarity_name). 등급을 다시 보이게 하려면 색이 아닌
+## **새 채널**(예: 모서리 점/별)이 필요하다 — 색으로 되돌리면 방금 통일한 이유가
+## 그대로 되살아난다.
+static func get_rarity_border_color(_char_str: String) -> Color:
 	return Color(0.35, 0.30, 0.48, 0.8)     # 차분한 슬레이트 테두리
 
 const VOWEL_POOL = ["ㅏ", "ㅓ", "ㅗ", "ㅜ", "ㅡ", "ㅣ"]
@@ -96,7 +102,7 @@ static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 		if r == "super_rare":
 			weight = 10 # 4방향 회전 만능이라 그룹 총합이 커지므로 개별 가중치는 가장 낮게
 		elif r == "rare":
-			weight = 30 # 2방향 회전, 초희귀보다 그룹 인원이 적어 개별 가중치를 더 높게
+			weight = get_rare_draw_weight(ch)
 		weighted_entries.append({"char": ch, "weight": weight})
 		total_weight += weight
 
@@ -108,6 +114,9 @@ static func get_weighted_random_jamo(custom_pool: Array = []) -> String:
 			return entry["char"]
 
 	return ALL_DRAW_POOL.pick_random()
+
+static func get_rare_draw_weight(char_str: String) -> int:
+	return 48 if char_str in CONSONANT_POOL else 30
 
 # 3개의 보상 선택지 생성 시 최소 1개는 반드시 모음이 나오도록 보장
 static func generate_reward_choices(count: int = 3) -> Array:

@@ -2,20 +2,34 @@
 
 [ext_resource type="Script" path="res://scripts/tower/WordTower.gd" id="1_tower"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 0
+
 [node name="WordTower" type="Node2D"]
 script = ExtResource("1_tower")
 
 [node name="BasePanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(88, 96)
+custom_minimum_size = Vector2(76, 76)
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -48.0
-offset_right = 44.0
-offset_bottom = 48.0
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -26,26 +40,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -44.0
-offset_right = 42.0
-offset_bottom = 44.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 40
 theme_override_colors/font_color = Color(1, 0.95, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.04, 0.1, 1)
+theme_override_constants/outline_size = 4
 text = "가"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="IconContainer" type="CenterContainer" parent="."]
-offset_left = -30.0
-offset_top = -40.0
-offset_right = 30.0
-offset_bottom = 20.0
+offset_left = -29.0
+offset_top = -39.0
+offset_right = 29.0
+offset_bottom = 19.0
 
 [node name="IconSprite" type="TextureRect" parent="IconContainer"]
-custom_minimum_size = Vector2(56, 56)
+custom_minimum_size = Vector2(58, 58)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -56,14 +72,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = 22.0
-offset_right = 40.0
-offset_bottom = 44.0
+offset_left = -36.0
+offset_top = 16.0
+offset_right = 36.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
-theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 0.92, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.04, 0.1, 1)
+theme_override_constants/outline_size = 4
 text = "검"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -71,16 +89,16 @@ vertical_alignment = 1
 [node name="RangeCircle" type="Node2D" parent="."]
 
 [node name="BtnSelect" type="Button" parent="."]
-custom_minimum_size = Vector2(88, 96)
+custom_minimum_size = Vector2(76, 76)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -48.0
-offset_right = 44.0
-offset_bottom = 48.0
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
