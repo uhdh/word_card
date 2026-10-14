@@ -1355,12 +1355,14 @@ func _grant_round_reward(is_act_final: bool) -> void:
 	var bonus_gold = _wave_clear_bonus()
 	gold += bonus_gold
 	if has_relic("relic_healing_incense"):
-		# 상점 설명은 "웨이브 종료 시 기지 HP 2 회복" 이다.
+		# 상점 설명은 "웨이브 종료 시 기지 HP 1 회복" 이다.
+		# 2026-10-14 감독 결정: 2 → 1. 2 일 때는 웨이브당 2마리까지 새도 손해가 0 이라
+		# 후반이 무위험이었다(05 평가 §7.2). 측정은 HANDOFF §4.2.
 		# 예전에는 치유 타워가 하나라도 있으면 **조용히 3** 을 회복했다(`+ extra`).
 		# 설명 어디에도 없는 조건부 보너스였으므로 설명에 맞춰 지웠다
 		# (디렉터 규칙: "설명과 코드를 일치시켜줘. 설명에 맞춰").
 		# 그 +1 을 설명하던 정보창 라벨(`치유 증폭`)도 함께 지웠다 — 이제 말할 것이 없다.
-		base_hp = mini(max_base_hp, base_hp + 2)
+		base_hp = mini(max_base_hp, base_hp + 1)
 		base_hp_changed.emit(base_hp, max_base_hp)
 	# 슬롯 순서로 인접한 `defense`+`heal` 짝이면 라운드마다 기지 HP +1.
 	#

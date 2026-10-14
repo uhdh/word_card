@@ -115,8 +115,7 @@ const EXPECTED_BUFF_CALLERS := 1
 ## ⚠️ **겹치지 않는 패턴이어야 한다.** 처음에 `"base_hp + 1"` 로 셌더니 `"base_hp + 10"` 의
 ## 부분문자열까지 잡혀 **4곳**으로 보고했다(실제 3곳). 접두어가 겹치는 패턴은 세지 마라.
 const HEAL_SITE_PATTERNS: Array = [
-	"mini(max_base_hp, base_hp + 2)",
-	"mini(max_base_hp, base_hp + 1)",
+	"mini(max_base_hp, base_hp + 1)",   # 회복의 향로(2026-10-14 2→1) + 생명의 순환 = 2곳
 	"mini(defense_field.base_hp + 10,",
 ]
 
@@ -247,7 +246,7 @@ func _ready() -> void:
 	field.current_act = 1
 	field.current_wave = 3            # 보스 라운드(5의 배수)를 피한다
 	field.relic_ids = ["relic_healing_incense"]
-	# ⚠️ **기지 HP 를 먼저 깎아야 한다.** 회복은 `mini(max_base_hp, base_hp + 2)` 라
+	# ⚠️ **기지 HP 를 먼저 깎아야 한다.** 회복은 `mini(max_base_hp, base_hp + 1)` 라
 	#    가득 찬 상태에서는 **아무 일도 안 일어난다**(첫 판이 `heal=+0` 을 냈다).
 	field.base_hp = field.max_base_hp - 10
 	var hp_before: int = field.base_hp
@@ -265,8 +264,8 @@ func _ready() -> void:
 	played.sort()
 	var healed: int = field.base_hp - hp_before
 	print("%s runtime heal=+%d plays=%s" % [PREFIX, healed, str(played)])
-	check(healed == 2,
-		"회복의 향로가 실제로 +2 회복한다 (측정 +%d)" % healed, 4)
+	check(healed == 1,
+		"회복의 향로가 실제로 +1 회복한다 (측정 +%d)" % healed, 4)
 	check(played.has("victory"),
 		"회복 순간에 `victory` 가 난다 — 여기에 `buff` 를 얹으면 겹친다(§2.20 J1 과 같은 구조)", 4)
 	check(not played.has("heal") and not played.has("buff"),
@@ -294,7 +293,7 @@ func _ready() -> void:
 
 	# ── S6. 계약 문구 — 회복을 약속하는 곳은 있는가 ───────────────────────────
 	var incense: Dictionary = {}
-	_scan_source(SOURCE_ROOT, "웨이브 종료 시 기지 HP 2 회복", incense)
+	_scan_source(SOURCE_ROOT, "웨이브 종료 시 기지 HP 1 회복", incense)
 	var rune: Dictionary = {}
 	_scan_source(SOURCE_ROOT, "기지 최대 체력 +10 및 즉시 10 회복", rune)
 	var toast: Dictionary = {}

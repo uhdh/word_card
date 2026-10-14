@@ -15,7 +15,7 @@ extends Node
 # 서로 다른 위상으로 같은 속성을 밀어 맥동이 불규칙해진다.
 #
 # 이건 이론이 아니라 실재한다 — 위험 구간을 **나가는** 경로가 넷이다:
-#   · `DefenseField.gd:1179` 회복의 향로 (웨이브 종료 시 기지 HP +2)
+#   · `DefenseField.gd:1179` 회복의 향로 (웨이브 종료 시 기지 HP +1)
 #   · `DefenseField.gd:1184` 방어+회복 인접 (+1)
 #   · `TowerDefenseMain.gd:1014` 철옹성 룬 (+10 최대, +10 현재)
 #   · `TowerDefenseMain.gd:359` 불러오기 (세이브의 '뚫린 횟수'를 50 기준으로 환산)

@@ -92,7 +92,7 @@ const ALL_RELIC_POOL = [
 	},
 	{
 		"id": "relic_healing_incense", "name": "회복의 향로", "cost": 30,
-		"desc": "웨이브 종료 시 기지 HP 2 회복", "icon": "res://assets/relics/relic_healing_incense_32px_pastel.png"
+		"desc": "웨이브 종료 시 기지 HP 1 회복", "icon": "res://assets/relics/relic_healing_incense_32px_pastel.png"
 	},
 	{
 		"id": "relic_first_strike", "name": "선봉의 깃털", "cost": 35,
