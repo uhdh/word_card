@@ -26,7 +26,7 @@ extends Node
 const MainScene = preload("res://scenes/TowerDefenseMain.tscn")
 
 ## 사유 문구의 표식. 사유가 없으면 툴팁에 이게 없어야 한다(본문에는 안 쓴다).
-const MARK := "⚠️"
+const MARK := "！"
 
 var failures := 0
 

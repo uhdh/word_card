@@ -39,7 +39,7 @@ func _ready() -> void:
 	main.toggle_pause()
 	check(Engine.time_scale == 0.0, "일시정지 후 Engine.time_scale 이 0 이 아니다: %s" % Engine.time_scale)
 	check(main.is_paused(), "일시정지 후 is_paused() 가 false 다")
-	check(main.btn_speed.text == "⏸ 정지", "일시정지 버튼 문구가 '⏸ 정지' 가 아니다: %s" % main.btn_speed.text)
+	check(main.btn_speed.text == "‖ 정지", "일시정지 버튼 문구가 '‖ 정지' 가 아니다: %s" % main.btn_speed.text)
 
 	main.toggle_pause()
 	check(Engine.time_scale == 4.0, "재개 후 Engine.time_scale 이 4x 가 아니다(멈추기 직전 배속으로 돌아와야 한다): %s" % Engine.time_scale)

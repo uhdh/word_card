@@ -1025,7 +1025,7 @@ func _show_boss_banner(enemy: EnemyUnit) -> void:
 	add_child(banner)
 
 	var title := Label.new()
-	title.text = "⚠ %s 등장" % enemy.enemy_name
+	title.text = "！ %s 등장" % enemy.enemy_name
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 22)
 	title.add_theme_color_override("font_color", Palette.HP_DANGER)

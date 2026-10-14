@@ -46,12 +46,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
-text = "📖 활자술사 단어 타워 대도감 (1/2/3글자 전체)"
+text = "활자술사 단어 타워 대도감 (1/2/3글자 전체)"
 
 [node name="SearchEdit" type="LineEdit" parent="Panel/VBox/Header"]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
-placeholder_text = "🔍 단어 또는 효과 검색..."
+placeholder_text = "단어 또는 효과 검색..."
 
 [node name="TabsContainer" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2

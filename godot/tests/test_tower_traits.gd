@@ -929,7 +929,7 @@ func _test_slot_hint_grades_like_wordle_and_locks_tiles() -> void:
 	belt.slot_targets[open_slots[0]] = "문"
 	belt.slot_grades[open_slots[0]] = belt._grade_slot(open_slots[0], "문")
 	var upgrade_line: String = belt._all_hint_text(open_slots)
-	check(upgrade_line.contains("→") and upgrade_line != done_line,
+	check(upgrade_line.contains("▸") and upgrade_line != done_line,
 		"A stronger combination must be reported as a comparison (got '%s', done '%s')"
 			% [upgrade_line, done_line])
 	check(not upgrade_line.contains("문"),
@@ -1216,7 +1216,7 @@ func _test_rotatable_tiles_grade_as_rotate_not_near() -> void:
 	belt.slot_grades[0] = grade
 	belt.slot_targets[0] = "고"
 	var line: String = belt._slot_hint_text(0)
-	check(line.contains("파랑") and line.contains("↻"),
+	check(line.contains("파랑") and line.contains("회전"),
 		"The hint line must explain the blue tile in words (got %s)" % line)
 	check(not line.contains("완성"),
 		"A slot that still needs a rotation must not be called finished (got %s)" % line)
@@ -1885,7 +1885,7 @@ func _test_tower_info_shows_tile_recipe() -> void:
 	var modal = TowerInfoScene.instantiate()
 	add_child(modal)
 	modal.setup({"name": "궁극기", "damage": 10, "desc": "궁극의 힘"}, "궁극기", 100.0, 1.0)
-	check(modal.stats_label.text.contains("⚔") and modal.stats_label.text.contains("🎯"), "Tower info must show compact stats with icon")
+	check(modal.stats_label.text.contains("공격") and modal.stats_label.text.contains("사거리"), "Tower info must show compact stats with labels")
 	modal.free()
 
 
@@ -2341,14 +2341,14 @@ func _test_lexicon_shows_the_real_tower_value() -> void:
 	var shown := {}
 	for label in lexicon.find_children("*", "Label", true, false):
 		var text := (label as Label).text
-		if not text.begins_with("💥"):
+		if not text.contains("\nDPS "):
 			continue
 		shown[str(text)] = true
 	check(not shown.is_empty(), "The lexicon must render a damage number per card")
 	# 카드에는 이름이 함께 그려지므로, 숫자가 실제 값과 같은지만 본다.
 	for word in ["가루", "바늘"]:
 		var stats: Dictionary = WordTowerScript.preview_stats(word, WordDatabase.get_word_data(word))
-		var expected := "💥 %.1f\nDPS %.1f" % [stats["per_hit"], stats["dps"]]
+		var expected := "%.1f\nDPS %.1f" % [stats["per_hit"], stats["dps"]]
 		check(shown.has(expected),
 			"The lexicon must show %s's real value (expected '%s', shown %s)"
 				% [word, expected, str(shown.keys())])

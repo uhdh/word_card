@@ -57,7 +57,7 @@ extends Node
 const MainScene = preload("res://scenes/TowerDefenseMain.tscn")
 
 ## 사유 문구의 표식 — `BeltBlockReasonProbe` 와 같은 규칙을 쓴다.
-const MARK := "⚠️"
+const MARK := "！"
 
 ## 스크린샷 경로. `disabled` 가 **화면에서** 회색 버튼인지 눈으로 남긴다.
 const SHOT_FULL := "E:/project/word_card/tmp/abilityreach.png"

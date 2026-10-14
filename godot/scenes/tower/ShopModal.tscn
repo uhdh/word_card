@@ -97,17 +97,17 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
-text = "🪙 30 G"
+text = "30 G"
 
 [node name="BtnRefresh" type="Button" parent="Panel/VBox/Header"]
 custom_minimum_size = Vector2(82, 30)
 layout_mode = 2
-text = "🔄 갱신"
+text = "갱신"
 
 [node name="BtnClose" type="Button" parent="Panel/VBox/Header"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-text = "✖"
+text = "×"
 
 [node name="Scroll" type="ScrollContainer" parent="Panel/VBox"]
 layout_mode = 2
@@ -127,7 +127,7 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(0.7, 0.5, 1, 1)
-text = "🏺 신비한 에테르 유물 (고유 패시브 아티팩트)"
+text = "신비한 에테르 유물 (고유 패시브 아티팩트)"
 
 [node name="RelicItemsGrid" type="HBoxContainer" parent="Panel/VBox/Scroll/AllContentVBox/SectionRelics"]
 layout_mode = 2

@@ -33,7 +33,7 @@ const REASON_SEP := "\n\n"
 ## 사유 문구의 표식 — 벨트(`BeltBlockReasonProbe.MARK`)·밀어내기(`AbilityReachProbe`,
 ## "같은 규칙을 쓴다")와 **같은 계약**이다. `disabled` 면 툴팁에 이게 있어야 하고,
 ## 막히지 않았으면 없어야 한다(본문에는 안 쓴다).
-const MARK := "⚠️"
+const MARK := "！"
 
 var failures := 0
 

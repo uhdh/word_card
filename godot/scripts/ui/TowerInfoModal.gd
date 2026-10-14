@@ -89,9 +89,9 @@ func _ready() -> void:
 
 func setup(data: Dictionary, word_str: String, p_range: float, p_interval: float, synergies: Array = [], p_damage: float = -1.0, p_hint: String = "", p_crit: float = -1.0, p_share: Dictionary = {}, p_tower: WordTower = null) -> void:
 	var word_len = word_str.length()
-	var tier_name = "⭐ 1글자 기본 타워"
-	if word_len == 2: tier_name = "⭐⭐ 2글자 상위 타워"
-	elif word_len >= 3: tier_name = "⭐⭐⭐ 3글자 신화 타워"
+	var tier_name = "◆ 1글자 기본 타워"
+	if word_len == 2: tier_name = "◆◆ 2글자 상위 타워"
+	elif word_len >= 3: tier_name = "◆◆◆ 3글자 신화 타워"
 
 	title_label.text = "%s 타워" % word_str
 	tier_label.text = "%s (%s)" % [tier_name, data.get("name", "")]
@@ -113,14 +113,14 @@ func setup(data: Dictionary, word_str: String, p_range: float, p_interval: float
 	var total_hit_dmg := dmg * float(volley)
 	var dps: float = total_hit_dmg / p_interval if p_interval > 0.0 else total_hit_dmg
 
-	var dmg_text := "⚔ %.1f" % dmg
+	var dmg_text := "공격 %.1f" % dmg
 	if volley > 1:
-		dmg_text = "⚔ %.1f × %d연발 (1회 %.1f)" % [dmg, volley, total_hit_dmg]
+		dmg_text = "공격 %.1f × %d연발 (1회 %.1f)" % [dmg, volley, total_hit_dmg]
 	var crit_line := ""
 	if p_crit > 0.0:
-		crit_line = "   💥 치명타 %.0f%%" % (p_crit * 100.0)
+		crit_line = "   치명타 %.0f%%" % (p_crit * 100.0)
 
-	stats_label.text = "%s (DPS %.1f)   🎯 %dpx   ⏱ %.2f초%s%s" % [
+	stats_label.text = "%s (DPS %.1f)   사거리 %dpx   간격 %.2f초%s%s" % [
 		dmg_text, dps, int(p_range), p_interval, crit_line, _share_line(p_share)
 	]
 
@@ -161,7 +161,7 @@ func _build_targeting_row(tower: WordTower) -> void:
 	vbox.move_child(row, vbox.get_child_count() - 2)
 
 	var caption := Label.new()
-	caption.text = "🎯 조준"
+	caption.text = "조준"
 	caption.add_theme_font_size_override("font_size", 13)
 	row.add_child(caption)
 
@@ -204,10 +204,10 @@ func _share_line(share: Dictionary) -> String:
 	var dealt := float(share.get("damage", 0.0))
 	var total := float(share.get("total", 0.0))
 	if dealt <= 0.0:
-		return "\n📊 누적 피해 없음"
+		return "\n누적 피해 없음"
 	if total <= 0.0:
-		return "\n📊 누적 피해 %s" % NumText.comma(dealt)
-	var line := "\n📊 누적 피해 %s (전체의 %.0f%%)" % [NumText.comma(dealt), dealt / total * 100.0]
+		return "\n누적 피해 %s" % NumText.comma(dealt)
+	var line := "\n누적 피해 %s (전체의 %.0f%%)" % [NumText.comma(dealt), dealt / total * 100.0]
 	if int(share.get("count", 0)) > 1:
 		line += "  ·  %d위" % int(share.get("rank", 1))
 	return line
@@ -366,8 +366,8 @@ func _synergy_style(label: String) -> Dictionary:
 	# 유물이 아닌 것 중 글리프가 있는 것 = **타워 인접 시너지**(원소 공명·전술 연계·
 	# 수호의 순환). 상점 아이콘이 없는 규칙이므로 글리프가 맞다.
 	var styles := {
-		"원소 공명": ["✦", "#ffcc80"], "전술 연계": ["⚔", "#90caf9"],
-		"수호의 순환": ["🛡", "#9fa8da"],
+		"원소 공명": ["◇", "#ffcc80"], "전술 연계": ["◆", "#90caf9"],
+		"수호의 순환": ["□", "#9fa8da"],
 	}
 	var style: Array = styles.get(label, ["", "#ffffff"])
 	return {"icon": str(style[0]), "display": label, "color": str(style[1])}

@@ -453,7 +453,7 @@ func _test_type_counters_are_named() -> void:
 			var want := MonsterRoster.type_label(str(type_id))
 			if want == "":
 				continue
-			check(text.contains(want + "→"),
+			check(text.contains(want + "▸"),
 				"Act %d preview must name the %s counter (got '%s')" % [act, want, text])
 	# 문구는 표에서 나온다 — 표에 약점으로 적힌 특성이 하나도 빠지면 안 된다.
 	for type_id in MonsterRoster.TYPE_MULTIPLIERS:

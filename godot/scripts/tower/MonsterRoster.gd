@@ -241,7 +241,7 @@ static func type_counter_text(type_id: String) -> String:
 		return ""
 	var head := type_label(type_id)
 	if not weak.is_empty():
-		head = "%s→%s" % [head, "·".join(weak)]
+		head = "%s▸%s" % [head, "·".join(weak)]
 	if resist.is_empty():
 		return head
 	return "%s (%s에 약함)" % [head, "·".join(resist)]
@@ -265,7 +265,7 @@ static func counters_text(act: int) -> String:
 			var counter: String = str(ATTR_INFO.get(base, {}).get("counter", ""))
 			if counter == "":
 				continue
-			var line := "%s→%s" % [attr_label(text), counter]
+			var line := "%s▸%s" % [attr_label(text), counter]
 			if not parts.has(line):
 				parts.append(line)
 	return "  ".join(parts)

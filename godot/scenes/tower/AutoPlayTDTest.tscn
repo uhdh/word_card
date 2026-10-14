@@ -115,7 +115,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(0.96, 0.77, 0.32, 1)
-text = "🪙 40 G"
+text = "40 G"
 
 [node name="Actions" type="HBoxContainer" parent="TopBar/VBoxTop/Row" unique_id=906785981]
 layout_mode = 2
@@ -166,7 +166,7 @@ text = "설정 ▾"
 [node name="BtnMute" type="Button" parent="TopBar/VBoxTop/Row/Actions" unique_id=1063383510]
 layout_mode = 2
 theme_type_variation = &"GhostButton"
-text = "🔊"
+text = "소리"
 
 [node name="MonsterColumn" type="HBoxContainer" parent="TopBar/VBoxTop" unique_id=971441717]
 layout_mode = 2

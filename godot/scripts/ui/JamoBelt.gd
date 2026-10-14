@@ -369,11 +369,11 @@ func set_ability_available(available: bool) -> void:
 func _button_state(price: int, empty_belt_blocks: bool) -> Dictionary:
 	var reason := ""
 	if current_gold < price:
-		reason = "⚠️ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [price, current_gold]
+		reason = "！ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [price, current_gold]
 	elif empty_belt_blocks and jamo_list.is_empty():
-		reason = "⚠️ 벨트에 타일이 없습니다"
+		reason = "！ 벨트에 타일이 없습니다"
 	elif not empty_belt_blocks and jamo_list.size() >= MAX_BELT_TILES:
-		reason = "⚠️ 벨트가 가득 찼습니다 (%d/%d장)" % [jamo_list.size(), MAX_BELT_TILES]
+		reason = "！ 벨트가 가득 찼습니다 (%d/%d장)" % [jamo_list.size(), MAX_BELT_TILES]
 	return {"disabled": reason != "", "reason": reason}
 
 ## 툴팁 본문에 막힌 사유를 덧붙인다. 사유가 없으면 본문 그대로.
@@ -598,7 +598,7 @@ func _all_hint_text(open_slots: Array) -> String:
 	var now_value := 0
 	for w in now_words:
 		now_value += AutoArrange.word_value(str(w), WordDatabase.get_word_data(str(w)))
-	return "최적 조합: 지금 %.1f → %.1f DPS%s" % [
+	return "최적 조합: 지금 %.1f ▸ %.1f DPS%s" % [
 		float(now_value) / 100.0, float(best_value) / 100.0, suffix]
 
 ## '해야 할 일' 의 개수. 색이 타일마다 말하는 것을 한 덩어리로 접는다.
@@ -662,7 +662,7 @@ func _slot_hint_text(slot_index: int) -> String:
 		parts.append("빠진 활자 %d개" % missing.size())
 	var to_rotate := _count_grade(grade, "rotate")
 	if to_rotate > 0:
-		parts.append("파랑 %d개 ↻" % to_rotate)
+		parts.append("파랑 %d개 회전" % to_rotate)
 	var to_move := _count_grade(grade, "near")
 	if to_move > 0:
 		parts.append("금색 %d개 이동" % to_move)
@@ -1609,7 +1609,7 @@ func _grade_label(grade: String) -> String:
 	match grade:
 		"pos": return "이 자리 맞음"
 		"near": return "이 단어에 쓰이지만 자리가 다름"
-		"rotate": return "돌려야 이 자모가 됨 (↻)"
+		"rotate": return "돌려야 이 자모가 됨"
 		"off": return "이 단어에 안 쓰임"
 	return ""
 
@@ -1662,7 +1662,7 @@ func _build_tile(idx: int, slot_index := -1, tile_pos := -1) -> JamoTileBox:
 		# 툴팁 옆 주석에). `TooltipTruthProbe` §1c 가 이 계약을 지킨다.
 		btn_tile.tooltip_text = "[%s 타일: %s]\n클릭=선택/교체, 드래그=순서 이동%s%s" % [
 			rarity_name, char_str,
-			", 우하단 ↻=회전" if is_rotatable else "",
+			", 우하단 배지=회전" if is_rotatable else "",
 			"" if grade_note == "" else "\n채점: " + grade_note
 		]
 		btn_tile.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -1747,7 +1747,7 @@ func _build_tile(idx: int, slot_index := -1, tile_pos := -1) -> JamoTileBox:
 			# 않는다. 같은 이유로 타일 툴팁의 `↻=90도 회전` 도 `↻=회전` 으로 바꿨다.
 			# (`TooltipTruthProbe` §1c 가 지킨다 — 문구에 각도가 있으면 **모든** 회전 타일이
 			#  실제로 그 각도여야 한다.)
-			btn_rot.tooltip_text = "회전 (예: ㅏ → ㅜ, ㄱ → ㄴ)"
+			btn_rot.tooltip_text = "회전 (예: ㅏ ▸ ㅜ, ㄱ ▸ ㄴ)"
 			btn_rot.custom_minimum_size = Vector2(26, 26)
 			overlay.add_child(btn_rot)
 			btn_rot.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)

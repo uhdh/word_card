@@ -13,7 +13,7 @@ var search_query: String = ""
 var all_words: Array = []
 var discovered_words: Array = []
 
-const JAMO_RULES := "🧩 자모 합성 규칙\n회전: ㄱ ↔ ㄴ · ㅏ → ㅜ → ㅓ → ㅗ · ㅡ ↔ ㅣ\n쌍자음: ㄱ+ㄱ=ㄲ · ㄷ+ㄷ=ㄸ · ㅂ+ㅂ=ㅃ · ㅅ+ㅅ=ㅆ · ㅈ+ㅈ=ㅉ\n겹모음: ㅗ+ㅏ=ㅘ · ㅗ+ㅣ=ㅚ · ㅜ+ㅓ=ㅝ · ㅜ+ㅣ=ㅟ · ㅡ+ㅣ=ㅢ\n파싱: 3글자 → 2글자 → 1글자 순으로 가장 긴 연성식 우선"
+const JAMO_RULES := "자모 합성 규칙\n회전: ㄱ ◂▸ ㄴ · ㅏ ▸ ㅜ ▸ ㅓ ▸ ㅗ · ㅡ ◂▸ ㅣ\n쌍자음: ㄱ+ㄱ=ㄲ · ㄷ+ㄷ=ㄸ · ㅂ+ㅂ=ㅃ · ㅅ+ㅅ=ㅆ · ㅈ+ㅈ=ㅉ\n겹모음: ㅗ+ㅏ=ㅘ · ㅗ+ㅣ=ㅚ · ㅜ+ㅓ=ㅝ · ㅜ+ㅣ=ㅟ · ㅡ+ㅣ=ㅢ\n파싱: 3글자 ▸ 2글자 ▸ 1글자 순으로 가장 긴 연성식 우선"
 
 func _ready() -> void:
 	all_words = WordDatabase.get_all_words()
@@ -31,15 +31,15 @@ func _ready() -> void:
 
 	var filters = [
 		{"id": "all", "name": "전체 (%d/%d)" % [discovered_words.size(), all_words.size()]},
-		{"id": "discovered", "name": "✅ 발견한 활자"},
-		{"id": "tier1", "name": "⭐ 1글자"},
-		{"id": "tier2", "name": "⭐⭐ 2글자 상위"},
-		{"id": "tier3", "name": "⭐⭐⭐ 3글자 신화"},
+		{"id": "discovered", "name": "발견한 활자"},
+		{"id": "tier1", "name": "◆ 1글자"},
+		{"id": "tier2", "name": "◆◆ 2글자 상위"},
+		{"id": "tier3", "name": "◆◆◆ 3글자 신화"},
 		{"id": "weapon", "name": "무기"},
 		{"id": "element", "name": "원소"},
-		{"id": "defense", "name": "🛡️ 방어"},
-		{"id": "summon", "name": "🐾 생물"},
-		{"id": "heal", "name": "💖 회복"}
+		{"id": "defense", "name": "방어"},
+		{"id": "summon", "name": "생물"},
+		{"id": "heal", "name": "회복"}
 	]
 
 	for f in filters:
@@ -117,7 +117,7 @@ func render_cards() -> void:
 	)
 
 	var percentage = (float(discovered_words.size()) / float(maxi(1, all_words.size()))) * 100.0
-	count_label.text = "📖 활자 도감 달성률: %d / %d개 (%.1f%%) | 표시 중: %d개" % [
+	count_label.text = "활자 도감 달성률: %d / %d개 (%.1f%%) | 표시 중: %d개" % [
 		discovered_words.size(), all_words.size(), percentage, filtered.size()
 	]
 
@@ -146,9 +146,9 @@ func render_cards() -> void:
 			icon.texture = load(w["icon"])
 		hbox_top.add_child(icon)
 
-		var tier_badge = "⭐ 1글자"
-		if word_len == 2: tier_badge = "⭐⭐ 2글자 상위"
-		elif word_len >= 3: tier_badge = "⭐⭐⭐ 3글자 신화"
+		var tier_badge = "◆ 1글자"
+		if word_len == 2: tier_badge = "◆◆ 2글자 상위"
+		elif word_len >= 3: tier_badge = "◆◆◆ 3글자 신화"
 
 		var name_lbl = Label.new()
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -186,25 +186,25 @@ func render_cards() -> void:
 			# 손해로 보이고, DPS 만 보면 '한 방 센' 특성(유성)이 손해로 보인다.
 			# 카드 폭(250px)이 좁아 한 줄에 둘 다 넣으면 이름이 잘린다.
 			var stats: Dictionary = WordTower.preview_stats(word_str, w)
-			dmg_lbl.text = "💥 %.1f\nDPS %.1f" % [stats["per_hit"], stats["dps"]]
+			dmg_lbl.text = "%.1f\nDPS %.1f" % [stats["per_hit"], stats["dps"]]
 			dmg_lbl.add_theme_color_override("font_color", Color(1.0, 0.6, 0.4))
 
 			var recipe_str = get_jamo_recipe(word_str)
-			recipe_lbl.text = "🧩 조합: %s" % recipe_str
+			recipe_lbl.text = "조합: %s" % recipe_str
 			recipe_lbl.add_theme_color_override("font_color", Color(0.7, 0.9, 0.7))
 
 			desc_lbl.text = w.get("desc", "")
 		else:
 			panel.modulate = Color(0.65, 0.65, 0.75, 0.8)
-			name_lbl.text = " ❓ ??? [%s]" % tier_badge
+			name_lbl.text = " ??? [%s]" % tier_badge
 			name_lbl.add_theme_color_override("font_color", Color(0.6, 0.6, 0.7))
 
-			dmg_lbl.text = "💥 ???"
+			dmg_lbl.text = "???"
 			dmg_lbl.add_theme_color_override("font_color", Color(0.5, 0.5, 0.6))
 
 			var hidden_recipe = []
 			for idx in range(word_len): hidden_recipe.append("[ ? ]")
-			recipe_lbl.text = "🧩 미해금 조합: %s" % (" + ".join(hidden_recipe))
+			recipe_lbl.text = "미해금 조합: %s" % (" + ".join(hidden_recipe))
 			recipe_lbl.add_theme_color_override("font_color", Color(0.5, 0.5, 0.6))
 
 			desc_lbl.text = "“아직 조합해보지 못한 미지의 활자입니다. 자모를 결합하여 도감을 해금하세요.”"

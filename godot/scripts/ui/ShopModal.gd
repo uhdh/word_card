@@ -39,7 +39,7 @@ var relic_stock: Array = []
 const ALL_RELIC_POOL = [
 	{
 		"id": "relic_golden_dice",
-		"name": "🎲 황금 주사위",
+		"name": "황금 주사위",
 		"cost": 25,
 		"desc": "보상 리롤 주사위를 +2개 즉시 지급합니다.",
 		"icon": "res://assets/relics/relic_golden_dice_32px_pastel.png"
@@ -53,28 +53,28 @@ const ALL_RELIC_POOL = [
 	},
 	{
 		"id": "relic_fortress_rune",
-		"name": "🛡️ 철옹성 룬",
+		"name": "철옹성 룬",
 		"cost": 30,
 		"desc": "기지 최대 체력 +10 및 즉시 10 회복",
 		"icon": "res://assets/relics/relic_fortress_rune_32px_pastel.png"
 	},
 	{
 		"id": "relic_haste_compass",
-		"name": "⏱️ 신속의 나침반",
+		"name": "신속의 나침반",
 		"cost": 35,
 		"desc": "모든 활자 타워 공격 속도 +20%",
 		"icon": "res://assets/relics/relic_haste_compass_32px_pastel.png"
 	},
 	{
 		"id": "relic_merchant_pouch",
-		"name": "💰 상인의 보물주머니",
+		"name": "상인의 보물주머니",
 		"cost": 30,
 		"desc": "웨이브 클리어 골드 보상 +50%",
 		"icon": "res://assets/relics/relic_merchant_pouch_32px_pastel.png"
 	},
 	{
 		"id": "relic_crit_lens",
-		"name": "🎯 예리한 렌즈",
+		"name": "예리한 렌즈",
 		"cost": 35,
 		"desc": "타워 공격 시 25% 확률로 2배 치명타",
 		"icon": "res://assets/relics/relic_crit_lens_32px_pastel.png"
@@ -183,9 +183,9 @@ func _relic_button_state(r: Dictionary) -> Dictionary:
 		# ⚠️ 표식(`⚠️`)을 빠뜨리면 안 된다 — 벨트·밀어내기와 **같은 계약**이다
 		#    (`BeltBlockReasonProbe.MARK` · `ShopReasonProbe` §3b 가 잰다).
 		#    사유가 여섯 개는 표식을 달고 하나만 안 달면, 그 하나만 *경고* 로 안 읽힌다.
-		reason = "⚠️ 이미 보유한 유물입니다"
+		reason = "！ 이미 보유한 유물입니다"
 	elif current_gold < r["cost"]:
-		reason = "⚠️ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [r["cost"], current_gold]
+		reason = "！ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [r["cost"], current_gold]
 	return {"disabled": reason != "", "reason": reason}
 
 ## 갱신(진열대 리롤) 버튼의 (비활성 여부, 사유).
@@ -196,7 +196,7 @@ func _relic_button_state(r: Dictionary) -> Dictionary:
 func _refresh_button_state() -> Dictionary:
 	var reason := ""
 	if current_gold < REFRESH_PRICE:
-		reason = "⚠️ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [REFRESH_PRICE, current_gold]
+		reason = "！ 골드가 부족합니다 (필요 %dG · 보유 %dG)" % [REFRESH_PRICE, current_gold]
 	return {"disabled": reason != "", "reason": reason}
 
 ## 툴팁 본문에 막힌 사유를 덧붙인다. 사유가 없으면 본문 그대로.
@@ -244,11 +244,11 @@ func _desc_row(r: Dictionary) -> Control:
 	return row
 
 func _update_ui() -> void:
-	gold_label.text = "🪙 %d G" % current_gold
+	gold_label.text = "%d G" % current_gold
 
 	# 갱신 버튼 — 글자도 **여기서** 쓴다(씬 문구에 가격을 두지 않는다: 위 `REFRESH_PRICE` 주석).
 	var refresh_state := _refresh_button_state()
-	btn_refresh.text = "🔄 갱신 %dG" % REFRESH_PRICE
+	btn_refresh.text = "갱신 %dG" % REFRESH_PRICE
 	btn_refresh.disabled = refresh_state["disabled"]
 	btn_refresh.tooltip_text = _with_reason(
 		"진열대의 유물을 새로 뽑습니다 (최대 4종)", refresh_state["reason"])

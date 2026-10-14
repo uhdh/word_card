@@ -203,17 +203,17 @@ func _build_tooltip() -> String:
 	if trait_id == "orbit":
 		# 도는 방향은 화면에서 보이긴 하지만, '바꿀 수 있다' 는 것은 보이지 않는다.
 		# 이 기능이 있는지조차 모르면 없는 것과 같다.
-		stats += "\n↻ 선회 방향: %s (우클릭으로 전환)" % orbit_direction_label()
+		stats += "\n선회 방향: %s (우클릭으로 전환)" % orbit_direction_label()
 	else:
 		# 조준은 방향과 다르다 — '진급 우선' 같은 이름만으로는 무엇을 고르는지 알 수 없다.
 		# 그래서 이름과 설명을 함께 적는다. 설명 없이 이름만 두면 네 모드의 차이를
 		# 알 방법이 없어 기능이 없는 것과 같아진다.
-		stats += "\n🎯 조준: %s — %s (우클릭으로 전환)" % [targeting_label(), targeting_desc()]
+		stats += "\n조준: %s — %s (우클릭으로 전환)" % [targeting_label(), targeting_desc()]
 	# 시너지는 '붙어 있다' 는 사실만으로는 아무 의미가 없다 — 툴팁에 보여야
 	# 플레이어가 배치와 유물 구매를 그걸 기준으로 결정할 수 있다.
 	var synergy_line := ""
 	if not synergy_labels.is_empty():
-		synergy_line = "\n✦ " + " / ".join(synergy_labels)
+		synergy_line = "\n◇ " + " / ".join(synergy_labels)
 	return "%s\n%s\n[%s]\n%s%s" % [
 		syllable, word_data.get("desc", ""), trait_line, stats, synergy_line]
 

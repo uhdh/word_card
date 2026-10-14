@@ -60,7 +60,7 @@ const RARITY_SUPER_RARE  := Color("#F0A6FF")
 const RARITY_GLYPH := {
 	"common": "",
 	"rare": "◆",
-	"super_rare": "✦",
+	"super_rare": "◇",
 }
 
 # ── 파생 헬퍼 ────────────────────────────────────────────────

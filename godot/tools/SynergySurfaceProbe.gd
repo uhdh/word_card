@@ -364,8 +364,11 @@ func _ready() -> void:
 	_emit("S5 양성 대조 — 통계 라벨 보임=%s · 폰트 밖 글리프 %d종 %s | 문구 %s" % [
 		str(stat_shown), stat_missing.size(), str(stat_missing.map(_cp_name)), st.text if st != null else ""])
 	check(stat_shown, "통계 라벨이 안 보인다 — 양성 대조가 성립하지 않는다")
-	check(stat_missing.size() > 0,
-		"보이는 표면에서 폰트 밖 글리프를 못 찾았다 — 그러면 이 절이 재는 것이 없다")
+	# §2.37 고침(2026-10-14) 뒤 계약이 뒤집혔다 — 보이는 표면에는 폰트 밖 글리프가 **없어야** 한다.
+	# 양성 대조는 이제 검출기 자체에 건다: 폰트에 없다고 실측된 `→`(U+2192)를 못 잡으면 0종은 공짜 통과다.
+	check(_missing("→").size() == 1, "양성 대조 실패 — 검출기가 폰트에 없는 `→` 도 못 잡는다")
+	check(stat_missing.is_empty(),
+		"통계 라벨이 폰트 밖 글리프 %s 를 쓴다 — 글자체가 섞인다(§2.37)" % str(stat_missing.map(_cp_name)))
 
 	# ── S6. 런타임 글리프 전수 — 화면에 있는 텍스트만 ──────────────────────
 	var vis := _visible_text(main)
@@ -378,6 +381,7 @@ func _ready() -> void:
 	_emit("S6 화면에 있는 텍스트 표면 %d개가 폰트 밖 글리프 %d종을 쓴다" % [vis.size(), cp_set.size()])
 	for cp in cp_set:
 		_emit("    %s  ← %s" % [_cp_name(cp), str(cp_set[cp][0])])
+	check(cp_set.is_empty(), "화면에 폰트 밖 글리프 %d종이 있다 — 글자체가 섞인다(§2.37)" % cp_set.size())
 
 	# ── S7. 스크린샷 ───────────────────────────────────────────────────────
 	if DisplayServer.get_name() != "headless":

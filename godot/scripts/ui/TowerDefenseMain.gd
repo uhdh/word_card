@@ -417,14 +417,14 @@ func _update_topbar_wave_label(act: int, wave: int) -> void:
 func _on_save_pressed() -> void:
 	save_game_state()
 	_update_settings_menu()
-	btn_save.text = "✅ 저장됨!"
+	btn_save.text = "저장됨!"
 	# 저장은 **UI 동작**이다 — 게임 세계에서 좋은 일이 일어난 것이 아니다.
 	# 2026-09-26 까지 여기는 `play_buff()`(=`play_heal()`) 였고, 그래서 이 게임에서 유일하게
 	# '좋은 일' 을 뜻하는 파형(E5→A5→C6→E6 상행 아르페지오)이 *"저장했습니다"* 에 붙어 있었다(§2.22-4).
 	# 버튼을 눌렀다는 사실만 알리면 되므로 UI 클릭음 하나로 충분하다 — 상점 닫기와 같은 소리다.
 	SoundEngine.play_tile_click()
 	var timer = get_tree().create_timer(1.2)
-	timer.timeout.connect(func(): btn_save.text = "💾 저장")
+	timer.timeout.connect(func(): btn_save.text = "저장")
 
 func _on_load_pressed() -> void:
 	var data = SaveManager.load_game()
@@ -657,7 +657,7 @@ func _on_enemy_count_changed(current: int) -> void:
 		return
 	var cap := DefenseField.MAX_ENEMIES
 	if current >= int(ceil(cap * ENEMY_OVERLOAD_WARN_RATIO)):
-		monster_count_label.text = "적 %d / %d ⚠" % [current, cap]
+		monster_count_label.text = "적 %d / %d ！" % [current, cap]
 		monster_count_label.add_theme_color_override("font_color", Palette.HP_DANGER)
 	else:
 		monster_count_label.text = "적 %d" % current
@@ -764,7 +764,7 @@ func _on_gold_changed(current: int) -> void:
 
 func _apply_gold_label() -> void:
 	if gold_label:
-		gold_label.text = "🪙 %d G" % roundi(_gold_shown)
+		gold_label.text = "%d G" % roundi(_gold_shown)
 
 func _on_wave_status_changed(act: int, max_act: int, wave: int, max_wave: int, is_running: bool) -> void:
 	_update_topbar_wave_label(act, wave)
@@ -1265,11 +1265,11 @@ var _ability_base_tip := ""
 func _ability_button_state() -> Dictionary:
 	var reason := ""
 	if not defense_field.is_wave_running:
-		reason = "⚠️ 웨이브가 진행 중일 때만 쓸 수 있습니다"
+		reason = "！ 웨이브가 진행 중일 때만 쓸 수 있습니다"
 	elif ability_uses_left <= 0:
-		reason = "⚠️ 이번 웨이브에는 이미 사용했습니다 (웨이브마다 %d회)" % ABILITY_USES_PER_WAVE
+		reason = "！ 이번 웨이브에는 이미 사용했습니다 (웨이브마다 %d회)" % ABILITY_USES_PER_WAVE
 	elif jamo_belt.jamo_list.is_empty():
-		reason = "⚠️ 밀어낼 자모 타일이 없습니다"
+		reason = "！ 밀어낼 자모 타일이 없습니다"
 	return {"disabled": reason != "", "reason": reason}
 
 
@@ -1404,7 +1404,7 @@ func _on_tower_info_requested(tower: WordTower) -> void:
 		var current_dmg = tower.damage_per_attack() * tower.damage_multiplier
 		var hint := ""
 		if tower.trait_id == "orbit":
-			hint = "↻ 선회 방향: %s — 우클릭으로 전환" % tower.orbit_direction_label()
+			hint = "선회 방향: %s — 우클릭으로 전환" % tower.orbit_direction_label()
 		modal.setup(tower.word_data, tower.syllable, tower.attack_range, tower.attack_interval, tower.synergy_labels, current_dmg, hint, tower.total_crit_chance(), defense_field.tower_damage_share(tower.syllable), tower)
 
 func _on_jamo_changed() -> void:
@@ -1451,13 +1451,13 @@ func set_speed_scale(speed: float) -> void:
 	current_speed_scale = speed
 	Engine.time_scale = speed
 	if speed <= 0.0:
-		btn_speed.text = "⏸ 정지"
+		btn_speed.text = "‖ 정지"
 	elif speed == 1.0:
 		btn_speed.text = "1x 배속"
 	elif speed == 2.0:
 		btn_speed.text = "2x 배속"
 	elif speed >= 4.0:
-		btn_speed.text = "⚡ 4x 초고속"
+		btn_speed.text = "» 4x 초고속"
 
 ## 일시정지 여부는 current_speed_scale **하나로만** 판단한다.
 ## 별도 bool 을 두면 set_speed_scale 과 어긋나 조용히 거짓말을 한다.
@@ -1510,7 +1510,7 @@ func _on_lore_pressed() -> void:
 
 func _on_mute_pressed() -> void:
 	var is_muted = SoundEngine.toggle_mute()
-	btn_mute.text = "🔇" if is_muted else "🔊"
+	btn_mute.text = "무음" if is_muted else "소리"
 
 func _on_reset_pressed() -> void:
 	SoundEngine.play_tile_click()
