@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="24" fill="#131b3a"/>
-  <rect x="18" y="18" width="92" height="92" rx="14" fill="none" stroke="#4fd3e0" stroke-width="5"/>
-  <rect x="34" y="34" width="60" height="60" rx="10" fill="none" stroke="#f5d24a" stroke-width="4"/>
-  <text x="64" y="82" font-family="sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">ㄱ</text>
-</svg>
